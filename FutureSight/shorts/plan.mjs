@@ -33,6 +33,8 @@ const CUTS = [
 
 // ---- camera keys per segment: [localT, cx, cy, zoom, yc]  (source px; yc = output y of source cy) ----
 const CAMS = JSON.parse(fs.readFileSync(path.join(HERE, 'cams.json'), 'utf8'));
+// optional hero-centred x tracks per segment (shorts/center_cams.mjs -> cx_track.json): keeps the main subject on the vertical centre line
+const CX = fs.existsSync(path.join(HERE, 'cx_track.json')) ? JSON.parse(fs.readFileSync(path.join(HERE, 'cx_track.json'), 'utf8')) : {};
 
 const HL = new Set(['TEN', 'SECONDS', 'GHOST', 'FUTURE', 'EARLY', 'TRUCK', 'NOTHING', 'ENDS', 'AHEAD']);
 let s0 = 0;
@@ -40,7 +42,7 @@ const segs = [];
 const phrases = [];
 for (const c of CUTS) {
   const dur = c.A1 - c.A0;
-  const seg = { name: c.name, s0: +s0.toFixed(4), dur: +dur.toFixed(4), T0: +(c.A0 + (c.vOff || 0)).toFixed(4), A0: c.A0, A1: c.A1, hold: c.hold, cam: CAMS[c.name] || [[0, 960, 600, 1.2, 900]] };
+  const seg = { name: c.name, s0: +s0.toFixed(4), dur: +dur.toFixed(4), T0: +(c.A0 + (c.vOff || 0)).toFixed(4), A0: c.A0, A1: c.A1, hold: c.hold, cam: CAMS[c.name] || [[0, 960, 600, 1.2, 900]], cxTrack: CX[c.name] };
   segs.push(seg);
   for (const [ch, id, minS] of c.lines) {
     const W = WORDS[id].words;

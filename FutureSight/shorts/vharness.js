@@ -32,7 +32,8 @@
   }
 
   // keyframed camera: keys = [[t, cx, cy, z, yc?], ...] local seconds; cubic Hermite (Catmull-Rom tangents) per channel
-  function camAt(seg, u) {
+  function camAt(seg, u) { const c = camAt0(seg, u); c.cx = trackCx(seg, u, c.cx); return c; }
+  function camAt0(seg, u) {
     const K = seg.cam;
     if (K.length === 1) return { cx: K[0][1], cy: K[0][2], z: K[0][3], yc: K[0][4] ?? 900 };
     if (u <= K[0][0]) return { cx: K[0][1], cy: K[0][2], z: K[0][3], yc: K[0][4] ?? 900 };
@@ -53,6 +54,16 @@
     return res;
   }
 
+  // optional hero-centred x track for a segment: seg.cxTrack = [[u, cx], ...] (linear), written by center_cams.mjs
+  function trackCx(seg, u, fallback) {
+    const K = seg.cxTrack;
+    if (!K || !K.length) return fallback;
+    if (u <= K[0][0]) return K[0][1];
+    if (u >= K[K.length - 1][0]) return K[K.length - 1][1];
+    let i = 0; while (i < K.length - 2 && u > K[i + 1][0]) i++;
+    const f = (u - K[i][0]) / (K[i + 1][0] - K[i][0]);
+    return K[i][1] + (K[i + 1][1] - K[i][1]) * f;
+  }
   // composite the already-drawn source canvas into `out`
   function comp(cam) {
     const z = cam.z;
@@ -95,7 +106,7 @@
     let cap = null;
     for (const c of caps) if (ts >= c.t0 && ts < c.t1) { cap = c; break; }
     if (!cap) return;
-    const FS = cap.fs || 92, LH = FS * 1.12, MAXW = 880, CX = 495, CY = cap.cy || 1385;
+    const FS = cap.fs || 92, LH = FS * 1.12, MAXW = 880, CX = OW / 2, CY = cap.cy || 1385;
     ctx.save();
     ctx.font = `${FS}px ${FONT}`;
     ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
@@ -171,6 +182,30 @@
     }
     return n ? { n, x: Math.round(sx / n * 8), y: Math.round(sy / n * 8), bb: [minx * 8, miny * 8, maxx * 8, maxy * 8] } : { n: 0 };
   };
+  window.subjectScan = (T) => {
+    srcFrame(T);
+    sc.drawImage(src, 0, 0, 240, 135);
+    const d = sc.getImageData(0, 0, 240, 135).data;
+    const W = 240, H = 135, I = new Int32Array((W + 1) * (H + 1)); let gn = 0, gx = 0;
+    for (let y = 0; y < H; y++) {
+      let row = 0;
+      for (let x = 0; x < W; x++) {
+        const k = (y * W + x) * 4, r = d[k], gg = d[k + 1], bb = d[k + 2];
+        // hoodie red: g ~ b (shop awnings are orange: g > b, or pink: b > g)
+        let hit = (r > 140 && gg < 75 && bb < 80 && r - gg > 95 && Math.abs(gg - bb) < 12) ? 1 : 0;
+        if (!hit && y > 60 && r < 140 && gg > 170 && bb > 225) { gn++; gx += x; }   // cyan ghost body (below the timer ring)
+        row += hit; I[(y + 1) * (W + 1) + x + 1] = I[y * (W + 1) + x + 1] + row;
+      }
+    }
+    // densest hoodie-sized window (16 x 24 scan px): the hero is a compact blob, shop awnings are thin strips
+    const ww = 16, wh = 24; let best = 0, bx = -1;
+    for (let y = 0; y + wh <= H; y += 2) for (let x = 0; x + ww <= W; x++) {
+      const sum = I[(y + wh) * (W + 1) + x + ww] - I[y * (W + 1) + x + ww] - I[(y + wh) * (W + 1) + x] + I[y * (W + 1) + x];
+      if (sum > best) { best = sum; bx = x; }
+    }
+    return { hn: best, hx: best >= 30 ? (bx + ww / 2) * 8 : null, spread: 0, gn: gn, gx: gn ? gx / gn * 8 : null };
+  };
   window.srcPNG = (T) => { srcFrame(T); return src.toDataURL('image/png'); };
+  window._dbg = { camAt, segAt, trackCx };
   window.__vready = true;
 })();
