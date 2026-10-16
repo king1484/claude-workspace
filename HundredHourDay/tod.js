@@ -1795,7 +1795,8 @@ const HUD_FONT = '"Bahnschrift SemiBold","Segoe UI Black",sans-serif';
 function hud(g, H, o) {
   o = o || {}; const alpha = o.alpha == null ? 1 : o.alpha, pop = o.pop == null ? 1 : o.pop, pulse = o.pulse || 0;
   if (alpha < 0.01) return;
-  H = ((H % 100) + 100) % 100; const P = pal(H, {});
+  // o.h100: hold the dial/bar/digits at 100 (the loop would otherwise wrap hour 100 to 00); used by c7 at the next sunrise
+  H = o.h100 ? 100 : ((H % 100) + 100) % 100; const P = pal(H % 100, {});
   const ease = pop >= 1 ? 1 : (function (t) { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); })(sat01(pop));
   const sc = (0.6 + 0.4 * ease) * (1 + 0.05 * pulse);
   const X = 26, Y = 22, R = 46, cx = X + R, cy = Y + R + 2;

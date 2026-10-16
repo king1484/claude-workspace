@@ -1,0 +1,328 @@
+{
+ "mood": "hollow",
+ "music": {
+  "arc": [
+   [
+    0,
+    7.691,
+    0.3
+   ],
+   [
+    7.691,
+    19.653,
+    0.22
+   ],
+   [
+    19.653,
+    28.077,
+    0.35
+   ],
+   [
+    28.077,
+    34.968,
+    0.35
+   ],
+   [
+    34.968,
+    44.061,
+    0.25
+   ],
+   [
+    44.061,
+    49.091,
+    0.2
+   ],
+   [
+    49.091,
+    55.685,
+    0.6
+   ]
+  ],
+  "risers": [
+   [
+    14.196,
+    15.296
+   ]
+  ],
+  "silence": [
+   [
+    45.86,
+    46.56
+   ]
+  ]
+ },
+ "ambience": "night",
+ "cues": [
+  {
+   "t": 0.2,
+   "type": "waves",
+   "gain": 0.25,
+   "len": 7.091
+  },
+  {
+   "t": 0.9,
+   "type": "step",
+   "gain": 0.2
+  },
+  {
+   "t": 1.5,
+   "type": "step",
+   "gain": 0.2
+  },
+  {
+   "t": 2.019,
+   "type": "sting",
+   "gain": 0.35
+  },
+  {
+   "t": 3.143,
+   "type": "dropOut",
+   "gain": 0.3,
+   "len": 1
+  },
+  {
+   "t": 3.343,
+   "type": "windHowl",
+   "gain": 0.18,
+   "len": 3.5
+  },
+  {
+   "t": 4.543,
+   "type": "shiver",
+   "gain": 0.3
+  },
+  {
+   "t": 7.991,
+   "type": "crickets",
+   "gain": 0.2,
+   "len": 11.362
+  },
+  {
+   "t": 8.141,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 8
+  },
+  {
+   "t": 12.204,
+   "type": "dialTick",
+   "gain": 0.28,
+   "n": 5
+  },
+  {
+   "t": 15.196,
+   "type": "riserShort",
+   "gain": 0.2,
+   "len": 0.6
+  },
+  {
+   "t": 15.546,
+   "type": "pop",
+   "gain": 0.45
+  },
+  {
+   "t": 15.696,
+   "type": "frostCrackle",
+   "gain": 0.35,
+   "len": 2.2
+  },
+  {
+   "t": 15.996,
+   "type": "shiver",
+   "gain": 0.35
+  },
+  {
+   "t": 17.224,
+   "type": "pop",
+   "gain": 0.3
+  },
+  {
+   "t": 20.023,
+   "type": "powerDown",
+   "gain": 0.5
+  },
+  {
+   "t": 20.073,
+   "type": "zap",
+   "gain": 0.14
+  },
+  {
+   "t": 20.323,
+   "type": "zap",
+   "gain": 0.18000000000000002
+  },
+  {
+   "t": 20.523,
+   "type": "zap",
+   "gain": 0.22000000000000003
+  },
+  {
+   "t": 20.673,
+   "type": "zap",
+   "gain": 0.16
+  },
+  {
+   "t": 21.073,
+   "type": "zap",
+   "gain": 0.2
+  },
+  {
+   "t": 21.934,
+   "type": "pop",
+   "gain": 0.3
+  },
+  {
+   "t": 22.584,
+   "type": "uiError",
+   "gain": 0.25
+  },
+  {
+   "t": 24.53,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 4
+  },
+  {
+   "t": 26.23,
+   "type": "clockStop",
+   "gain": 0.3
+  },
+  {
+   "t": 28.477,
+   "type": "globeSpin",
+   "gain": 0.22,
+   "len": 3.5820535714285753
+  },
+  {
+   "t": 29.826,
+   "type": "sonar",
+   "gain": 0.3
+  },
+  {
+   "t": 30.026,
+   "type": "swell",
+   "gain": 0.3,
+   "len": 2
+  },
+  {
+   "t": 32.359,
+   "type": "generatorHum",
+   "gain": 0.18,
+   "len": 2.40894642857143
+  },
+  {
+   "t": 32.409,
+   "type": "powerDown",
+   "gain": 0.35
+  },
+  {
+   "t": 35.168,
+   "type": "crickets",
+   "gain": 0.18,
+   "len": 1.4078188976377888
+  },
+  {
+   "t": 35.468,
+   "type": "footstepGrass",
+   "gain": 0.18
+  },
+  {
+   "t": 35.868,
+   "type": "echoPop",
+   "gain": 0.22,
+   "n": 0
+  },
+  {
+   "t": 35.918,
+   "type": "footstepGrass",
+   "gain": 0.18
+  },
+  {
+   "t": 36.368,
+   "type": "footstepGrass",
+   "gain": 0.18
+  },
+  {
+   "t": 36.476,
+   "type": "windHowl",
+   "gain": 0.2,
+   "len": 3.3043307086614178
+  },
+  {
+   "t": 36.518,
+   "type": "echoPop",
+   "gain": 0.22,
+   "n": 1
+  },
+  {
+   "t": 36.876,
+   "type": "shimmer",
+   "gain": 0.25
+  },
+  {
+   "t": 39.93,
+   "type": "boing",
+   "gain": 0.3
+  },
+  {
+   "t": 40.28,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 6
+  },
+  {
+   "t": 41.78,
+   "type": "boing",
+   "gain": 0.25
+  },
+  {
+   "t": 44.161,
+   "type": "snore",
+   "gain": 0.25
+  },
+  {
+   "t": 44.231,
+   "type": "clockWhirr",
+   "gain": 0.45,
+   "len": 1.4647297297297315
+  },
+  {
+   "t": 45.596,
+   "type": "gasp",
+   "gain": 0.4
+  },
+  {
+   "t": 45.96,
+   "type": "stingDark",
+   "gain": 0.3
+  },
+  {
+   "t": 47.211,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 10
+  },
+  {
+   "t": 49.391,
+   "type": "swell",
+   "gain": 0.3,
+   "len": 3
+  },
+  {
+   "t": 49.761,
+   "type": "stingWonder",
+   "gain": 0.35
+  },
+  {
+   "t": 50.311,
+   "type": "shimmer",
+   "gain": 0.2
+  },
+  {
+   "t": 52.785,
+   "type": "ghostWhoosh",
+   "gain": 0.2,
+   "len": 0.9
+  }
+ ]
+}

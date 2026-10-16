@@ -1,0 +1,243 @@
+{
+ "mood": "hollow",
+ "music": {
+  "arc": [
+   [
+    0,
+    4.623,
+    0.3
+   ],
+   [
+    4.623,
+    13.668,
+    0.35
+   ],
+   [
+    13.668,
+    22.751,
+    0.2
+   ],
+   [
+    22.751,
+    30.911,
+    0.35
+   ],
+   [
+    30.911,
+    35.12,
+    0.55
+   ]
+  ],
+  "risers": [
+   [
+    32.088,
+    33.588
+   ]
+  ],
+  "silence": [
+   [
+    13.568,
+    14.568
+   ]
+  ]
+ },
+ "ambience": "indoor",
+ "cues": [
+  {
+   "t": 0.5,
+   "type": "birdsong",
+   "gain": 0.2,
+   "len": 3.5
+  },
+  {
+   "t": 2.473,
+   "type": "paperRustle",
+   "gain": 0.3
+  },
+  {
+   "t": 2.751,
+   "type": "swish",
+   "gain": 0.4
+  },
+  {
+   "t": 3.722,
+   "type": "thump",
+   "gain": 0.3
+  },
+  {
+   "t": 4.277,
+   "type": "pop",
+   "gain": 0.3
+  },
+  {
+   "t": 4.773,
+   "type": "thump",
+   "gain": 0.35
+  },
+  {
+   "t": 5.523,
+   "type": "snore",
+   "gain": 0.25
+  },
+  {
+   "t": 8.222,
+   "type": "dialTick",
+   "gain": 0.35,
+   "n": 8
+  },
+  {
+   "t": 9.291,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 6
+  },
+  {
+   "t": 11.123,
+   "type": "swell",
+   "gain": 0.25,
+   "len": 1.6
+  },
+  {
+   "t": 13.668,
+   "type": "dropOut",
+   "gain": 0.4,
+   "len": 1.2
+  },
+  {
+   "t": 14.168,
+   "type": "doorCreak",
+   "gain": 0.2
+  },
+  {
+   "t": 17.729,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 8
+  },
+  {
+   "t": 18.03,
+   "type": "clockWhirr",
+   "gain": 0.25,
+   "len": 0.6
+  },
+  {
+   "t": 18.721,
+   "type": "clockStop",
+   "gain": 0.3
+  },
+  {
+   "t": 19.153,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 6
+  },
+  {
+   "t": 20.622,
+   "type": "stingDark",
+   "gain": 0.35
+  },
+  {
+   "t": 24.466,
+   "type": "yawn",
+   "gain": 0.4
+  },
+  {
+   "t": 24.816,
+   "type": "gasp",
+   "gain": 0.35
+  },
+  {
+   "t": 25.479,
+   "type": "swish",
+   "gain": 0.3
+  },
+  {
+   "t": 26.291,
+   "type": "heatShimmer",
+   "gain": 0.25,
+   "len": 2
+  },
+  {
+   "t": 26.491,
+   "type": "zap",
+   "gain": 0.2
+  },
+  {
+   "t": 27.785,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 28.19,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 28.595,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 29.001,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 29.406,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 29.811,
+   "type": "step",
+   "gain": 0.22
+  },
+  {
+   "t": 30.011,
+   "type": "thump",
+   "gain": 0.4
+  },
+  {
+   "t": 30.131,
+   "type": "boing",
+   "gain": 0.25
+  },
+  {
+   "t": 30.911,
+   "type": "clockWhirr",
+   "gain": 0.5,
+   "len": 2.6772000000000014
+  },
+  {
+   "t": 31.211,
+   "type": "heatShimmer",
+   "gain": 0.3,
+   "len": 5.5
+  },
+  {
+   "t": 31.911,
+   "type": "snore",
+   "gain": 0.2
+  },
+  {
+   "t": 32.92,
+   "type": "gasp",
+   "gain": 0.4
+  },
+  {
+   "t": 33.299,
+   "type": "swish",
+   "gain": 0.3
+  },
+  {
+   "t": 33.488,
+   "type": "sizzle",
+   "gain": 0.3
+  },
+  {
+   "t": 33.888,
+   "type": "sweatDrip",
+   "gain": 0.35
+  }
+ ]
+}

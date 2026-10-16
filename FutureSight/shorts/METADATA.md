@@ -1,6 +1,6 @@
 # FutureSight Short - upload metadata
 
-File: `shorts\FutureSight_Short.mp4` (1080x1920, ~50.4 s). Cover frame: `shorts\short_cover.png`. Same content as `metadata.json`.
+File: `FutureSight/shorts/FutureSight_Short.mp4` (1080x1920, ~50.4 s). Cover frame: `FutureSight/shorts/short_cover.png`. Same content as `metadata.json`.
 Nothing has been uploaded; you upload it yourself.
 
 ## Title options (all <= 70 chars)

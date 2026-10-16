@@ -853,6 +853,7 @@ window.CH.c3 = {
     }
     g.restore();
     g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
-  }
+  },
+  T: { T: T, DUR: DUR, hourAt: hourAt }
 };
 })();
