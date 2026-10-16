@@ -141,7 +141,7 @@ const SET = (() => {
     if (!LM.c) { LM.c = document.createElement('canvas'); LM.c.width = LM.w; LM.c.height = LM.h; }
     const x = LM.c.getContext('2d'), k = LM.w / 1920;
     x.setTransform(1, 0, 0, 1, 0, 0); x.globalCompositeOperation = 'source-over'; x.clearRect(0, 0, LM.w, LM.h);
-    x.fillStyle = `rgba(${ambient[0]},${ambient[1]},${ambient[2]},${ambient[3]})`; x.fillRect(0, 0, LM.w, LM.h);
+    x.fillStyle = `rgba(${ambient[0]},${ambient[1]},${ambient[2]},${ambient[3] * (window.AMB == null ? 1 : window.AMB)})`; x.fillRect(0, 0, LM.w, LM.h);
     x.globalCompositeOperation = 'destination-out';
     const P = lights.map(L => ({ L, sx: (L.x - cam.x) * cam.z + 960, sy: (L.y - cam.y) * cam.z + 540, R: L.r * cam.z }));
     for (const p of P) {
