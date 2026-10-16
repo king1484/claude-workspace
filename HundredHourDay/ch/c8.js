@@ -1,22 +1,21 @@
-// ch/c8.js - Chapter 8 "Wrap" (29.2 s). Frame = pure function of local time lt. Hard cuts between shots (no fades of its own; full.js dips in at 0.2 s and fades the last 1.4 s).
+// ch/c8.js - Chapter 8 "Wrap" (26.6 s). Frame = pure function of local time lt. Hard cuts between shots (no fades of its own; full.js dips in at 0.2 s and fades the last 1.4 s).
 // HUD is gone. Shots: A sunrise hill, '?' (e1) | B1 power that never stops, B2 shaded farm, B3 artificial-light sleep room, B4 shrug (e2) |
-//   C the familiar 24-hour day fits life: calm dial, host happy in bed (e3) | D like + subscribe buttons (e4, no long text) | E "thoughts" teaser: thought-bubble storm (e5, separate next video; NOT "part 2").
+//   C the familiar 24-hour day fits life: calm dial, host happy in bed (e3) | D like + subscribe buttons (e4, no long text), then a calm held frame with a small wave. The old "next video" teaser (e5) was removed on request: the film ends after the subscribe line.
 // Hedge kept: "some could adapt ... nobody knows how well it would work" -> three adaptation vignettes, then an honest shrug + '?'.
 (function () {
 'use strict';
 window.CH = window.CH || {};
 const LAY = LAYOUT.c8, VO = {};
 LAY.vo.forEach((v) => { VO[v.id] = v; });
-const e1 = VO.e1, e2 = VO.e2, e3 = VO.e3, e4 = VO.e4, e5 = VO.e5;
+const e1 = VO.e1, e2 = VO.e2, e3 = VO.e3, e4 = VO.e4;
 const tAt = (v, s) => { const i = v.text.indexOf(s); return v.start + v.dur * (Math.max(0, i) / v.text.length); };
 const END = LAY.dur;
 const TT = {
   q: tAt(e1, 'could people'), power: tAt(e2, 'Power that'), farms: tAt(e2, 'Shaded farms'), sleep: tAt(e2, 'Sleep schedules'), nobody: tAt(e2, 'But nobody'),
   surprise: tAt(e3, 'the real surprise'), fit: tAt(e3, 'good fit'),
-  like: tAt(e4, 'hit like'), sub: tAt(e4, 'subscribe'),
-  next: e5.start, thoughts: tAt(e5, 'hear everyone')
+  like: tAt(e4, 'hit like'), sub: tAt(e4, 'subscribe')
 };
-const CUT = { B1: e2.start - 0.12, B2: TT.farms - 0.12, B3: TT.sleep - 0.12, B4: TT.nobody - 0.2, C: e3.start - 0.12, D: e4.start - 0.12, E: e5.start - 0.12 };
+const CUT = { B1: e2.start - 0.12, B2: TT.farms - 0.12, B3: TT.sleep - 0.12, B4: TT.nobody - 0.2, C: e3.start - 0.12, D: e4.start - 0.12 };
 const E = (t, a, b) => clamp((t - a) / (b - a));
 const S = (t, a, b) => smooth(E(t, a, b));
 const mod = (a, n) => ((a % n) + n) % n;
@@ -72,10 +71,10 @@ function shotB1(g, lt) {
   // battery bank (left), cable across, houses (right)
   g.save(); g.globalAlpha = a;
   for (let i = 0; i < 3; i++) { g.save(); g.translate(240 + i * 170, 740); rr(g, -60, -190, 120, 190, 14); g.fillStyle = '#3a4468'; g.fill(); g.lineWidth = 5; g.strokeStyle = '#e8ecf8'; g.stroke(); for (let k = 0; k < 4; k++) { g.fillStyle = '#7be07a'; rr(g, -42, -170 + k * 40, 84, 28, 6); g.fill(); } g.fillStyle = '#e8ecf8'; g.fillRect(-18, -208, 36, 18); g.restore(); }
-  g.strokeStyle = '#232a4a'; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(700, 690); g.quadraticCurveTo(1100, 640, 1380, 690); g.stroke();
+  g.strokeStyle = '#232a4a'; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(700, 560); g.quadraticCurveTo(1100, 470, 1380, 640); g.stroke();
   g.strokeStyle = '#8a93b8'; g.lineWidth = 5; g.stroke();
   const n = 10;
-  for (let i = 0; i < n; i++) { const u = mod(lt * 0.35 + i / n, 1), x = 700 + 680 * u, y = 690 - 50 * Math.sin(Math.PI * u) * 0.9 + 0; g.fillStyle = '#ffd23a'; g.beginPath(); g.arc(x, y, 11, 0, TAU); g.fill(); }
+  for (let i = 0; i < n; i++) { const u = mod(lt * 0.35 + i / n, 1), x = (1 - u) * (1 - u) * 700 + 2 * (1 - u) * u * 1100 + u * u * 1380, y = (1 - u) * (1 - u) * 560 + 2 * (1 - u) * u * 470 + u * u * 640; g.fillStyle = '#ffd23a'; g.beginPath(); g.arc(x, y, 11, 0, TAU); g.fill(); }
   houseLit(g, 1520, 780, 1.4, true); houseLit(g, 1760, 800, 1.0, true);
   // a generator beside the battery bank (power "that never stops" has more than one source)
   g.save(); g.translate(640, 790); rr(g, -60, -60, 120, 60, 10); g.fillStyle = '#e8b84a'; g.fill(); g.lineWidth = 5; g.strokeStyle = '#6a4a10'; g.stroke(); g.fillStyle = '#ff7a2a'; g.beginPath(); g.moveTo(0, -112); g.quadraticCurveTo(20 + 5 * Math.sin(lt * 9), -90, 0, -64); g.quadraticCurveTo(-20, -90, 0, -112); g.fill(); g.restore();
@@ -194,31 +193,10 @@ function shotD(g, lt) {
   const pr1 = Math.max(0, 1 - Math.abs(lt - (TT.like + 0.45)) / 0.15), ring = E(lt, TT.sub + 0.4, TT.sub + 1.6);
   if (a1 > 0.01) likeButton(g, 1330, 420, a1, pr1);
   if (a2 > 0.01) bellButton(g, 1640, 420, a2, ring);
-  const st = { x: 760, y: GY, s: 1.55, facing: 1, pose: { a: 'stand', b: 'point', k: S(lt, TT.like - 0.2, TT.like + 0.3) }, t: lt, expr: { eyes: 'happy' }, props: { scarf: true, beanie: false }, at: { x: lt < TT.sub ? 1330 : 1640, y: 440 } };
+  const st = { x: 760, y: GY, s: 1.55, facing: 1, pose: { a: { a: 'stand', b: 'point', k: S(lt, TT.like - 0.2, TT.like + 0.3) * (1 - S(lt, TT.sub + 0.9, TT.sub + 1.4)) }, b: 'wave', k: S(lt, TT.sub + 0.9, TT.sub + 1.4) }, t: lt, expr: { eyes: 'happy' }, props: { scarf: true, beanie: false }, at: { x: lt < TT.sub ? 1330 : 1640, y: 440 } };
   hero(g, cam, H_SUN + 6, o, st);
   TOD.drawForeground(g, cam, H_SUN + 6, o);
   finish(g, H_SUN + 6, o);
-}
-
-// ------------------------------------------------------------------ SHOT E  (e5)  next video teaser: a storm of soft thought bubbles around the host's head (a separate idea, not "part 2")
-function bubble(g, x, y, r, col, t, k, seed) {
-  if (k <= 0.001) return;
-  g.save(); g.translate(x + 6 * Math.sin(t * 1.3 + seed), y + 8 * Math.sin(t * 1.7 + seed * 2)); g.scale(k, k);
-  g.fillStyle = col; g.globalAlpha = 0.9 * clamp(k); g.strokeStyle = 'rgba(255,255,255,0.85)'; g.lineWidth = 5; g.beginPath(); g.ellipse(0, 0, r * 1.25, r, 0, 0, TAU); g.fill(); g.stroke();
-  g.strokeStyle = 'rgba(255,255,255,0.8)'; g.lineWidth = 5; g.lineCap = 'round';   // wordless squiggle "speech"
-  for (let i = 0; i < 3; i++) { g.beginPath(); for (let u = 0; u <= 10; u++) { const xx = -r * 0.8 + (u / 10) * r * 1.6, yy = -r * 0.3 + i * r * 0.3 + Math.sin(u * 1.4 + i + seed) * 6; if (u) g.lineTo(xx, yy); else g.moveTo(xx, yy); } g.stroke(); }
-  g.restore();
-}
-function shotE(g, lt) {
-  let gr = g.createLinearGradient(0, 0, 0, 1080); gr.addColorStop(0, '#1a1a4a'); gr.addColorStop(1, '#4a2a6a'); g.fillStyle = gr; g.fillRect(0, 0, 1920, 1080);
-  for (let i = 0; i < 80; i++) { g.fillStyle = 'rgba(255,255,255,' + (0.3 + 0.4 * hash1(i)) + ')'; g.fillRect(hash1(i * 3) * 1920, hash1(i * 7) * 1080, 2.2, 2.2); }
-  const cols = ['#7a5aff', '#ff6aa8', '#3ab8ff', '#ffb02a', '#3ad8a0', '#ff7a4a', '#a8d84a'];
-  const spots = [[560, 260, 70], [820, 170, 86], [1130, 220, 74], [1420, 330, 90], [1660, 200, 64], [1280, 520, 66], [440, 470, 58], [1020, 380, 52]];
-  for (let i = 0; i < spots.length; i++) bubble(g, spots[i][0], spots[i][1], spots[i][2], cols[i % cols.length], lt, spring(lt - (TT.thoughts - 0.4 + i * 0.22), 150, 13), i * 1.7);
-  const hy = S(lt, CUT.E, CUT.E + 0.6);
-  MASCOT.draw(g, { x: 760, y: 1160, s: 3.3, facing: 1, pose: 'stand', t: lt, expr: { eyes: 'wide', look: 'up', pop: null }, props: { scarf: true, beanie: false }, shadow: false, pal: TOD.heroPal(70, { scene: 'city' }), alpha: hy });
-  numText(g, '?', 1620, 760, 220, '#ffd23a', '#0c1232');
-  TOD.grade(g, 70, { scene: 'city' });
 }
 
 // ------------------------------------------------------------------ chapter entry
@@ -234,8 +212,7 @@ window.CH.c8 = {
       else if (lt < CUT.B4) shotB3(g, lt);
       else if (lt < CUT.C) shotB4(g, lt);
       else if (lt < CUT.D) shotC(g, lt);
-      else if (lt < CUT.E) shotD(g, lt);
-      else shotE(g, lt);
+      else shotD(g, lt);
     } catch (e) {
       g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.globalCompositeOperation = 'source-over'; g.fillStyle = '#0a1030'; g.fillRect(0, 0, 1920, 1080);
       if (!window.__c8err) { window.__c8err = 1; console.error('c8 draw error', e && e.stack || e); }

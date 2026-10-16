@@ -544,10 +544,10 @@ function shotG(g, lt, H) {
   const cam = { x: 960, y: 520, z: 1.45, r: 0 };       // camera raised: more sky
   TOD.drawWorld(g, cam, H, o);
   const wow = S(lt, TT.look + 0.3, TT.look + 1.2);
-  const st = { x: 760, y: GY + 20, s: 1.7, facing: 1, pose: 'lie', t: lt, expr: wow > 0.5 ? { eyes: 'star', sparkle: 0.7 } : { eyes: 'normal', look: 'up' }, props: { scarf: true, beanie: true } };
+  const st = { x: 760, y: GY - 15, s: 1.8, facing: 1, pose: 'lie', t: lt, expr: wow > 0.5 ? { eyes: 'star', sparkle: 0.7 } : { eyes: 'normal', look: 'up' }, props: { scarf: true, beanie: true } };
   hero(g, cam, H, o, st, { noShadow: true });
   const J = MASCOT.joints(Object.assign({}, st));
-  layer(g, cam, () => { if (J && J.hip) blanket(g, J, 1.7 * 0.62, 1); });
+  layer(g, cam, () => { if (J && J.hip) blanket(g, J, 1.8 * 0.62, 1); });
   TOD.drawForeground(g, cam, H, o);
   TOD.stars(g, H, 1, { t: lt });
   finish(g, H, o, lt, {});

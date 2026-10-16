@@ -3,63 +3,266 @@
   "speed": 1.06,
   "tail": 1.0,
   "chapters": [
-    { "id": "c1", "title": "Hook", "lead": 0.3, "lines": [
-      { "id": "h1", "text": "Your body is begging for sleep. You've been awake sixteen hours, and it's bedtime.", "gap": 0 },
-      { "id": "h2", "text": "But outside, the sun is still high in the sky. And sunset is thirty-four hours away.", "gap": 0.55 },
-      { "id": "h3", "text": "Because on this Earth, one day lasts a hundred hours.", "gap": 0.6 },
-      { "id": "h4", "text": "Your goal is simple: make it to the next sunrise.", "gap": 0.6 }
-    ]},
-    { "id": "c2", "title": "The Rule", "lead": 0.3, "lines": [
-      { "id": "r1", "text": "Right now, Earth spins once every twenty-four hours. At the equator, that's about sixteen hundred and seventy kilometers per hour.", "gap": 0 },
-      { "id": "r2", "text": "Slow it to about a quarter of that speed, and a full day takes a hundred hours.", "gap": 0.55 },
-      { "id": "r4", "text": "Stand near the equator, at an equinox, and that means about fifty hours of day, then fifty hours of night.", "gap": 0.6 },
-      { "id": "r5", "text": "Your body, meanwhile, still runs on twenty-four.", "gap": 0.7 }
-    ]},
-    { "id": "c3", "title": "Body Clock", "lead": 0.3, "lines": [
-      { "id": "b1", "text": "So you try to sleep, in full daylight. Blackout curtains, eye mask, the works.", "gap": 0 },
-      { "id": "b2", "text": "It helps, but your body clock isn't easily fooled. It runs a little over twenty-four hours, and light and dark keep it in line.", "gap": 0.55 },
-      { "id": "b3", "text": "In 1938, a sleep researcher lived in Kentucky's Mammoth Cave on a twenty-eight-hour day. His body clock never followed.", "gap": 0.6 },
-      { "id": "b4", "text": "So you sleep a few hours, wake up at the wrong time, and the sun's barely moved.", "gap": 0.6 },
-      { "id": "b5", "text": "This is jet lag, without the airplane.", "gap": 0.6 },
-      { "id": "b6", "text": "And while you were napping, the ground has been quietly cooking.", "gap": 0.7 }
-    ]},
-    { "id": "c4", "title": "Long Day", "lead": 0.3, "lines": [
-      { "id": "d1", "text": "By hour forty, the sun has been baking the same ground for a very long time. Normally, it gets a night to cool off.", "gap": 0 },
-      { "id": "d2", "text": "In Iran's Lut desert, satellites have measured ground temperatures around seventy degrees Celsius on an ordinary day. With fifty hours of sun, the ground would likely get even hotter. Hot enough to burn bare feet.", "gap": 0.6 },
-      { "id": "d3", "text": "Plants dry out and wilt. Warm air rises in huge columns, and storm clouds pile up.", "gap": 0.6 },
-      { "id": "d4", "text": "The coast fares better. Water soaks up heat slowly, so the sea stays cooler, and breezes blow in off the water.", "gap": 0.6 },
-      { "id": "d5", "text": "So you head for the beach, hugging the shade. And this part is easier now: the sun crawls at a quarter of its usual speed, so shade stays put four times longer.", "gap": 0.6 }
-    ]},
-    { "id": "c5", "title": "Long Night", "lead": 0.3, "lines": [
-      { "id": "n1", "text": "Hour fifty. The sun sets. Finally, relief. But the heat you were fighting starts leaking away into space.", "gap": 0 },
-      { "id": "n2", "text": "Dry places already swing by tens of degrees between day and night. A fifty-hour night would push that much further, possibly below freezing, depending on clouds and humidity.", "gap": 0.6 },
-      { "id": "n3", "text": "Then the lights start flickering. Solar panels can't work in the dark, and today's grid batteries last a few hours, not fifty.", "gap": 0.6 },
-      { "id": "n4", "text": "A night this long could mean pulling power from elsewhere, using backups, or letting some places go dark.", "gap": 0.6 },
-      { "id": "n5", "text": "Animals feel it too. Polar animals already survive months of darkness. But most of the planet runs on a twenty-four-hour clock.", "gap": 0.6 },
-      { "id": "n6", "text": "You sleep eight hours, wake up, and it's still dark. Forty-two more to go.", "gap": 0.7 },
-      { "id": "n7", "text": "But look up. The stars barely move. It's the slowest night sky anyone has ever seen.", "gap": 0.8 }
-    ]},
-    { "id": "c6", "title": "Weather", "lead": 0.3, "lines": [
-      { "id": "w1", "text": "Around hour seventy, the wind picks up. And that's not an accident.", "gap": 0 },
-      { "id": "w2", "text": "Warm ground and cool ground push the air around. By day, breezes blow from the cool sea to the hot land. At night, they flip. With days and nights this long, those swings last longer, and could blow harder.", "gap": 0.6 },
-      { "id": "w3", "text": "A slower spin changes the planet's big weather machinery too. Hurricanes need the Coriolis effect to twist, and it would be four times weaker. Storms would form in different places, or struggle to form at all.", "gap": 0.6 },
-      { "id": "w4", "text": "Nobody knows exactly how it would play out. But the weather could be very different from what we're used to.", "gap": 0.7 }
-    ]},
-    { "id": "c7", "title": "Oceans", "lead": 0.3, "lines": [
-      { "id": "o1", "text": "Hour one hundred. Sunrise. You made it through one day.", "gap": 0 },
-      { "id": "o2", "text": "But the biggest change plays out over years, not hours.", "gap": 0.6 },
-      { "id": "o3", "text": "Earth isn't a perfect ball. Its spin makes it bulge at the equator. The radius there is about twenty-one kilometers longer than at the poles.", "gap": 0.6 },
-      { "id": "o4", "text": "And the oceans sit in that bulge, held there by the spin.", "gap": 0.6 },
-      { "id": "o5", "text": "Slow the spin, and the water wants to flow back toward the poles. But solid rock is stiff, and takes thousands of years to reshape.", "gap": 0.6 },
-      { "id": "o6", "text": "So for a long while, the oceans could slide poleward, uncovering seafloor at the equator, and flooding low land near the poles. How far depends on how fast the slowdown happens. Eventually the rock relaxes, and the coastlines shift again.", "gap": 0.7 },
-      { "id": "o7", "text": "A different map, all because the day got longer.", "gap": 0.7 }
-    ]},
-    { "id": "c8", "title": "Wrap", "lead": 0.3, "lines": [
-      { "id": "e1", "text": "So, could people live on a hundred-hour Earth?", "gap": 0 },
-      { "id": "e2", "text": "Some could adapt, with serious engineering. Power that never stops. Shaded farms. Sleep schedules built around artificial light. But nobody knows how well it would work.", "gap": 0.6 },
-      { "id": "e3", "text": "And that's the real surprise: our ordinary twenty-four-hour day is a surprisingly good fit for life.", "gap": 0.7 },
-      { "id": "e4", "text": "If you enjoyed this, hit like and subscribe.", "gap": 0.8 },
-      { "id": "e5", "text": "Next time: what if you could hear everyone's thoughts?", "gap": 0.6 }
-    ]}
+    {
+      "id": "c1",
+      "title": "Hook",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "h1",
+          "text": "Your body is begging for sleep. You've been awake sixteen hours, and it's bedtime.",
+          "gap": 0
+        },
+        {
+          "id": "h2",
+          "text": "But outside, the sun is still high in the sky. And sunset is thirty-four hours away.",
+          "gap": 0.55
+        },
+        {
+          "id": "h3",
+          "text": "Because on this Earth, one day lasts a hundred hours.",
+          "gap": 0.6
+        },
+        {
+          "id": "h4",
+          "text": "Your goal is simple: make it to the next sunrise.",
+          "gap": 0.6
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The Rule",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "r1",
+          "text": "Right now, Earth spins once every twenty-four hours. At the equator, that's about sixteen hundred and seventy kilometers per hour.",
+          "gap": 0
+        },
+        {
+          "id": "r2",
+          "text": "Slow it to about a quarter of that speed, and a full day takes a hundred hours.",
+          "gap": 0.55
+        },
+        {
+          "id": "r4",
+          "text": "Stand near the equator, at an equinox, and that means about fifty hours of day, then fifty hours of night.",
+          "gap": 0.6
+        },
+        {
+          "id": "r5",
+          "text": "Your body, meanwhile, still runs on twenty-four.",
+          "gap": 0.7
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Body Clock",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "b1",
+          "text": "So you try to sleep, in full daylight. Blackout curtains, eye mask, the works.",
+          "gap": 0
+        },
+        {
+          "id": "b2",
+          "text": "It helps, but your body clock isn't easily fooled. It runs a little over twenty-four hours, and light and dark keep it in line.",
+          "gap": 0.55
+        },
+        {
+          "id": "b3",
+          "text": "In 1938, a sleep researcher lived in Kentucky's Mammoth Cave on a twenty-eight-hour day. His body clock never followed.",
+          "gap": 0.6
+        },
+        {
+          "id": "b4",
+          "text": "So you sleep a few hours, wake up at the wrong time, and the sun's barely moved.",
+          "gap": 0.6
+        },
+        {
+          "id": "b5",
+          "text": "This is jet lag, without the airplane.",
+          "gap": 0.6
+        },
+        {
+          "id": "b6",
+          "text": "And while you were napping, the ground has been quietly cooking.",
+          "gap": 0.7
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "title": "Long Day",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "d1",
+          "text": "By hour forty, the sun has been baking the same ground for a very long time. Normally, it gets a night to cool off.",
+          "gap": 0
+        },
+        {
+          "id": "d2",
+          "text": "In Iran's Lut desert, satellites have measured ground temperatures around seventy degrees Celsius on an ordinary day. With fifty hours of sun, the ground would likely get even hotter. Hot enough to burn bare feet.",
+          "gap": 0.6
+        },
+        {
+          "id": "d3",
+          "text": "Plants dry out and wilt. Warm air rises in huge columns, and storm clouds pile up.",
+          "gap": 0.6
+        },
+        {
+          "id": "d4",
+          "text": "The coast fares better. Water soaks up heat slowly, so the sea stays cooler, and breezes blow in off the water.",
+          "gap": 0.6
+        },
+        {
+          "id": "d5",
+          "text": "So you head for the beach, hugging the shade. And this part is easier now: the sun crawls at a quarter of its usual speed, so shade stays put four times longer.",
+          "gap": 0.6
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "title": "Long Night",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "n1",
+          "text": "Hour fifty. The sun sets. Finally, relief. But the heat you were fighting starts leaking away into space.",
+          "gap": 0
+        },
+        {
+          "id": "n2",
+          "text": "Dry places already swing by tens of degrees between day and night. A fifty-hour night would push that much further, possibly below freezing, depending on clouds and humidity.",
+          "gap": 0.6
+        },
+        {
+          "id": "n3",
+          "text": "Then the lights start flickering. Solar panels can't work in the dark, and today's grid batteries last a few hours, not fifty.",
+          "gap": 0.6
+        },
+        {
+          "id": "n4",
+          "text": "A night this long could mean pulling power from elsewhere, using backups, or letting some places go dark.",
+          "gap": 0.6
+        },
+        {
+          "id": "n5",
+          "text": "Animals feel it too. Polar animals already survive months of darkness. But most of the planet runs on a twenty-four-hour clock.",
+          "gap": 0.6
+        },
+        {
+          "id": "n6",
+          "text": "You sleep eight hours, wake up, and it's still dark. Forty-two more to go.",
+          "gap": 0.7
+        },
+        {
+          "id": "n7",
+          "text": "But look up. The stars barely move. It's the slowest night sky anyone has ever seen.",
+          "gap": 0.8
+        }
+      ]
+    },
+    {
+      "id": "c6",
+      "title": "Weather",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "w1",
+          "text": "Around hour seventy, the wind picks up. And that's not an accident.",
+          "gap": 0
+        },
+        {
+          "id": "w2",
+          "text": "Warm ground and cool ground push the air around. By day, breezes blow from the cool sea to the hot land. At night, they flip. With days and nights this long, those swings last longer, and could blow harder.",
+          "gap": 0.6
+        },
+        {
+          "id": "w3",
+          "text": "A slower spin changes the planet's big weather machinery too. Hurricanes need the Coriolis effect to twist, and it would be four times weaker. Storms would form in different places, or struggle to form at all.",
+          "gap": 0.6
+        },
+        {
+          "id": "w4",
+          "text": "Nobody knows exactly how it would play out. But the weather could be very different from what we're used to.",
+          "gap": 0.7
+        }
+      ]
+    },
+    {
+      "id": "c7",
+      "title": "Oceans",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "o1",
+          "text": "Hour one hundred. Sunrise. You made it through one day.",
+          "gap": 0
+        },
+        {
+          "id": "o2",
+          "text": "But the biggest change plays out over years, not hours.",
+          "gap": 0.6
+        },
+        {
+          "id": "o3",
+          "text": "Earth isn't a perfect ball. Its spin makes it bulge at the equator. The radius there is about twenty-one kilometers longer than at the poles.",
+          "gap": 0.6
+        },
+        {
+          "id": "o4",
+          "text": "And the oceans sit in that bulge, held there by the spin.",
+          "gap": 0.6
+        },
+        {
+          "id": "o5",
+          "text": "Slow the spin, and the water wants to flow back toward the poles. But solid rock is stiff, and takes thousands of years to reshape.",
+          "gap": 0.6
+        },
+        {
+          "id": "o6",
+          "text": "So for a long while, the oceans could slide poleward, uncovering seafloor at the equator, and flooding low land near the poles. How far depends on how fast the slowdown happens. Eventually the rock relaxes, and the coastlines shift again.",
+          "gap": 0.7
+        },
+        {
+          "id": "o7",
+          "text": "A different map, all because the day got longer.",
+          "gap": 0.7
+        }
+      ]
+    },
+    {
+      "id": "c8",
+      "title": "Wrap",
+      "lead": 0.3,
+      "lines": [
+        {
+          "id": "e1",
+          "text": "So, could people live on a hundred-hour Earth?",
+          "gap": 0
+        },
+        {
+          "id": "e2",
+          "text": "Some could adapt, with serious engineering. Power that never stops. Shaded farms. Sleep schedules built around artificial light. But nobody knows how well it would work.",
+          "gap": 0.6
+        },
+        {
+          "id": "e3",
+          "text": "And that's the real surprise: our ordinary twenty-four-hour day is a surprisingly good fit for life.",
+          "gap": 0.7
+        },
+        {
+          "id": "e4",
+          "text": "If you enjoyed this, hit like and subscribe.",
+          "gap": 0.8
+        }
+      ]
+    }
   ]
 }

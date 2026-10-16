@@ -1,51 +1,51 @@
 === AUDIO CHECK ===
-mix audio_mix.wav  duration 304.50 s  cues-dir ch
-loudness: integrated -16 LUFS (target -16, OK)  true peak -2.4 dBTP (OK < -1)  LRA 1.9 LU
+mix audio_mix.wav  duration 301.88 s  cues-dir ch
+loudness: integrated -16 LUFS (target -16, OK)  true peak -2.3 dBTP (OK < -1)  LRA 2 LU
 integrity: NaN 0  clipped(>=0.9999) 0  samples>0.9 0  sample peak -2.4 dBFS  DC L/R -0.000197/-0.000197
 
 per chapter (RMS/peak of final mix; VO and music compared in the 300-4000 Hz speech band while the voice is active):
   id   start    dur   rms   peak | vo_band  music_band  VO-music | VO-bed(all) | music(gaps) | hf>5k% hf>8k% | mood/amb       cues risers
-  c1      0.0  19.1  -19.3   -2.6 |   -21.6      -34.5        13 |        12.6 |       -32.1 |   4.04  0.388 | wonder/indoor    32     1
-  c2     19.1  25.7  -19.2   -2.7 |   -21.8      -34.4      12.6 |        12.3 |       -29.8 |   3.92  0.446 | wonder/void      30     1
-  c3     44.8  35.1  -19.1   -2.4 |   -21.5      -35.9      14.4 |        14.3 |       -30.6 |    3.3  0.394 | hollow/indoor    37     1
-  c4     79.9  49.2  -19.1   -2.4 |   -21.8      -33.6      11.8 |        11.6 |       -29.2 |   4.26  0.412 | tense/desert     44     2
-  c5    129.1  55.7  -19.2   -2.4 |   -21.8      -33.8        12 |        11.9 |       -29.7 |   4.18  0.463 | hollow/night     50     1
-  c6    184.8  40.1  -18.8   -2.5 |   -21.6      -32.7      11.1 |        10.8 |       -27.9 |    4.1  0.445 | tense/wind       29     1
-  c7    224.9  50.4  -19.2   -2.9 |   -21.7      -33.9      12.3 |        11.9 |         -32 |   3.96  0.392 | wonder/ocean     30     0
-  c8    275.3  29.2  -18.9   -2.4 |   -21.6      -33.3      11.8 |        11.7 |         -28 |   4.23  0.431 | warm/quiet       24     0
-  VO minus music (300-4000 Hz, during speech): min 11.1 / max 14.4 dB  (target 12-20, narration clearly on top)
+  c1      0.0  19.1  -19.3   -2.9 |   -21.5      -35.4      13.9 |        13.4 |       -33.2 |   4.14  0.397 | wonder/indoor    32     1
+  c2     19.1  25.7  -19.3   -2.4 |   -21.8      -36.2      14.4 |          14 |       -34.5 |   3.99  0.455 | wonder/void      30     1
+  c3     44.8  35.1  -19.1   -2.5 |   -21.5        -38      16.5 |        16.2 |       -33.2 |   3.36  0.403 | hollow/indoor    37     1
+  c4     79.9  49.2    -19   -2.6 |   -21.8      -35.7      13.9 |        13.5 |       -30.4 |   4.29  0.415 | tense/desert     44     2
+  c5    129.1  55.7  -19.3   -2.4 |   -21.8      -37.3      15.6 |        15.2 |       -32.8 |   4.27  0.474 | hollow/night     50     1
+  c6    184.8  40.1  -18.8   -2.4 |   -21.6      -33.5      11.9 |        11.6 |       -31.3 |   4.18  0.453 | tense/wind       29     1
+  c7    224.9  50.4  -19.2   -2.7 |   -21.7      -33.8      12.1 |        11.8 |       -32.1 |   3.96  0.392 | wonder/ocean     30     0
+  c8    275.3  26.6  -18.8   -2.4 |   -21.6      -34.1      12.5 |        12.4 |       -28.3 |   4.18  0.427 | warm/quiet       16     0
+  VO minus music (300-4000 Hz, during speech): min 11.9 / max 16.5 dB  (target 12-20, narration clearly on top)
 
 chapter joins (music stem, max sample step within +-40 ms of the join vs. the larger of the max steps 3-6 s before / after the join; ratio < ~2 = no click/pop):
-  c1->c2   at   19.12 s  step ratio  0.71  OK
-  c2->c3   at   44.81 s  step ratio  1.32  OK
-  c3->c4   at   79.93 s  step ratio  0.59  OK
-  c4->c5   at  129.11 s  step ratio   1.1  OK
-  c5->c6   at   184.8 s  step ratio  0.54  OK
-  c6->c7   at  224.93 s  step ratio  0.97  OK
-  c7->c8   at  275.28 s  step ratio  0.26  OK
+  c1->c2   at   19.12 s  step ratio  0.46  OK
+  c2->c3   at   44.81 s  step ratio  0.91  OK
+  c3->c4   at   79.93 s  step ratio  0.65  OK
+  c4->c5   at  129.11 s  step ratio  1.52  OK
+  c5->c6   at   184.8 s  step ratio  0.75  OK
+  c6->c7   at  224.93 s  step ratio  1.15  OK
+  c7->c8   at  275.28 s  step ratio  0.28  OK
 
 end of video (no dead air; smooth fade to exact zero):
-  last VO line ends 303.50 s, video ends 304.50 s (tail 1.00 s), last sample 0.0e+0 (OK, ends at zero)
-  RMS per 250 ms (dBFS) over the last 2.5 s: 302.00:-18.9  302.25:-16.3  302.50:-18.2  302.75:-18.3  303.00:-17.3  303.25:-21.6  303.50:-29.5  303.75:-28.2  304.00:-33.4  304.25:-47.2
-  quietest 250 ms after the VO ends: -47.2 dBFS (OK, ring-out audible, no dead air); the ring-out fades to exactly zero in the last ~0.5 s
+  last VO line ends 300.07 s, video ends 301.88 s (tail 1.80 s), last sample 0.0e+0 (OK, ends at zero)
+  RMS per 250 ms (dBFS) over the last 2.5 s: 299.38:-18.8  299.63:-17.2  299.88:-27.1  300.13:-24.4  300.38:-21.7  300.63:-21.3  300.88:-21  301.13:-23.7  301.38:-29.5  301.63:-45.4
+  quietest 250 ms after the VO ends: -45.4 dBFS (OK, ring-out audible, no dead air); the ring-out fades to exactly zero in the last ~0.5 s
 
 spectral summary (whole final mix, share of energy per band):
-  20-63Hz 0.5%  63-125Hz 19.3%  125-250Hz 20.4%  250-500Hz 27.9%  500-1kHz 15.5%  1k-2kHz 4.9%  2k-4kHz 4.1%  4k-8kHz 6.9%  8k-16kHz 0.3%  16k+Hz 0.1%
-  centroid 885 Hz, rolloff85 1172 Hz, energy above 5 kHz 4.05%, above 8 kHz 0.425%  (no harsh highs)
-  music stem alone: centroid 693 Hz, rolloff85 1172 Hz, >5 kHz 0.14%, >8 kHz 0.005%
+  20-63Hz 0.5%  63-125Hz 19.9%  125-250Hz 21.0%  250-500Hz 27.4%  500-1kHz 15.0%  1k-2kHz 4.7%  2k-4kHz 4.1%  4k-8kHz 7.0%  8k-16kHz 0.3%  16k+Hz 0.1%
+  centroid 883 Hz, rolloff85 1172 Hz, energy above 5 kHz 4.09%, above 8 kHz 0.43%  (no harsh highs)
+  music stem alone: centroid 597 Hz, rolloff85 1172 Hz, >5 kHz 0.12%, >8 kHz 0.004%
 
 time x band grid (rows = octave bands, columns = 4 s frames, darker = louder; relative to the loudest cell, 6 dB per step; | marks chapter starts):
-    16k+ ++=+=++++==++==+=+==+=++=+===+=++++==+==++=+++=+==++===+==+=++=++-=++++=+==+ 
-  8k-16k ++*++*+*+**+**+*+*++*++****+*++**+++**+****+**++***+**+*++*++**+*++*+***+**+ 
-   4k-8k %%#%#%%%%#%%%%*%#%##%#%%##%#%#%%%#%##%##%%%%%%%%%%%%#%##%#%%%%%%%*%%#%%%%%%% 
-   2k-4k #####%#########%#######%##%#%%#%##%#####%%########%%###%#######%###%##%#####-
-   1k-2k #%####%%%%%#%####%#%%####%%%###%%#%#%##%###%###%%##%###%#####%%##%%##%%###%%+
-  500-1k %%%%%%%%%%%%%%%%@%%%%%%%%%%%%%@%@%%%%%%%%%%%%%%@%%@%%%@@%%%%%%%%%@%%%@%%%%%%=
- 250-500 @%@@%@%@%@@@@@@@%@@@@@@@@@@@@@%@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@+
- 125-250 @%%@@%@%@@%%%@@@%%%@@@@%@%@%@%@%%@%%@@%@%@@%%@%@@@%%@%%%%%%@%%%@@@@%%@%@@@%@+
-  63-125 %@%%%%@%%%%%@%@@%@%%@%%@%%@%%%%@#@%@%%@@%%@%%@%@%%@@%%@@%%%%@%%%@@@%%%@@%@%@*
-   20-63 **=*++++*+++*===*=**=====**#========*#==#==*+=+++++*#++#*=======+#=#=+*----*=
-         |   |      |       |            |             |         |           |        
+    16k+ ++=+=++++==++==+=+==+=++=+===+=++++==+==++=+++=+==++===+==+=++=++-=++++=+==.
+  8k-16k ++*++*+*+**+**+*+*++*++****+*++**+++**+****+**++***+**+*++*++**+*++*+***+**.
+   4k-8k %%#%#%%%%#%%%%*%#%##%#%%##%#%#%%%#%##%##%%%%%%%%%%%%#%##%#%%%%%%%*%%#%%%%%%:
+   2k-4k #####%#########%#######%####%%#%##%#####%%########%%###%#######%###%##%###%*
+   1k-2k %%####%#%###%####%#%%####%%%###%%###%##%###%###%%##%###%%#%##%%##%%##%%###%*
+  500-1k %%%%%%%%%%%%%%%%@%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%@%%%%%@%%%%%%%%%%@%%%@%%%%%#
+ 250-500 @%@@%@@@@@@@@@@@%@@@@@@@@@@@@@%@%@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@%@@%@@@@#
+ 125-250 @%%@@%@%@@%%%@@@%%%@@@@%@%@%@@@%%@%%@@%@%@@%%@%@@@%%@%%%%%%@%%%@@@@%%@%@@@@%
+  63-125 %@%%%%@%%%%%@%@@%@%%@%%@%%@%%%%@#@%@%%@@%%@%%@%@%%@@%%@@%%%%@%%%@@@%%%@@%@@%
+   20-63 **=*++++*+++*===*=**=====**#====+===*#==#+=*+=++++**#+*##=======+#=#=+*---#*
+         |   |      |       |            |             |         |           |       
          c1@0 c2@4 c3@11 c4@19 c5@32 c6@46 c7@56 c8@68   (column = 4 s)
 
 verdict: PASS

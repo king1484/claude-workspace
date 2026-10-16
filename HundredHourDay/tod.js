@@ -1793,61 +1793,67 @@ function grade(g, H, o) {
 function rrect(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 const HUD_FONT = '"Bahnschrift SemiBold","Segoe UI Black",sans-serif';
 function hud(g, H, o) {
+  // Top-left progress clock: a compact translucent pill (sun/moon dial | "HOUR" label | big hour number "/ 100" | progress bar).
+  // Roomy, evenly spaced (label, number and unit never touch), kept inside the title-safe margin, ~330 x 96 px.
   o = o || {}; const alpha = o.alpha == null ? 1 : o.alpha, pop = o.pop == null ? 1 : o.pop, pulse = o.pulse || 0;
   if (alpha < 0.01) return;
   // o.h100: hold the dial/bar/digits at 100 (the loop would otherwise wrap hour 100 to 00); used by c7 at the next sunrise
-  H = o.h100 ? 100 : ((H % 100) + 100) % 100; const P = pal(H % 100, {});
+  H = o.h100 ? 100 : ((H % 100) + 100) % 100;
   const ease = pop >= 1 ? 1 : (function (t) { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); })(sat01(pop));
-  const sc = (0.6 + 0.4 * ease) * (1 + 0.05 * pulse);
-  const X = 26, Y = 22, R = 46, cx = X + R, cy = Y + R + 2;
-  g.save(); g.globalAlpha = alpha * sat01(pop * 2); g.translate(cx, cy); g.scale(sc, sc); g.translate(-cx, -cy);
-  const a = TWO_PI * H / 100;
-  // dial: sky disc, day half bright / night half dark, ring
-  g.fillStyle = 'rgba(8,10,30,0.34)'; g.beginPath(); g.arc(cx + 2, cy + 4, R + 4, 0, TWO_PI); g.fill();
+  const sc = (0.7 + 0.3 * ease) * (1 + 0.045 * pulse);
+  const hour = Math.min(100, Math.floor(H)), hs = (hour < 10 ? '0' : '') + hour;
+  const MX = 30, MY = 28, PAD = 14, R = 36, GAP = 18, BW = 176;           // outer margin, inner padding, dial radius, dial->text gap, bar width
+  g.save();
+  g.textBaseline = 'alphabetic'; g.lineJoin = 'round'; g.lineCap = 'round';
+  const setLS = (px) => { try { g.letterSpacing = px + 'px'; } catch (e) {} };
+  g.font = '19px ' + HUD_FONT; setLS(3); const wLabel = g.measureText('HOUR').width;
+  g.font = '50px ' + HUD_FONT; setLS(0); const wNum = g.measureText(hs).width, wNum3 = g.measureText('100').width;
+  g.font = '23px ' + HUD_FONT; const wUnit = g.measureText('/ 100').width;
+  const textW = Math.max(BW, wLabel, wNum3 + 12 + wUnit);           // sized for 3 digits so the pill never jumps at hour 100
+  const pw = PAD + R * 2 + GAP + textW + PAD + 4, ph = PAD * 2 + R * 2 + 2;
+  const cx0 = MX + pw / 2, cy0 = MY + ph / 2;                              // scale/pop about the pill centre
+  g.globalAlpha = alpha * sat01(pop * 2); g.translate(cx0, cy0); g.scale(sc, sc); g.translate(-cx0, -cy0);
+  // backing pill: dark translucent glass so the clock reads on bright sky and dark night alike
+  g.save(); g.shadowColor = 'rgba(0,0,20,0.4)'; g.shadowBlur = 16; g.shadowOffsetY = 4;
+  rrect(g, MX, MY, pw, ph, 26); g.fillStyle = 'rgba(10,14,44,0.66)'; g.fill(); g.restore();
+  rrect(g, MX, MY, pw, ph, 26); g.lineWidth = 2; g.strokeStyle = 'rgba(255,255,255,0.30)'; g.stroke();
+  // dial
+  const cx = MX + PAD + R + 2, cy = MY + ph / 2, a = TWO_PI * H / 100;
   g.save(); g.beginPath(); g.arc(cx, cy, R, 0, TWO_PI); g.clip();
   let gr = g.createLinearGradient(0, cy - R, 0, cy + R);
   gr.addColorStop(0, '#5cb2ff'); gr.addColorStop(0.48, '#bfe6ff'); gr.addColorStop(0.5, '#ffd89a'); gr.addColorStop(0.52, '#2b2f6e'); gr.addColorStop(1, '#0b0f2e');
   g.fillStyle = gr; g.fillRect(cx - R, cy - R, R * 2, R * 2);
-  for (let i = 0; i < 14; i++) { const sx = cx - R + hash1(i * 3.7 + 2) * R * 2, sy = cy + 4 + hash1(i * 5.1 + 7) * (R - 4); g.fillStyle = 'rgba(255,255,255,' + (0.5 + 0.4 * hash1(i)) + ')'; g.fillRect(sx, sy, 1.8, 1.8); }
-  g.fillStyle = '#3a8a52'; g.fillRect(cx - R, cy - 2, R * 2, 4);   // horizon line
-  // 24 tick marks on the ring (every 25 h = quarter)
+  for (let i = 0; i < 12; i++) { const sx = cx - R + hash1(i * 3.7 + 2) * R * 2, sy = cy + 3 + hash1(i * 5.1 + 7) * (R - 4); g.fillStyle = 'rgba(255,255,255,' + (0.5 + 0.4 * hash1(i)) + ')'; g.fillRect(sx, sy, 1.6, 1.6); }
+  g.fillStyle = '#3a8a52'; g.fillRect(cx - R, cy - 2, R * 2, 4);          // horizon line
   g.restore();
-  g.lineWidth = 5; g.strokeStyle = '#fff'; g.beginPath(); g.arc(cx, cy, R, 0, TWO_PI); g.stroke();
-  g.lineWidth = 2.2; g.strokeStyle = 'rgba(20,24,60,0.85)'; g.beginPath(); g.arc(cx, cy, R + 2.6, 0, TWO_PI); g.stroke();
-  g.beginPath(); g.arc(cx, cy, R - 2.6, 0, TWO_PI); g.stroke();
-  // orbiting marker (sun above the horizon, moon below)
-  const Rm = R - 15, mx = cx - Math.cos(a) * Rm, my = cy - Math.sin(a) * Rm, up = Math.sin(a) >= -0.02;
-  g.strokeStyle = 'rgba(255,255,255,0.8)'; g.lineWidth = 2.4; g.lineCap = 'round'; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + (mx - cx) * 0.62, cy + (my - cy) * 0.62); g.stroke();
-  g.fillStyle = '#fff'; g.beginPath(); g.arc(cx, cy, 3.4, 0, TWO_PI); g.fill();
+  g.lineWidth = 4; g.strokeStyle = '#fff'; g.beginPath(); g.arc(cx, cy, R, 0, TWO_PI); g.stroke();
+  g.lineWidth = 2; g.strokeStyle = 'rgba(20,24,60,0.85)'; g.beginPath(); g.arc(cx, cy, R + 2.4, 0, TWO_PI); g.stroke();
+  const Rm = R - 12, mx = cx - Math.cos(a) * Rm, my = cy - Math.sin(a) * Rm, up = Math.sin(a) >= -0.02;      // sun above the horizon, moon below
+  g.strokeStyle = 'rgba(255,255,255,0.8)'; g.lineWidth = 2; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + (mx - cx) * 0.62, cy + (my - cy) * 0.62); g.stroke();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(cx, cy, 3, 0, TWO_PI); g.fill();
   if (up) {
-    radial(g, mx, my, 17, [[0, 'rgba(255,230,140,0.85)'], [1, 'rgba(255,230,140,0)']]);
-    g.fillStyle = '#ffd23a'; g.beginPath(); g.arc(mx, my, 8.5, 0, TWO_PI); g.fill(); g.fillStyle = '#fff4b0'; g.beginPath(); g.arc(mx - 1.6, my - 1.6, 4.6, 0, TWO_PI); g.fill();
+    radial(g, mx, my, 14, [[0, 'rgba(255,230,140,0.85)'], [1, 'rgba(255,230,140,0)']]);
+    g.fillStyle = '#ffd23a'; g.beginPath(); g.arc(mx, my, 7, 0, TWO_PI); g.fill(); g.fillStyle = '#fff4b0'; g.beginPath(); g.arc(mx - 1.3, my - 1.3, 3.8, 0, TWO_PI); g.fill();
   } else {
-    g.fillStyle = '#f0ecd8'; g.beginPath(); g.arc(mx, my, 8, 0, TWO_PI); g.fill(); g.fillStyle = '#0d1236'; g.beginPath(); g.arc(mx + 4, my - 2.5, 7, 0, TWO_PI); g.fill();
-    // re-clip a crescent: redraw the dial colour to carve (cheap approximation)
-    g.fillStyle = '#f0ecd8'; g.beginPath(); g.arc(mx - 3.2, my + 1, 3.2, 0, TWO_PI); g.fill();
+    g.fillStyle = '#f0ecd8'; g.beginPath(); g.arc(mx, my, 6.6, 0, TWO_PI); g.fill(); g.fillStyle = '#0d1236'; g.beginPath(); g.arc(mx + 3.4, my - 2, 5.8, 0, TWO_PI); g.fill();
+    g.fillStyle = '#f0ecd8'; g.beginPath(); g.arc(mx - 2.6, my + 0.8, 2.6, 0, TWO_PI); g.fill();
   }
-  // text
-  const tx = X + R * 2 + 16, hour = Math.min(100, Math.floor(H));
-  g.textBaseline = 'alphabetic'; g.lineJoin = 'round'; g.lineCap = 'round';
-  const label = (txt, x, y, size, a2) => {
-    g.font = size + 'px ' + HUD_FONT; g.lineWidth = size * 0.22; g.strokeStyle = 'rgba(14,16,44,0.95)'; g.strokeText(txt, x, y);
-    g.fillStyle = '#fff'; g.globalAlpha = alpha * a2; g.fillText(txt, x, y); g.globalAlpha = alpha * sat01(pop * 2);
-  };
-  label('HOUR', tx, cy - 8, 22, 0.95);
-  const hs = (hour < 10 ? '0' : '') + hour;
-  g.font = '50px ' + HUD_FONT; const hw = g.measureText(hs).width;
-  label(hs, tx + 64, cy + 14, 50, 1);
-  label('/ 100', tx + 64 + hw + 8, cy + 14, 22, 0.9);
-  // progress bar with sun marker
-  const bx = tx, by = cy + 30, bw = 190;
-  rrect(g, bx - 2, by - 2, bw + 4, 12, 6); g.fillStyle = 'rgba(14,16,44,0.85)'; g.fill();
-  rrect(g, bx, by, bw, 8, 4); g.fillStyle = 'rgba(255,255,255,0.28)'; g.fill();
-  const fw = Math.max(8, bw * H / 100);
-  rrect(g, bx, by, fw, 8, 4); gr = g.createLinearGradient(bx, 0, bx + bw, 0); gr.addColorStop(0, '#ffd34a'); gr.addColorStop(0.5, '#ff9a40'); gr.addColorStop(1, '#8a6cff'); g.fillStyle = gr; g.fill();
-  g.fillStyle = '#fff'; g.beginPath(); g.arc(bx + bw * H / 100, by + 4, 7, 0, TWO_PI); g.fill();
-  g.strokeStyle = 'rgba(14,16,44,0.9)'; g.lineWidth = 2; g.stroke();
-  g.fillStyle = up ? '#ffc933' : '#aab8ff'; g.beginPath(); g.arc(bx + bw * H / 100, by + 4, 3.8, 0, TWO_PI); g.fill();
+  // text block: label on top, number + unit below (clear gap between the three), progress bar at the bottom
+  const tx = MX + PAD + R * 2 + GAP + 2, y0 = MY + PAD + 2;
+  const label = (txt, x, y, font, ls, fill, lw) => { g.font = font; setLS(ls); g.lineWidth = lw; g.strokeStyle = 'rgba(8,10,34,0.9)'; g.strokeText(txt, x, y); g.fillStyle = fill; g.fillText(txt, x, y); };
+  label('HOUR', tx, y0 + 16, '19px ' + HUD_FONT, 3, 'rgba(205,226,255,0.95)', 4);
+  const yNum = y0 + 16 + 10 + 36;
+  label(hs, tx, yNum, '50px ' + HUD_FONT, 0, '#ffffff', 7);
+  label('/ 100', tx + wNum + 12, yNum, '23px ' + HUD_FONT, 0, 'rgba(255,255,255,0.88)', 4);
+  setLS(0);
+  const bx = tx, by = yNum + 12, bh = 9;
+  rrect(g, bx - 1.5, by - 1.5, BW + 3, bh + 3, 6); g.fillStyle = 'rgba(6,8,30,0.85)'; g.fill();
+  rrect(g, bx, by, BW, bh, 4.5); g.fillStyle = 'rgba(255,255,255,0.26)'; g.fill();
+  const fw = Math.max(9, BW * H / 100);
+  rrect(g, bx, by, fw, bh, 4.5); gr = g.createLinearGradient(bx, 0, bx + BW, 0); gr.addColorStop(0, '#ffd34a'); gr.addColorStop(0.5, '#ff9a40'); gr.addColorStop(1, '#8a6cff'); g.fillStyle = gr; g.fill();
+  const kx = bx + BW * H / 100, ky = by + bh / 2;
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(kx, ky, 7.5, 0, TWO_PI); g.fill(); g.strokeStyle = 'rgba(14,16,44,0.9)'; g.lineWidth = 2; g.stroke();
+  g.fillStyle = up ? '#ffc933' : '#aab8ff'; g.beginPath(); g.arc(kx, ky, 4, 0, TWO_PI); g.fill();
   g.restore();
 }
 

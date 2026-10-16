@@ -187,11 +187,9 @@ build('c8', 'warm', 'quiet', ({ TT, CUT, END, d, add }) => {
   add(TT.surprise + 0.2, 'pop', 0.25);
   add(TT.like + 0.45, 'uiConfirm', 0.45);
   add(TT.sub + 0.4, 'bellRing', 0.3);
-  const bt = [-0.4, -0.18, 0.04, 0.26, 0.48, 0.7, 0.92, 1.14];
-  bt.forEach((o, i) => add(TT.thoughts + o, 'pop', 0.16 + 0.01 * i));
-  add(CUT.E + 0.2, 'swell', 0.28, { len: 2.6 });
+  add(TT.sub + 1.0, 'swell', 0.22, { len: 2.4 });                  // a soft closing swell under the held last frame
   return {
-    arc: [[0, CUT.B1, 0.4], [CUT.B1, CUT.C, 0.4], [CUT.C, CUT.D, 0.35], [CUT.D, CUT.E, 0.45], [CUT.E, END, 0.4]],
+    arc: [[0, CUT.B1, 0.4], [CUT.B1, CUT.C, 0.4], [CUT.C, CUT.D, 0.35], [CUT.D, END, 0.4]],
     risers: [],
     silence: []
   };

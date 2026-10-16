@@ -311,7 +311,7 @@ const LAYOUT = {
  "c8": {
   "title": "Wrap",
   "start": 275.282,
-  "dur": 29.218,
+  "dur": 26.593,
   "vo": [
    {
     "id": "e1",
@@ -340,16 +340,9 @@ const LAYOUT = {
     "start": 22.164,
     "dur": 2.629,
     "end": 24.793
-   },
-   {
-    "id": "e5",
-    "text": "Next time: what if you could hear everyone's thoughts?",
-    "start": 25.393,
-    "dur": 2.826,
-    "end": 28.218
    }
   ]
  },
- "total": 304.5
+ "total": 301.875
 };
 if (typeof module !== 'undefined') module.exports = LAYOUT;

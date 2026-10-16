@@ -658,7 +658,9 @@ function mkRC(ch, T0, n, seed, ik, M) {
     for (let i = a; i < b; i++) { const v = w[i] * g; buf.L[s0 + i] += v * gl; buf.R[s0 + i] += v * gr; }
   };
   /** o: {dB peak level, echo: send to the dotted-8th ping-pong, cents, g multiplier} */
+  RC.nNotes = 0;
   RC.note = (inst, m, u, vel, pan = 0, o = {}) => {
+    if (u >= 0 && u < RC.dur) RC.nNotes++;
     const vb = vel < 0.55 ? 0 : vel < 0.85 ? 1 : 2, w = noteWave(inst, m, vb, o.cents || 0), g = clamp(vel, 0, 1.3) * db2g(o.dB ?? -18) * (o.g ?? 1);
     RC.add(RC.dry, w, u, g, pan); if (o.echo) RC.add(RC.echo, w, u, g * o.echo, pan);
   };
@@ -742,7 +744,7 @@ function subLayer(RC, C, o) {
   if (o.kind === 'hits') {
     const st = C.beat / o.div, u1 = u0 + n / SR, k0 = Math.floor(u0 / st) - 1, k1 = Math.ceil(u1 / st) + 1;
     for (let k = k0; k <= k1; k++) {
-      const u = k * st; if (u < -0.3 || (C.tF !== undefined && u >= C.tF - 0.04)) continue;
+      const u = k * st; if (u < 0.3 || (C.tF !== undefined && u >= C.tF - 0.04)) continue;
       const I = RC.ik(u), a = o.fn(modI(k, o.div * 4), I, k, u); if (!(a > 0)) continue;
       const m = o.fixed ?? C.chordAt(u).ch.bass; RC.lowNote('sub', m + (o.oct || 0), u, a * db2g(o.dB) * (0.55 + 0.45 * I));
     }
@@ -805,11 +807,11 @@ function moodMods(mood, nat) {
   return M;
 }
 function moodExtras(RC, C, M) {
-  if (M.bells > 0.05) gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { if (r < 0.07 * M.bells * (0.4 + I)) { const t = tonesIn(cd.ch, 76, 93); if (t.length) RC.note('bell', t[Math.floor(hr(k, 5) * t.length)], u, 0.5, hr(k, 6) * 1.2 - 0.6, { dB: -24, echo: 0.5 }); } });
+  if (M.bells > 0.05) gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { if (r < 0.01 * M.bells * (0.4 + I)) { const t = tonesIn(cd.ch, 76, 93); if (t.length) RC.note('bell', t[Math.floor(hr(k, 5) * t.length)], u, 0.5, hr(k, 6) * 1.2 - 0.6, { dB: -24, echo: 0.5 }); } });
   if (M.pulse > 0.05) subLayer(RC, C, { kind: 'hits', div: 2, fn: (s, I) => (s % 2 === 0 ? (s === 0 ? 1 : 0.7) : 0) * (0.3 + 0.7 * I), dB: -31 });
   if (M.ticks > 0.05) gridNotes(RC, C, 1, (u, k, s, I) => { if (I > 0.15) RC.perc('tick', u, 0.08 * M.ticks, k % 2 ? 0.3 : -0.3, k % 3); });
   if (M.timp > 0.05) gridNotes(RC, C, 1, (u, k, s, I, cd) => { if (s % 8 === 0 && I > 0.45) RC.lowNote('timp', cd.ch.bass + 12, u, 0.2 * M.timp * I); });
-  if (M.felt > 0.05) gridNotes(RC, C, 1, (u, k, s, I, cd) => { if (s % 4 === 0) { const t = tonesIn(cd.ch, 52, 67); for (let j = 0; j < Math.min(2, t.length); j++) RC.note('felt', t[j], u + j * 0.03, 0.4, -0.15 + 0.3 * j, { dB: -24, echo: 0.3 }); } });
+  if (M.felt > 0.05) gridNotes(RC, C, 1, (u, k, s, I, cd) => { if (s % 8 === 0 && hr(k, 77) < 0.5) { const t = tonesIn(cd.ch, 52, 67); for (let j = 0; j < Math.min(2, t.length); j++) RC.note('felt', t[j], u + j * 0.03, 0.4, -0.15 + 0.3 * j, { dB: -26, echo: 0.12 }); } });
 }
 function sizzleLayer(RC, dB) {
   const { u0, n } = RC, rnd = mulberry32(RC.seed + 99), a = filt(filt(white(rnd, n), 'bp', 3500, 1.2), 'lp', 5200, 0.7), b = filt(filt(white(rnd, n), 'bp', 3300, 1.2), 'lp', 5200, 0.7), m = smoothRand(rnd, n, 9);
@@ -827,101 +829,93 @@ function noiseSwell(RC, uEnd, len, g, fcMax = 5800) { // cymbal-like swell (soft
 // ---- the eight colours
 const LONG_PAT = [0, 1, 2, 3, 2, 1, 3, 2];
 const arpPick = (cd, lo, hi, idx) => { const t = tonesIn(cd.ch, lo, hi); return t.length ? t[((idx % t.length) + t.length) % t.length] : 60; };
+// ---- sparse, soft plucks: at most one note per bar (never a running arpeggio), quiet, with a short echo, so nothing "keeps ringing".
+// o: {inst, lo, hi, p:[pLow, pHigh] chance per bar at low / high intensity, dB, vel, echo, salt, from, pair}
+function sparsePluck(RC, C, o) {
+  const bar = C.bar, k0 = Math.floor(RC.u0 / bar) - 1, k1 = Math.ceil((RC.u0 + RC.n / SR) / bar) + 1, offs = o.offs || [0, 1, 1.5, 2, 2.5];
+  for (let k = k0; k <= k1; k++) {
+    const ub = k * bar; if (ub < (o.from ?? -0.3) || (C.tF !== undefined && ub >= C.tF - 0.5)) continue;
+    const I = RC.ik(ub), p = lerp(o.p[0], o.p[1], I) * RC.M.dens * (o.mul || 1); if (hr(k, (o.salt || 31)) > p) continue;
+    const cd = C.chordAt(ub), t = tonesIn(cd.ch, o.lo, o.hi); if (!t.length) continue;
+    const m = t[Math.floor(hr(k, (o.salt || 31) + 1) * t.length)], u = ub + C.beat * offs[Math.floor(hr(k, (o.salt || 31) + 2) * offs.length)];
+    const pan = (hr(k, (o.salt || 31) + 3) - 0.5) * 0.7;
+    RC.note(o.inst, m, u, (o.vel ?? 0.5) * (0.65 + 0.35 * I), pan, { dB: o.dB ?? -24, echo: o.echo ?? 0.12 });
+    if (o.pair && hr(k, (o.salt || 31) + 4) < o.pair) { const t2 = t.filter((x) => x > m); if (t2.length) RC.note(o.inst, t2[0], u + C.beat * 0.75, (o.vel ?? 0.5) * 0.7 * (0.65 + 0.35 * I), -pan, { dB: (o.dB ?? -24) - 1.5, echo: o.echo ?? 0.12 }); }
+  }
+}
+/** the foundation every chapter gets: warm pad + low strings + sub, all sustained (this is what carries the score, not the plucks) */
+function foundation(RC, C, o) {
+  padLayer(RC, C, { kind: o.pad || 'warm', fc: o.padFc || [600, 2400], dB: o.padDb ?? -30, lo: o.padLo ?? 50, hi: o.padHi ?? 76, maxN: 4 });
+  padLayer(RC, C, { kind: 'str', fc: o.strFc || [420, 1700], dB: o.strDb ?? -35, lo: o.strLo ?? 40, hi: o.strHi ?? 66, maxN: 3, detL: [-9, 6], detR: [-6, 9], gainFn: (u) => 0.55 + 0.45 * RC.ik(u) });
+  subLayer(RC, C, { kind: o.sub || 'hold', fixed: o.subFixed, dB: o.subDb ?? -32, g0: 0.45, g1: 0.55, ov: 1.0, h2: 0.3 });
+}
+/** a soft low heartbeat: two muffled thumps, used only where the chapter needs pulse (tense) */
+function heartPulse(RC, C, o) {
+  gridNotes(RC, C, 1, (u, k, s, I) => { if (I > (o.from ?? 0.35) && s % 4 === 0) { RC.perc('kick', u, (o.g ?? 0.07) * (0.5 + 0.5 * I), 0); RC.perc('kick', u + C.beat * 0.42, (o.g ?? 0.07) * 0.55 * (0.5 + 0.5 * I), 0); } }, 0.4);   // nothing in the first 0.4 s: no click at the chapter join
+}
 const COLS = [
-  { // c1: curious / bold
-    name: 'curious', bpm: 100, bars: 1, prog: ['Dadd9', 'Bm7', 'Gmaj7', 'Asus4'], tonic: 0, nat: ['bright', 'wonder'], lvl: 0, rv: 0.4, ov: 0.35,
+  { // c1: curious / bold, but gentle: warm pad + low strings, a few soft felt-piano notes
+    name: 'curious', bpm: 100, bars: 2, prog: ['Dadd9', 'Bm7', 'Gmaj7', 'Asus4'], tonic: 0, nat: ['bright', 'wonder'], lvl: 0, rv: 0.45, ov: 0.6,
     run(RC, C, M, ch) {
-      padLayer(RC, C, { kind: 'warm', fc: [650, 2400], dB: -31, lo: 50, hi: 76, maxN: 4 });
-      subLayer(RC, C, { kind: 'hits', div: 1, fn: (s, I) => (s % 4 === 0 ? 1 : s % 4 === 2 && I > 0.55 ? 0.7 : 0), dB: -27 });
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => {
-        const on = s % 2 === 0; if (I < 0.08 || (!on && r > lerp(0.35, 0.95, I) * M.dens)) return;
-        const idx = LONG_PAT[s % 8], t = tonesIn(cd.ch, 57, 84), m = t[Math.min(t.length - 1, idx + (I > 0.7 && s === 4 ? 1 : 0))];
-        RC.note('marimba', m, u, (on ? 0.8 : 0.55) * (0.5 + 0.5 * I), Math.sin(k * 1.3) * 0.35, { dB: -19, echo: 0.5 });
-      });
-      if (M.perc > 0.3) {
-        gridNotes(RC, C, 4, (u, k, s, I, cd, r) => { if (I > 0.45 && r < 0.9) RC.perc('shaker', u, 0.1 * [1, 0.4, 0.7, 0.4][s % 4] * M.perc, s % 2 ? 0.3 : -0.3, k % 3); });
-        gridNotes(RC, C, 1, (u, k, s, I) => { if (I > 0.6 && s % 2 === 0) RC.perc('kick', u, 0.14 * M.perc * (s % 4 === 0 ? 1 : 0.7)); });
-      }
-      for (const sg of C.segsIn(RC.u0, RC.u0 + RC.n / SR)) if (RC.ik(sg.a) > 0.7 && sg.a > 0) { const t = tonesIn(sg.ch, 81, 93); if (t.length) RC.note('bell', t[sg.idx % t.length], sg.a, 0.6, 0.3, { dB: -25, echo: 0.5 }); }
-      gridNotes(RC, C, 1, (u, k, s, I, cd) => { if (s % 4 === 0) { const t = tonesIn(cd.ch, 50, 66); for (let j = 0; j < Math.min(2, t.length); j++) RC.note('felt', t[j], u + j * 0.025, 0.4 + 0.2 * I, -0.2 + 0.4 * j, { dB: -25, echo: 0.3 }); } });
-      return { motif: { first: 0.45, base: 74, speed: 1, layers: [{ inst: 'marimba', dB: -17, echo: 0.5 }, { inst: 'felt', oct: -12, dB: -22, lag: 0.01 }] } };
+      foundation(RC, C, { padDb: -30, strDb: -35, subDb: -31 });
+      sparsePluck(RC, C, { inst: 'felt', lo: 55, hi: 74, p: [0.3, 0.55], dB: -24, vel: 0.5, echo: 0.12, salt: 31, pair: 0.3 });
+      sparsePluck(RC, C, { inst: 'harp', lo: 64, hi: 84, p: [0.0, 0.22], dB: -27, vel: 0.45, echo: 0.15, salt: 41 });
+      if (M.perc > 0.3) gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { if (I > 0.65 && s % 4 === 2 && r < 0.5) RC.perc('shakerSoft', u, 0.05 * M.perc, s % 2 ? 0.3 : -0.3, k % 3); });
+      return { motif: { first: 1.0, base: 74, speed: 0.85, layers: [{ inst: 'felt', dB: -21, echo: 0.2 }, { inst: 'harp', oct: 12, dB: -26, lag: 0.01 }] } };
     },
   },
-  { // c2: mechanical / airy clockwork
-    name: 'mechanical', bpm: 96, bars: 1, prog: ['Gmaj7', 'Em9', 'Clyd', 'D69'], tonic: 3, nat: ['wonder', 'bright'], lvl: -2.5, rv: 0.45, ov: 0.3,
+  { // c2: airy clockwork: a glassy pad, a very soft tick, one music-box note now and then (no running arpeggio)
+    name: 'mechanical', bpm: 96, bars: 2, prog: ['Gmaj7', 'Em9', 'Clyd', 'D69'], tonic: 3, nat: ['wonder', 'bright'], lvl: -2.5, rv: 0.5, ov: 0.6,
     run(RC, C, M) {
-      padLayer(RC, C, { kind: 'air', fc: [900, 3200], dB: -32, lo: 62, hi: 88, maxN: 3 });
-      const ORDER = [0, 8, 4, 12, 2, 10, 6, 14, 1, 3, 5, 7, 9, 11, 13, 15];
-      gridNotes(RC, C, 4, (u, k, s, I, cd) => {
-        const act = Math.round(lerp(6, 16, I) * clamp(M.dens, 0.3, 1.3)); if (ORDER.indexOf(s) >= act || I < 0.05) return;
-        const bar = Math.floor(k / 16), m = arpPick(cd, 72, 93, s + bar * 3);
-        RC.note('musicbox', m, u, 0.6, (s % 2 ? 1 : -1) * 0.3, { dB: -22, echo: 0.35 });
-      });
-      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if (I > 0.3) RC.perc('tick', u, 0.1 * M.perc, k % 2 ? 0.35 : -0.35, k % 2); });
-      subLayer(RC, C, { kind: 'hold', dB: -34, g0: 0.4, g1: 0.5 });
-      return { motif: { first: null, base: 74, speed: 1, quant: true, layers: [{ inst: 'musicbox', oct: 12, dB: -20, echo: 0.4 }, { inst: 'marimba', oct: -12, dB: -21 }] } };
+      foundation(RC, C, { pad: 'air', padFc: [800, 2800], padDb: -31, padLo: 55, padHi: 84, strDb: -37, subDb: -34 });
+      sparsePluck(RC, C, { inst: 'musicbox', lo: 72, hi: 90, p: [0.15, 0.4], dB: -27, vel: 0.45, echo: 0.15, salt: 51 });
+      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if (I > 0.3 && s % 4 === 0) RC.perc('tick', u, 0.05 * M.perc, k % 2 ? 0.35 : -0.35, k % 2); });
+      return { motif: { first: null, base: 74, speed: 0.9, quant: true, layers: [{ inst: 'musicbox', oct: 12, dB: -24, echo: 0.2 }, { inst: 'felt', oct: -12, dB: -24 }] } };
     },
   },
   { // c3: woozy / drifting
-    name: 'woozy', bpm: 66, bars: 2, prog: ['Dmaj9', 'Fsm7', 'Bm9', 'Em9'], tonic: 0, nat: ['warm', 'hollow'], lvl: -1.5, rv: 0.55, ov: 0.9,
+    name: 'woozy', bpm: 66, bars: 2, prog: ['Dmaj9', 'Fsm7', 'Bm9', 'Em9'], tonic: 0, nat: ['warm', 'hollow'], lvl: -1.5, rv: 0.6, ov: 1.0,
     run(RC, C, M) {
-      padLayer(RC, C, { kind: 'wobbly', fc: [500, 1500], dB: -29, lo: 48, hi: 74, maxN: 4, detL: [-18, 12], detR: [-12, 20] });
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => {
-        if (r > lerp(0.18, 0.5, I) * 0.5 * M.dens) return;
-        const t = tonesIn(cd.ch, 55, 79), m = t[Math.floor(hr(k, 7) * t.length)], hum = (hr(k, 8) - 0.5) * 0.06, cents = (hr(k, 9) - 0.5) * 55;
-        RC.note('felt', m, u + hum + (s % 2 ? C.beat * 0.07 : 0), 0.4 + 0.3 * hr(k, 10), (hr(k, 11) - 0.5) * 0.8, { dB: -21, echo: 0.4, cents });
-      });
-      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if ((s % 4 === 1 || s % 4 === 3) && I > 0.2) RC.perc('brush', u + (hr(k, 3) - 0.5) * 0.02, 0.09 * (0.5 + I) * M.perc, 0.2 * (s % 8 === 1 ? -1 : 1), k % 3); });
-      subLayer(RC, C, { kind: 'swell', dB: -31, g0: 0.5, g1: 0.5, ov: 1.2 });
-      return { motif: { first: null, base: 66, speed: 0.72, layers: [{ inst: 'felt', dB: -20, cents: 14, echo: 0.4 }, { inst: 'felt', oct: 12, dB: -24, cents: -16, lag: 0.02 }, { inst: 'vibes', oct: 12, dB: -26 }] } };
+      foundation(RC, C, { pad: 'wobbly', padFc: [450, 1400], padDb: -29, padLo: 48, padHi: 74, strDb: -36, subDb: -32, sub: 'swell' });
+      sparsePluck(RC, C, { inst: 'felt', lo: 55, hi: 74, p: [0.18, 0.38], dB: -24, vel: 0.45, echo: 0.2, salt: 61, offs: [0, 1, 2, 3] });
+      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if (s % 8 === 3 && I > 0.2) RC.perc('brush', u, 0.05 * (0.5 + I) * M.perc, 0.2, k % 3); });
+      return { motif: { first: null, base: 66, speed: 0.72, layers: [{ inst: 'felt', dB: -22, cents: 12, echo: 0.25 }, { inst: 'vibes', oct: 12, dB: -28 }] } };
     },
   },
-  { // c4: hot / shimmering
-    name: 'hot', bpm: 84, bars: 1, prog: ['Dadd9', 'CaddD', 'GaddD', 'AsusD'], tonic: 0, nat: ['tense', 'dark'], lvl: -0.5, rv: 0.4, ov: 0.45,
+  { // c4: hot / shimmering, slow tension
+    name: 'hot', bpm: 84, bars: 2, prog: ['Dadd9', 'CaddD', 'GaddD', 'AsusD'], tonic: 0, nat: ['tense', 'dark'], lvl: -0.5, rv: 0.45, ov: 0.6,
     run(RC, C, M) {
-      padLayer(RC, C, { kind: 'hot', fc: [900, 3800], dB: -30, lo: 52, hi: 80, maxN: 4 });
-      sizzleLayer(RC, -42);
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => {
-        if (I < 0.1 || r > lerp(0.4, 0.8, I) * M.dens) return;
-        const t = tonesIn(cd.ch, 62, 86); RC.note('vibes', t[Math.floor(hr(k, 12) * t.length)], u, 0.55 + 0.3 * I, Math.sin(k * 0.9) * 0.45, { dB: -21, echo: 0.4 });
-      });
-      if (M.perc > 0.3) gridNotes(RC, C, 4, (u, k, s, I, cd, r) => { if (I > 0.4 && r < 0.85) RC.perc('shakerSoft', u, 0.09 * M.perc * (s % 2 ? 0.5 : 1), s % 2 ? 0.3 : -0.3, k % 2); });
-      subLayer(RC, C, { kind: 'hold', fixed: 38, dB: -29, g0: 0.55, g1: 0.45 });
-      return { motif: { first: null, base: 86, speed: 1, layers: [{ inst: 'vibes', dB: -19, echo: 0.5 }, { inst: 'marimba', oct: -12, dB: -22 }] } };
+      foundation(RC, C, { pad: 'hot', padFc: [800, 3200], padDb: -30, strDb: -35, subDb: -29, subFixed: 38 });
+      sizzleLayer(RC, -43);
+      sparsePluck(RC, C, { inst: 'vibes', lo: 62, hi: 84, p: [0.1, 0.35], dB: -26, vel: 0.5, echo: 0.15, salt: 71 });
+      if (M.perc > 0.3) { gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { if (I > 0.5 && s % 4 === 2 && r < 0.6) RC.perc('shakerSoft', u, 0.05 * M.perc, s % 2 ? 0.3 : -0.3, k % 2); }); heartPulse(RC, C, { from: 0.55, g: 0.05 }); }
+      return { motif: { first: null, base: 86, speed: 0.9, layers: [{ inst: 'vibes', dB: -22, echo: 0.2 }, { inst: 'felt', oct: -12, dB: -24 }] } };
     },
   },
-  { // c5: cold / glassy / lonely
-    name: 'cold', bpm: 60, bars: 2, prog: ['Dm9', 'Bbmaj7', 'Gm9', 'Asus4'], tonic: 0, nat: ['hollow', 'dark', 'quiet'], lvl: -3.5, rv: 0.7, ov: 1.0,
+  { // c5: cold, glassy, lonely: long pad, rare single bell notes that decay without a trail
+    name: 'cold', bpm: 60, bars: 2, prog: ['Dm9', 'Bbmaj7', 'Gm9', 'Asus4'], tonic: 0, nat: ['hollow', 'dark', 'quiet'], lvl: -3.5, rv: 0.75, ov: 1.2,
     run(RC, C, M) {
-      padLayer(RC, C, { kind: 'glass', fc: [600, 2600], dB: -33, lo: 62, hi: 90, maxN: 3, detL: [-5, 5], detR: [-3, 7] });
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => {
-        if (r > lerp(0.075, 0.2, I) * M.dens) return;
-        const t = tonesIn(cd.ch, 72, 91); RC.note('bell', t[Math.floor(hr(k, 13) * t.length)], u, 0.45 + 0.4 * hr(k, 14), (hr(k, 15) - 0.5) * 1.4, { dB: -21, echo: 0.55 });
-      });
-      subLayer(RC, C, { kind: 'swell', fixed: 26, dB: -29, h2: 0.7, g0: 0.45, g1: 0.55, ov: 1.4 });
-      return { motif: { first: null, base: 74, speed: 0.6, iv: [0, 2, 3, 7, 9], layers: [{ inst: 'bell', dB: -19, echo: 0.6 }, { inst: 'felt', oct: -12, dB: -25 }] } };
+      foundation(RC, C, { pad: 'glass', padFc: [550, 2300], padDb: -32, padLo: 58, padHi: 88, strDb: -35, strLo: 38, strHi: 62, subDb: -30, sub: 'swell', subFixed: 26 });
+      sparsePluck(RC, C, { inst: 'bell', lo: 74, hi: 91, p: [0.1, 0.28], dB: -26, vel: 0.5, echo: 0.2, salt: 81 });
+      return { motif: { first: null, base: 74, speed: 0.6, iv: [0, 2, 3, 7, 9], layers: [{ inst: 'bell', dB: -23, echo: 0.3 }, { inst: 'felt', oct: -12, dB: -26 }] } };
     },
   },
-  { // c6: restless / storm
-    name: 'restless', bpm: 116, bars: 1, prog: ['Bm7', 'Gmaj7', 'Dadd9', 'Asus4'], tonic: 2, nat: ['tense', 'bright'], lvl: 0, rv: 0.35, ov: 0.25,
+  { // c6: restless / storm: pulsing low strings and a soft heartbeat instead of a running mallet pattern
+    name: 'restless', bpm: 116, bars: 2, prog: ['Bm7', 'Gmaj7', 'Dadd9', 'Asus4'], tonic: 2, nat: ['tense', 'bright'], lvl: 0, rv: 0.4, ov: 0.35,
     run(RC, C, M) {
-      padLayer(RC, C, { kind: 'thin', fc: [700, 2600], dB: -33, lo: 50, hi: 78, maxN: 3 });
-      const MASK = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0];
-      gridNotes(RC, C, 4, (u, k, s, I, cd, r) => {
-        if (!MASK[s] || I < 0.08 || r > (0.55 + 0.45 * I) * M.dens + 0.2) return;
-        const bar = Math.floor(k / 16), m = arpPick(cd, 60, 84, s + bar * 2);
-        RC.note(bar % 2 ? 'kalimba' : 'marimba', m, u, 0.55 + 0.3 * I, Math.sin(k * 0.7) * 0.4, { dB: -20, echo: 0.3 });
-      });
+      foundation(RC, C, { pad: 'thin', padFc: [650, 2300], padDb: -33, strDb: -33, subDb: -29 });
+      sparsePluck(RC, C, { inst: 'kalimba', lo: 60, hi: 80, p: [0.1, 0.3], dB: -27, vel: 0.5, echo: 0.12, salt: 91 });
       if (M.perc > 0.3) {
-        gridNotes(RC, C, 2, (u, k, s, I) => { if ([0, 3, 6].includes(s % 8)) RC.perc('puff', u, 0.2 * (0.4 + 0.6 * I) * M.perc, s % 2 ? 0.3 : -0.3, k % 3); });
-        gridNotes(RC, C, 1, (u, k, s, I) => { if (s % 4 === 0 && I > 0.5) RC.perc('gust', u, 0.16 * M.perc, k % 8 ? -0.3 : 0.3); });
+        gridNotes(RC, C, 2, (u, k, s, I) => { if ([0, 3, 6].includes(s % 8)) RC.perc('puff', u, 0.12 * (0.4 + 0.6 * I) * M.perc, s % 2 ? 0.3 : -0.3, k % 3); }, 0.4);
+        gridNotes(RC, C, 1, (u, k, s, I) => { if (s % 8 === 0 && I > 0.5) RC.perc('gust', u, 0.1 * M.perc, k % 16 ? -0.3 : 0.3); }, 0.4);
       }
-      subLayer(RC, C, { kind: 'hits', div: 4, fn: (s, I) => ([0, 3, 6, 10, 13].includes(s % 16) ? 1 : 0) * (0.4 + 0.6 * I), dB: -27 });
-      return { motif: { first: null, base: 74, speed: 1.5, layers: [{ inst: 'marimba', dB: -18 }, { inst: 'kalimba', oct: 12, dB: -23, echo: 0.3 }] } };
+      heartPulse(RC, C, { from: 0.3, g: 0.07 });
+      subLayer(RC, C, { kind: 'hits', div: 2, fn: (s, I) => (s % 8 === 0 ? 1 : s % 8 === 4 ? 0.6 : 0) * (0.4 + 0.6 * I), dB: -29 });
+      return { motif: { first: null, base: 74, speed: 1.2, layers: [{ inst: 'kalimba', dB: -22 }, { inst: 'felt', oct: -12, dB: -25 }] } };
     },
   },
-  { // c7: awe, building to a payoff when the oceans move
-    name: 'awe', bpm: 88, bars: 2, prog: ['Dadd9', 'Aadd9', 'Bm9', 'Glyd'], tonic: 0, nat: ['wonder', 'epic'], lvl: -2.5, rv: 0.55, ov: 0.7,
+  { // c7: awe, building to a payoff: strings swell all chapter, a few harp notes, bells only early and rarely, choir at the payoff
+    name: 'awe', bpm: 88, bars: 2, prog: ['Dadd9', 'Aadd9', 'Bm9', 'Glyd'], tonic: 0, nat: ['wonder', 'epic'], lvl: -2.5, rv: 0.6, ov: 0.8,
     run(RC, C, M, ch) {
       const dur = RC.dur, Bm = (u) => 0.55 + 0.6 * (u / dur);
       let P = null;
@@ -929,52 +923,37 @@ const COLS = [
       if (P === null) P = 0.7 * dur;
       { const segs = C.segsIn(0, dur).filter((s) => s.a > 0), c = segs.sort((p, q) => Math.abs(p.a - P) - Math.abs(q.a - P))[0]; if (c && Math.abs(c.a - P) < 1.5) P = c.a; }
       RC.payoff = P;
-      padLayer(RC, C, { kind: 'str', fc: [500, 3600], dB: -30, lo: 48, hi: 79, maxN: 4, gainFn: (u) => Bm(u) });
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { // early bells
-        if (u > 0.5 * dur || r > lerp(0.04, 0.14, I) * M.dens) return;
-        const t = tonesIn(cd.ch, 74, 91); RC.note('bell', t[Math.floor(hr(k, 16) * t.length)], u, 0.5, (hr(k, 17) - 0.5) * 1.2, { dB: -22, echo: 0.5 });
-      });
-      gridNotes(RC, C, 2, (u, k, s, I, cd, r) => { // harp arpeggio, density rising with the build
-        const dn = lerp(0.12, 0.85, u / dur) * (0.4 + 0.6 * I) * M.dens; if (r > dn) return;
-        const t = tonesIn(cd.ch, 55, 81), m = t[Math.min(t.length - 1, LONG_PAT[s % 8])];
-        RC.note('harp', m, u, 0.5 + 0.35 * (u / dur), Math.sin(k * 1.1) * 0.4, { dB: -21, echo: 0.4 });
-      });
-      subLayer(RC, C, { kind: 'hold', dB: -32, g0: 0.4, g1: 0.6 });
-      // timpani rolls at section starts once the build is under way
-      for (const sg of C.segsIn(0, dur)) if (sg.a > 0.3 * dur && sg.a < P - 2 && sg.idx % 2 === 0 && RC.ik(sg.a) > 0.5 && M.perc > 0.3) for (let j = 0; j < 7; j++) RC.lowNote('timp', sg.ch.bass + 12, sg.a + j * 0.09, 0.025 + 0.01 * j);
-      // payoff
+      padLayer(RC, C, { kind: 'str', fc: [450, 3400], dB: -30, lo: 48, hi: 79, maxN: 4, gainFn: (u) => Bm(u) });
+      padLayer(RC, C, { kind: 'warm', fc: [500, 2200], dB: -34, lo: 50, hi: 74, maxN: 3, gainFn: (u) => Bm(u) });
+      subLayer(RC, C, { kind: 'hold', dB: -31, g0: 0.4, g1: 0.6 });
+      sparsePluck(RC, C, { inst: 'bell', lo: 74, hi: 91, p: [0.05, 0.18], dB: -27, vel: 0.5, echo: 0.2, salt: 101, from: 1, mul: 1 });
+      sparsePluck(RC, C, { inst: 'harp', lo: 55, hi: 79, p: [0.12, 0.45], dB: -25, vel: 0.5, echo: 0.15, salt: 111 });
+      for (const sg of C.segsIn(0, dur)) if (sg.a > 0.3 * dur && sg.a < P - 2 && sg.idx % 2 === 0 && RC.ik(sg.a) > 0.5 && M.perc > 0.3) for (let j = 0; j < 7; j++) RC.lowNote('timp', sg.ch.bass + 12, sg.a + j * 0.09, 0.02 + 0.008 * j);
       noiseSwell(RC, P, 3.0, 0.05);
-      RC.lowNote('timp', 38, P, 0.13); for (let j = 0; j < 9; j++) RC.lowNote('timp', 38 + (j % 2) * 7, P + 0.4 + j * 0.1, 0.04 + 0.006 * j);
-      RC.lowNote('boom', 26, P, 0.12);
+      RC.lowNote('timp', 38, P, 0.12); for (let j = 0; j < 9; j++) RC.lowNote('timp', 38 + (j % 2) * 7, P + 0.4 + j * 0.1, 0.035 + 0.005 * j);
+      RC.lowNote('boom', 26, P, 0.11);
       { // choir swell
         const rnd = mulberry32(RC.seed + 61), len = 5, [cl, cr] = choir(rnd, len, { k: 6, f0: [146, 220], v: ['a', 'o'], vib: 0.01, breath: 0.15, spread: 0.3, env: (t) => smooth(t / 1.5) * (1 - smooth((t - 3.6) / 1.4)) });
         const l = filt(cl, 'lp', 3500, 0.7), r = filt(cr, 'lp', 3500, 0.7), p = peakOf(l, r) || 1;
         for (let i = 0; i < l.length; i++) { l[i] /= p; r[i] /= p; }
         RC.add(RC.dry, l, P - 0.8, 0.07, -0.3); RC.add(RC.dry, r, P - 0.8, 0.07, 0.3);
       }
-      return { motif: { first: null, base: 74, speed: 1, layers: [{ inst: 'harp', dB: -19, echo: 0.4 }, { inst: 'bell', oct: 12, dB: -23, echo: 0.5 }], list: (RC2, C2) => { const ts = C2.tonicStarts().filter((a) => a > 2 && a < P - 6); const l = []; if (ts.length) l.push(ts[0]); if (ts.length > 2) l.push(ts[Math.floor(ts.length / 2)]); l.push(P); return l; }, big: P } };
+      return { motif: { first: null, base: 74, speed: 0.9, layers: [{ inst: 'harp', dB: -22, echo: 0.2 }, { inst: 'bell', oct: 12, dB: -27, echo: 0.25 }], list: (RC2, C2) => { const ts = C2.tonicStarts().filter((a) => a > 2 && a < P - 6); const l = []; if (ts.length) l.push(ts[0]); if (ts.length > 2) l.push(ts[Math.floor(ts.length / 2)]); l.push(P); return l; }, big: P } };
     },
   },
-  { // c8: resolved / warm
-    name: 'resolved', bpm: 80, bars: 2, prog: ['Dadd9', 'Gmaj7', 'Bm7', 'Asus4'], tonic: 0, nat: ['warm', 'quiet'], lvl: 0, rv: 0.5, ov: 0.8, final: true,
+  { // c8: resolved / warm: pads and strings carry it; a few soft felt-piano notes; the final chord is the only "ring"
+    name: 'resolved', bpm: 80, bars: 2, prog: ['Dadd9', 'Gmaj7', 'Bm7', 'Asus4'], tonic: 0, nat: ['warm', 'quiet'], lvl: 0, rv: 0.55, ov: 0.9, final: true,
     run(RC, C, M, ch) {
       const tF = C.tF;
-      padLayer(RC, C, { kind: 'warm', fc: [600, 2300], dB: -31, lo: 48, hi: 74, maxN: 4 });
-      padLayer(RC, C, { kind: 'str', fc: [450, 1800], dB: -37, lo: 55, hi: 76, maxN: 3, detL: [-9, 6], detR: [-6, 9] });
-      gridNotes(RC, C, 1, (u, k, s, I, cd, r) => {
-        if (r > 0.9 * M.dens) return;
-        const t = tonesIn(cd.ch, 55, 79), m = t[Math.min(t.length - 1, [0, 1, 2, 3][(k % 4)])];
-        RC.note('felt', m, u + (hr(k, 20) - 0.5) * 0.03, 0.45 + 0.25 * I, Math.sin(k) * 0.3, { dB: -21, echo: 0.4 });
-      });
-      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if ((s % 4 === 1 || s % 4 === 3) && I > 0.25) RC.perc('brush', u, 0.07 * M.perc, 0.2, k % 3); });
-      subLayer(RC, C, { kind: 'hold', dB: -33, g0: 0.45, g1: 0.55 });
-      // final chord
+      foundation(RC, C, { padDb: -31, strDb: -34, subDb: -33 });
+      sparsePluck(RC, C, { inst: 'felt', lo: 55, hi: 76, p: [0.3, 0.5], dB: -24, vel: 0.5, echo: 0.15, salt: 121, pair: 0.35 });
+      if (M.perc > 0.3) gridNotes(RC, C, 1, (u, k, s, I) => { if ((s % 8 === 3) && I > 0.25) RC.perc('brush', u, 0.04 * M.perc, 0.2, k % 3); });
       if (tF !== undefined) {
-        const vs = [50, 57, 62, 66, 69, 74]; vs.forEach((m, j) => RC.note('felt', m, tF + j * 0.035, 0.8 - j * 0.04, -0.4 + j * 0.16, { dB: -19, echo: 0.3 }));
-        RC.note('bell', 78, tF + 0.05, 0.6, 0.2, { dB: -23, echo: 0.5 }); RC.note('bell', 86, tF + 1.0, 0.7, -0.15, { dB: -22, echo: 0.6 });
-        RC.lowNote('subLong', 38, tF, 0.15);
+        const vs = [50, 57, 62, 66, 69, 74]; vs.forEach((m, j) => RC.note('felt', m, tF + j * 0.05, 0.7 - j * 0.04, -0.4 + j * 0.16, { dB: -21, echo: 0.2 }));
+        RC.note('bell', 78, tF + 0.1, 0.5, 0.2, { dB: -26, echo: 0.3 });
+        RC.lowNote('subLong', 38, tF, 0.14);
       }
-      return { motif: { first: 0.8, base: 74, speed: 1, layers: [{ inst: 'felt', dB: -18, echo: 0.4 }, { inst: 'marimba', oct: 12, dB: -23 }], list: (RC2, C2) => { const l = [0.8]; if (tF !== undefined) l.push(tF - 3 * C2.beat); return l; }, finalAt: tF } };
+      return { motif: { first: 1.2, base: 74, speed: 0.9, layers: [{ inst: 'felt', dB: -21, echo: 0.2 }, { inst: 'harp', oct: 12, dB: -27 }], list: (RC2, C2) => { const l = [1.2]; if (tF !== undefined) l.push(tF - 3 * C2.beat); return l; }, finalAt: tF } };
     },
   },
 ];
@@ -1000,18 +979,19 @@ function renderMusic(ch, T0, n, env, seedBase, colIdx) {
     list.forEach((u, j) => { const big = mo.big !== undefined && u === mo.big; const layers = big ? [...mo.layers, { inst: 'felt', oct: -12, dB: -19 }, { inst: 'marimba', oct: 12, dB: -21 }] : mo.layers; motifStmt(RC, C, { u, base: mo.base, speed: mo.speed, iv: mo.iv, quant: mo.quant, layers }); info.motif.push(+u.toFixed(2)); });
     if (mo.finalAt !== undefined) { /* final high D handled in the colour */ }
   }
+  info.pitched_notes = RC.nNotes; info.pitched_per_min = +(RC.nNotes / (ch.dur / 60)).toFixed(1);
   musicInfo[ch.id] = info;
   // ping-pong dotted-8th echo from the echo send
   const dly = Math.round(C.beat * 0.75 * SR), oL = new Float32Array(n), oR = new Float32Array(n);
   for (let i = dly; i < n; i++) { oL[i] = RC.echo.R[i - dly] + 0.42 * oR[i - dly]; oR[i] = RC.echo.L[i - dly] + 0.42 * oL[i - dly]; }
-  const eL = filt(oL, 'lp', 3600, 0.7), eR = filt(oR, 'lp', 3600, 0.7);
+  const eL = filt(oL, 'lp', 2800, 0.7), eR = filt(oR, 'lp', 2800, 0.7);
   const send = new Float32Array(n);
   for (let i = 0; i < n; i++) send[i] = 0.5 * (RC.dry.L[i] + RC.dry.R[i]) + 0.3 * 0.5 * (RC.pcb.L[i] + RC.pcb.R[i]) + 0.5 * (eL[i] + eR[i]);
   const [wl, wr] = convWet(send, 0), rv = col.rv + M.rv;
   const L = new Float32Array(n), R = new Float32Array(n);
   for (let i = 0; i < n; i++) {
-    L[i] = RC.dry.L[i] + eL[i] * 0.6 + RC.pcb.L[i] + RC.low.L[i] + wl[i] * rv * 0.42;
-    R[i] = RC.dry.R[i] + eR[i] * 0.6 + RC.pcb.R[i] + RC.low.R[i] + wr[i] * rv * 0.42;
+    L[i] = RC.dry.L[i] + eL[i] * 0.3 + RC.pcb.L[i] + RC.low.L[i] + wl[i] * rv * 0.42;
+    R[i] = RC.dry.R[i] + eR[i] * 0.3 + RC.pcb.R[i] + RC.low.R[i] + wr[i] * rv * 0.42;
   }
   filt(L, 'lp', 6500, 0.707, L); filt(R, 'lp', 6500, 0.707, R); filt(L, 'hp', 30, 0.707, L); filt(R, 'hp', 30, 0.707, R);
   // level: median 1 s block RMS over the chapter proper -> target
