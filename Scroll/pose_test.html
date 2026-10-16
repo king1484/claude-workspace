@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="engine/lib.js"></script><script src="engine/draw.js"></script><script src="engine/char.js"></script>
+<script>
+const NAMES = ['stand','standPhone','sitBed','sitBedSlump','sitDesk','lieBack','lieSleep','curl','sitFloor','stretch','tapWrist','slump'];
+function drawFrame(g, t, E) {
+  g.fillStyle = '#2b2e35'; g.fillRect(0, 0, E.W, E.H);
+  g.fillStyle = '#1d1f24'; g.fillRect(0, 880, E.W, 200);
+  const cols = 6;
+  NAMES.forEach((n, i) => {
+    const cx = 160 + (i % cols) * 320, cy = i < cols ? 330 : 780;
+    const V = CH.named(n);
+    // stand on a ground line at cy+112 for upright poses
+    CH.draw(g, { x: cx, y: cy, s: 0.8, flip: 1, pose: V, t: 0.5, hood: i % 2 ? [112, 116, 128] : [214, 58, 58],
+      lights: [{ x: cx + 60, y: cy - 60, r: 260, rgb: [90, 170, 255], a: 0.45 }] });
+    g.fillStyle = '#9aa'; g.font = '22px DejaVu Sans'; g.textAlign = 'center'; g.fillText(n, cx, cy + 200);
+  });
+}
+</script>
+<script src="harness.js"></script>

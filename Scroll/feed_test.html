@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="engine/lib.js"></script><script src="engine/draw.js"></script><script src="engine/feed.js"></script>
+<script>
+function drawFrame(g, t, E) {
+  const q = new URLSearchParams(location.search), m = q.get('m') || 'worlds';
+  g.fillStyle = '#05070c'; g.fillRect(0, 0, 1920, 1080);
+  if (m === 'slot') { FEED.slot(g, E, t, [[0.5, [0, 1, 2]], [3.0, [3, 3, 1]]]); return; }
+  for (let i = 0; i < 8; i++) FEED.worldCard(g, i, 40 + i * 232, 60, 212, 380, t + i * 0.13, 20);
+  FEED.phone(g, 300, 800, 0, 3, { card: 2, k: 0.2, dot: 1, t });
+  FEED.phone(g, 800, 800, 0, 3, { card: 0, overlay: 'screentime', t });
+  FEED.phone(g, 1300, 800, 0, 3, { card: 4, dim: 0.7, t });
+}
+</script>
+<script src="harness.js"></script>

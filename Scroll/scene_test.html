@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style>
+<canvas id="c"></canvas>
+<script src="engine/lib.js"></script><script src="engine/draw.js"></script><script src="engine/char.js"></script><script src="engine/set.js"></script>
+<script>
+function view(g, cam) { g.translate(960, 540); g.scale(cam.z, cam.z); g.translate(-cam.x, -cam.y); }
+function drawFrame(g, t, E) {
+  const q = new URLSearchParams(location.search), mode = q.get('m') || 'night';
+  const S = { sky: mode === 'dawn' ? 1 : mode === 'sun' ? 2 : 0, lamp: mode === 'lamp' ? 1 : 0, curtain: mode === 'sun' ? 1 : 0, clock: '11:42', hole: mode === 'hole' ? 1 : 0, planks: 0, rain: 0, mug: 1, note: 0, cord: 0, shelfPhone: 0 };
+  const cam = { x: +(q.get('cx') || 1300), y: +(q.get('cy') || 540), z: +(q.get('z') || 0.74) };
+  g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080);
+  g.save(); view(g, cam);
+  SET.room(g, S, t);
+  const phoneOn = mode !== 'sun';
+  const hip = { x: 760, y: SET.BED_TOP - 28 };
+  const hood = mode === 'sun' ? [214, 58, 58] : [112, 116, 128];
+  const lights = phoneOn ? [{ x: hip.x + 92, y: hip.y - 56, r: 300, rgb: [90, 170, 255], a: 0.5 }] : [];
+  const pose = CH.named('sitBed');
+  const J = CH.draw(g, { x: hip.x, y: hip.y, s: 1, flip: 1, pose, t, res: cam.z, hood, lights });
+  if (phoneOn) { g.save(); g.translate(J.handF.x + 6, J.handF.y - 10); g.rotate(-0.25); g.fillStyle = '#0b0c10'; rr(g, -24, -48, 48, 96, 8); g.fill(); g.fillStyle = '#4aa8ff'; rr(g, -20, -44, 40, 88, 5); g.fill(); g.restore(); }
+  g.restore();
+  const L = [];
+  if (phoneOn) L.push({ x: hip.x + 98, y: hip.y - 66, r: 520, rgb: [70, 150, 255], a: 0.22, open: 0.97 });
+  if (S.lamp) L.push({ x: 1650, y: 620, r: 420, rgb: [255, 190, 110], a: 0.2, open: 0.9 });
+  if (mode === 'sun') L.push({ x: 1600, y: 420, r: 1000, rgb: [255, 190, 110], a: 0.25, open: 0.95 });
+  SET.lightPass(g, cam, mode === 'sun' ? [10, 10, 14, 0.25] : [6, 8, 14, 0.82], L, E);
+  SET.vignette(g, E, 0.55); drawGrain(g, 1920, 1080, t, 0.10);
+}
+</script>
+<script src="harness.js"></script>
