@@ -1,3 +1,19 @@
+# Status update - cloud continuation (16 October 2026, later session)
+
+Done in Claude Cloud on branch `claude/youthful-heisenberg-b05x6n` (this section supersedes the "Current video #2 status" table below):
+
+- **Video #2 chapters c5-c8 now exist** (`HundredHourDay/ch/c5.js..c8.js`) with cue sheets for c3 and c5-c8 (`ch/*.build_cues*.mjs` regenerate them). `index_full.html` loads all eight chapters without errors. Chapter-by-chapter notes are in each file's header comment.
+- **HUD is monotonic while visible** (checked by `tools/qa-hud.mjs`): 16->17, 17->18, 19->49, 50->51, 51->62, 68->70, 71->100. Deliberate deviations from the old time map, all documented in the chapter headers: c5 hides the HUD for the explanatory cutaways n2-n5 and ends at ~H62.5; c6 opens with a visible time-lapse 62.5 -> 70 and races 71 -> 86 under the storm; c7 opens with a time-lapse 86 -> 100, then holds **100** at sunrise (new `TOD.hud` option `h100`, because the shared HUD wraps 100 to 00); c4 now runs 38 -> 40 under "By hour forty" then 40 -> 49.9.
+- **Narration corrections applied** (h2, b4, n4, w2, w4): re-recorded with the same Kokoro voice/settings via `HundredHourDay/revise_vo_lines.py`, fit into the existing windows. Every line start and chapter duration is unchanged (total still 304.5 s). The tool first reproduced the unchanged cached lines to within a millisecond, so the voice is the same. The original WAVs remain in git history.
+- **Audio**: `node sfx_full.mjs --wav-only --check` passes numerically (-16 LUFS, -2.4 dBTP, no clipping, VO >= 11.1 dB above music in the speech band; c6 is the lowest). **Nobody has listened to it.**
+- **QA**: `tools/qa-sweep.mjs` draws the whole film at 0.25 s steps: no page errors, no flat/blank frames, deterministic re-draws. Software rendering is slower than the original GPU target (median ~16 ms, p95 ~156 ms per frame; slow frames are heat-warp/frost/globe overlays).
+- **Short (video #1)**: `FutureSight/shorts/FutureSight_Short.mp4` was assembled from the release silent render + the preserved published mix: 1080x1920, 30 fps, 50.37 s, -14.1 LUFS, -2.3 dBTP. Frames were reviewed; the audio was **not** listened to.
+- **Not uploaded anywhere.** MP4s are git-ignored and too large for Git; see the final report for where review copies live.
+
+Still open: a human watch/listen of both videos (speech clarity, joins, caption timing, repetitive effects), a closer look at c5 shots B/E and c8 B1/B3 composition, and the optional polish items in the c5-c8 headers.
+
+---
+
 # Resume the What If Labs videos
 
 This is the 16 October 2026 working-source handoff for `king1484/claude-workspace`, branch `claude/youthful-heisenberg-b05x6n`. Local production was stopped at the user's request so Claude Cloud can continue from the saved state. No new c5/c6 production code was saved during the Codex inspection. Preserve useful work and inspect the current checkout before editing.

@@ -17,7 +17,7 @@ const TT = {
   cheer: tAt(n1, 'Finally'), leak: tAt(n1, 'But the heat'),
   swing: tAt(n2, 'Dry places'), more: tAt(n2, 'A fifty-hour'), freeze: tAt(n2, 'possibly below'), cloud: tAt(n2, 'depending on'),
   flick: n3.start + 0.15, panel: tAt(n3, 'Solar panels'), batt: tAt(n3, 'today'),
-  pull: tAt(n4, 'pulling'), dark: tAt(n4, 'and some places'),
+  pull: tAt(n4, 'pulling'), dark: tAt(n4, 'or letting some'),
   polar: tAt(n5, 'Polar animals'), clock24: tAt(n5, 'But most'),
   lapse0: n6.start + 0.05, wake: tAt(n6, 'wake up') + 0.1, still: tAt(n6, 'and it'), fortytwo: tAt(n6, 'Forty-two'),
   look: n7.start + 0.2, shoot: n7.end - 1.9

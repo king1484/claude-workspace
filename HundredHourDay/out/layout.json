@@ -13,10 +13,10 @@
    },
    {
     "id": "h2",
-    "text": "But outside, the sun is still high in the sky. And it will be for another thirty-four hours.",
+    "text": "But outside, the sun is still high in the sky. And sunset is thirty-four hours away.",
     "start": 5.496,
-    "dur": 5.559,
-    "end": 11.056
+    "dur": 5.24,
+    "end": 10.736
    },
    {
     "id": "h3",
@@ -97,10 +97,10 @@
    },
    {
     "id": "b4",
-    "text": "So you sleep a few hours, wake up at the wrong time, and the sun hasn't moved.",
+    "text": "So you sleep a few hours, wake up at the wrong time, and the sun's barely moved.",
     "start": 22.951,
-    "dur": 4.515,
-    "end": 27.465
+    "dur": 4.669,
+    "end": 27.62
    },
    {
     "id": "b5",
@@ -188,10 +188,10 @@
    },
    {
     "id": "n4",
-    "text": "A night this long would mean pulling power from other parts of the planet, and some places would simply go dark.",
+    "text": "A night this long could mean pulling power from elsewhere, using backups, or letting some places go dark.",
     "start": 28.197,
-    "dur": 6.29,
-    "end": 34.488
+    "dur": 6.376,
+    "end": 34.573
    },
    {
     "id": "n5",
@@ -230,10 +230,10 @@
    },
    {
     "id": "w2",
-    "text": "Warm ground and cool ground push the air around. By day, breezes blow from the cool sea to the hot land. At night, they flip. With days and nights this long, those swings last longer, and blow harder.",
+    "text": "Warm ground and cool ground push the air around. By day, breezes blow from the cool sea to the hot land. At night, they flip. With days and nights this long, those swings last longer, and could blow harder.",
     "start": 4.841,
-    "dur": 13.101,
-    "end": 17.942
+    "dur": 13.426,
+    "end": 18.267
    },
    {
     "id": "w3",
@@ -244,10 +244,10 @@
    },
    {
     "id": "w4",
-    "text": "Nobody knows exactly how it would play out. But expect weather wilder than anything we're used to.",
+    "text": "Nobody knows exactly how it would play out. But the weather could be very different from what we're used to.",
     "start": 33.329,
-    "dur": 5.807,
-    "end": 39.136
+    "dur": 5.711,
+    "end": 39.04
    }
   ]
  },

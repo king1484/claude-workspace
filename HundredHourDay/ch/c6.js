@@ -15,9 +15,9 @@ const tAt = (v, s) => { const i = v.text.indexOf(s); return v.start + v.dur * (M
 const END = LAY.dur;
 const TT = {
   lapse1: 1.9, wind: tAt(w1, 'the wind picks'), notAcc: tAt(w1, 'And that'),
-  warm: w2.start + 0.2, day: tAt(w2, 'By day'), night: tAt(w2, 'At night'), longer: tAt(w2, 'With days'), harder: tAt(w2, 'and blow harder'),
+  warm: w2.start + 0.2, day: tAt(w2, 'By day'), night: tAt(w2, 'At night'), longer: tAt(w2, 'With days'), harder: tAt(w2, 'and could blow'),
   slower: w3.start + 0.1, hurr: tAt(w3, 'Hurricanes need'), four: tAt(w3, 'and it would be'), differ: tAt(w3, 'Storms would'), struggle: tAt(w3, 'or struggle'),
-  nobody: w4.start + 0.1, expect: tAt(w4, 'But expect'), flash: w4.end - 1.4
+  nobody: w4.start + 0.1, expect: tAt(w4, 'But the weather'), flash: w4.end - 1.4
 };
 const CUT = { B1: w2.start - 0.1, B2: TT.night - 0.1, B3: TT.longer - 0.1, B4: TT.harder - 0.55, C: w3.start - 0.15, D: w4.start - 0.1 };
 const H_START = 62.5, H_70 = 70, H_71 = 71, H_END = 86;

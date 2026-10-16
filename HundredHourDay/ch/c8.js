@@ -120,9 +120,11 @@ function shotB3(g, lt) {
   g.save(); g.translate(860, 330); g.fillStyle = '#f4f6ff'; g.strokeStyle = '#2d3550'; g.lineWidth = 7; g.beginPath(); g.arc(0, 0, 70, 0, TAU); g.fill(); g.stroke(); g.lineWidth = 5; g.lineCap = 'round';
   const ha = (lt - CUT.B3) * 1.4; g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.sin(ha) * 46, -Math.cos(ha) * 46); g.stroke(); g.restore();
   // bed + host sleeping then waking on a schedule
-  g.fillStyle = '#e8e0f0'; rr(g, 80, 760, 640, 60, 12); g.fill(); g.fillStyle = '#6a5a8a'; g.fillRect(80, 800, 640, 130);
+  g.fillStyle = '#e8e0f0'; rr(g, 60, 700, 860, 70, 14); g.fill(); g.fillStyle = '#6a5a8a'; g.fillRect(60, 760, 860, 190); g.fillStyle = '#4a3a6a'; g.fillRect(60, 940, 860, 14);
+  g.fillStyle = '#f4f0fa'; rr(g, 90, 650, 190, 70, 30); g.fill();
   const lie = S(lt, CUT.B3 + 0.5, CUT.B3 + 1.2) * (1 - S(lt, TT.sleep + 3.4, TT.sleep + 4.0));
-  MASCOT.draw(g, { x: 320, y: 780, s: 1.5, facing: 1, pose: { a: 'stand', b: 'lie', k: lie }, t: lt, expr: lie > 0.8 ? { eyes: 'closed', sleepZ: 1 } : { eyes: 'happy' }, props: { scarf: false }, shadow: false });
+  MASCOT.draw(g, { x: 440, y: 760, s: 2.3, facing: 1, pose: { a: 'stand', b: 'lie', k: lie }, t: lt, expr: lie > 0.8 ? { eyes: 'closed', sleepZ: 1 } : { eyes: 'happy' }, props: { scarf: false }, shadow: false });
+  if (lie > 0.5) { g.save(); g.globalAlpha = lie; g.fillStyle = '#4a5aa8'; g.strokeStyle = '#1a1f4a'; g.lineWidth = 5; g.beginPath(); g.moveTo(380, 740); g.quadraticCurveTo(560, 690, 760, 730); g.lineTo(900, 745); g.lineTo(900, 790); g.lineTo(380, 790); g.closePath(); g.fill(); g.stroke(); g.restore(); }
   TOD.grade(g, 118, { scene: 'city' });
 }
 
@@ -152,15 +154,19 @@ function dial24(g, x, y, r, lt, calm) {
 }
 function shotC(g, lt) {
   indoorBg(g, ['#f3dcc0', '#e6c8a0'], ['#b98a5a', '#8a6038'], 800);
-  g.fillStyle = '#9ad0ff'; rr(g, 1180, 200, 480, 360, 16); g.fill(); g.lineWidth = 8; g.strokeStyle = '#5a3a22'; g.stroke();
-  const skyK = 0.5 + 0.5 * Math.sin(lt * 0.5); g.fillStyle = 'rgba(255,210,90,' + (0.2 + 0.5 * skyK) + ')'; g.beginPath(); g.arc(1420, 320, 52, 0, TAU); g.fill();
+  g.fillStyle = '#9ad0ff'; rr(g, 1240, 170, 480, 380, 16); g.fill(); g.lineWidth = 8; g.strokeStyle = '#5a3a22'; g.stroke();
+  const skyK = 0.5 + 0.5 * Math.sin(lt * 0.5); g.fillStyle = 'rgba(255,210,90,' + (0.35 + 0.5 * skyK) + ')'; g.beginPath(); g.arc(1480, 300, 58, 0, TAU); g.fill();
+  g.strokeStyle = '#5a3a22'; g.lineWidth = 6; g.beginPath(); g.moveTo(1480, 170); g.lineTo(1480, 550); g.moveTo(1240, 360); g.lineTo(1720, 360); g.stroke();
   const a = S(lt, CUT.C, CUT.C + 0.6);
-  g.save(); g.globalAlpha = a; dial24(g, 860, 340, 140, lt, 1); g.restore();
-  g.fillStyle = '#e8e0f0'; rr(g, 80, 750, 700, 60, 12); g.fill(); g.fillStyle = '#6a8ad0'; g.fillRect(80, 800, 700, 140);
+  g.save(); g.globalAlpha = a; dial24(g, 1000, 330, 160, lt, 1); g.restore();
+  // bed
+  g.fillStyle = '#e8e0f0'; rr(g, 60, 700, 860, 70, 14); g.fill(); g.fillStyle = '#6a8ad0'; g.fillRect(60, 760, 860, 190); g.fillStyle = '#4a6ab0'; g.fillRect(60, 940, 860, 14);
+  g.fillStyle = '#f4f0fa'; rr(g, 90, 650, 190, 70, 30); g.fill();
   const up = S(lt, TT.surprise, TT.surprise + 0.8);
-  MASCOT.draw(g, { x: 400, y: 800, s: 1.7, facing: 1, pose: { a: 'lie', b: 'thumbsUp', k: up * 0.0 }, t: lt, expr: up > 0.2 ? { eyes: 'happy', sparkle: 0.5 * up } : { eyes: 'closed' }, shadow: false });
-  // thumbs-up held by a hand above the blanket after "the real surprise"
-  if (up > 0.02) { g.save(); g.globalAlpha = up; g.translate(560, 700 - 20 * up); numText(g, '24', 0, 0, 74, '#ffd23a', '#0c1232'); g.restore(); }
+  const x = 440;
+  MASCOT.draw(g, { x: x, y: 760, s: 2.3, facing: 1, pose: { a: 'lie', b: 'sitGround', k: up }, t: lt, expr: up > 0.3 ? { eyes: 'happy', sparkle: 0.7 * up } : { eyes: 'closed', sleepZ: 0.6 }, shadow: false });
+  g.save(); g.globalAlpha = 1 - up; g.fillStyle = '#4a5aa8'; g.strokeStyle = '#1a1f4a'; g.lineWidth = 5; g.beginPath(); g.moveTo(380, 740); g.quadraticCurveTo(560, 690, 760, 730); g.lineTo(900, 745); g.lineTo(900, 790); g.lineTo(380, 790); g.closePath(); g.fill(); g.stroke(); g.restore();
+  if (up > 0.02) { g.save(); g.globalAlpha = up; g.translate(1000, 560 - 14 * up); numText(g, '24', 0, 0, 84, '#ffd23a', '#0c1232'); g.restore(); }
   TOD.grade(g, 118, { scene: 'city' });
 }
 

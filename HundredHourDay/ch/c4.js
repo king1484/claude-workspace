@@ -25,7 +25,8 @@ const CUT = {
 };
 const END = LAY.dur;
 const H0 = 38, H1 = 49.9;
-const hOf = (lt) => H0 + (H1 - H0) * clamp(lt / END);
+const H40_T = 1.4;   // d1 opens "By hour forty": the clock catches up 38 -> 40 under the first words (visible time skip, pulses), then runs 40 -> 49.9
+const hOf = (lt) => lt < H40_T ? H0 + 2 * easeInOut(lt / H40_T) : 40 + (H1 - 40) * clamp((lt - H40_T) / (END - H40_T));
 const E = (t, a, b) => clamp((t - a) / (b - a));
 const S = (t, a, b) => smooth(E(t, a, b));
 const rr = (g, x, y, w, h, r) => { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); };
@@ -282,8 +283,8 @@ function finish(g, H, o, lt, fx) {
   TOD.grade(g, H, o);
 }
 function hudDraw(g, lt, H) {
-  const pop = E(lt, 0.4, 0.95), fr = H - Math.floor(H), u = fr / ((H1 - H0) / END);
-  const pulse = u < 0.5 && lt > 1.2 ? Math.sin(Math.PI * u / 0.5) : 0;
+  const pop = E(lt, 0.4, 0.95), fr = H - Math.floor(H), u = fr / ((H1 - 40) / (END - H40_T));
+  const pulse = lt < H40_T + 0.3 ? 0.5 + 0.5 * Math.sin(lt * 14) : (u < 0.5 ? Math.sin(Math.PI * u / 0.5) : 0);
   TOD.hud(g, H, { alpha: 1, pop: pop, pulse: pulse });
 }
 const camPush = (lt, a, b, z0, z1) => z0 + (z1 - z0) * easeInOut(E(lt, a, b));

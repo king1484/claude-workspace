@@ -8,7 +8,11 @@ Verified links collected during the interrupted continuation on 16 October 2026.
 - [NOAA: Hurricanes](https://www.noaa.gov/education/resource-collections/weather-atmosphere/hurricanes) — background conditions for tropical cyclone formation, including latitude/Coriolis.
 - [EIA: Battery storage duration](https://www.eia.gov/TodayinEnergy/detail.php?id=51798) — duration varies by battery use/design; this is historical fleet data, not a universal limit for all current technology.
 
-## Proposed corrections NOT yet applied to script or audio
+## Corrections - APPLIED in the cloud continuation (items 1-4 and 5; see `HundredHourDay/revise_vo_lines.py`)
+
+Status: h2, b4, n4, w2 and w4 were re-recorded with the same Kokoro voice/speed and now say the corrected things; their start times and every chapter duration are unchanged (new line durations: h2 5.240, b4 4.669, n4 6.376, w2 13.426, w4 5.711). Item 5 (c4 HUD vs "By hour forty") is unchanged and still to review. The text below is the original proposal, kept for the record.
+
+## Original proposal
 
 1. h2 says the sun stays high for another 34 hours. Say sunset is 34 hours away; show the sun moving slowly.
 2. b4 says the sun has not moved. Qualify this as slow movement and align `c3.js` window sky to the story clock.

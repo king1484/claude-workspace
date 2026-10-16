@@ -1,5 +1,7 @@
 # Source notes — "What If One Day Lasted 100 Hours?"
 
+> **Wording revised 2026-10-16 (cloud continuation):** five lines were re-recorded with the same voice/settings and fit into their existing windows (timing of every other line unchanged): h2 ("sunset is thirty-four hours away" - the sun does not stay high for 34 h), b4 ("the sun's barely moved" - it moves slowly, not zero), n4 ("could mean pulling power from elsewhere, using backups, or letting some places go dark" - import is one option among storage/backup/demand), w2 ("and could blow harder" - mechanism is standard physics, magnitude is not established), w4 ("the weather could be very different from what we're used to" - no "wilder than anything" claim). Rows below describe the claims; where a row quotes older wording the revised line above governs.
+
 Claims in the narration and how they are supported or hedged. Checked 2026-10-16.
 
 | Claim (line) | Status | Basis |
