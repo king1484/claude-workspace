@@ -1,0 +1,87 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>rigs test</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="lib.js"></script>
+<script src="rigs.js"></script>
+<script>
+const c = document.getElementById('c'), g = c.getContext('2d');
+const mode = (location.search.match(/mode=(\w+)/) || [0, 'sheet'])[1];
+
+function bg() {
+  const gr = g.createLinearGradient(0, 0, 0, 1080);
+  gr.addColorStop(0, '#241648'); gr.addColorStop(0.45, '#6b2f6e'); gr.addColorStop(0.72, '#d4577a'); gr.addColorStop(1, '#ff9d57');
+  g.fillStyle = gr; g.fillRect(0, 0, 1920, 1080);
+  const sun = g.createRadialGradient(1500, 560, 10, 1500, 560, 700);
+  sun.addColorStop(0, 'rgba(255,230,170,0.95)'); sun.addColorStop(0.15, 'rgba(255,170,90,0.6)'); sun.addColorStop(1, 'rgba(255,140,80,0)');
+  g.fillStyle = sun; g.fillRect(0, 0, 1920, 1080);
+  // dark far buildings so the ghost glow and silhouettes are judged against something real
+  g.fillStyle = '#3a1a50';
+  for (let i = 0; i < 24; i++) { const h = 120 + ((i * 97) % 220); g.fillRect(i * 85, 700 - h, 86, h + 400); }
+  g.fillStyle = 'rgba(70,28,70,0.9)'; g.fillRect(0, 820, 1920, 260);
+}
+function label(t, x, y) { g.save(); g.font = '15px sans-serif'; g.fillStyle = 'rgba(255,255,255,0.8)'; g.textAlign = 'center'; g.fillText(t, x, y); g.restore(); }
+function rule(y) { g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(0, y, 1920, 3); }
+
+function sheet() {
+  bg();
+  // row 1: walk cycle
+  const y1 = 330; rule(y1);
+  for (let i = 0; i < 8; i++) {
+    const x = 130 + i * 235, ph = i / 8;
+    drawWalker(g, { x, y: y1, s: 1, pose: walkerPose({ phase: ph, walk: 1, lean: 0.1 }) });
+    label('ph ' + ph.toFixed(3), x, y1 + 28);
+  }
+  // row 2: states
+  const y2 = 660; rule(y2);
+  const R2 = [
+    ['phone walk', { phase: 0.12, walk: 1, phone: 1, headDown: 0.35, lean: 0.12 }],
+    ['phone idle', { phase: 0, walk: 0, phone: 1, headDown: 0.35, lean: 0.1 }],
+    ['eyes open', { phase: 0, walk: 0, eyeOpen: 1, lean: 0.05 }],
+    ['eyes glow', { phase: 0, walk: 0, eyeOpen: 1, eyeGlow: 1, lean: 0.05, flutter: 1 }],
+    ['step .25', { phase: 0, walk: 0, step: 0.25 }],
+    ['step .5', { phase: 0, walk: 0, step: 0.5, eyeOpen: 0.8 }],
+    ['step .8', { phase: 0, walk: 0, step: 0.8 }],
+  ];
+  R2.forEach((r, i) => {
+    const x = 130 + i * 235;
+    drawWalker(g, { x, y: y2, s: 1, pose: walkerPose(r[1]) }); label(r[0], x, y2 + 28);
+  });
+  // ghosts in row 2 end + facing left
+  drawWalker(g, { x: 130 + 7 * 235, y: y2, s: 1, facing: -1, pal: palGhost(0.6), pose: walkerPose({ phase: 0.3, walk: 1 }) });
+  drawWalker(g, { x: 130 + 7 * 235 + 60, y: y2, s: 1, pal: palGhost(0.5), pose: walkerPose({ phase: 0.8, walk: 1 }) });
+  // row 3: vehicles + ring
+  const y3 = 1010; rule(y3);
+  drawBike(g, { x: 190, y: y3, s: 1, wheel: 0.4, pedal: 0.6, speed: 0 }); label('bike', 190, y3 + 26);
+  drawBike(g, { x: 560, y: y3, s: 1, pal: palGhost(0.6), wheel: 1.1, pedal: 2.2, speed: 2800 }); label('ghost bike', 560, y3 + 26);
+  drawCar(g, { x: 960, y: y3, s: 1, wheel: 0.3 }); label('car', 960, y3 + 26);
+  drawCar(g, { x: 1400, y: y3, s: 1, pal: palGhost(0.55) }); label('ghost car', 1400, y3 + 26);
+  drawTimerRing(g, 1730, 860, 270, { value: 7.3, progress: 0.27, appear: 1, time: 1.234 });
+  // small-scale readability: far lane
+  drawBike(g, { x: 1000, y: 780, s: 0.45, wheel: 0.4, pedal: 0.6, speed: 2800 });
+  drawWalker(g, { x: 1100, y: 780, s: 0.45, pose: walkerPose({ phase: 0.2, walk: 1 }) });
+}
+function walkzoom() {
+  bg(); const y = 1000;
+  const defs = [
+    { phase: 0.0, walk: 1 },
+    { phase: 0.25, walk: 1, phone: 1, headDown: 0.35, lean: 0.12 },
+    { phase: 0, walk: 0, eyeOpen: 1, eyeGlow: 1, lean: 0.05, flutter: 0.6 },
+  ];
+  defs.forEach((d, i) => drawWalker(g, { x: 380 + i * 580, y, s: 3.4, pose: walkerPose(d) }));
+}
+function vehzoom() {
+  bg();
+  drawBike(g, { x: 480, y: 900, s: 2.6, wheel: 0.4, pedal: 0.6, speed: 1000 });
+  drawCar(g, { x: 1400, y: 900, s: 2.0, wheel: 0.3 });
+  drawBike(g, { x: 480, y: 1060, s: 0.0001, pal: palGhost(0.5) });
+}
+function ghostzoom() {
+  bg();
+  drawWalker(g, { x: 400, y: 960, s: 3.0, pal: palGhost(0.65), pose: walkerPose({ phase: 0.1, walk: 1 }) });
+  drawCar(g, { x: 1250, y: 940, s: 2.0, pal: palGhost(0.6) });
+  drawTimerRing(g, 1700, 300, 480, { value: 4.6, progress: 0.54, appear: 1, time: 2.1 });
+}
+({ sheet, walkzoom, vehzoom, ghostzoom })[mode]();
+document.title = 'done';
+</script></body></html>

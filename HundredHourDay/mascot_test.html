@@ -1,0 +1,136 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>mascot test</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="lib.js"></script>
+<script src="timeline.js"></script>
+<script src="layout.js"></script>
+<script src="world.js"></script>
+<script src="rigs.js"></script>
+<script src="scenes.js"></script>
+<script src="mascot.js"></script>
+<script>
+(function(){
+const POSES = ['stand','walk','run','sitGround','sitBench','lie','kneel','slump','point','shield','fanSelf','hugSelf','wipeBrow','throwArms','facepalm','sprawl','lookUp','thumbsUp','wave','shrug','drink'];
+const EX = [undefined,'neutral','hot','cold','panic','tired','dizzy','happy','angry','relieved','dead','wow'];
+function label(g, txt, x, y, col){ g.fillStyle = col; g.font = '15px sans-serif'; g.textAlign = 'center'; g.fillText(txt, x, y); }
+function sky(g){ const gr = g.createLinearGradient(0,0,0,1080); gr.addColorStop(0,'#7cc4ff'); gr.addColorStop(1,'#d8efff'); g.fillStyle = gr; g.fillRect(0,0,1920,1080); }
+function night(g){ const gr = g.createLinearGradient(0,0,0,1080); gr.addColorStop(0,'#05061a'); gr.addColorStop(1,'#141a3c'); g.fillStyle = gr; g.fillRect(0,0,1920,1080); }
+function poseSheet(g, bg, useExpr){
+  bg(g);
+  const cols = 7, cw = 1920/cols, ch = 1080/3;
+  POSES.forEach((p, i) => {
+    const cx = (i % cols) * cw + cw/2, cy = Math.floor(i/cols) * ch;
+    g.fillStyle = 'rgba(255,255,255,0.08)'; g.fillRect((i%cols)*cw+4, cy+4, cw-8, ch-8);
+    const gy = cy + ch - 56;
+    g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect((i%cols)*cw+4, gy, cw-8, 2);
+    const st = { x: cx - (p==='lie'||p==='sprawl' ? -20 : 0) , y: gy, s: 0.85, facing: 1, pose: p, t: 0.37 + i*0.11, props: null };
+    if (p === 'sitBench') { g.fillStyle = '#6b4a2a'; g.fillRect(cx-20, gy-52*0.85, 90, 8); g.fillRect(cx-10, gy-44, 8, 44); g.fillRect(cx+50, gy-44, 8, 44); }
+    if (useExpr) st.expr = EX[(i*5+1) % EX.length];
+    if (p === 'drink') st.props = { waterBottle: true };
+    if (p === 'fanSelf') st.props = {};
+    MASCOT.draw(g, st);
+    label(g, p + (useExpr ? ' / ' + (st.expr||'auto') : ''), cx, cy + ch - 14, bg === sky ? '#12304f' : '#cfd6ff');
+  });
+}
+function exprSheet(g){
+  night(g);
+  const items = [];
+  ['normal','wide','squint','droop','bored','angry','worry','tiny','closed','happy','spiral','dead','star'].forEach(e => items.push({ expr: { eyes: e }, n: e }));
+  ['hot','boiling','cold','freezing','panic','shock','dizzy','joy','angry','confused','idea','awkward'].forEach(e => items.push({ expr: e, n: e }));
+  items.push({ expr: { eyes: 'normal', eyes2: 'happy', k: 0.5 }, n: 'blend' });
+  items.push({ expr: { eyes: 'normal', look: 'up' }, n: 'look up' });
+  items.push({ expr: { eyes: 'normal', look: 'back' }, n: 'look back' });
+  items.push({ expr: { eyes: 'wide', face: 1 }, n: 'face cam' });
+  items.push({ expr: { eyes: 'happy', face: 1, sparkle: 1 }, n: 'happy cam' });
+  items.push({ expr: { eyes: 'normal', pop: '!', popT: 0 }, n: 'pop !' });
+  const cols = 9, cw = 1920/cols, ch = 1080/4;
+  items.forEach((it, i) => {
+    const cx = (i % cols) * cw + cw/2, cy = Math.floor(i/cols) * ch, gy = cy + ch - 40;
+    MASCOT.draw(g, { x: cx, y: gy, s: 0.8, pose: 'stand', t: 1.4 + i*0.07, expr: it.expr });
+    label(g, it.n, cx, cy + ch - 12, '#cfd6ff');
+  });
+}
+function propSheet(g, bg){
+  bg(g);
+  const items = [
+    ['umbrella', {umbrella:true}, 'stand'], ['sunglasses', {sunglasses:true}, 'stand'], ['scarf', {scarf:true}, 'stand'],
+    ['blanket', {blanket:true}, 'stand'], ['blanket sit', {blanket:true}, 'sitGround'], ['blanket lie', {blanket:true}, 'lie'],
+    ['fan', {fan:true}, 'stand'], ['bottle', {waterBottle:true}, 'stand'], ['plate burger', {plate:true}, 'stand'],
+    ['plate pizza', {plate:{food:'pizza'}}, 'stand'], ['flashlight', {flashlight:true}, 'stand'], ['towel', {towel:true}, 'stand'],
+    ['mug', {mug:true}, 'stand'], ['beanie', {beanie:true}, 'stand'], ['beanie+scarf+mug', {beanie:true, scarf:true, mug:true}, 'hugSelf'],
+    ['shades+umbrella', {sunglasses:true, umbrella:true}, 'walk'], ['drink', {waterBottle:true}, 'drink'], ['plate cake', {plate:{food:'cake'}}, 'stand']
+  ];
+  const cols = 6, cw = 1920/cols, ch = 1080/3;
+  items.forEach((it, i) => {
+    const cx = (i % cols) * cw + cw/2, cy = Math.floor(i/cols) * ch, gy = cy + ch - 50;
+    MASCOT.draw(g, { x: cx, y: gy, s: 0.9, pose: it[2], t: 0.9 + i*0.13, props: it[1] });
+    label(g, it[0], cx, cy + ch - 14, bg === sky ? '#12304f' : '#cfd6ff');
+  });
+}
+function motionSheet(g){
+  sky(g);
+  // run + walk strip with phases, blends, pal recolour, facing left, alpha
+  for (let i = 0; i < 8; i++) MASCOT.draw(g, { x: 120 + i*230, y: 330, s: 0.8, pose: 'run', phase: i/8, t: 0, expr: 'panic' });
+  for (let i = 0; i < 8; i++) MASCOT.draw(g, { x: 120 + i*230, y: 650, s: 0.8, pose: 'walk', phase: i/8, t: 0 });
+  const bl = ['stand','shield','fanSelf','hugSelf','slump','lie'];
+  for (let i = 0; i < 6; i++) MASCOT.draw(g, { x: 100 + i*210, y: 1000, s: 0.65, pose: { a: 'stand', b: bl[i], k: i/5 }, t: 1.1 });
+  MASCOT.draw(g, { x: 1450, y: 1000, s: 0.65, facing: -1, pose: 'point', pal: MASCOT.palette('#2f8f5a'), t: 1, expr: 'happy' });
+  MASCOT.draw(g, { x: 1600, y: 1000, s: 0.65, pose: 'wave', pal: MASCOT.palette('#e9b92a'), t: 1.2, expr: 'happy' });
+  MASCOT.draw(g, { x: 1750, y: 1000, s: 0.65, pose: 'stand', alpha: 0.5, t: 1.2 });
+  const J = MASCOT.joints({ x: 1850, y: 1000, s: 0.65, pose: 'stand', t: 1 });
+  g.fillStyle = '#f00'; [J.head, J.handF, J.footF, J.bubble, J.eyes, J.top].forEach(p => { g.beginPath(); g.arc(p.x, p.y, 4, 0, 6.3); g.fill(); });
+}
+function closeSheet(g){
+  night(g);
+  const E = ['normal','wide','squint','droop','bored','angry','worry','tiny','closed','happy','spiral','dead','star'];
+  const items = E.map(e => ({ expr: { eyes: e, blink: false }, n: e }));
+  items.push({ expr: { eyes: 'normal', blink: false, look: 'up' }, n: 'look up' });
+  items.push({ expr: { eyes: 'normal', blink: false, look: 'back' }, n: 'look back' });
+  items.push({ expr: { eyes: 'wide', blink: false, face: 1 }, n: 'face cam' });
+  items.push({ expr: { eyes: 'happy', blink: false, face: 1 }, n: 'happy cam' });
+  items.push({ expr: { eyes: 'droop', blink: false, face: 1 }, n: 'droop cam' });
+  items.push({ expr: { eyes: 'normal', eyes2: 'happy', k: 0.5, blink: false }, n: 'blend' });
+  items.push({ expr: { eyes: 'normal', blink: true }, n: 'blink t=0' });
+  const cols = 8, cw = 240, ch = 360, s = 2.2;
+  items.forEach((it, i) => {
+    const cx = (i % cols) * cw + cw/2, cy = Math.floor(i/cols) * ch;
+    let t = 1.0; if (it.n === 'blink t=0') { t = 0; for (let q = 0; q < 400; q++) { if (MASCOT.blink(q*0.01, 0) > 0.8) { t = q*0.01; break; } } }
+    MASCOT.draw(g, { x: cx - 10*s, y: cy + 150 + 232*s, s: s, pose: 'stand', t: t, expr: it.expr, shadow: false });
+    label(g, it.n, cx, cy + ch - 20, '#cfd6ff');
+  });
+}
+function timing(g){
+  const t0 = performance.now(), N = 200;
+  for (let i = 0; i < N; i++) MASCOT.draw(g, { x: 900, y: 900, s: 1, pose: 'walk', t: i*0.03, expr: 'hot', props: { umbrella: true, scarf: true } });
+  const t1 = performance.now();
+  for (let i = 0; i < N; i++) MASCOT.draw(g, { x: 900, y: 900, s: 1, pose: 'stand', t: i*0.03 });
+  const t2 = performance.now();
+  // state balance + determinism
+  const tm = g.getTransform(), ga = g.globalAlpha, gc = g.globalCompositeOperation;
+  const st = { x: 300, y: 700, s: 1, pose: 'fanSelf', t: 0.9, expr: 'hot', props: { sunglasses: true, scarf: true } };
+  sky(g); MASCOT.draw(g, st); const d1 = g.getImageData(100,300,400,450).data;
+  sky(g); MASCOT.draw(g, { t: 9, x: 1, y: 1, pose: 'run' }); sky(g); MASCOT.draw(g, st); const d2 = g.getImageData(100,300,400,450).data;
+  let diff = 0; for (let i = 0; i < d1.length; i++) if (d1[i] !== d2[i]) diff++;
+  g.fillStyle = '#000'; g.font = '36px sans-serif'; g.textAlign = 'left';
+  g.fillText('xform=' + [tm.a,tm.b,tm.c,tm.d,tm.e,tm.f].join(',') + ' alpha=' + ga + ' comp=' + gc + ' diffBytes=' + diff, 100, 300);
+  g.font = '40px sans-serif';
+  g.fillText('mascot ms heavy=' + ((t1-t0)/N).toFixed(3) + ' plain=' + ((t2-t1)/N).toFixed(3), 100, 200);
+}
+window.drawFrame = function(g, T){
+  g.save();
+  if (T < 1.5) poseSheet(g, sky, false);
+  else if (T < 2.5) poseSheet(g, night, true);
+  else if (T < 3.5) exprSheet(g);
+  else if (T < 4.5) propSheet(g, sky);
+  else if (T < 5.5) propSheet(g, night);
+  else if (T < 6.5) motionSheet(g);
+  else if (T < 7.5) { sky(g); timing(g); }
+  else closeSheet(g);
+  g.restore();
+};
+})();
+</script>
+<script src="harness.js"></script>
+</body></html>

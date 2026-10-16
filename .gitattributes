@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.wav -text
+*.flac -text
+*.png -text
+*.gif -text
+*.mp4 -text

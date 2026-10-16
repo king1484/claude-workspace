@@ -1,0 +1,10 @@
+{
+  "voice": "am_michael",
+  "speed": 1.06,
+  "lines": [
+    { "id": "l1", "text": "A bike flies past.", "start": 0.55 },
+    { "id": "l2", "text": "You don't even look.", "start": 2.15 },
+    { "id": "l3", "text": "You saw it ten seconds ago.", "start": 3.75 },
+    { "id": "l4", "text": "What if you could see ten seconds into the future?", "start": 7.45 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "viral-3d-video-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable deterministic Canvas video projects and continuation handoff",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "setup:browser": "playwright install chromium",
+    "smoke": "node tools/render-smoke.mjs",
+    "check:renderers": "node tools/check-renderers.mjs"
+  },
+  "dependencies": { "playwright": "1.60.0" }
+}

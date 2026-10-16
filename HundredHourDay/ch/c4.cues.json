@@ -1,0 +1,290 @@
+{
+ "mood": "tense",
+ "music": {
+  "arc": [
+   [
+    0,
+    8.506,
+    0.35
+   ],
+   [
+    8.506,
+    20.49,
+    0.5
+   ],
+   [
+    20.49,
+    23.197,
+    0.2
+   ],
+   [
+    23.197,
+    30.066,
+    0.6
+   ],
+   [
+    30.066,
+    37.761,
+    0.3
+   ],
+   [
+    37.761,
+    49.185,
+    0.4
+   ]
+  ],
+  "risers": [
+   [
+    19.74,
+    20.76
+   ],
+   [
+    26.156,
+    27.756
+   ]
+  ],
+  "silence": [
+   [
+    20.76,
+    21.61
+   ]
+  ]
+ },
+ "ambience": "desert",
+ "cues": [
+  {
+   "t": 0.6,
+   "type": "heatShimmer",
+   "gain": 0.3,
+   "len": 7.706
+  },
+  {
+   "t": 0.8,
+   "type": "cicadas",
+   "gain": 0.3,
+   "len": 19.490143
+  },
+  {
+   "t": 1.75,
+   "type": "pop",
+   "gain": 0.35
+  },
+  {
+   "t": 3.6,
+   "type": "sweatDrip",
+   "gain": 0.4
+  },
+  {
+   "t": 5.097,
+   "type": "swish",
+   "gain": 0.35
+  },
+  {
+   "t": 6.031,
+   "type": "pop",
+   "gain": 0.5
+  },
+  {
+   "t": 6.231,
+   "type": "stingWonder",
+   "gain": 0.3
+  },
+  {
+   "t": 7.626,
+   "type": "pop",
+   "gain": 0.5
+  },
+  {
+   "t": 7.826,
+   "type": "sweatDrip",
+   "gain": 0.45
+  },
+  {
+   "t": 9.926,
+   "type": "sonar",
+   "gain": 0.25
+  },
+  {
+   "t": 10.026,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 10
+  },
+  {
+   "t": 12.126,
+   "type": "sonar",
+   "gain": 0.2
+  },
+  {
+   "t": 15.857,
+   "type": "pop",
+   "gain": 0.55
+  },
+  {
+   "t": 15.977,
+   "type": "gasp",
+   "gain": 0.5
+  },
+  {
+   "t": 16.707,
+   "type": "fanWhir",
+   "gain": 0.35,
+   "len": 3.2
+  },
+  {
+   "t": 18.107,
+   "type": "sweatDrip",
+   "gain": 0.4
+  },
+  {
+   "t": 20.84,
+   "type": "swish",
+   "gain": 0.25
+  },
+  {
+   "t": 21.56,
+   "type": "sizzle",
+   "gain": 0.8
+  },
+  {
+   "t": 21.61,
+   "type": "gasp",
+   "gain": 0.55
+  },
+  {
+   "t": 21.76,
+   "type": "boing",
+   "gain": 0.5
+  },
+  {
+   "t": 21.92,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 22.28,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 22.64,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 23.817,
+   "type": "paperRustle",
+   "gain": 0.3
+  },
+  {
+   "t": 25.198,
+   "type": "heatShimmer",
+   "gain": 0.35,
+   "len": 3
+  },
+  {
+   "t": 25.298,
+   "type": "swell",
+   "gain": 0.4,
+   "len": 1.8
+  },
+  {
+   "t": 27.656,
+   "type": "rumble",
+   "gain": 0.4,
+   "len": 2.4
+  },
+  {
+   "t": 28.356,
+   "type": "thunderFar",
+   "gain": 0.5
+  },
+  {
+   "t": 30.166,
+   "type": "waves",
+   "gain": 0.4,
+   "len": 7.395000000000004
+  },
+  {
+   "t": 30.466,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 31.066,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 31.966,
+   "type": "seagull",
+   "gain": 0.3
+  },
+  {
+   "t": 31.996,
+   "type": "dialTick",
+   "gain": 0.3,
+   "n": 10
+  },
+  {
+   "t": 34.125,
+   "type": "bubbles",
+   "gain": 0.2,
+   "len": 1.2
+  },
+  {
+   "t": 35.378,
+   "type": "windGust",
+   "gain": 0.5
+  },
+  {
+   "t": 35.778,
+   "type": "swell",
+   "gain": 0.35,
+   "len": 2.4
+  },
+  {
+   "t": 38.261,
+   "type": "step",
+   "gain": 0.25
+  },
+  {
+   "t": 39.061,
+   "type": "step",
+   "gain": 0.25
+  },
+  {
+   "t": 40.851,
+   "type": "pop",
+   "gain": 0.3
+  },
+  {
+   "t": 41.008,
+   "type": "dropOut",
+   "gain": 0.3,
+   "len": 0.7
+  },
+  {
+   "t": 41.201,
+   "type": "waterRush",
+   "gain": 0.2,
+   "len": 0.7
+  },
+  {
+   "t": 45.569,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 8
+  },
+  {
+   "t": 47.935,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 48.535,
+   "type": "step",
+   "gain": 0.3
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>c4 harness</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="lib.js"></script>
+<script src="timeline.js"></script>
+<script src="layout.js"></script>
+<script src="world.js"></script>
+<script src="rigs.js"></script>
+<script src="scenes.js"></script>
+<script src="tod.js"></script>
+<script src="mascot.js"></script>
+<script src="globe.js"></script>
+<script src="full.js"></script>
+<script src="ch/c4.js"></script>
+<script src="harness.js"></script>
+<script>
+// dense sweep of CH.c4.draw: exceptions, non-finite canvas args, save/restore balance, per-frame time
+(function () {
+  const P = CanvasRenderingContext2D.prototype, bad = {}, cnt = { save: 0 };
+  let cur = 0;
+  const names = ['translate','scale','rotate','arc','ellipse','fillRect','strokeRect','moveTo','lineTo','bezierCurveTo','quadraticCurveTo','rect','arcTo','drawImage','createLinearGradient','createRadialGradient','setTransform','transform','fillText','strokeText','clearRect'];
+  names.forEach((n) => {
+    const o = P[n];
+    P[n] = function () {
+      for (let i = 0; i < arguments.length; i++) { const a = arguments[i]; if (typeof a === 'number' && !isFinite(a)) { const k = n + '@' + cur.toFixed(1); bad[k] = (bad[k] || 0) + 1; break; } }
+      return o.apply(this, arguments);
+    };
+  });
+  const os = P.save, orr = P.restore;
+  P.save = function () { cnt.save++; return os.call(this); };
+  P.restore = function () { cnt.save--; return orr.call(this); };
+  const cv = document.getElementById('c'), g = cv.getContext('2d');
+  const END = LAYOUT.c4.dur, errs = [];
+  let tmax = 0, tmaxAt = 0, tsum = 0, n = 0, unbalanced = 0;
+  const times = [];
+  for (let pass = 0; pass < 2; pass++) for (let lt = 0; lt <= END + 1e-9; lt += 0.1) {
+    cur = lt; g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+    const c0 = cnt.save, t0 = performance.now();
+    try { CH.c4.draw(g, Math.min(lt, END), END); } catch (e) { errs.push(lt.toFixed(1) + ': ' + e.message + ' ' + (e.stack || '').split('\n')[1]); }
+    const dt = performance.now() - t0; times.push(dt);
+    if (cnt.save !== c0) { unbalanced++; cnt.save = c0; }
+    if (dt > 150) errs.push('SLOW p' + pass + ' ' + lt.toFixed(1) + ' ' + dt.toFixed(0)); if (n > 0) { tsum += dt; if (dt > tmax) { tmax = dt; tmaxAt = lt; } } n++;
+  }
+  const m = []; const nn = Math.round(END / 0.1) + 1; for (let b = 0; b < 10; b++) { const arr = times.slice(nn + b * 50, nn + b * 50 + 50).sort((x, y) => x - y); if (arr.length) m.push(b * 5 + ':' + arr[Math.floor(arr.length / 2)].toFixed(1)); }
+  console.error('C4MEDIANS ' + m.join(' '));
+  const sorted = times.slice(1).sort((a, b) => a - b);
+  console.error('C4SWEEP frames=' + n + ' errs=' + errs.length + ' ' + JSON.stringify(errs.slice(0, 40)) + ' nonfinite=' + JSON.stringify(bad) + ' unbalanced=' + unbalanced +
+    ' avg=' + (tsum / (n - 1)).toFixed(1) + 'ms p95=' + sorted[Math.floor(sorted.length * 0.95)].toFixed(1) + 'ms max=' + tmax.toFixed(1) + 'ms@' + tmaxAt.toFixed(1) + ' first=' + times[0].toFixed(0) + 'ms');
+})();
+</script>
+</body></html>

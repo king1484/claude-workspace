@@ -1,0 +1,401 @@
+{
+ "mood": "hollow",
+ "music": {
+  "arc": [
+   [
+    0,
+    6.95,
+    0.4
+   ],
+   [
+    6.95,
+    9.6,
+    0.2
+   ],
+   [
+    9.6,
+    14.9,
+    0.05
+   ],
+   [
+    14.9,
+    23.3,
+    0.2
+   ],
+   [
+    23.3,
+    29.3,
+    0.5
+   ],
+   [
+    29.3,
+    33.3,
+    0.65
+   ],
+   [
+    33.3,
+    34.1,
+    0.05
+   ],
+   [
+    34.1,
+    38.2,
+    0.42
+   ],
+   [
+    38.2,
+    39.945,
+    0.05
+   ]
+  ],
+  "risers": [
+   [
+    5.5,
+    6.95
+   ],
+   [
+    26.6,
+    29.3
+   ],
+   [
+    31,
+    33.3
+   ],
+   [
+    34.1,
+    36
+   ]
+  ],
+  "silence": [
+   [
+    9.9,
+    13.6
+   ],
+   [
+    33.4,
+    34
+   ]
+  ]
+ },
+ "ambience": "quiet",
+ "cues": [
+  {
+   "t": 0.8,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 1.2,
+   "type": "uiBlip",
+   "gain": 0.35
+  },
+  {
+   "t": 1.42,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 2.04,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 2.66,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 3.28,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 4,
+   "type": "uiConfirm",
+   "gain": 0.4
+  },
+  {
+   "t": 5.5,
+   "type": "riserShort",
+   "gain": 0.4
+  },
+  {
+   "t": 6.95,
+   "type": "dropOut",
+   "gain": 0.9
+  },
+  {
+   "t": 7.1,
+   "type": "glitch",
+   "gain": 0.8,
+   "len": 0.6
+  },
+  {
+   "t": 7.4,
+   "type": "staticBurst",
+   "gain": 0.5
+  },
+  {
+   "t": 7.8,
+   "type": "vhsTear",
+   "gain": 0.6
+  },
+  {
+   "t": 8.2,
+   "type": "silenceHit",
+   "gain": 0.7
+  },
+  {
+   "t": 8.7,
+   "type": "ghostFade",
+   "gain": 0.4
+  },
+  {
+   "t": 9.6,
+   "type": "stingDark",
+   "gain": 0.6
+  },
+  {
+   "t": 10,
+   "type": "wind",
+   "gain": 0.35
+  },
+  {
+   "t": 11.9,
+   "type": "wind",
+   "gain": 0.25
+  },
+  {
+   "t": 14.9,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 15,
+   "type": "sonar",
+   "gain": 0.5
+  },
+  {
+   "t": 16,
+   "type": "eyeOpen",
+   "gain": 0.6
+  },
+  {
+   "t": 16,
+   "type": "ghostAppear",
+   "gain": 0.5
+  },
+  {
+   "t": 16.9,
+   "type": "echoPop",
+   "gain": 0.6
+  },
+  {
+   "t": 19.55,
+   "type": "tick",
+   "gain": 0.45,
+   "n": 1
+  },
+  {
+   "t": 19.7,
+   "type": "uiBlip",
+   "gain": 0.3
+  },
+  {
+   "t": 21,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 1
+  },
+  {
+   "t": 23.3,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 23.3,
+   "type": "heartbeat",
+   "gain": 0.55,
+   "len": 3,
+   "bpm": 60
+  },
+  {
+   "t": 23.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 24.3,
+   "type": "timerBeep",
+   "gain": 0.33999999999999997,
+   "n": 1
+  },
+  {
+   "t": 24.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 25.3,
+   "type": "timerBeep",
+   "gain": 0.38,
+   "n": 1
+  },
+  {
+   "t": 25.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 26.3,
+   "type": "timerBeep",
+   "gain": 0.42,
+   "n": 1
+  },
+  {
+   "t": 26.6,
+   "type": "swell",
+   "gain": 0.6
+  },
+  {
+   "t": 26.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 27.3,
+   "type": "timerBeep",
+   "gain": 0.45999999999999996,
+   "n": 1
+  },
+  {
+   "t": 27.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 28.3,
+   "type": "timerBeep",
+   "gain": 0.5,
+   "n": 1
+  },
+  {
+   "t": 28.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 29.3,
+   "type": "timerBeep",
+   "gain": 0.54,
+   "n": 1
+  },
+  {
+   "t": 29.3,
+   "type": "stingWonder",
+   "gain": 0.6
+  },
+  {
+   "t": 29.3,
+   "type": "heartbeat",
+   "gain": 0.7,
+   "len": 4,
+   "bpm": 72
+  },
+  {
+   "t": 29.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 30.3,
+   "type": "timerBeep",
+   "gain": 0.5800000000000001,
+   "n": 1
+  },
+  {
+   "t": 30.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 31.3,
+   "type": "timerBeep",
+   "gain": 0.62,
+   "n": 1
+  },
+  {
+   "t": 31.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 32.3,
+   "type": "timerBeep",
+   "gain": 0.6599999999999999,
+   "n": 1
+  },
+  {
+   "t": 32.8,
+   "type": "clockTick",
+   "gain": 0.25,
+   "n": 1
+  },
+  {
+   "t": 33.3,
+   "type": "timerBeep",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 33.3,
+   "type": "glitch",
+   "gain": 0.9,
+   "len": 0.6
+  },
+  {
+   "t": 33.3,
+   "type": "flashHit",
+   "gain": 0.8
+  },
+  {
+   "t": 33.32,
+   "type": "clockStop",
+   "gain": 0.9
+  },
+  {
+   "t": 33.4,
+   "type": "silenceHit",
+   "gain": 0.9
+  },
+  {
+   "t": 35.65,
+   "type": "uiConfirm",
+   "gain": 0.5
+  },
+  {
+   "t": 36.3,
+   "type": "uiBlip",
+   "gain": 0.5
+  },
+  {
+   "t": 37.1,
+   "type": "uiConfirm",
+   "gain": 0.55
+  },
+  {
+   "t": 37.23,
+   "type": "bellRing",
+   "gain": 0.5
+  }
+ ]
+}

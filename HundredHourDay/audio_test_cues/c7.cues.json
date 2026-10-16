@@ -1,0 +1,153 @@
+{
+ "mood": "wonder",
+ "ambience": "ocean",
+ "music": {
+  "arc": [
+   [
+    0,
+    12,
+    0.3
+   ],
+   [
+    12,
+    31,
+    0.5
+   ],
+   [
+    31,
+    34,
+    0.65
+   ],
+   [
+    34,
+    43,
+    1
+   ],
+   [
+    43,
+    50.35,
+    0.5
+   ]
+  ],
+  "risers": [
+   [
+    30.5,
+    33.9
+   ]
+  ],
+  "silence": [
+   [
+    33.4,
+    33.95
+   ]
+  ]
+ },
+ "cues": [
+  {
+   "t": 1.23,
+   "type": "waves",
+   "len": 8
+  },
+  {
+   "t": 5.19,
+   "type": "seagull"
+  },
+  {
+   "t": 6.35,
+   "type": "bubbles",
+   "len": 3
+  },
+  {
+   "t": 10.41,
+   "type": "eyeFlash"
+  },
+  {
+   "t": 11.99,
+   "type": "flashHit"
+  },
+  {
+   "t": 14.36,
+   "type": "cutHit"
+  },
+  {
+   "t": 16.9,
+   "type": "pullOut"
+  },
+  {
+   "t": 19.62,
+   "type": "echoPop",
+   "n": 4
+  },
+  {
+   "t": 22.76,
+   "type": "ghostAppear"
+  },
+  {
+   "t": 26,
+   "type": "reverseSwell",
+   "len": 3
+  },
+  {
+   "t": 26.93,
+   "type": "rumble",
+   "len": 4
+  },
+  {
+   "t": 27.6,
+   "type": "windGust"
+  },
+  {
+   "t": 29,
+   "type": "swell",
+   "len": 4
+  },
+  {
+   "t": 29.97,
+   "type": "shimmer"
+  },
+  {
+   "t": 32.46,
+   "type": "bellRing"
+  },
+  {
+   "t": 34,
+   "type": "waterRush",
+   "len": 5
+  },
+  {
+   "t": 34.1,
+   "type": "stingWonder"
+  },
+  {
+   "t": 34.2,
+   "type": "landRise",
+   "len": 5
+  },
+  {
+   "t": 35.06,
+   "type": "crowdOoh"
+  },
+  {
+   "t": 37.33,
+   "type": "timerBeep",
+   "n": 3
+  },
+  {
+   "t": 40.56,
+   "type": "rewind",
+   "len": 2
+  },
+  {
+   "t": 41.84,
+   "type": "jump"
+  },
+  {
+   "t": 45.19,
+   "type": "land"
+  },
+  {
+   "t": 46.84,
+   "type": "uiError"
+  }
+ ]
+}

@@ -1,0 +1,381 @@
+{
+ "mood": "dark",
+ "music": {
+  "arc": [
+   [
+    0,
+    10.95,
+    0.4
+   ],
+   [
+    10.95,
+    19.55,
+    0.7
+   ],
+   [
+    19.55,
+    22.95,
+    0.85
+   ],
+   [
+    22.95,
+    27.45,
+    0.5
+   ],
+   [
+    27.45,
+    29.9,
+    0.25
+   ],
+   [
+    29.9,
+    34.85,
+    0.04
+   ],
+   [
+    34.85,
+    36.35,
+    0.12
+   ],
+   [
+    36.35,
+    41,
+    0.55
+   ],
+   [
+    41,
+    43.265,
+    0.65
+   ]
+  ],
+  "risers": [
+   [
+    10.3,
+    10.95
+   ],
+   [
+    17.3,
+    19.55
+   ],
+   [
+    22.2,
+    22.95
+   ],
+   [
+    35.6,
+    36.35
+   ]
+  ],
+  "silence": [
+   [
+    29.9,
+    34.8
+   ]
+  ]
+ },
+ "ambience": "city",
+ "cues": [
+  {
+   "t": 0.9,
+   "type": "eyeOpen",
+   "gain": 0.7
+  },
+  {
+   "t": 0.95,
+   "type": "ghostAppear",
+   "gain": 0.5
+  },
+  {
+   "t": 3.3,
+   "type": "sonar",
+   "gain": 0.5
+  },
+  {
+   "t": 5.7,
+   "type": "tick",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 6.35,
+   "type": "tick",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 7.85,
+   "type": "tick",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 9.55,
+   "type": "tick",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 10.3,
+   "type": "riserShort",
+   "gain": 0.5
+  },
+  {
+   "t": 10.95,
+   "type": "glitch",
+   "gain": 0.9,
+   "len": 0.4
+  },
+  {
+   "t": 10.95,
+   "type": "flashHit",
+   "gain": 0.9
+  },
+  {
+   "t": 11,
+   "type": "stingDark",
+   "gain": 0.8
+  },
+  {
+   "t": 12.96,
+   "type": "pullOut",
+   "gain": 0.9
+  },
+  {
+   "t": 13.4,
+   "type": "sonar",
+   "gain": 0.6
+  },
+  {
+   "t": 13.45,
+   "type": "shimmer",
+   "gain": 0.4,
+   "len": 1.2
+  },
+  {
+   "t": 15.2,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 15.62,
+   "type": "echoPop",
+   "gain": 0.7000000000000001
+  },
+  {
+   "t": 16.04,
+   "type": "echoPop",
+   "gain": 0.6000000000000001
+  },
+  {
+   "t": 16.46,
+   "type": "echoPop",
+   "gain": 0.5
+  },
+  {
+   "t": 16.88,
+   "type": "echoPop",
+   "gain": 0.4
+  },
+  {
+   "t": 17.3,
+   "type": "reverseSwell",
+   "gain": 0.7
+  },
+  {
+   "t": 17.3,
+   "type": "riserShort",
+   "gain": 0.6
+  },
+  {
+   "t": 19.55,
+   "type": "cutHit",
+   "gain": 1
+  },
+  {
+   "t": 19.55,
+   "type": "staticBurst",
+   "gain": 0.6
+  },
+  {
+   "t": 19.6,
+   "type": "bigImpact",
+   "gain": 0.8
+  },
+  {
+   "t": 19.8,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 20.1,
+   "type": "clockTick",
+   "gain": 0.35,
+   "n": 4
+  },
+  {
+   "t": 20.6,
+   "type": "wind",
+   "gain": 0.4
+  },
+  {
+   "t": 21.25,
+   "type": "crack",
+   "gain": 0.9
+  },
+  {
+   "t": 21.27,
+   "type": "bigImpact",
+   "gain": 0.7
+  },
+  {
+   "t": 22,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 2
+  },
+  {
+   "t": 22.2,
+   "type": "reverseSwell",
+   "gain": 0.6
+  },
+  {
+   "t": 22.95,
+   "type": "cutHit",
+   "gain": 0.9
+  },
+  {
+   "t": 23.4,
+   "type": "timerStart",
+   "gain": 0.6
+  },
+  {
+   "t": 25.3,
+   "type": "glitch",
+   "gain": 0.6,
+   "len": 0.5
+  },
+  {
+   "t": 26.45,
+   "type": "dropOut",
+   "gain": 0.7
+  },
+  {
+   "t": 26.9,
+   "type": "glitch",
+   "gain": 0.8,
+   "len": 0.5
+  },
+  {
+   "t": 27.45,
+   "type": "glassBreak",
+   "gain": 0.9
+  },
+  {
+   "t": 27.45,
+   "type": "flashHit",
+   "gain": 0.7
+  },
+  {
+   "t": 27.55,
+   "type": "dust",
+   "gain": 0.6
+  },
+  {
+   "t": 28.98,
+   "type": "silenceHit",
+   "gain": 0.9
+  },
+  {
+   "t": 29.9,
+   "type": "dropOut",
+   "gain": 0.8
+  },
+  {
+   "t": 33.5,
+   "type": "wind",
+   "gain": 0.3
+  },
+  {
+   "t": 34.85,
+   "type": "heartbeat",
+   "gain": 0.8,
+   "len": 1.1,
+   "bpm": 62
+  },
+  {
+   "t": 35.3,
+   "type": "inhale",
+   "gain": 0.35
+  },
+  {
+   "t": 36.35,
+   "type": "eyeOpen",
+   "gain": 0.9
+  },
+  {
+   "t": 36.35,
+   "type": "swell",
+   "gain": 0.8
+  },
+  {
+   "t": 36.4,
+   "type": "stingWonder",
+   "gain": 0.7
+  },
+  {
+   "t": 36.9,
+   "type": "birdsong",
+   "gain": 0.4
+  },
+  {
+   "t": 37,
+   "type": "exhale",
+   "gain": 0.45
+  },
+  {
+   "t": 37.7,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 38.5,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 39.3,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 40,
+   "type": "birdsong",
+   "gain": 0.6
+  },
+  {
+   "t": 40.1,
+   "type": "step",
+   "gain": 0.35
+  },
+  {
+   "t": 41.12,
+   "type": "wind",
+   "gain": 0.7
+  },
+  {
+   "t": 41.12,
+   "type": "gasp",
+   "gain": 0.5
+  },
+  {
+   "t": 41.15,
+   "type": "sting",
+   "gain": 0.6
+  },
+  {
+   "t": 41.2,
+   "type": "birdsong",
+   "gain": 0.9
+  }
+ ]
+}

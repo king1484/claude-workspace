@@ -1,0 +1,430 @@
+{
+ "mood": "warm",
+ "music": {
+  "arc": [
+   [
+    0,
+    1.5,
+    0.15
+   ],
+   [
+    1.5,
+    4.3,
+    0.35
+   ],
+   [
+    4.3,
+    8,
+    0.4
+   ],
+   [
+    8,
+    11,
+    0.6
+   ],
+   [
+    11,
+    14.45,
+    0.5
+   ],
+   [
+    14.45,
+    17,
+    0.65
+   ],
+   [
+    17,
+    22,
+    0.7
+   ],
+   [
+    22,
+    25.5,
+    0.9
+   ],
+   [
+    25.5,
+    27.83,
+    0.6
+   ]
+  ],
+  "risers": [
+   [
+    1.8,
+    3.9
+   ],
+   [
+    7.8,
+    9.25
+   ],
+   [
+    13.2,
+    14.4
+   ],
+   [
+    17.7,
+    18.35
+   ],
+   [
+    21.7,
+    22.6
+   ]
+  ],
+  "silence": [
+   [
+    4,
+    4.28
+   ],
+   [
+    9.28,
+    9.4
+   ]
+  ]
+ },
+ "ambience": "indoor",
+ "cues": [
+  {
+   "t": 0.45,
+   "type": "eyeOpen",
+   "gain": 0.7
+  },
+  {
+   "t": 1.6,
+   "type": "eyeFlash",
+   "gain": 0.5
+  },
+  {
+   "t": 1.9,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 1.95,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 2.4,
+   "type": "clockTick",
+   "gain": 0.6,
+   "len": 1.5
+  },
+  {
+   "t": 3.95,
+   "type": "alarmClock",
+   "gain": 0.9,
+   "len": 0.2
+  },
+  {
+   "t": 3.95,
+   "type": "flashHit",
+   "gain": 0.8
+  },
+  {
+   "t": 4,
+   "type": "hit",
+   "gain": 0.7
+  },
+  {
+   "t": 4.15,
+   "type": "clockStop",
+   "gain": 0.8
+  },
+  {
+   "t": 4.3,
+   "type": "clothRustle",
+   "gain": 0.6
+  },
+  {
+   "t": 5.95,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 6,
+   "type": "uiBlip",
+   "gain": 0.6
+  },
+  {
+   "t": 7.15,
+   "type": "ceramicTap",
+   "gain": 0.5
+  },
+  {
+   "t": 7.46,
+   "type": "ceramicBreak",
+   "gain": 0.9
+  },
+  {
+   "t": 7.6,
+   "type": "ceramicClatter",
+   "gain": 0.5
+  },
+  {
+   "t": 8,
+   "type": "clink",
+   "gain": 0.5
+  },
+  {
+   "t": 8.7,
+   "type": "stepRun",
+   "gain": 0.6
+  },
+  {
+   "t": 8.95,
+   "type": "stepRun",
+   "gain": 0.6
+  },
+  {
+   "t": 9.28,
+   "type": "catchSoft",
+   "gain": 1
+  },
+  {
+   "t": 9.3,
+   "type": "clink",
+   "gain": 0.6
+  },
+  {
+   "t": 9.4,
+   "type": "stingWonder",
+   "gain": 0.7
+  },
+  {
+   "t": 10.3,
+   "type": "paperRustle",
+   "gain": 0.3
+  },
+  {
+   "t": 11,
+   "type": "airPuff",
+   "gain": 0.5,
+   "len": 0.3
+  },
+  {
+   "t": 11.45,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 11.7,
+   "type": "step",
+   "gain": 0.5
+  },
+  {
+   "t": 12,
+   "type": "step",
+   "gain": 0.5
+  },
+  {
+   "t": 12.25,
+   "type": "thump",
+   "gain": 0.9
+  },
+  {
+   "t": 12.28,
+   "type": "uiError",
+   "gain": 0.8
+  },
+  {
+   "t": 12.45,
+   "type": "glitch",
+   "gain": 0.6,
+   "len": 0.25
+  },
+  {
+   "t": 12.6,
+   "type": "step",
+   "gain": 0.5
+  },
+  {
+   "t": 13.15,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 13.4,
+   "type": "clothRustle",
+   "gain": 0.5
+  },
+  {
+   "t": 13.7,
+   "type": "thump",
+   "gain": 0.6
+  },
+  {
+   "t": 13.75,
+   "type": "vhsTear",
+   "gain": 0.5
+  },
+  {
+   "t": 14.05,
+   "type": "catchSoft",
+   "gain": 0.8
+  },
+  {
+   "t": 14.45,
+   "type": "cutHit",
+   "gain": 1
+  },
+  {
+   "t": 14.5,
+   "type": "echoPop",
+   "gain": 0.6
+  },
+  {
+   "t": 14.7,
+   "type": "vehiclePass",
+   "gain": 0.7,
+   "len": 0.9
+  },
+  {
+   "t": 14.85,
+   "type": "tick",
+   "gain": 0.4
+  },
+  {
+   "t": 15.2,
+   "type": "vehiclePass",
+   "gain": 0.9,
+   "len": 1.2
+  },
+  {
+   "t": 15.88,
+   "type": "doorOpen",
+   "gain": 0.8
+  },
+  {
+   "t": 15.95,
+   "type": "uiConfirm",
+   "gain": 0.9
+  },
+  {
+   "t": 16.5,
+   "type": "doorSlam",
+   "gain": 0.5
+  },
+  {
+   "t": 16.7,
+   "type": "vehiclePass",
+   "gain": 0.8,
+   "len": 1.3
+  },
+  {
+   "t": 17,
+   "type": "step",
+   "gain": 0.4
+  },
+  {
+   "t": 17.4,
+   "type": "step",
+   "gain": 0.4
+  },
+  {
+   "t": 17.9,
+   "type": "skateboardRoll",
+   "gain": 0.6,
+   "len": 0.5
+  },
+  {
+   "t": 17.95,
+   "type": "ghostAppear",
+   "gain": 0.45
+  },
+  {
+   "t": 18.35,
+   "type": "echoPop",
+   "gain": 0.8
+  },
+  {
+   "t": 18.38,
+   "type": "glitch",
+   "gain": 0.7,
+   "len": 0.25
+  },
+  {
+   "t": 18.5,
+   "type": "clothFlap",
+   "gain": 0.5
+  },
+  {
+   "t": 18.7,
+   "type": "step",
+   "gain": 0.5
+  },
+  {
+   "t": 19,
+   "type": "skateboardRoll",
+   "gain": 0.8,
+   "len": 0.6
+  },
+  {
+   "t": 19.5,
+   "type": "punchMiss",
+   "gain": 0.8
+  },
+  {
+   "t": 19.6,
+   "type": "dust",
+   "gain": 0.4
+  },
+  {
+   "t": 20.35,
+   "type": "echoPop",
+   "gain": 0.7
+  },
+  {
+   "t": 20.75,
+   "type": "echoPop",
+   "gain": 0.7
+  },
+  {
+   "t": 21.15,
+   "type": "echoPop",
+   "gain": 0.7
+  },
+  {
+   "t": 22,
+   "type": "swell",
+   "gain": 0.7,
+   "len": 2.5
+  },
+  {
+   "t": 22.7,
+   "type": "stingWonder",
+   "gain": 0.8
+  },
+  {
+   "t": 23,
+   "type": "birdsong",
+   "gain": 0.4,
+   "len": 2
+  },
+  {
+   "t": 23.3,
+   "type": "uiConfirm",
+   "gain": 0.7
+  },
+  {
+   "t": 24.15,
+   "type": "partyPopper",
+   "gain": 0.9
+  },
+  {
+   "t": 24.2,
+   "type": "flashHit",
+   "gain": 0.5
+  },
+  {
+   "t": 25.7,
+   "type": "sonar",
+   "gain": 0.7
+  },
+  {
+   "t": 25.8,
+   "type": "wind",
+   "gain": 0.4,
+   "len": 1.8
+  }
+ ]
+}

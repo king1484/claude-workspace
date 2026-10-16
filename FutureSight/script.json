@@ -1,0 +1,105 @@
+{
+  "voice": "am_michael",
+  "speed": 1.06,
+  "tail": 0.8,
+  "chapters": [
+    { "id": "ch1", "title": "The Rules", "lead": 0.5, "lines": [
+      { "id": "r1", "text": "Starting today, you see exactly ten seconds ahead.", "gap": 0 },
+      { "id": "r2", "text": "Not a feeling. Not a hunch.", "gap": 0.55 },
+      { "id": "r3", "text": "A ghost version of the world, playing ten seconds early.", "gap": 0.35 },
+      { "id": "r4", "text": "You can't pause it. You can't turn it off.", "gap": 0.8 },
+      { "id": "r5", "text": "And it never, ever skips.", "gap": 0.3 },
+      { "id": "r6", "text": "That's the whole power. Let's see how far ten seconds can take you.", "gap": 0.9 }
+    ]},
+    { "id": "ch2", "title": "Morning", "lead": 0.5, "lines": [
+      { "id": "m1", "text": "Day one. Your alarm hasn't rung yet, but you already know it will.", "gap": 0 },
+      { "id": "m2", "text": "You reach for your coffee, and see the mug slide off the counter.", "gap": 0.7 },
+      { "id": "m3", "text": "So you catch it, before it falls.", "gap": 0.5 },
+      { "id": "m4", "text": "No more stubbed toes. No more spilled milk. No more missed buses.", "gap": 0.8 },
+      { "id": "m5", "text": "Out on the street, a skateboard shoots from nowhere. You're already three steps to the side.", "gap": 0.8 },
+      { "id": "m6", "text": "You're officially the luckiest person alive.", "gap": 0.8 },
+      { "id": "m7", "text": "And you haven't even tried yet.", "gap": 0.6 }
+    ]},
+    { "id": "ch3", "title": "Reflexes", "lead": 0.5, "lines": [
+      { "id": "f1", "text": "Now, let's get competitive.", "gap": 0 },
+      { "id": "f2", "text": "Table tennis. Your opponent smashes the ball, and you've already seen where it lands.", "gap": 0.7 },
+      { "id": "f3", "text": "Boxing. A punch takes less than half a second. You watched it ten seconds ago.", "gap": 0.8 },
+      { "id": "f4", "text": "Every fighter in the world moves like they're underwater.", "gap": 0.6 },
+      { "id": "f5", "text": "A fastball flies at your face at ninety miles an hour. You tilt your head, slightly. Bored.", "gap": 0.8 },
+      { "id": "f6", "text": "Nobody can beat you at anything that happens in the next ten seconds.", "gap": 0.8 },
+      { "id": "f7", "text": "And that's almost everything.", "gap": 0.5 }
+    ]},
+    { "id": "ch3b", "title": "The Chase", "lead": 0.5, "lines": [
+      { "id": "p1", "text": "But ten seconds isn't only for games. Sometimes it's for running.", "gap": 0 },
+      { "id": "p2", "text": "A thief grabs a bag and bolts through the crowd. You don't chase him. You step in front of where he's about to be.", "gap": 0.7 },
+      { "id": "p3", "text": "Cars on the road? You see every one of them, before the driver does.", "gap": 0.8 },
+      { "id": "p4", "text": "You cross six lanes of traffic at a walk. Horns screaming. Not one of them touches you.", "gap": 0.7 },
+      { "id": "p5", "text": "Then a bus, a bike, a pigeon, a man with a ladder. Every obstacle shows up as a ghost, a whole breath before it arrives.", "gap": 0.8 },
+      { "id": "p6", "text": "It looks like talent. It looks like magic. To everyone watching, you're just impossibly smooth.", "gap": 0.8 },
+      { "id": "p7", "text": "You are not fast. You are early.", "gap": 0.9 },
+      { "id": "p8", "text": "And being early is better than being fast.", "gap": 0.6 }
+    ]},
+    { "id": "ch4", "title": "Money", "lead": 0.5, "lines": [
+      { "id": "c1", "text": "So you turn it into money.", "gap": 0 },
+      { "id": "c2", "text": "Roulette. The ball spins, and you see where it lands, before the dealer does.", "gap": 0.7 },
+      { "id": "c3", "text": "The casino bans you in an hour.", "gap": 0.7 },
+      { "id": "c4", "text": "So you try the stock market.", "gap": 0.6 },
+      { "id": "c5", "text": "Prices flicker, and you see every tick before it happens.", "gap": 0.5 },
+      { "id": "c6", "text": "For a trading computer, ten seconds is an eternity. For you, it's a printing press.", "gap": 0.7 },
+      { "id": "c7", "text": "A thousand dollars. A million. A billion.", "gap": 0.7 },
+      { "id": "c8", "text": "And you never leave your apartment.", "gap": 0.6 }
+    ]},
+    { "id": "ch4b", "title": "The Quake", "lead": 0.5, "lines": [
+      { "id": "q1", "text": "Money buys a lot. But it can't buy this.", "gap": 0 },
+      { "id": "q2", "text": "It's a normal Tuesday. A city of ten million people, going to work.", "gap": 0.7 },
+      { "id": "q3", "text": "And in the ghost world, the ground begins to break.", "gap": 0.7 },
+      { "id": "q4", "text": "Ten seconds before the first tremor, you see the cracks, the falling glass, the buildings swaying.", "gap": 0.7 },
+      { "id": "q5", "text": "Here's a real fact. Earthquake warning systems give people about ten seconds. And ten seconds is enough to save thousands of lives.", "gap": 0.8 },
+      { "id": "q6", "text": "Trains slow down. Surgeons pull their hands away. Elevators stop at the nearest floor.", "gap": 0.7 },
+      { "id": "q7", "text": "But you don't have a siren. You have a voice, and ten seconds, and a street full of strangers who don't believe you.", "gap": 0.8 },
+      { "id": "q8", "text": "So you scream. You point. You run. And one by one, they run with you.", "gap": 0.8 },
+      { "id": "q9", "text": "The city shakes. Dust fills the sky. And when it clears, most of them are standing.", "gap": 0.8 },
+      { "id": "q10", "text": "Ten seconds. That's all it took.", "gap": 0.7 }
+    ]},
+    { "id": "ch5", "title": "The Child", "lead": 0.5, "lines": [
+      { "id": "h1", "text": "Then, one evening, the ghost world shows you something awful.", "gap": 0 },
+      { "id": "h2", "text": "A child's ball rolls into the road. A truck, ten seconds away, can't stop.", "gap": 0.7 },
+      { "id": "h3", "text": "You run. You have ten seconds, and you know every one of them.", "gap": 0.7 },
+      { "id": "h4", "text": "You grab her. The truck roars past, inches behind you.", "gap": 0.6 },
+      { "id": "h5", "text": "She never even knows how close it was.", "gap": 0.7 },
+      { "id": "h6", "text": "But the ghost world doesn't choose what it shows you.", "gap": 0.8 },
+      { "id": "h7", "text": "It shows you everything. Even what you can't reach in time.", "gap": 0.5 }
+    ]},
+    { "id": "ch6", "title": "The Cost", "lead": 0.5, "lines": [
+      { "id": "k1", "text": "Here's the problem nobody warns you about.", "gap": 0 },
+      { "id": "k2", "text": "You're never surprised again.", "gap": 0.7 },
+      { "id": "k3", "text": "Your friend tells a joke. You've already heard it. You laugh ten seconds early.", "gap": 0.7 },
+      { "id": "k4", "text": "A surprise party. You see everyone hiding. You pretend to be shocked.", "gap": 0.8 },
+      { "id": "k5", "text": "Every conversation plays twice. Every song. Every goodbye.", "gap": 0.7 },
+      { "id": "k6", "text": "Slowly, the world stops feeling real. It feels like a rerun.", "gap": 0.9 },
+      { "id": "k8", "text": "Ten seconds becomes a hall of mirrors, and you're the only one inside.", "gap": 0.8 },
+      { "id": "k9", "text": "Then you notice something strange. What you see, depends on what you do.", "gap": 0.8 }
+    ]},
+    { "id": "ch6b", "title": "The Loop", "lead": 0.5, "lines": [
+      { "id": "o1", "text": "So you run a test. Simple. You decide to raise your left hand, but only if the ghost raises its right.", "gap": 0 },
+      { "id": "o2", "text": "The ghost raises its left hand. You raise your right. The ghost changes.", "gap": 0.8 },
+      { "id": "o3", "text": "Which means the ghost isn't the future. It's a guess. A guess about what you'll do after seeing the guess.", "gap": 0.8 },
+      { "id": "o4", "text": "A snake eating its own tail, ten seconds long.", "gap": 0.8 },
+      { "id": "o5", "text": "And there's one thing it can never show you. The moment you finally decide to ignore it.", "gap": 0.8 },
+      { "id": "o6", "text": "So you close your eyes. And for the first time in months, you don't know what happens next.", "gap": 0.9 },
+      { "id": "o7", "text": "It's terrifying. And it's the best feeling you've had all year.", "gap": 0.8 },
+      { "id": "o8", "text": "Because the future was never the gift. The surprise was.", "gap": 0.9 }
+    ]},
+    { "id": "ch7", "title": "Nothing", "lead": 0.5, "lines": [
+      { "id": "z1", "text": "Weeks pass. You've saved lives, you've made millions, and you've learned to love surprises again.", "gap": 0 },
+      { "id": "z2", "text": "Then one morning, the ghost world goes quiet.", "gap": 0.8 },
+      { "id": "z3", "text": "The street is empty. The sky is black. Just you, standing still.", "gap": 0.7 },
+      { "id": "z4", "text": "Not ten seconds of future. Ten seconds of nothing.", "gap": 0.8 },
+      { "id": "z5", "text": "The ghost doesn't blink. It doesn't move. It just waits.", "gap": 0.8 },
+      { "id": "z6", "text": "Which means ten seconds from now, something ends.", "gap": 0.9 },
+      { "id": "z7", "text": "What would you do with ten seconds?", "gap": 1.0 },
+      { "id": "z8", "text": "Tell me in the comments.", "gap": 1.0 },
+      { "id": "z9", "text": "If you liked this idea, hit like and subscribe, and I will see you in the next one.", "gap": 3.9 }
+    ]}
+  ]
+}

@@ -1,0 +1,112 @@
+{
+ "mood": "hollow",
+ "ambience": "wind",
+ "music": {
+  "arc": [
+   [
+    0,
+    18,
+    0.2
+   ],
+   [
+    18,
+    38,
+    0.3
+   ],
+   [
+    38,
+    55.685,
+    0.55
+   ]
+  ],
+  "risers": [],
+  "silence": [
+   [
+    9,
+    10.5
+   ],
+   [
+    30,
+    31.2
+   ]
+  ]
+ },
+ "cues": [
+  {
+   "t": 3.38,
+   "type": "frostCrackle",
+   "len": 4
+  },
+  {
+   "t": 5.27,
+   "type": "windHowl",
+   "len": 6
+  },
+  {
+   "t": 10.9,
+   "type": "shiver"
+  },
+  {
+   "t": 12.87,
+   "type": "wind",
+   "len": 5
+  },
+  {
+   "t": 16.75,
+   "type": "powerDown"
+  },
+  {
+   "t": 18.13,
+   "type": "generatorHum",
+   "len": 5
+  },
+  {
+   "t": 22.61,
+   "type": "clockTick",
+   "n": 4
+  },
+  {
+   "t": 25.57,
+   "type": "heartbeat",
+   "len": 6,
+   "bpm": 48
+  },
+  {
+   "t": 31.43,
+   "type": "footstepWood"
+  },
+  {
+   "t": 31.82,
+   "type": "footstepGrass"
+  },
+  {
+   "t": 35.93,
+   "type": "subWhoosh"
+  },
+  {
+   "t": 38.26,
+   "type": "dust"
+  },
+  {
+   "t": 41.37,
+   "type": "sonar"
+  },
+  {
+   "t": 44,
+   "type": "stingWonder"
+  },
+  {
+   "t": 45.37,
+   "type": "tick",
+   "n": 3
+  },
+  {
+   "t": 48.47,
+   "type": "shimmer"
+  },
+  {
+   "t": 53.26,
+   "type": "bellRing"
+  }
+ ]
+}

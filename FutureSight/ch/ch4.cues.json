@@ -1,0 +1,352 @@
+{
+ "mood": "bright",
+ "music": {
+  "arc": [
+   [
+    0,
+    2.5,
+    0.45
+   ],
+   [
+    2.5,
+    7.2,
+    0.6
+   ],
+   [
+    7.2,
+    9.65,
+    0.5
+   ],
+   [
+    9.65,
+    15.5,
+    0.5
+   ],
+   [
+    15.5,
+    18.6,
+    0.6
+   ],
+   [
+    18.6,
+    21.3,
+    0.7
+   ],
+   [
+    21.3,
+    24.4,
+    0.9
+   ],
+   [
+    24.4,
+    27.2,
+    0.4
+   ]
+  ],
+  "risers": [
+   [
+    18.2,
+    18.6
+   ],
+   [
+    20.9,
+    21.45
+   ],
+   [
+    22,
+    22.55
+   ]
+  ],
+  "silence": []
+ },
+ "ambience": "casino",
+ "cues": [
+  {
+   "t": 0.45,
+   "type": "coinDrop",
+   "gain": 0.6
+  },
+  {
+   "t": 0.55,
+   "type": "chipStack",
+   "gain": 0.5
+  },
+  {
+   "t": 1,
+   "type": "sting",
+   "gain": 0.5
+  },
+  {
+   "t": 2.4,
+   "type": "ceramicTap",
+   "gain": 0.35
+  },
+  {
+   "t": 2.5,
+   "type": "rouletteSpin",
+   "gain": 0.8,
+   "len": 3.6
+  },
+  {
+   "t": 2.75,
+   "type": "rouletteBall",
+   "gain": 0.8,
+   "len": 3.5
+  },
+  {
+   "t": 4.3,
+   "type": "eyeFlash",
+   "gain": 0.7
+  },
+  {
+   "t": 4.32,
+   "type": "shimmer",
+   "gain": 0.45,
+   "len": 1.2
+  },
+  {
+   "t": 6.3,
+   "type": "catchSoft",
+   "gain": 0.5
+  },
+  {
+   "t": 6.3,
+   "type": "crowdGasp",
+   "gain": 0.7
+  },
+  {
+   "t": 6.5,
+   "type": "chipStack",
+   "gain": 0.8
+  },
+  {
+   "t": 6.7,
+   "type": "coinDrop",
+   "gain": 0.7
+  },
+  {
+   "t": 6.9,
+   "type": "chipStack",
+   "gain": 0.6
+  },
+  {
+   "t": 7.2,
+   "type": "cutHit",
+   "gain": 0.7
+  },
+  {
+   "t": 7.3,
+   "type": "clockTick",
+   "gain": 0.4,
+   "n": 3
+  },
+  {
+   "t": 7.95,
+   "type": "step",
+   "gain": 0.6
+  },
+  {
+   "t": 8.1,
+   "type": "step",
+   "gain": 0.6
+  },
+  {
+   "t": 8.2,
+   "type": "uiError",
+   "gain": 0.6
+  },
+  {
+   "t": 8.25,
+   "type": "hit",
+   "gain": 0.5
+  },
+  {
+   "t": 8.7,
+   "type": "doorOpen",
+   "gain": 0.7
+  },
+  {
+   "t": 9.1,
+   "type": "land",
+   "gain": 0.8
+  },
+  {
+   "t": 9.12,
+   "type": "dust",
+   "gain": 0.5
+  },
+  {
+   "t": 9.38,
+   "type": "doorSlam",
+   "gain": 1
+  },
+  {
+   "t": 9.65,
+   "type": "cutHit",
+   "gain": 0.6
+  },
+  {
+   "t": 9.75,
+   "type": "tickerBlips",
+   "gain": 0.6,
+   "len": 1.8
+  },
+  {
+   "t": 10.2,
+   "type": "keyboardTyping",
+   "gain": 0.6,
+   "len": 1.3
+  },
+  {
+   "t": 11.6,
+   "type": "shimmer",
+   "gain": 0.4,
+   "len": 1.4
+  },
+  {
+   "t": 12.2,
+   "type": "uiBlip",
+   "gain": 0.6
+  },
+  {
+   "t": 12.8,
+   "type": "tickerBlips",
+   "gain": 0.6,
+   "len": 2.4
+  },
+  {
+   "t": 13.5,
+   "type": "uiConfirm",
+   "gain": 0.5
+  },
+  {
+   "t": 15.5,
+   "type": "cutHit",
+   "gain": 0.7
+  },
+  {
+   "t": 15.6,
+   "type": "keyboardTyping",
+   "gain": 0.5,
+   "len": 1.5
+  },
+  {
+   "t": 16.2,
+   "type": "uiConfirm",
+   "gain": 0.6
+  },
+  {
+   "t": 16.7,
+   "type": "uiConfirm",
+   "gain": 0.6
+  },
+  {
+   "t": 17.15,
+   "type": "timerStart",
+   "gain": 0.6
+  },
+  {
+   "t": 17.4,
+   "type": "clockTick",
+   "gain": 0.3,
+   "n": 4
+  },
+  {
+   "t": 18.2,
+   "type": "riserShort",
+   "gain": 0.5,
+   "len": 0.4
+  },
+  {
+   "t": 18.6,
+   "type": "paperFlutter",
+   "gain": 0.5
+  },
+  {
+   "t": 18.65,
+   "type": "cashRegister",
+   "gain": 0.7
+  },
+  {
+   "t": 18.9,
+   "type": "moneyCount",
+   "gain": 0.7,
+   "len": 2.4
+  },
+  {
+   "t": 19.5,
+   "type": "paperRustle",
+   "gain": 0.5
+  },
+  {
+   "t": 20.4,
+   "type": "coinDrop",
+   "gain": 0.5
+  },
+  {
+   "t": 20.9,
+   "type": "riserShort",
+   "gain": 0.6,
+   "len": 0.5
+  },
+  {
+   "t": 21.3,
+   "type": "paperRustle",
+   "gain": 0.6
+  },
+  {
+   "t": 21.45,
+   "type": "uiConfirm",
+   "gain": 0.8
+  },
+  {
+   "t": 21.45,
+   "type": "sting",
+   "gain": 0.5
+  },
+  {
+   "t": 22.55,
+   "type": "uiConfirm",
+   "gain": 0.9
+  },
+  {
+   "t": 22.55,
+   "type": "swell",
+   "gain": 0.6,
+   "len": 0.8
+  },
+  {
+   "t": 23.35,
+   "type": "boom",
+   "gain": 0.8,
+   "len": 0.8
+  },
+  {
+   "t": 23.35,
+   "type": "uiConfirm",
+   "gain": 1
+  },
+  {
+   "t": 23.4,
+   "type": "cashRegister",
+   "gain": 0.8
+  },
+  {
+   "t": 24.4,
+   "type": "clothFlap",
+   "gain": 0.6,
+   "len": 0.7
+  },
+  {
+   "t": 25.05,
+   "type": "clothRustle",
+   "gain": 0.45
+  },
+  {
+   "t": 26.6,
+   "type": "dropOut",
+   "gain": 0.5,
+   "len": 0.6
+  }
+ ]
+}

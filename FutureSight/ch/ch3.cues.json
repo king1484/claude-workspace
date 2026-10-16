@@ -1,0 +1,325 @@
+{
+ "mood": "tense",
+ "music": {
+  "arc": [
+   [
+    0,
+    2.3,
+    0.3
+   ],
+   [
+    2.3,
+    8.2,
+    0.55
+   ],
+   [
+    8.2,
+    13.634,
+    0.7
+   ],
+   [
+    13.634,
+    16.9,
+    0.3
+   ],
+   [
+    16.9,
+    21.43,
+    0.7
+   ],
+   [
+    21.43,
+    24,
+    0.8
+   ],
+   [
+    24,
+    28,
+    0.7
+   ],
+   [
+    28,
+    30.852,
+    0.2
+   ]
+  ],
+  "risers": [
+   [
+    19.8,
+    21
+   ],
+   [
+    27,
+    28
+   ]
+  ],
+  "silence": [
+   [
+    28.3,
+    30.3
+   ]
+  ]
+ },
+ "ambience": "arena",
+ "cues": [
+  {
+   "t": 0.8,
+   "type": "step",
+   "gain": 0.3
+  },
+  {
+   "t": 1.35,
+   "type": "clockStop",
+   "gain": 0.7
+  },
+  {
+   "t": 1.5,
+   "type": "eyeOpen",
+   "gain": 0.8
+  },
+  {
+   "t": 1.9,
+   "type": "eyeFlash",
+   "gain": 0.8
+  },
+  {
+   "t": 1.9,
+   "type": "echoPop",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 2.3,
+   "type": "airPuff",
+   "gain": 0.5
+  },
+  {
+   "t": 3,
+   "type": "pingpongHit",
+   "gain": 0.7,
+   "n": 1
+  },
+  {
+   "t": 3.62,
+   "type": "pingpongBounce",
+   "gain": 0.6
+  },
+  {
+   "t": 4,
+   "type": "shimmer",
+   "gain": 0.4,
+   "len": 1
+  },
+  {
+   "t": 4.55,
+   "type": "pingpongHit",
+   "gain": 0.9,
+   "n": 1
+  },
+  {
+   "t": 4.95,
+   "type": "pingpongBounce",
+   "gain": 0.6
+  },
+  {
+   "t": 5.25,
+   "type": "paddleHit",
+   "gain": 0.7
+  },
+  {
+   "t": 5.7,
+   "type": "pingpongBounce",
+   "gain": 0.5
+  },
+  {
+   "t": 5.9,
+   "type": "punchMiss",
+   "gain": 0.5
+  },
+  {
+   "t": 6.35,
+   "type": "pingpongBounce",
+   "gain": 0.5
+  },
+  {
+   "t": 6.9,
+   "type": "pingpongBounce",
+   "gain": 0.45
+  },
+  {
+   "t": 8.45,
+   "type": "bellRing",
+   "gain": 0.8
+  },
+  {
+   "t": 10.15,
+   "type": "punchMiss",
+   "gain": 0.7
+  },
+  {
+   "t": 11.35,
+   "type": "punchMiss",
+   "gain": 0.7
+  },
+  {
+   "t": 11.35,
+   "type": "rewind",
+   "gain": 0.6,
+   "len": 1.5
+  },
+  {
+   "t": 11.72,
+   "type": "punchMiss",
+   "gain": 0.7
+  },
+  {
+   "t": 12.08,
+   "type": "punchMiss",
+   "gain": 0.7
+  },
+  {
+   "t": 12.45,
+   "type": "punch",
+   "gain": 0.9
+  },
+  {
+   "t": 12.45,
+   "type": "crowdGasp",
+   "gain": 0.5
+  },
+  {
+   "t": 13.634,
+   "type": "dropOut",
+   "gain": 0.8,
+   "len": 1.2
+  },
+  {
+   "t": 13.634,
+   "type": "reverseSwell",
+   "gain": 0.6,
+   "len": 1.2
+  },
+  {
+   "t": 14.88,
+   "type": "punchMiss",
+   "gain": 0.4
+  },
+  {
+   "t": 15.6,
+   "type": "pullOut",
+   "gain": 0.8
+  },
+  {
+   "t": 18.3,
+   "type": "ghostFade",
+   "gain": 0.45
+  },
+  {
+   "t": 20.2,
+   "type": "riserShort",
+   "gain": 0.5,
+   "len": 0.8
+  },
+  {
+   "t": 21,
+   "type": "clothRustle",
+   "gain": 0.4
+  },
+  {
+   "t": 21.43,
+   "type": "batCrack",
+   "gain": 0.95
+  },
+  {
+   "t": 21.5,
+   "type": "ballSmack",
+   "gain": 0.8
+  },
+  {
+   "t": 21.6,
+   "type": "crowdGasp",
+   "gain": 0.5
+  },
+  {
+   "t": 22,
+   "type": "crowdCheer",
+   "gain": 0.4,
+   "len": 1.2
+  },
+  {
+   "t": 24,
+   "type": "whooshFast",
+   "gain": 0.6,
+   "len": 0.4
+  },
+  {
+   "t": 24.15,
+   "type": "tick",
+   "gain": 0.6,
+   "n": 1
+  },
+  {
+   "t": 24.55,
+   "type": "catchSoft",
+   "gain": 0.8
+  },
+  {
+   "t": 25.45,
+   "type": "clothFlap",
+   "gain": 0.5,
+   "len": 0.4
+  },
+  {
+   "t": 25.65,
+   "type": "ballSmack",
+   "gain": 0.8
+  },
+  {
+   "t": 26.03,
+   "type": "catchSoft",
+   "gain": 0.9
+  },
+  {
+   "t": 27.25,
+   "type": "thump",
+   "gain": 0.6
+  },
+  {
+   "t": 27.5,
+   "type": "thump",
+   "gain": 0.6
+  },
+  {
+   "t": 27.75,
+   "type": "thump",
+   "gain": 0.6
+  },
+  {
+   "t": 28,
+   "type": "dropOut",
+   "gain": 0.7,
+   "len": 0.8
+  },
+  {
+   "t": 28.3,
+   "type": "sonar",
+   "gain": 0.6
+  },
+  {
+   "t": 28.3,
+   "type": "swell",
+   "gain": 0.5,
+   "len": 1.5
+  },
+  {
+   "t": 29,
+   "type": "heartbeat",
+   "gain": 0.5
+  },
+  {
+   "t": 30,
+   "type": "silenceHit",
+   "gain": 0.5
+  }
+ ]
+}

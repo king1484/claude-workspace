@@ -1,0 +1,101 @@
+{
+ "mood": "warm",
+ "ambience": "city",
+ "music": {
+  "arc": [
+   [
+    0,
+    6,
+    0.3
+   ],
+   [
+    6,
+    20,
+    0.55
+   ],
+   [
+    20,
+    29.218,
+    0.35
+   ]
+  ],
+  "risers": [],
+  "silence": []
+ },
+ "cues": [
+  {
+   "t": 1.15,
+   "type": "coinDrop"
+  },
+  {
+   "t": 2.75,
+   "type": "cashRegister"
+  },
+  {
+   "t": 4.48,
+   "type": "moneyCount"
+  },
+  {
+   "t": 5.83,
+   "type": "chipStack"
+  },
+  {
+   "t": 7.49,
+   "type": "rouletteSpin"
+  },
+  {
+   "t": 9.38,
+   "type": "rouletteBall"
+  },
+  {
+   "t": 11.25,
+   "type": "crowdCheer"
+  },
+  {
+   "t": 12.54,
+   "type": "crowdOoh"
+  },
+  {
+   "t": 13.95,
+   "type": "bellRing"
+  },
+  {
+   "t": 16.14,
+   "type": "uiConfirm"
+  },
+  {
+   "t": 17.56,
+   "type": "footstepConcrete"
+  },
+  {
+   "t": 18.57,
+   "type": "birdsong",
+   "len": 4
+  },
+  {
+   "t": 20.27,
+   "type": "clap"
+  },
+  {
+   "t": 22,
+   "type": "sting"
+  },
+  {
+   "t": 22.9,
+   "type": "laughTrack"
+  },
+  {
+   "t": 23.69,
+   "type": "eyeOpen"
+  },
+  {
+   "t": 25.58,
+   "type": "tick",
+   "n": 2
+  },
+  {
+   "t": 26.18,
+   "type": "uiBlip"
+  }
+ ]
+}

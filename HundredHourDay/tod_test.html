@@ -1,0 +1,97 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>TOD test</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="lib.js"></script>
+<script src="timeline.js"></script>
+<script src="layout.js"></script>
+<script src="world.js"></script>
+<script src="rigs.js"></script>
+<script src="scenes.js"></script>
+<script src="tod.js"></script>
+<script>
+// Shot table: integer T -> shot.  T>=1000: continuous sweep (T-1000 seconds) for speed checks.
+const CAM0 = { x: 900, y: 612, z: 1, r: 0 };
+const SHOTS = {
+  1:  { scene: 'city', H: 0 },
+  2:  { scene: 'city', H: 3 },
+  3:  { scene: 'city', H: 10 },
+  4:  { scene: 'city', H: 25 },
+  5:  { scene: 'city', H: 45 },
+  6:  { scene: 'city', H: 50 },
+  7:  { scene: 'city', H: 55 },
+  8:  { scene: 'city', H: 75 },
+  9:  { scene: 'city', H: 99 },
+  10: { scene: 'desert', H: 25, heat: 0.85, warp: 1, glare: 0.8 },
+  11: { scene: 'farm', H: 25, heat: 0.6, wilt: 1, warp: 0.5, glare: 0.4 },
+  12: { scene: 'farm', H: 80, frost: 1, frostFx: 1 },
+  13: { scene: 'coast', H: 49 },
+  14: { scene: 'coast', H: 75 },
+  15: { scene: 'city', H: 48, cam: { x: 1100, y: 560, z: 1.5, r: 0.03 } },
+  16: { scene: 'city', H: 37, hudPop: 0.6 },
+  17: { scene: 'desert', H: 2 },
+  18: { scene: 'farm', H: 3 },
+  19: { scene: 'coast', H: 25 },
+  20: { scene: 'city', H: 25, heat: 1, warp: 1, glare: 1 },
+  21: { scene: 'city', H: 30, frost: 1, frostFx: 1 },
+  22: { scene: 'desert', H: 49 },
+  23: { scene: 'desert', H: 75 },
+  24: { scene: 'farm', H: 49 },
+  25: { scene: 'farm', H: 12 },
+  26: { scene: 'coast', H: 3 },
+  27: { scene: 'coast', H: 60 },
+  28: { scene: 'city', H: 40 },
+  29: { scene: 'city', H: 47 },
+  30: { scene: 'city', H: 52 },
+  31: { scene: 'city', H: 62 },
+  32: { scene: 'city', H: 90 },
+  33: { scene: 'city', H: 97 },
+  34: { scene: 'farm', H: 25, wilt: 0 },
+  35: { scene: 'farm', H: 25, wilt: 0.5, heat: 0.3 },
+  36: { scene: 'desert', H: 40, cam: { x: 1500, y: 640, z: 0.85, r: 0 } }
+};
+const HOST = { x: 900, y: 820, s: 0.92, facing: 1 };
+function renderShot(g, sh, t) {
+  const cam = sh.cam || CAM0, H = sh.H;
+  const o = { scene: sh.scene, heat: sh.heat || 0, frost: sh.frost || 0, wilt: sh.wilt || 0, cloud: sh.cloud == null ? 0.4 : sh.cloud, t: t };
+  g.save();
+  if (cam.r) { g.translate(960, 540); g.rotate(cam.r); g.translate(-960, -540); }
+  TOD.drawWorld(g, cam, H, o);
+  if (sh.frost) TOD.frostGround(g, cam, sh.frost);
+  withLayer(g, cam, 1, () => {
+    const st = Object.assign({}, HOST, { pose: walkerPose({ walk: 0, phone: 0, lean: 0.04, bob: 0.4 }), pal: TOD.heroPal(H, o), alpha: 1, shadow: false });
+    TOD.heroShadow(g, H, st, o);
+    drawWalker(g, st);
+  });
+  TOD.drawForeground(g, cam, H, o);
+  g.restore();
+  if (sh.warp) TOD.heatWarp(g, 560, 880, sh.warp, t);
+  if (sh.glare) TOD.heatGlare(g, sh.glare, t);
+  if (sh.frostFx) TOD.frostOverlay(g, sh.frostFx, t);
+  TOD.grade(g, H, o);
+  TOD.hud(g, H, { alpha: 1, pop: sh.hudPop == null ? 1 : sh.hudPop });
+}
+window.drawFrame = function (g, T) {
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  if (T >= 1000) {                    // continuous: scene cycles every 20 s, H sweeps 0..100
+    const t = T - 1000, sc = ['city', 'desert', 'farm', 'coast'][Math.floor(t / 20) % 4];
+    renderShot(g, { scene: sc, H: (t * 5) % 100, cam: { x: 900 + 120 * Math.sin(t * 0.4), y: 612, z: 1 + 0.12 * Math.sin(t * 0.3), r: 0 } }, t);
+    return;
+  }
+  const sh = SHOTS[Math.round(T)] || SHOTS[1];
+  renderShot(g, sh, 3.0 + (T % 1));
+};
+window.warmWorld = function () { TOD.warm(); };
+window.benchTOD = function (scene, H, heat) {
+  const c = document.createElement('canvas'); c.width = 1920; c.height = 1080; const g = c.getContext('2d');
+  const o = { scene: scene, t: 1, heat: heat || 0 }, cam = CAM0;
+  const sync = () => g.getImageData(0, 0, 1, 1); TOD.drawWorld(g, CAM0, H, o); TOD.drawForeground(g, CAM0, H, o); sync();
+  const run = (fn) => { fn(0); sync(); const t0 = performance.now(); for (let i = 0; i < 60; i++) fn(i); sync(); return (performance.now() - t0) / 60; };
+  const w = run((i) => { o.t = i / 30; TOD.drawWorld(g, { x: 900 + i * 2, y: 612, z: 1, r: 0 }, H, o); });
+  const f = run((i) => { o.t = i / 30; const cm = { x: 900 + i * 2, y: 612, z: 1, r: 0 }; TOD.drawWorld(g, cm, H, o); TOD.drawForeground(g, cm, H, o); });
+  return { scene: scene, H: H, world_ms: +w.toFixed(2), world_fg_ms: +f.toFixed(2) };
+};
+</script>
+<script src="harness.js"></script>
+</body></html>

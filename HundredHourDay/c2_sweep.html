@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>c2 sweep</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="lib.js"></script>
+<script src="timeline.js"></script>
+<script src="layout.js"></script>
+<script src="world.js"></script>
+<script src="rigs.js"></script>
+<script src="scenes.js"></script>
+<script src="tod.js"></script>
+<script src="mascot.js"></script>
+<script src="globe.js"></script>
+<script src="ch/c2.js"></script>
+<script>
+// Sweep CH.c2.draw over lt in 0.1 s steps; report exceptions, non-finite canvas args, and per-frame ms.
+const c2_bad = {};
+['moveTo','lineTo','arc','arcTo','ellipse','rect','fillRect','strokeRect','translate','scale','rotate','drawImage','bezierCurveTo','quadraticCurveTo','createRadialGradient','createLinearGradient','setTransform','transform'].forEach((m) => {
+  const o = CanvasRenderingContext2D.prototype[m];
+  CanvasRenderingContext2D.prototype[m] = function () {
+    for (let i = 0; i < arguments.length; i++) { const a = arguments[i]; if (typeof a === 'number' && !isFinite(a)) { c2_bad[m] = (c2_bad[m] || 0) + 1; if (c2_bad[m] < 3) console.warn('NONFINITE ' + m + ' args=' + Array.prototype.join.call(arguments, ',') + ' lt=' + window.c2_lt); break; } }
+    return o.apply(this, arguments);
+  };
+});
+const c2_prof = {};
+[[GLOBE, 'draw', 'globe'], [GLOBE, 'dial', 'dial'], [MASCOT, 'draw', 'mascot'], [TOD, 'drawWorld', 'todWorld']].forEach(([o, m, k]) => {
+  const f = o[m]; o[m] = function () { const t0 = performance.now(); const r = f.apply(this, arguments); c2_prof[k] = (c2_prof[k] || 0) + performance.now() - t0; return r; };
+});
+window.drawFrame = function (g, T) {
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  window.c2_skip = {};
+  CH.c2.draw(g, 0, 25);
+  for (const v of [[], ['bg'], ['tw'], ['sun'], ['stage'], ['globe'], ['bg', 'tw', 'sun', 'stage', 'globe']]) {      // space-only variant timing (lt 1..21 step 0.5)
+    window.c2_skip = {}; v.forEach((k) => { window.c2_skip[k] = 1; });
+    let s = 0, m = 0; for (let lt = 1; lt <= 21; lt += 0.5) { const a = performance.now(); CH.c2.draw(g, lt, 25); g.getImageData(0, 0, 1, 1); s += performance.now() - a; m++; }
+    console.warn('VARIANT skip=' + v.join('+') + ' avg=' + (s / m).toFixed(1) + 'ms');
+  }
+  window.c2_skip = {};
+  let worst = 0, wl = 0, sum = 0, n = 0, err = 0;
+  const dur = LAYOUT.c2.dur;
+  for (let lt = 0; lt <= dur + 0.001; lt += 0.1) {
+    window.c2_lt = lt;
+    const t0 = performance.now();
+    try { CH.c2.draw(g, lt, dur); } catch (e) { err++; if (err < 4) console.warn('EXC lt=' + lt.toFixed(2) + ' ' + e.message + ' ' + (e.stack || '').split('\n')[1]); }
+    g.getImageData(0, 0, 1, 1);
+    const ms = performance.now() - t0; sum += ms; n++; if (lt > 1 && ms > worst) { worst = ms; wl = lt; }
+  }
+  console.warn('SWEEP frames=' + n + ' exc=' + err + ' nonfinite=' + JSON.stringify(c2_bad) + ' avg=' + (sum / n).toFixed(1) + 'ms worst=' + worst.toFixed(1) + 'ms@lt' + wl.toFixed(1));
+  const pr = {}; for (const k in c2_prof) pr[k] = +(c2_prof[k] / n).toFixed(1);
+  console.warn('PROF avg ms/frame ' + JSON.stringify(pr));
+  g.setTransform(1, 0, 0, 1, 0, 0);
+};
+window.warmWorld = function () { TOD.warm(); GLOBE.warm(); };
+</script>
+<script src="harness.js"></script>
+</body></html>

@@ -1,0 +1,1370 @@
+{
+  "description": "Original copied snapshot before cloud portability edits. No raw chats, credentials, or general account memory are included.",
+  "files": [
+    {
+      "path": "HundredHourDay/audio_make_test_cues.mjs",
+      "bytes": 9829,
+      "sha256": "32059e65f8b56ebb64f7668db0c671c92bdd882960e034f5bfecaff2856742c3"
+    },
+    {
+      "path": "HundredHourDay/audio_probe.mjs",
+      "bytes": 940,
+      "sha256": "cf0ae0e27d27bb449629dd875b57e8ef12ac91b62b9671fde364b860261fcf16"
+    },
+    {
+      "path": "HundredHourDay/c1_prof.mjs",
+      "bytes": 2013,
+      "sha256": "6102c8b9ae99e13f46d039a0f84e1e214cc1f46be84aebc97d988685b95bbaed"
+    },
+    {
+      "path": "HundredHourDay/c1_prof2.mjs",
+      "bytes": 2188,
+      "sha256": "94296c2effa0caeae67ee04995bd28e3247a0d6037a8df7e1540057fcfcfbd1f"
+    },
+    {
+      "path": "HundredHourDay/c1_sweep.mjs",
+      "bytes": 2413,
+      "sha256": "d76777d093ee4c3b9fab61ebe3786ac5ea26d545927372d1513533458f8f204f"
+    },
+    {
+      "path": "HundredHourDay/c2_sweep.html",
+      "bytes": 3329,
+      "sha256": "b515380f3cc2715d3a7b9e98dffd27da1161f8739b523fea83e50b57f0b9a296"
+    },
+    {
+      "path": "HundredHourDay/c4_harness.html",
+      "bytes": 3273,
+      "sha256": "f0d16943f696807a9c3b04a4c7d53fbe54468354b3185e34a9e37e6479eb421a"
+    },
+    {
+      "path": "HundredHourDay/c4_probe.html",
+      "bytes": 1838,
+      "sha256": "67c95b3fc89b50933ea10981117fbb60d63749eab5603ebabbf74c7f9d38844e"
+    },
+    {
+      "path": "HundredHourDay/full.js",
+      "bytes": 2544,
+      "sha256": "15cd56a9f0a5f2b32dd9bd81fc6cfa54242e2f5a80c6b0bf2780b994d9f65dc2"
+    },
+    {
+      "path": "HundredHourDay/globe.js",
+      "bytes": 78394,
+      "sha256": "a361a3d1dcda25fe9f3551409483f5778a2027bb5becc3a64d8c7f250e52d5b1"
+    },
+    {
+      "path": "HundredHourDay/globe_test.html",
+      "bytes": 4877,
+      "sha256": "120e43fbc3d3c62ec0547ab8107ffad1b00f5b2070611de6667d614e621251cb"
+    },
+    {
+      "path": "HundredHourDay/harness.js",
+      "bytes": 1838,
+      "sha256": "d1a48e9967fde36158227c159d0fa52ab692b4620ed3f24dae3483a4256a2b8a"
+    },
+    {
+      "path": "HundredHourDay/index_full.html",
+      "bytes": 867,
+      "sha256": "77d357c662cab3bd4cf7c59b0931af31fa0ffb9d3a9f559f710ba9ad76a9d480"
+    },
+    {
+      "path": "HundredHourDay/layout.js",
+      "bytes": 9727,
+      "sha256": "14237e3605da98c2c028028f71c7ecfe881cdd964f626767442ff3630aa0f029"
+    },
+    {
+      "path": "HundredHourDay/lib.js",
+      "bytes": 2014,
+      "sha256": "b26e2a1ac23ab247de719b5978c52468f7459ec6f475257bdf5e4167e31d59e5"
+    },
+    {
+      "path": "HundredHourDay/make_vo_full.py",
+      "bytes": 2611,
+      "sha256": "6dc387c84cf75d8bc19ac5af4f2f3487006a2ed54707feb049f5392d8158096f"
+    },
+    {
+      "path": "HundredHourDay/mascot.js",
+      "bytes": 58223,
+      "sha256": "56977d18983395b7f23491f422593effe08f3c6d43f4a1e67fa5d84edb4e4627"
+    },
+    {
+      "path": "HundredHourDay/mascot_test.html",
+      "bytes": 8624,
+      "sha256": "53467f5b2ebc620dec54549cbc3fec6219aeb82ba3f0b13d898dd9f080b47a1f"
+    },
+    {
+      "path": "HundredHourDay/render.mjs",
+      "bytes": 5354,
+      "sha256": "b3426f7a1a84606cc5739c8b28af7a1f9cb9cca8426f43eead4ff287fbd8bd02"
+    },
+    {
+      "path": "HundredHourDay/rigs.js",
+      "bytes": 37486,
+      "sha256": "7dd30a9b3fc4d3f1a4fd1b47ca25b22b6d3c236da6b02977b09cfc5de64214b3"
+    },
+    {
+      "path": "HundredHourDay/scenes.js",
+      "bytes": 12730,
+      "sha256": "12d44321578c211dbb942e67df24860311c17540987f5f205965dc46cc269290"
+    },
+    {
+      "path": "HundredHourDay/script.json",
+      "bytes": 6890,
+      "sha256": "ba9bf1114a1f9ff163c93becadbf8cddfcb548495343f8ac409046c1682b8132"
+    },
+    {
+      "path": "HundredHourDay/sfx_full.mjs",
+      "bytes": 207990,
+      "sha256": "0299892e8b2a05ba2f80b2b727150afdadcf034e5e7cf87e30f322f87fc274f7"
+    },
+    {
+      "path": "HundredHourDay/SOURCES.md",
+      "bytes": 4947,
+      "sha256": "04bd220df80a65d108dd34e32d50c222c4a7cadd740d0a2262416156ba305711"
+    },
+    {
+      "path": "HundredHourDay/timeline.js",
+      "bytes": 3227,
+      "sha256": "1fb9a7f736549b9fccf1960271037e8c2a59032073891d4c3997de32acba2379"
+    },
+    {
+      "path": "HundredHourDay/tod.js",
+      "bytes": 131070,
+      "sha256": "3c2d8186649fd6b357b95c89ce71dcc4e47c1d2daeec152b8dfcc90968c5962b"
+    },
+    {
+      "path": "HundredHourDay/tod_test.html",
+      "bytes": 4502,
+      "sha256": "db41558faf12f355fa02c3f23ab9173bc87af7f43fd28ed22c52376b7216e606"
+    },
+    {
+      "path": "HundredHourDay/world.js",
+      "bytes": 39130,
+      "sha256": "8ac2e0963bf1db81af9a865a9ef0e5e5765043b96d5fd0265c864ce24167e614"
+    },
+    {
+      "path": "HundredHourDay/ch/c1.build_cues.mjs",
+      "bytes": 3566,
+      "sha256": "2a5914846142aaf49c95771dd192bec0fb06c0d38ffb4028e6b3d719798c351a"
+    },
+    {
+      "path": "HundredHourDay/ch/c1.cues.json",
+      "bytes": 2500,
+      "sha256": "cf7485044c8e4adc74927f1fad864bffeb6fff3d4cc38d3af4f4621d9e05544e"
+    },
+    {
+      "path": "HundredHourDay/ch/c1.js",
+      "bytes": 29721,
+      "sha256": "2e17f6a044c5f663b2cd88aed729f0ba28ec78fbcc594a7452543179c46b66eb"
+    },
+    {
+      "path": "HundredHourDay/ch/c2.build_cues.mjs",
+      "bytes": 2861,
+      "sha256": "409a15c52893d351aa373a0c17a03c6c6315374197b69a98b9b28eddbf45e351"
+    },
+    {
+      "path": "HundredHourDay/ch/c2.cues.json",
+      "bytes": 3200,
+      "sha256": "0d3ec4e3dd0cfa745cde7fe827815dd43f61fcbde0e9a7be7ff81d86fd3353a5"
+    },
+    {
+      "path": "HundredHourDay/ch/c2.js",
+      "bytes": 27005,
+      "sha256": "9a2f171f35ac544cb1ffe1123215a5d7f45fea223773e5c7d1f37974eb33608a"
+    },
+    {
+      "path": "HundredHourDay/ch/c3.js",
+      "bytes": 50668,
+      "sha256": "2e509b7aa49cb39203d4cfe2c2bf7a627539302552f53b705290240f10feb1c2"
+    },
+    {
+      "path": "HundredHourDay/ch/c4.build_cues.mjs",
+      "bytes": 4118,
+      "sha256": "382b81232d7252d71422bc727f5bdfb7581661d01a86546251f204e9cc172251"
+    },
+    {
+      "path": "HundredHourDay/ch/c4.cues.json",
+      "bytes": 3371,
+      "sha256": "77fc27dbc864d490187baebb31df64a71914a103d417fc238c004615df4cb1c0"
+    },
+    {
+      "path": "HundredHourDay/ch/c4.js",
+      "bytes": 34826,
+      "sha256": "50c27d44c5df8850a7c702ffec6d8e9273f246e2864976be6a1ae254bd1bc6c7"
+    },
+    {
+      "path": "HundredHourDay/docs/CONTRACT.md",
+      "bytes": 7959,
+      "sha256": "a85e9d62800a1ac3ff2e703ecf0a52b20c67594b8b7d371f6af429606d62bf64"
+    },
+    {
+      "path": "HundredHourDay/docs/CONTRACT_FULL.md",
+      "bytes": 16568,
+      "sha256": "66abf97e1b26b4378672ec68bd3898470b60a8d45dee76c455e7a47911eeebdf"
+    },
+    {
+      "path": "HundredHourDay/docs/STORY_V2.md",
+      "bytes": 10685,
+      "sha256": "82b2877df46261df9736ee92551efa597ee190b3abfd44da17c986e819c368ff"
+    },
+    {
+      "path": "HundredHourDay/docs/V2_BRIEF.md",
+      "bytes": 9093,
+      "sha256": "4d7f53615589f059b48173e23201084df542a36b588d08fd3048c566e23cea25"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c1.cues.json",
+      "bytes": 1604,
+      "sha256": "5295ddd40707e77877bab2104282f8caadc66408580169fbe18bf423b52d4e46"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c2.cues.json",
+      "bytes": 1713,
+      "sha256": "f2159c2fb3063baca58c8f50aa58d07fcb4a73c7026713d2b47b88f58bb89026"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c3.cues.json",
+      "bytes": 1503,
+      "sha256": "aa2d6c38396d832ac453438b688fa19846bc94f01907bfdf41f5e2c5ad19bcdb"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c4.cues.json",
+      "bytes": 1659,
+      "sha256": "099d8c7ff8075bf395a61f5075fe413bb535f427b3d36e6503f2335b649d39c7"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c5.cues.json",
+      "bytes": 1168,
+      "sha256": "e797e45f06f890739fe16e169252ea54bd30fed4fc665672fa44261b301c46ec"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c6.cues.json",
+      "bytes": 2027,
+      "sha256": "091a214e97bc50fcbbca179a33e04a934c2de59f02cebe7b4055ef31ab535af3"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c7.cues.json",
+      "bytes": 1561,
+      "sha256": "df49888fc134dfde9bd9ec711f6db39adc7dd934310d895d3f623b18ad224618"
+    },
+    {
+      "path": "HundredHourDay/audio_test_cues/c8.cues.json",
+      "bytes": 1081,
+      "sha256": "1ccf0d417286a13723079e9b59f8b13179beb9f2bcaab621d0b308f6eb2aaf05"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b1.wav",
+      "bytes": 443952,
+      "sha256": "17c457fa054bb68cf7afaa0d30212d3b400305435fb76a900c22f7b0a2b2228a"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b2.wav",
+      "bytes": 732944,
+      "sha256": "4d0847a07f312f54762d17e372c51d5a56c9335e3931e7be9899a8534797d5ef"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b3.wav",
+      "bytes": 829704,
+      "sha256": "116d98049b91193c61863412e9559e978aa9b8aa4e632e3a16bd762e4efc9fd7"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b4.wav",
+      "bytes": 433452,
+      "sha256": "769cc11dd0d96a159c7e944b7b8347e326cc98b53fc69c140a9a43fc00fc14b1"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b5.wav",
+      "bytes": 210804,
+      "sha256": "c408258ef4d863a55b2b23e77614eef6be1ac5232eccf79b0376af6f4b1e1e83"
+    },
+    {
+      "path": "HundredHourDay/out/vo/b6.wav",
+      "bytes": 303280,
+      "sha256": "07d3bd8119ad8fc3aebc6633d3bb1af0ba0be7d772d4d525d8c1b00df0fc4406"
+    },
+    {
+      "path": "HundredHourDay/out/vo/d1.wav",
+      "bytes": 751344,
+      "sha256": "4693fdc0f667fcf01218c3fa542e2a0d01be005eda996644489957678142b515"
+    },
+    {
+      "path": "HundredHourDay/out/vo/d2.wav",
+      "bytes": 1343148,
+      "sha256": "2307b1840419bcf5672f67c40d3aae99658fd314583975a266a26c364a5234ba"
+    },
+    {
+      "path": "HundredHourDay/out/vo/d3.wav",
+      "bytes": 601932,
+      "sha256": "ae4019631fbdd85c4c063369b4aaaf2b02056ca5c812d9c3995afeb0a292c210"
+    },
+    {
+      "path": "HundredHourDay/out/vo/d4.wav",
+      "bytes": 681100,
+      "sha256": "d3ba4471e38566fa747472d33a9eb0004541f52bebe9bd40de545b1cf109b35e"
+    },
+    {
+      "path": "HundredHourDay/out/vo/d5.wav",
+      "bytes": 989252,
+      "sha256": "66fa1a5f3cfb78fbb9c17c924929c28f6605d5e1a3ceebef3a9b70597eb1ce3a"
+    },
+    {
+      "path": "HundredHourDay/out/vo/e1.wav",
+      "bytes": 237732,
+      "sha256": "8e59624fec62c8f52f996aca929965f103d0f99cbfaf97b0fc3441fd14d028af"
+    },
+    {
+      "path": "HundredHourDay/out/vo/e2.wav",
+      "bytes": 1052040,
+      "sha256": "40d555ac170e63298cb92fde4e0df36261127a6d399b0f652bed9b1836ccb7b8"
+    },
+    {
+      "path": "HundredHourDay/out/vo/e3.wav",
+      "bytes": 607672,
+      "sha256": "c52914ac026d315787646d4bd9709264607ba81758bc722c2d44f1caf0534c02"
+    },
+    {
+      "path": "HundredHourDay/out/vo/e4.wav",
+      "bytes": 252436,
+      "sha256": "1051c4cb2462080f3caeed2b4d798bf727aec7b4d85a01f94917701edce85783"
+    },
+    {
+      "path": "HundredHourDay/out/vo/e5.wav",
+      "bytes": 271312,
+      "sha256": "c4739a125110aa5cc242bf8c44a65b78e4cc73222517fb64a076f3b06f97467c"
+    },
+    {
+      "path": "HundredHourDay/out/vo/h1.wav",
+      "bytes": 446108,
+      "sha256": "2acbaeb166c8cf094e465a20734b9e3ece8afbba85a1b217ebd61cacac169469"
+    },
+    {
+      "path": "HundredHourDay/out/vo/h2.wav",
+      "bytes": 533720,
+      "sha256": "1fb77298845b442353c697f078000ad74901776b7b1e01983d416681108e7578"
+    },
+    {
+      "path": "HundredHourDay/out/vo/h3.wav",
+      "bytes": 295148,
+      "sha256": "24208a0483c31c1898648482913fc36ba133f28df3fc76c9f61c8bd632c4d0d4"
+    },
+    {
+      "path": "HundredHourDay/out/vo/h4.wav",
+      "bytes": 268280,
+      "sha256": "fc74dc1b29c34e396a2178c507600b2760a9e13163ef2c04d964b1354a43db28"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n1.wav",
+      "bytes": 666348,
+      "sha256": "6776a85cdd96d4e29bc1ceddc58f32cf38d1842b85cddbcccd63078596a056cd"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n2.wav",
+      "bytes": 1087944,
+      "sha256": "589edb1261815d5d83b0c11f5ac6dd11ffa47afc202b3dc7c8d6ffd6d5398af7"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n3.wav",
+      "bytes": 751156,
+      "sha256": "89572b502824df7393d28899bf30c053814c12f687a3491244f8540dc9bb1298"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n4.wav",
+      "bytes": 603928,
+      "sha256": "f14413711aa6d83e77a606c67582cd078f1594aa4388898604c5aa3f25abf4e8"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n5.wav",
+      "bytes": 805816,
+      "sha256": "351dc133c2e19e725a66975b4b4949fedd5e20338505cd40adad23269ccae91d"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n6.wav",
+      "bytes": 406156,
+      "sha256": "f8532182442ddfc3a4466d8712a1d536c9875d97c0651be574230d350c8cd789"
+    },
+    {
+      "path": "HundredHourDay/out/vo/n7.wav",
+      "bytes": 525564,
+      "sha256": "10ff9ebc47fff486d9a056f8b7f35504f802c91e5c8e7c2add681d46b0aa9128"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o1.wav",
+      "bytes": 301260,
+      "sha256": "e1a9d5b474c5f043497b1149446e6a8a4419ae95562f2681bbb091956369eb6c"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o2.wav",
+      "bytes": 326744,
+      "sha256": "32bff31032a4a72a752a3f09dc1798103e978cdecf779788c8b474fd48ea4d94"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o3.wav",
+      "bytes": 866560,
+      "sha256": "15b80e5469d1a8f70e0a3bc5e97852021402b954b9f9db998c2e840acb2ab39d"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o4.wav",
+      "bytes": 295312,
+      "sha256": "08ddcc71491a81e3382f22cf10690828c5e05167665314299c1137d824250210"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o5.wav",
+      "bytes": 787472,
+      "sha256": "976c6da47f61d8d9fb0d7991d8a9ede8a7e526789831267d8c0cbc950fc7f8db"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o6.wav",
+      "bytes": 1499816,
+      "sha256": "a77927b6e6be6ca5b28465ff4ddd7b4e3cfb366b95d27b61b18c49ad63c04215"
+    },
+    {
+      "path": "HundredHourDay/out/vo/o7.wav",
+      "bytes": 267188,
+      "sha256": "344de09f3327800e5e9484f09e92772c8876b8e5288edde3e9c21bbf7b27f319"
+    },
+    {
+      "path": "HundredHourDay/out/vo/r1.wav",
+      "bytes": 790380,
+      "sha256": "b8daf21cbb60d9dc88070310a23e89d400c5d74f526447adc1e2dd76452b9791"
+    },
+    {
+      "path": "HundredHourDay/out/vo/r2.wav",
+      "bytes": 454524,
+      "sha256": "0c04b0f41637d22d692e391d731b37dbc8d6dba6fbdef572b766db527ba9a845"
+    },
+    {
+      "path": "HundredHourDay/out/vo/r4.wav",
+      "bytes": 643056,
+      "sha256": "051bf3565aa97f8051b7f78d8c7853110de678dcdc77bf436c0cda7affa30d5c"
+    },
+    {
+      "path": "HundredHourDay/out/vo/r5.wav",
+      "bytes": 275244,
+      "sha256": "8d2f89b53e19ef85704bafa86165af227d8a60c6353133ae128ff6277f1fc3a9"
+    },
+    {
+      "path": "HundredHourDay/out/vo/w1.wav",
+      "bytes": 378384,
+      "sha256": "fbb28b5456baedb9282ff368a719d052f7884382ad5d7938d0a5875ac34be93a"
+    },
+    {
+      "path": "HundredHourDay/out/vo/w2.wav",
+      "bytes": 1257720,
+      "sha256": "5ce300add5f05e6084fdd504f6fde6e8cc78c9ded3f15628d1283d6d419f6568"
+    },
+    {
+      "path": "HundredHourDay/out/vo/w3.wav",
+      "bytes": 1352424,
+      "sha256": "4966afd4a9af8f082bd6ccc99bcef82c52ea3723e505c41619a5bf05826e09f6"
+    },
+    {
+      "path": "HundredHourDay/out/vo/w4.wav",
+      "bytes": 557480,
+      "sha256": "954cdab6ede8bcde42ed7ffca05dd335744e83e8ca37374bcea3e9c7a4ffb249"
+    },
+    {
+      "path": "HundredHourDay/out/layout.json",
+      "bytes": 9539,
+      "sha256": "7f9e00a5d1d5ed84ca77f98dfb2faea0ef68fa99e688b3faa65ef465d8a4f79d"
+    },
+    {
+      "path": "HundredHourDay/out/audio_report_full.json",
+      "bytes": 25191,
+      "sha256": "60b2cc017824e099da318e33ae37fb7f3c49da58108b10251f51f507cad75be9"
+    },
+    {
+      "path": "HundredHourDay/out/audio_check_resume_debug.json",
+      "bytes": 4879,
+      "sha256": "d163e9f104da7c7b82fe69a6a4e9437a249662549e090e60ae329e3fc7f35d03"
+    },
+    {
+      "path": "HundredHourDay/out/audio_check_resume_debug.txt",
+      "bytes": 4376,
+      "sha256": "c39925dee631ed98a7c5633205914c931461fbd4d1dd115af047708f3a3a5266"
+    },
+    {
+      "path": "FutureSight/brand.html",
+      "bytes": 424,
+      "sha256": "92f8172ef9e862c2041d25829155034fb6927cf0a3658924d7e060a15dbefada"
+    },
+    {
+      "path": "FutureSight/brand.js",
+      "bytes": 10592,
+      "sha256": "e341a0ea4814f94757e9644c75f56b42998f1d83ff39be15052b9dfc4d6fdd26"
+    },
+    {
+      "path": "FutureSight/brand10.html",
+      "bytes": 461,
+      "sha256": "2e72e7a131a140f3bfaaec2aa4dbfd575a2101f6c6afeeb51fc8d45d1cf5fbb3"
+    },
+    {
+      "path": "FutureSight/brand10.js",
+      "bytes": 5152,
+      "sha256": "d856a53a068952c68d8dcbc75365e2668220039f57c6803d150edb8a11b6fe7d"
+    },
+    {
+      "path": "FutureSight/brand11.html",
+      "bytes": 461,
+      "sha256": "0cfe3f149f9753009ce80b2ed35f1840c39b55b72245ccbd1bb99a065eee4db2"
+    },
+    {
+      "path": "FutureSight/brand11.js",
+      "bytes": 5665,
+      "sha256": "8cd0a1d1bbe9b1f68fda4bd745165736ae6948bbc18b62c98753ef34fe46bc5c"
+    },
+    {
+      "path": "FutureSight/brand2.html",
+      "bytes": 324,
+      "sha256": "c83b6e72334b06fa4fb0c33908f854595583d27d09a18196f3699f15cf06ebdc"
+    },
+    {
+      "path": "FutureSight/brand2.js",
+      "bytes": 16010,
+      "sha256": "764a34958869c476ee97fe2734c629c0cc41a369bb59765119d5655bf3b6cc85"
+    },
+    {
+      "path": "FutureSight/brand3.html",
+      "bytes": 460,
+      "sha256": "5353ad220e15f930a3e83bd1f6dce244fd2553300f5e3ce635330c76f0751cad"
+    },
+    {
+      "path": "FutureSight/brand3.js",
+      "bytes": 3189,
+      "sha256": "e40df28423f35f86c00089b69e15be316456e33922ff15954e18cd06b17453f7"
+    },
+    {
+      "path": "FutureSight/brand4.html",
+      "bytes": 460,
+      "sha256": "26d566fa9285a76dbf5054261a4dbcb2ff7cf18f9928f07c9899c49fbd78474a"
+    },
+    {
+      "path": "FutureSight/brand4.js",
+      "bytes": 5131,
+      "sha256": "998cf279eb5f11b8e4b58d2ecd91f570cbcea998a82ec96467e39552ad498702"
+    },
+    {
+      "path": "FutureSight/brand5.html",
+      "bytes": 460,
+      "sha256": "31257f3b867f0c7fc4af4b60c88e5cd79c09bceddc93aa2ff2e6a54576f4475c"
+    },
+    {
+      "path": "FutureSight/brand5.js",
+      "bytes": 5150,
+      "sha256": "c7db01a3a796aef318d104a8a65ee3a3ec45fa11f28e1e454a59893efea9e24b"
+    },
+    {
+      "path": "FutureSight/brand6.html",
+      "bytes": 460,
+      "sha256": "d7eb1c34a154eb2cce67f5c61385a54645b5c29115c1c96af97169f619dfea86"
+    },
+    {
+      "path": "FutureSight/brand6.js",
+      "bytes": 9383,
+      "sha256": "2674534b9aff5c5c563d9026c390295b255c0b9d0a775daeddf967d4324ad725"
+    },
+    {
+      "path": "FutureSight/brand7.html",
+      "bytes": 460,
+      "sha256": "bc60a85290ed56c6f0b066c5b2b1343bf26e05372a1259150b37fd3b928c45aa"
+    },
+    {
+      "path": "FutureSight/brand7.js",
+      "bytes": 3772,
+      "sha256": "2e378827770662cdcc26e43ec7d1f7ddc2eae3ef16cc470c4039ff5aa8b9d090"
+    },
+    {
+      "path": "FutureSight/brand8.html",
+      "bytes": 460,
+      "sha256": "b8fd8dd6bf2b78c2e29da04ffc78d62a93b7626fbe339fbb4393d02dfea01dd5"
+    },
+    {
+      "path": "FutureSight/brand8.js",
+      "bytes": 7851,
+      "sha256": "0062906fdcb71de32295f56852a20a5c53b180279a9836f7b0f17f2c4ce180e8"
+    },
+    {
+      "path": "FutureSight/brand9.html",
+      "bytes": 460,
+      "sha256": "943a7d2f0d1af2498c8fc8007c6bbb43736db91acb8df645fbea84fb523b86fe"
+    },
+    {
+      "path": "FutureSight/brand9.js",
+      "bytes": 3556,
+      "sha256": "93777db3d5ad0e9e4494669f8e9593565f2de31faee0125ed1ae61a78689ac0a"
+    },
+    {
+      "path": "FutureSight/ch3b.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "FutureSight/full.js",
+      "bytes": 1973,
+      "sha256": "38385e6b5c6bab90c1d0bebc848a1557b935bbe70bf8dcd97b938b01c1d2dd7c"
+    },
+    {
+      "path": "FutureSight/harness.js",
+      "bytes": 1838,
+      "sha256": "d1a48e9967fde36158227c159d0fa52ab692b4620ed3f24dae3483a4256a2b8a"
+    },
+    {
+      "path": "FutureSight/index.html",
+      "bytes": 431,
+      "sha256": "a87c9f2ab684282258c7ab6e6180d716eb48fda55dfba9bbe7895cb720a03ef2"
+    },
+    {
+      "path": "FutureSight/index_full.html",
+      "bytes": 845,
+      "sha256": "ce76dec87a26e0fd9ce7f9f79a64e0e17c73322fd311d537036d2b53136c7c50"
+    },
+    {
+      "path": "FutureSight/layout.before.js",
+      "bytes": 14195,
+      "sha256": "3e5b95a70895adebd218c010d8fd86ad1093c01f607ebcc87395b0f596788f88"
+    },
+    {
+      "path": "FutureSight/layout.js",
+      "bytes": 14327,
+      "sha256": "2282350c7475d7281263d08a74f59d6339f48cee0530eff6263aa36243572274"
+    },
+    {
+      "path": "FutureSight/lib.js",
+      "bytes": 2014,
+      "sha256": "b26e2a1ac23ab247de719b5978c52468f7459ec6f475257bdf5e4167e31d59e5"
+    },
+    {
+      "path": "FutureSight/make_vo.py",
+      "bytes": 1838,
+      "sha256": "2fd65970d7b155be3d37946437fdb65e4166b57d253d9da6c52f6f6bf92f5d6d"
+    },
+    {
+      "path": "FutureSight/make_vo_full.py",
+      "bytes": 2597,
+      "sha256": "480a3147fa43d7f00fe94a616bfe84a5c4fed24a3bb2f83de0d544e5dfe9662b"
+    },
+    {
+      "path": "FutureSight/render.mjs",
+      "bytes": 5225,
+      "sha256": "e0306765b36d5566b1d7026d0ec02a25e7c5ea888fe367de552a87517199830e"
+    },
+    {
+      "path": "FutureSight/rigs.js",
+      "bytes": 37486,
+      "sha256": "7dd30a9b3fc4d3f1a4fd1b47ca25b22b6d3c236da6b02977b09cfc5de64214b3"
+    },
+    {
+      "path": "FutureSight/rigs_shot.mjs",
+      "bytes": 1370,
+      "sha256": "34b68c9d8ae6f7a3d11cb80ae1ec88c168260583773af3be450ec9e268ce4924"
+    },
+    {
+      "path": "FutureSight/rigs_test.html",
+      "bytes": 4499,
+      "sha256": "5e619016ba5d20f935152655673448f1223030d39e7ed075883cff3eaad90f7d"
+    },
+    {
+      "path": "FutureSight/scenes.js",
+      "bytes": 12730,
+      "sha256": "12d44321578c211dbb942e67df24860311c17540987f5f205965dc46cc269290"
+    },
+    {
+      "path": "FutureSight/script.json",
+      "bytes": 9243,
+      "sha256": "b40fb90341a2f3604f7e7261ea88ccc4d2f9a3a9a64bd9fa2b97bc4331592b2d"
+    },
+    {
+      "path": "FutureSight/sfx.mjs",
+      "bytes": 41913,
+      "sha256": "1586b01b964ea5f1d986f43d2e220c3924a57f69dee44106b760c1f19e3f9c47"
+    },
+    {
+      "path": "FutureSight/sfx_full.mjs",
+      "bytes": 150296,
+      "sha256": "2fa962d0c9171bfb35ba72668cd038504eb9897968365e8a8ad7ae74b5d49046"
+    },
+    {
+      "path": "FutureSight/thumbs.html",
+      "bytes": 426,
+      "sha256": "5e714813d618077a92fe20650213ca8911aed46fca3950e4ff23f9aefa39b890"
+    },
+    {
+      "path": "FutureSight/thumbs.js",
+      "bytes": 8036,
+      "sha256": "82d728fa7445e1539bf5e515f674749778ee88701918f600e256ed2945fdd784"
+    },
+    {
+      "path": "FutureSight/timeline.js",
+      "bytes": 3227,
+      "sha256": "1fb9a7f736549b9fccf1960271037e8c2a59032073891d4c3997de32acba2379"
+    },
+    {
+      "path": "FutureSight/vo_script.json",
+      "bytes": 365,
+      "sha256": "cb3cf9f51ca891b2307f7326467b5154dbb0638149fd5611d7a2aa772e050bb5"
+    },
+    {
+      "path": "FutureSight/world.js",
+      "bytes": 39130,
+      "sha256": "8ac2e0963bf1db81af9a865a9ef0e5e5765043b96d5fd0265c864ce24167e614"
+    },
+    {
+      "path": "FutureSight/world_test.html",
+      "bytes": 408,
+      "sha256": "45d3f09cff5340a64b6a053403b607a9eec912caa4ec61ff373c9fe58be721da"
+    },
+    {
+      "path": "FutureSight/world_test_scene.js",
+      "bytes": 1059,
+      "sha256": "66a559d479fd348a8126372793cb42fab2e2fe42a4fc739f18fb350ba4ab05aa"
+    },
+    {
+      "path": "FutureSight/ch/ch1.cues.json",
+      "bytes": 3625,
+      "sha256": "e631fe73813caf9c09586902ba2623080667fb1b7e710c9ec0691a85e9ebf337"
+    },
+    {
+      "path": "FutureSight/ch/ch1.js",
+      "bytes": 23526,
+      "sha256": "afa8bfb0eb43e8f15b90a36cfc7ff4d2b57d3f160176879a6ea531e4b4598c06"
+    },
+    {
+      "path": "FutureSight/ch/ch2.cues.json",
+      "bytes": 4850,
+      "sha256": "1cf94a283b02915f475c05c97f64f531b1073559848786103cba47d624305cec"
+    },
+    {
+      "path": "FutureSight/ch/ch2.js",
+      "bytes": 51846,
+      "sha256": "d76aca9ca7ef429fcb149b68342e73ee5719d14a370aa93ab73eed28babc2810"
+    },
+    {
+      "path": "FutureSight/ch/ch3.build_cues.mjs",
+      "bytes": 2672,
+      "sha256": "9fdb5bfad0730219c1d43bd92658c169f37f5b8fccf2130c7653cb8a44d693f4"
+    },
+    {
+      "path": "FutureSight/ch/ch3.cues.json",
+      "bytes": 3724,
+      "sha256": "52160eb9f629198118ac04a796fd32c022f8ec5e75312254a7ae74a0bc8d917f"
+    },
+    {
+      "path": "FutureSight/ch/ch3.js",
+      "bytes": 78450,
+      "sha256": "a3437e2b3464a0a2a77d45d73cbd0e940d59ae29b3bb8f7b55db022df2ef7dc9"
+    },
+    {
+      "path": "FutureSight/ch/ch3b.build_cues.mjs",
+      "bytes": 2620,
+      "sha256": "35ed3e740a8079d5f96988751de70299a9aa0723a99bad0a4cd9a497a2579d13"
+    },
+    {
+      "path": "FutureSight/ch/ch3b.cues.json",
+      "bytes": 3462,
+      "sha256": "b4d692023efcbadf9070311c86620643f221c31e5d4e2d3e15b443036660a057"
+    },
+    {
+      "path": "FutureSight/ch/ch3b.js",
+      "bytes": 63721,
+      "sha256": "e63db618e9f005faa94f245642d735aa21f2f503dbfa897f71338ecc63788ddd"
+    },
+    {
+      "path": "FutureSight/ch/ch4.build_cues.mjs",
+      "bytes": 2894,
+      "sha256": "d07b718778172a15784e2a0addea8a5f229cee33fdad2e0a0b7454a46efe5836"
+    },
+    {
+      "path": "FutureSight/ch/ch4.cues.json",
+      "bytes": 4076,
+      "sha256": "4720e86d5634a85634267d4974e4f0327dd068ad2e039b894c8544efb7602b17"
+    },
+    {
+      "path": "FutureSight/ch/ch4.js",
+      "bytes": 79258,
+      "sha256": "8a59b61fe2c9c2a38de3c1335578e267264626ac8a29652b285bf7f5698fda7e"
+    },
+    {
+      "path": "FutureSight/ch/ch4b.build_cues.mjs",
+      "bytes": 3258,
+      "sha256": "953fb5e41192324dda4e0e1d0cbc15ba2b866c5329c2a9aab2f8dd30d2f9cd0f"
+    },
+    {
+      "path": "FutureSight/ch/ch4b.cues.json",
+      "bytes": 4856,
+      "sha256": "73f61678564c1469354b5b4594d0b9f5cf7c6e4f97c2db0385c0ace6c144c26b"
+    },
+    {
+      "path": "FutureSight/ch/ch4b.js",
+      "bytes": 52282,
+      "sha256": "9b0b093664044db05aeed7391abb5c6f4de4ea52e2dbc36fd5183037d827f9f5"
+    },
+    {
+      "path": "FutureSight/ch/ch5.cues.json",
+      "bytes": 7028,
+      "sha256": "149363b40697bfb82ce9145b4d866ef66a0121f540d0b38effdc31df592a5b30"
+    },
+    {
+      "path": "FutureSight/ch/ch5.js",
+      "bytes": 42234,
+      "sha256": "76ff1f93973786565693cf269e17675b232b4a56e76ead900e17bf5a1a65f8e6"
+    },
+    {
+      "path": "FutureSight/ch/ch6.cues.json",
+      "bytes": 6361,
+      "sha256": "2ae5963daa572fba1746a8b65373b7ec53d81d0ee691094e44b90670d9d230f0"
+    },
+    {
+      "path": "FutureSight/ch/ch6.js",
+      "bytes": 42911,
+      "sha256": "cad0b442fb9808966ee86df718a4e31b34cb87c76e2b7b8e6ec7f84974fd573f"
+    },
+    {
+      "path": "FutureSight/ch/ch6b.build_cues.mjs",
+      "bytes": 2798,
+      "sha256": "fdc29551ea8d36a36b58637daf93cca9d44003161b63abeb87fd5346a3e39f08"
+    },
+    {
+      "path": "FutureSight/ch/ch6b.cues.json",
+      "bytes": 4323,
+      "sha256": "3a9e9a7bd99b81b1edb90ad802c8da53a6bd5d6453de739d1cd04b1b05b3b797"
+    },
+    {
+      "path": "FutureSight/ch/ch6b.js",
+      "bytes": 32104,
+      "sha256": "0b2d4a6d348bc42e37f5bfa1f1951b27b17c5ef44191aa2ea7713235df5cc891"
+    },
+    {
+      "path": "FutureSight/ch/ch7.build_cues.mjs",
+      "bytes": 2200,
+      "sha256": "91b2f263127427250d2b9d33b546ff6ea36b17ec14dfa1dda80f96c95889630b"
+    },
+    {
+      "path": "FutureSight/ch/ch7.cues.json",
+      "bytes": 4573,
+      "sha256": "e8453bc4cdd88a5745598b92f393fead693ee668301d846e3b5d6f57081ad854"
+    },
+    {
+      "path": "FutureSight/ch/ch7.js",
+      "bytes": 17875,
+      "sha256": "24337cda57bb39e47c800a3c980ef6992ed678196f23e6ef5af2943ab6dd6091"
+    },
+    {
+      "path": "FutureSight/docs/CONTRACT.md",
+      "bytes": 7959,
+      "sha256": "a85e9d62800a1ac3ff2e703ecf0a52b20c67594b8b7d371f6af429606d62bf64"
+    },
+    {
+      "path": "FutureSight/docs/CONTRACT_FULL.md",
+      "bytes": 16568,
+      "sha256": "66abf97e1b26b4378672ec68bd3898470b60a8d45dee76c455e7a47911eeebdf"
+    },
+    {
+      "path": "FutureSight/out/vo/c1.wav",
+      "bytes": 125312,
+      "sha256": "59db808c64f8ce352424ea94229cabf72febed2bb0822c103f7fd4e50152ae5d"
+    },
+    {
+      "path": "FutureSight/out/vo/c2.wav",
+      "bytes": 391680,
+      "sha256": "2bc4c02fc9b42f9e2b2f90a43b942999dd8e2bd23fdd43f6db739ec064a1a9c7"
+    },
+    {
+      "path": "FutureSight/out/vo/c3.wav",
+      "bytes": 172408,
+      "sha256": "358cac9362ea9d62e815557b8e29bc17f71da53a4ab008168ae9ee2aa3fa2999"
+    },
+    {
+      "path": "FutureSight/out/vo/c4.wav",
+      "bytes": 141208,
+      "sha256": "e9a1cfbf684eec72a8924f7552547dd18e8e025762ce6076705b3d6817cb2469"
+    },
+    {
+      "path": "FutureSight/out/vo/c5.wav",
+      "bytes": 314024,
+      "sha256": "4acd7ad66417c1783c6b3727565332cf186d5749754988fac74a785bdc60854c"
+    },
+    {
+      "path": "FutureSight/out/vo/c6.wav",
+      "bytes": 486152,
+      "sha256": "005093679558d0bd3a720dc4f0a6cdcd8353ecefcabcec0bd510a966f0bfd5b3"
+    },
+    {
+      "path": "FutureSight/out/vo/c7.wav",
+      "bytes": 244036,
+      "sha256": "fd0e9dbcda39836018a066106d6edfbbeb684f39845e9c67067e2644049be130"
+    },
+    {
+      "path": "FutureSight/out/vo/c8.wav",
+      "bytes": 179896,
+      "sha256": "36c13c35f7c4e9e038832cfa63b9d73809898f6ddb8feed7e6eaf92f539e35eb"
+    },
+    {
+      "path": "FutureSight/out/vo/f1.wav",
+      "bytes": 141244,
+      "sha256": "417d56c17a9756068430d8b6e284c21e37c409c4639e8a3232f5dc799e6667cd"
+    },
+    {
+      "path": "FutureSight/out/vo/f2.wav",
+      "bytes": 471972,
+      "sha256": "bf498fc78a83d10a6c767f702342ae2b27e0b37e7af00de099a4dc22c1d2105f"
+    },
+    {
+      "path": "FutureSight/out/vo/f3.wav",
+      "bytes": 446164,
+      "sha256": "b510406ac86df94094021729dbda240c009f82fd7d3b87ba42f34f04b4e09efa"
+    },
+    {
+      "path": "FutureSight/out/vo/f4.wav",
+      "bytes": 307464,
+      "sha256": "adeefc44e56dfc74b0eb7a75f6bdbcf429762210e146ca923dd190148f76e2ef"
+    },
+    {
+      "path": "FutureSight/out/vo/f5.wav",
+      "bytes": 546928,
+      "sha256": "7b3b54a7d24d43a45f6fc248795aa87f0c4b400b6bc58702df3351dff1668a2c"
+    },
+    {
+      "path": "FutureSight/out/vo/f6.wav",
+      "bytes": 380084,
+      "sha256": "0da178db8126de86f0ff9bcf40b24ad8ae36f0a3ddd9222e24696c5c445df27f"
+    },
+    {
+      "path": "FutureSight/out/vo/f7.wav",
+      "bytes": 140280,
+      "sha256": "7a8bca3612afd9b1b96dd5a41298ba7b0e8ee1378d3b0d8fed6381d9198ff3c0"
+    },
+    {
+      "path": "FutureSight/out/vo/h1.wav",
+      "bytes": 332896,
+      "sha256": "cb3ada1ff82dab53df0c66652ae3d3573fbaae1629aacaaf53cde62c18addc8d"
+    },
+    {
+      "path": "FutureSight/out/vo/h2.wav",
+      "bytes": 473668,
+      "sha256": "10bea7b8770f315c37363b7a3490e15bd77fc38c65ef88b3a73706e0e6ecce2c"
+    },
+    {
+      "path": "FutureSight/out/vo/h3.wav",
+      "bytes": 312216,
+      "sha256": "846bd1b2dcac292c7c0cef34ed4120ecd3cf1773a92e5c5ef643ddd97607331f"
+    },
+    {
+      "path": "FutureSight/out/vo/h4.wav",
+      "bytes": 309832,
+      "sha256": "f7b3c8271303fc5d9b6af85ca2ddbb018c4dedc0aee7c437182bf999796f1870"
+    },
+    {
+      "path": "FutureSight/out/vo/h5.wav",
+      "bytes": 216508,
+      "sha256": "ec74ec3a6639859bea5edbe0a7e9d247edd0ab9acf8b4a73e4946e6929932c35"
+    },
+    {
+      "path": "FutureSight/out/vo/h6.wav",
+      "bytes": 239880,
+      "sha256": "22aca02a5a7f1ff2f635fa374087e8c0c0283e3329665d0ec361703660e14200"
+    },
+    {
+      "path": "FutureSight/out/vo/h7.wav",
+      "bytes": 327520,
+      "sha256": "d699b5f799a42a8a9f6b95e2cc362e681f1687a8caca11d614c12523f6768041"
+    },
+    {
+      "path": "FutureSight/out/vo/k1.wav",
+      "bytes": 242352,
+      "sha256": "e7f8635cbf897874ada716ef85f25385171326befc0bcb20e040ce338e1e942b"
+    },
+    {
+      "path": "FutureSight/out/vo/k2.wav",
+      "bytes": 143608,
+      "sha256": "525ad480b2a846e2ab769a12dacb8ab884802077ea3b7eca929dca961ba868e7"
+    },
+    {
+      "path": "FutureSight/out/vo/k3.wav",
+      "bytes": 412700,
+      "sha256": "18722cf32effe3f7aca73d9bbd47826a93580a4ca2dbc946fbc88ef5bd2769ba"
+    },
+    {
+      "path": "FutureSight/out/vo/k4.wav",
+      "bytes": 387716,
+      "sha256": "f889eb7cc245e86c0ebf26d067bd915f63af1d9fc36fe356376baa715e3df706"
+    },
+    {
+      "path": "FutureSight/out/vo/k5.wav",
+      "bytes": 385204,
+      "sha256": "9f9614ed572ef18f91be4d94c83748a74f120c0569ccbc3292fb0c610589c269"
+    },
+    {
+      "path": "FutureSight/out/vo/k6.wav",
+      "bytes": 365752,
+      "sha256": "701b28045b745926d701a36cd580006cbf2d0d153d3ab788dbcef167c3c3a3b1"
+    },
+    {
+      "path": "FutureSight/out/vo/k7.wav",
+      "bytes": 611032,
+      "sha256": "831d88239112d70444c01961db3b5b83e699f8fd3a6c97e2626a0d28312dfbc9"
+    },
+    {
+      "path": "FutureSight/out/vo/k8.wav",
+      "bytes": 401756,
+      "sha256": "d70f42f2a1bfbd88f1cf42cb985f31909f83e3dc7f0de9754348bb701666c071"
+    },
+    {
+      "path": "FutureSight/out/vo/k9.wav",
+      "bytes": 374116,
+      "sha256": "ef78aacfb76bc2ab26c97ab31604d73d74358cac6d137bc275e739907412925f"
+    },
+    {
+      "path": "FutureSight/out/vo/m1.wav",
+      "bytes": 355984,
+      "sha256": "6a921b22287f7dea7745bc59d550a0af4b13ffdbe250bdd681143be749540b08"
+    },
+    {
+      "path": "FutureSight/out/vo/m2.wav",
+      "bytes": 331724,
+      "sha256": "6727b95375073f274cd978a9b1d3ffb2fb4301069fa7207441eade3b1c8f08e4"
+    },
+    {
+      "path": "FutureSight/out/vo/m3.wav",
+      "bytes": 178284,
+      "sha256": "8a8ce0a35c79219092cff15758379bb16857d8f010b8b5a4879879ab13bef6fb"
+    },
+    {
+      "path": "FutureSight/out/vo/m4.wav",
+      "bytes": 435472,
+      "sha256": "b0e19fb39760a9e169673ce9eda951425a4d7c7251f079f5b4644e30ba5a43db"
+    },
+    {
+      "path": "FutureSight/out/vo/m5.wav",
+      "bytes": 482244,
+      "sha256": "1adc63d5b3bf71de0b91af3e53f6f4114a5158f8c5ebf93ddb2004543f97d93a"
+    },
+    {
+      "path": "FutureSight/out/vo/m6.wav",
+      "bytes": 220452,
+      "sha256": "0ef30dbbfe00febce9ebc485e0ae95a6763618a47841b6d78e1d4f86ee5230ab"
+    },
+    {
+      "path": "FutureSight/out/vo/m7.wav",
+      "bytes": 139828,
+      "sha256": "8a78dce1689016e6d367a4a3e2b96fdf24035938854326bd7dd18acc2aed7afe"
+    },
+    {
+      "path": "FutureSight/out/vo/o1.wav",
+      "bytes": 608352,
+      "sha256": "1a7984ca5f3b705b54f1fd87d52075e5d387b8e5fc848fd7adcb7f41cdf2bbed"
+    },
+    {
+      "path": "FutureSight/out/vo/o2.wav",
+      "bytes": 434048,
+      "sha256": "5a24898054901ae64bed9d7e5b4d29ddfee077970f293fa0edff583d51725d7c"
+    },
+    {
+      "path": "FutureSight/out/vo/o3.wav",
+      "bytes": 571596,
+      "sha256": "7481093deda4e53394e27dd754af770a1f56f733b49e0b68a5b4e4abc6d0d579"
+    },
+    {
+      "path": "FutureSight/out/vo/o4.wav",
+      "bytes": 263736,
+      "sha256": "db530013aa1d5789b3f2e2095d9e59e7b36eff84150f4c9e49f6926643b59850"
+    },
+    {
+      "path": "FutureSight/out/vo/o5.wav",
+      "bytes": 463392,
+      "sha256": "b1e5308ff6c8a9cc1b1354a73bec534f85ed0032036195954731bd7ebe67b484"
+    },
+    {
+      "path": "FutureSight/out/vo/o6.wav",
+      "bytes": 477784,
+      "sha256": "c66550fb097dfa41b48b2880daee7e293831166c673788f94b71775943af7a7a"
+    },
+    {
+      "path": "FutureSight/out/vo/o7.wav",
+      "bytes": 329136,
+      "sha256": "3f575ac5a08b581001663fa5fb085a184189a058926ac22dbf5962a6a7b25e31"
+    },
+    {
+      "path": "FutureSight/out/vo/o8.wav",
+      "bytes": 324176,
+      "sha256": "8afcc83d522a8659108e0f5d183a7cdf3c837b64a734c16d84600edca1b73603"
+    },
+    {
+      "path": "FutureSight/out/vo/p1.wav",
+      "bytes": 370108,
+      "sha256": "cfca703ccd5458176159e16af2b5ceb6382beecb4134b667c705b4fbb1a03a97"
+    },
+    {
+      "path": "FutureSight/out/vo/p2.wav",
+      "bytes": 621648,
+      "sha256": "3f4b88b176242fba2815a3f695d9981a7981c02ab6a7217ee3cf149383100c90"
+    },
+    {
+      "path": "FutureSight/out/vo/p3.wav",
+      "bytes": 380340,
+      "sha256": "878b92aca73a4c6694f4f4d1cf5a1cb5c0ff7b9b037d4346a2793424238d8ee6"
+    },
+    {
+      "path": "FutureSight/out/vo/p4.wav",
+      "bytes": 518116,
+      "sha256": "d3ec8869bcdc94fea455fb127c63ac0de41e3a3c24bd188709d80bfbc12cbd86"
+    },
+    {
+      "path": "FutureSight/out/vo/p5.wav",
+      "bytes": 755516,
+      "sha256": "1607b6c12f58b8cc223f9281436e581d96171f409e0169e5cd524f1519b50273"
+    },
+    {
+      "path": "FutureSight/out/vo/p6.wav",
+      "bytes": 565704,
+      "sha256": "5b3474b3b6d5d6b1d86abee2222907d1f413d38b5f3a33581b0ffbc0a89d4767"
+    },
+    {
+      "path": "FutureSight/out/vo/p7.wav",
+      "bytes": 180572,
+      "sha256": "848ee2dc7cffb90d39828e847f4682c9af840f20fb613c724d359bd202fb6a02"
+    },
+    {
+      "path": "FutureSight/out/vo/p8.wav",
+      "bytes": 221424,
+      "sha256": "58970fd59f75300d1d9e47d5ca0013227b23648266579e8a9bc068b370d627b9"
+    },
+    {
+      "path": "FutureSight/out/vo/q1.wav",
+      "bytes": 235188,
+      "sha256": "a4034d8b8b5be9e478839dea031c7c7d2e0d221560a5c545dcf7707de16b9cee"
+    },
+    {
+      "path": "FutureSight/out/vo/q10.wav",
+      "bytes": 167792,
+      "sha256": "895e9cd8fde60a7d4ad8b21ff7a12a96ecd4fbaa586cf7574277033387d81287"
+    },
+    {
+      "path": "FutureSight/out/vo/q2.wav",
+      "bytes": 397780,
+      "sha256": "6ccac1c6689a325254e924a942489e8fa913ba7f8e1936f1c6ac2f346e3b8062"
+    },
+    {
+      "path": "FutureSight/out/vo/q3.wav",
+      "bytes": 278016,
+      "sha256": "f571bc2a398d906ae0738b6a254bb71eb80f1f5427834f57b39858724e0b601e"
+    },
+    {
+      "path": "FutureSight/out/vo/q4.wav",
+      "bytes": 525656,
+      "sha256": "3401d114b60049e7fe843b645a56139e09f361d99d1cbc8a707e11811dcf3de5"
+    },
+    {
+      "path": "FutureSight/out/vo/q5.wav",
+      "bytes": 795564,
+      "sha256": "74cedcc77b41b72a8d95ab574d0d06a0c17bb8c8cede6b365f1bc4bbc4237bee"
+    },
+    {
+      "path": "FutureSight/out/vo/q6.wav",
+      "bytes": 543420,
+      "sha256": "9f1533c9431045cfaad90b8026325315d4d33bd4c7c10dae15cfb7f194ce43dd"
+    },
+    {
+      "path": "FutureSight/out/vo/q7.wav",
+      "bytes": 599604,
+      "sha256": "8261608a38bbaf36d197028d967dfbd1f36e8214e41544f5b7f7fff54c00a9ec"
+    },
+    {
+      "path": "FutureSight/out/vo/q8.wav",
+      "bytes": 385712,
+      "sha256": "df282d619da5ddd7d1f93a82adf1cace15b7c88c5a7bbdeadfd97200c6e93701"
+    },
+    {
+      "path": "FutureSight/out/vo/q9.wav",
+      "bytes": 477432,
+      "sha256": "78387d58bf6c22e82017f3a348430bd4c656f9521ce64def078a0cedc4348b07"
+    },
+    {
+      "path": "FutureSight/out/vo/r1.wav",
+      "bytes": 290508,
+      "sha256": "bc8cb5e2bc2dfbbe6218fbb25bc4910f6e7d485c0625cb67289ccfbd2b058a22"
+    },
+    {
+      "path": "FutureSight/out/vo/r2.wav",
+      "bytes": 159620,
+      "sha256": "3ce63e6003d683d7d8a613ee1e5af7f6caf6962edd7e2b04a8b7c77faef03006"
+    },
+    {
+      "path": "FutureSight/out/vo/r3.wav",
+      "bytes": 306180,
+      "sha256": "01cd5dcc0c5c613fc0d82d921b5cee93d1fee51fd323178b673d40afbb28ff5b"
+    },
+    {
+      "path": "FutureSight/out/vo/r4.wav",
+      "bytes": 203472,
+      "sha256": "6382ca92619856eca3ff51f2aba251d3787074a73fd7a2e3c328048af1122207"
+    },
+    {
+      "path": "FutureSight/out/vo/r5.wav",
+      "bytes": 135920,
+      "sha256": "5a32d99a036a7e95c6bfd5263bb9975b44991f8785f71bb3f4aafdbc1957890d"
+    },
+    {
+      "path": "FutureSight/out/vo/r6.wav",
+      "bytes": 373248,
+      "sha256": "6ee533811904e1f6cc509c5f49f8edf77a2fcfc03162858f3f2f3c103089a39d"
+    },
+    {
+      "path": "FutureSight/out/vo/z1.wav",
+      "bytes": 541992,
+      "sha256": "65455052f0bdbafebe92ff02a73b6820ba71b6e09970be3ad0d268ec5b4133ad"
+    },
+    {
+      "path": "FutureSight/out/vo/z2.wav",
+      "bytes": 257168,
+      "sha256": "85028dd676ae388c6fa90aa0987854d29204712765e81ef9588469bb8f522cc8"
+    },
+    {
+      "path": "FutureSight/out/vo/z3.wav",
+      "bytes": 363700,
+      "sha256": "f427bbf3565227a0d7f727d963c06b0bd1eb9df68693ccbbb5520a6a8ff18541"
+    },
+    {
+      "path": "FutureSight/out/vo/z4.wav",
+      "bytes": 302656,
+      "sha256": "d7aa9da6bf69a46e0a78ff5d893a222217ce5b362e1db3bfe54a9850f4722c1e"
+    },
+    {
+      "path": "FutureSight/out/vo/z5.wav",
+      "bytes": 288148,
+      "sha256": "be25df96e06a718cc8f30bfe82752a3421627f4ba6046af09eb2e805f9ff7697"
+    },
+    {
+      "path": "FutureSight/out/vo/z6.wav",
+      "bytes": 273080,
+      "sha256": "28074527d222399bf3ea105c2e25ade929a08c5bd6e94916ddfb8bfeee49576f"
+    },
+    {
+      "path": "FutureSight/out/vo/z7.wav",
+      "bytes": 147280,
+      "sha256": "ba94a4be53798499d2b68da87011f49a1b7177a9a732478961e9fe7d348d2f94"
+    },
+    {
+      "path": "FutureSight/out/vo/z8.wav",
+      "bytes": 111744,
+      "sha256": "f0f56008334f2420085cf727f56d2e34c1d22fc88ca9eb32ac09425f84761e2f"
+    },
+    {
+      "path": "FutureSight/out/vo/z9.wav",
+      "bytes": 474128,
+      "sha256": "56cb7b944aa276415c6a2e9cec61288b48e0ef98da1fff9c7508734d2fd2cc0f"
+    },
+    {
+      "path": "FutureSight/out/layout.json",
+      "bytes": 14139,
+      "sha256": "26d030fe6c6347ab6bc4b13d7429ab8aba27bc0d1d5b73dfc4ac431bfd439769"
+    },
+    {
+      "path": "FutureSight/out/audio_report_full.json",
+      "bytes": 79029,
+      "sha256": "5d58473cade2a5aedea4fca62a091c568c2dcbbe9bf47a8162e4e84aace0c746"
+    },
+    {
+      "path": "FutureSight/out/vo.wav",
+      "bytes": 1002860,
+      "sha256": "b61d95b8d93f74110409e290fee4fe6b035e32f347714c0c8a037b8f4acf81a6"
+    },
+    {
+      "path": "FutureSight/shorts/audio.py",
+      "bytes": 1781,
+      "sha256": "cffc4e45dea22f7d5ddd5f3dd15ca1cb92ad318cbc329a701ffa264827650fb0"
+    },
+    {
+      "path": "FutureSight/shorts/cams.json",
+      "bytes": 1049,
+      "sha256": "8fe97d1d1c267f830715c1424b1410ff5757185d432d3867c658ef915202d607"
+    },
+    {
+      "path": "FutureSight/shorts/metadata.json",
+      "bytes": 3203,
+      "sha256": "d665cfb543e36395024a4946737eada7db5a59c084d4a3afbb8019501b9cd7a0"
+    },
+    {
+      "path": "FutureSight/shorts/METADATA.md",
+      "bytes": 3149,
+      "sha256": "d60dc5f13be59f3e0376342024651e22271f764d19af25bccbb64f11ac6d6dd8"
+    },
+    {
+      "path": "FutureSight/shorts/plan.json",
+      "bytes": 19377,
+      "sha256": "749ecffc9bb12a9ade48af93e2efded1e94208d00b249afed4c1ffb440d687b2"
+    },
+    {
+      "path": "FutureSight/shorts/plan.mjs",
+      "bytes": 4572,
+      "sha256": "dbd9ae86882f5bbae13f01bf955bd1ee1935891e681967c9eb54013c0129d128"
+    },
+    {
+      "path": "FutureSight/shorts/short_cover.png",
+      "bytes": 2632090,
+      "sha256": "efd7788c54349007faee99dc2f95ecf2a46c10d7ec0765af2a7bc00487405dbc"
+    },
+    {
+      "path": "FutureSight/shorts/vharness.js",
+      "bytes": 8440,
+      "sha256": "5efecc84f7e0c4ef26aed54f647b0d8e28fa2179846d725ec538c2db5b5dcc18"
+    },
+    {
+      "path": "FutureSight/shorts/vrender.mjs",
+      "bytes": 5336,
+      "sha256": "dd6b871ed31174751adc246b8a7cbaaebf4aea3a503cdb2717ed61996d772049"
+    },
+    {
+      "path": "FutureSight/shorts/words.py",
+      "bytes": 1750,
+      "sha256": "31af149a4f080097b37b1ce945e6c1d3b85c5106c8680fc0e705ea2526cad427"
+    },
+    {
+      "path": "FutureSight/shorts/work/words.json",
+      "bytes": 11160,
+      "sha256": "d3f88e525eccc3a05b2408c516306929aca3431f66bba5ffe8dee354b3a6566f"
+    },
+    {
+      "path": "FutureSight/shorts/work/audio_plan.json",
+      "bytes": 1218,
+      "sha256": "859320f238a29d089106bb8ad46bd64659cdec67769f6e8a56afac715ecedcda"
+    },
+    {
+      "path": "reference/brand/icon_19_thinking_cine.gif",
+      "bytes": 1531191,
+      "sha256": "9ae672ebd8e82efe71e609f23535f2fafa230dfe6cbcabd409d217b51ee99b45"
+    },
+    {
+      "path": "reference/brand/icon_19_thinking_cine.png",
+      "bytes": 354390,
+      "sha256": "d6575b0dad1ee962c750e8901744bad8c128c077f4bce15940d347bd569e082c"
+    },
+    {
+      "path": "reference/partial-qa/c1.png",
+      "bytes": 2404950,
+      "sha256": "6efc998c4c2b54635c75ebdd64898cf412e22c72e16a804894640b21526b312c"
+    },
+    {
+      "path": "reference/partial-qa/c2.png",
+      "bytes": 2881336,
+      "sha256": "ef656cd75e32830ee56d4b9901a514f32ec66c96d29935ec9e96572ff92013fd"
+    },
+    {
+      "path": "reference/partial-qa/c3.png",
+      "bytes": 3506304,
+      "sha256": "6ee8c5557e2a15b69707685a01b803380c5a449424b39ebb1f61c5a6b51dcc5d"
+    },
+    {
+      "path": "reference/partial-qa/c4.png",
+      "bytes": 5690460,
+      "sha256": "248a4891059d694cb192c8fee688b1917370ed37d241e47f6826301fc40d8ce6"
+    },
+    {
+      "path": "reference/partial-qa/report.json",
+      "bytes": 1706,
+      "sha256": "343d200543eb460e4df9fb4e56b6aa1235f8dd1d6e90c176cc4df3b3edf3ab54"
+    },
+    {
+      "path": "reference/VIDEO1_ANALYTICS_REVIEW.md",
+      "bytes": 27648,
+      "sha256": "6cd01ce9f262c2d49ffd06718563481d21afedba166485e0f0cd7d7500309e50"
+    }
+  ]
+}

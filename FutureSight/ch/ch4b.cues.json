@@ -1,0 +1,428 @@
+{
+ "mood": "epic",
+ "music": {
+  "arc": [
+   [
+    0,
+    3.4,
+    0.3
+   ],
+   [
+    3.4,
+    8.6,
+    0.4
+   ],
+   [
+    8.6,
+    11.9,
+    0.6
+   ],
+   [
+    11.9,
+    18.2,
+    0.7
+   ],
+   [
+    18.2,
+    23.4,
+    0.6
+   ],
+   [
+    23.4,
+    33.6,
+    0.4
+   ],
+   [
+    33.6,
+    40.9,
+    0.55
+   ],
+   [
+    40.9,
+    46.1,
+    0.85
+   ],
+   [
+    46.1,
+    48.6,
+    1
+   ],
+   [
+    48.6,
+    51.3,
+    0.3
+   ],
+   [
+    51.3,
+    53.893,
+    0.45
+   ]
+  ],
+  "risers": [
+   [
+    11.2,
+    11.9
+   ],
+   [
+    21.3,
+    22.85
+   ],
+   [
+    40.6,
+    41
+   ],
+   [
+    44.9,
+    46.1
+   ]
+  ],
+  "silence": [
+   [
+    45.9,
+    46.1
+   ]
+  ]
+ },
+ "ambience": "city",
+ "cues": [
+  {
+   "t": 0.5,
+   "type": "wind",
+   "gain": 0.5,
+   "len": 3
+  },
+  {
+   "t": 0.7,
+   "type": "paperRustle",
+   "gain": 0.6
+  },
+  {
+   "t": 3.4,
+   "type": "cutHit",
+   "gain": 0.6
+  },
+  {
+   "t": 3.9,
+   "type": "vehiclePass",
+   "gain": 0.5,
+   "len": 1.8,
+   "peak": 0.5
+  },
+  {
+   "t": 5.35,
+   "type": "uiBlip",
+   "gain": 0.5
+  },
+  {
+   "t": 8.3,
+   "type": "silenceHit",
+   "gain": 0.6
+  },
+  {
+   "t": 8.6,
+   "type": "eyeOpen",
+   "gain": 0.8
+  },
+  {
+   "t": 8.8,
+   "type": "eyeFlash",
+   "gain": 0.9
+  },
+  {
+   "t": 8.85,
+   "type": "ghostAppear",
+   "gain": 0.55
+  },
+  {
+   "t": 9,
+   "type": "quakeCrack",
+   "gain": 0.7
+  },
+  {
+   "t": 9.2,
+   "type": "rumble",
+   "gain": 0.45,
+   "len": 2.4
+  },
+  {
+   "t": 10.9,
+   "type": "quakeCrack",
+   "gain": 0.6
+  },
+  {
+   "t": 11.2,
+   "type": "riserShort",
+   "gain": 0.5,
+   "len": 0.7
+  },
+  {
+   "t": 11.9,
+   "type": "cutHit",
+   "gain": 0.8
+  },
+  {
+   "t": 12.2,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 14.5,
+   "type": "quakeCrack",
+   "gain": 0.9
+  },
+  {
+   "t": 14.55,
+   "type": "rumble",
+   "gain": 0.6,
+   "len": 3.4
+  },
+  {
+   "t": 15.45,
+   "type": "glassBreak",
+   "gain": 0.9
+  },
+  {
+   "t": 15.6,
+   "type": "glassRain",
+   "gain": 0.7,
+   "len": 1.6
+  },
+  {
+   "t": 16.3,
+   "type": "buildingCreak",
+   "gain": 0.7,
+   "len": 2
+  },
+  {
+   "t": 18.2,
+   "type": "cutHit",
+   "gain": 0.7
+  },
+  {
+   "t": 20,
+   "type": "uiBlip",
+   "gain": 0.8
+  },
+  {
+   "t": 20,
+   "type": "sonar",
+   "gain": 0.6
+  },
+  {
+   "t": 21.3,
+   "type": "riserShort",
+   "gain": 0.5,
+   "len": 1.5
+  },
+  {
+   "t": 22.85,
+   "type": "boom",
+   "gain": 0.8,
+   "len": 0.9
+  },
+  {
+   "t": 22.88,
+   "type": "rumble",
+   "gain": 0.5,
+   "len": 1.2
+  },
+  {
+   "t": 23.75,
+   "type": "echoPop",
+   "gain": 0.5,
+   "n": 6
+  },
+  {
+   "t": 26.1,
+   "type": "uiConfirm",
+   "gain": 0.7
+  },
+  {
+   "t": 27.2,
+   "type": "airPuff",
+   "gain": 0.4
+  },
+  {
+   "t": 27.45,
+   "type": "uiBlip",
+   "gain": 0.6
+  },
+  {
+   "t": 27.6,
+   "type": "skid",
+   "gain": 0.6,
+   "len": 1.2
+  },
+  {
+   "t": 29.3,
+   "type": "uiBlip",
+   "gain": 0.6
+  },
+  {
+   "t": 29.45,
+   "type": "clink",
+   "gain": 0.5
+  },
+  {
+   "t": 31.1,
+   "type": "uiBlip",
+   "gain": 0.6
+  },
+  {
+   "t": 31.3,
+   "type": "tick",
+   "gain": 0.5,
+   "n": 2
+  },
+  {
+   "t": 33.6,
+   "type": "cutHit",
+   "gain": 0.7
+  },
+  {
+   "t": 34,
+   "type": "siren",
+   "gain": 0.5,
+   "len": 1.4
+  },
+  {
+   "t": 34,
+   "type": "uiError",
+   "gain": 0.6
+  },
+  {
+   "t": 36.1,
+   "type": "timerStart",
+   "gain": 0.7
+  },
+  {
+   "t": 38.3,
+   "type": "gasp",
+   "gain": 0.3
+  },
+  {
+   "t": 39.55,
+   "type": "uiError",
+   "gain": 0.4
+  },
+  {
+   "t": 40.6,
+   "type": "riserShort",
+   "gain": 0.5,
+   "len": 0.4
+  },
+  {
+   "t": 41,
+   "type": "gasp",
+   "gain": 0.8
+  },
+  {
+   "t": 41,
+   "type": "swell",
+   "gain": 0.8,
+   "len": 1
+  },
+  {
+   "t": 41.05,
+   "type": "punch",
+   "gain": 0.5
+  },
+  {
+   "t": 42.05,
+   "type": "clothFlap",
+   "gain": 0.5
+  },
+  {
+   "t": 42.9,
+   "type": "footstepsRun",
+   "gain": 0.7,
+   "len": 3.2
+  },
+  {
+   "t": 43.8,
+   "type": "crowdPanic",
+   "gain": 0.6,
+   "len": 2.4
+  },
+  {
+   "t": 45.5,
+   "type": "riserShort",
+   "gain": 0.6,
+   "len": 0.6
+  },
+  {
+   "t": 45.9,
+   "type": "dropOut",
+   "gain": 0.8,
+   "len": 0.2
+  },
+  {
+   "t": 46.1,
+   "type": "quakeCrack",
+   "gain": 1
+  },
+  {
+   "t": 46.1,
+   "type": "bigImpact",
+   "gain": 1
+  },
+  {
+   "t": 46.12,
+   "type": "boom",
+   "gain": 0.9,
+   "len": 1.5
+  },
+  {
+   "t": 46.2,
+   "type": "rumble",
+   "gain": 0.9,
+   "len": 3.5
+  },
+  {
+   "t": 46.3,
+   "type": "debrisFall",
+   "gain": 0.8,
+   "len": 2.2
+  },
+  {
+   "t": 46.4,
+   "type": "glassRain",
+   "gain": 0.8,
+   "len": 2
+  },
+  {
+   "t": 46.6,
+   "type": "buildingCreak",
+   "gain": 0.7,
+   "len": 1.8
+  },
+  {
+   "t": 47.2,
+   "type": "dust",
+   "gain": 0.7
+  },
+  {
+   "t": 48.6,
+   "type": "sirenDistant",
+   "gain": 0.4,
+   "len": 5
+  },
+  {
+   "t": 49.3,
+   "type": "wind",
+   "gain": 0.4,
+   "len": 3
+  },
+  {
+   "t": 51.4,
+   "type": "stingWonder",
+   "gain": 0.6
+  },
+  {
+   "t": 53,
+   "type": "dropOut",
+   "gain": 0.6,
+   "len": 0.8
+  }
+ ]
+}

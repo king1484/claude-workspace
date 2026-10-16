@@ -1,0 +1,142 @@
+{
+ "mood": "warm",
+ "ambience": "night",
+ "music": {
+  "arc": [
+   [
+    0,
+    10,
+    0.3
+   ],
+   [
+    10,
+    25,
+    0.4
+   ],
+   [
+    25,
+    35.12,
+    0.25
+   ]
+  ],
+  "risers": [],
+  "silence": [
+   [
+    12,
+    13.5
+   ]
+  ]
+ },
+ "cues": [
+  {
+   "t": 1.68,
+   "type": "snore",
+   "len": 3
+  },
+  {
+   "t": 2.95,
+   "type": "yawn"
+  },
+  {
+   "t": 3.84,
+   "type": "crickets",
+   "len": 6
+  },
+  {
+   "t": 5.29,
+   "type": "exhale"
+  },
+  {
+   "t": 6.6,
+   "type": "inhale"
+  },
+  {
+   "t": 8.28,
+   "type": "heartbeat",
+   "len": 5,
+   "bpm": 60
+  },
+  {
+   "t": 9.56,
+   "type": "clothRustle"
+  },
+  {
+   "t": 10.48,
+   "type": "clothFlap"
+  },
+  {
+   "t": 14.21,
+   "type": "airPuff"
+  },
+  {
+   "t": 14.33,
+   "type": "boing"
+  },
+  {
+   "t": 14.48,
+   "type": "sweatDrip"
+  },
+  {
+   "t": 15.43,
+   "type": "munch"
+  },
+  {
+   "t": 17.14,
+   "type": "shiver"
+  },
+  {
+   "t": 18.38,
+   "type": "gasp"
+  },
+  {
+   "t": 19.27,
+   "type": "thump"
+  },
+  {
+   "t": 20,
+   "type": "silenceHit"
+  },
+  {
+   "t": 21.35,
+   "type": "bodyBump"
+  },
+  {
+   "t": 22.67,
+   "type": "ballThud"
+  },
+  {
+   "t": 23.33,
+   "type": "objectThud"
+  },
+  {
+   "t": 24.67,
+   "type": "rewind",
+   "len": 1.5
+  },
+  {
+   "t": 26.52,
+   "type": "reverseSwell",
+   "len": 2
+  },
+  {
+   "t": 27.13,
+   "type": "glitch"
+  },
+  {
+   "t": 28.91,
+   "type": "vhsTear"
+  },
+  {
+   "t": 30.17,
+   "type": "staticBurst"
+  },
+  {
+   "t": 31.33,
+   "type": "dust"
+  },
+  {
+   "t": 32.5,
+   "type": "powerDown"
+  }
+ ]
+}

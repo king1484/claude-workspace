@@ -1,0 +1,186 @@
+{
+ "mood": "stormy",
+ "ambience": "wind",
+ "music": {
+  "arc": [
+   [
+    0,
+    6,
+    0.5
+   ],
+   [
+    6,
+    28,
+    0.85
+   ],
+   [
+    28,
+    40.136,
+    0.5
+   ]
+  ],
+  "risers": [
+   [
+    9,
+    12
+   ],
+   [
+    22,
+    25
+   ]
+  ],
+  "silence": []
+ },
+ "cues": [
+  {
+   "t": 1.77,
+   "type": "thunderFar",
+   "len": 5
+  },
+  {
+   "t": 2.61,
+   "type": "rainDrops",
+   "len": 6
+  },
+  {
+   "t": 4.04,
+   "type": "rain",
+   "len": 6
+  },
+  {
+   "t": 5.18,
+   "type": "windGust"
+  },
+  {
+   "t": 6.23,
+   "type": "windHowl",
+   "len": 4
+  },
+  {
+   "t": 7.03,
+   "type": "rumble",
+   "len": 3
+  },
+  {
+   "t": 8.82,
+   "type": "crack"
+  },
+  {
+   "t": 9.57,
+   "type": "glassBreak"
+  },
+  {
+   "t": 10.63,
+   "type": "ceramicBreak"
+  },
+  {
+   "t": 11.58,
+   "type": "ceramicClatter"
+  },
+  {
+   "t": 13.26,
+   "type": "doorSlam"
+  },
+  {
+   "t": 14,
+   "type": "truckPass"
+  },
+  {
+   "t": 14.76,
+   "type": "crowdPanic",
+   "len": 3
+  },
+  {
+   "t": 15.77,
+   "type": "crowdGasp"
+  },
+  {
+   "t": 16.92,
+   "type": "sirenDistant",
+   "len": 4
+  },
+  {
+   "t": 17.75,
+   "type": "glassRain",
+   "len": 3
+  },
+  {
+   "t": 19.35,
+   "type": "truckHorn"
+  },
+  {
+   "t": 20.5,
+   "type": "whoosh",
+   "len": 0.9
+  },
+  {
+   "t": 21.21,
+   "type": "skid"
+  },
+  {
+   "t": 21.5,
+   "type": "tirePass"
+  },
+  {
+   "t": 22.71,
+   "type": "slide"
+  },
+  {
+   "t": 23.38,
+   "type": "skateboardRoll"
+  },
+  {
+   "t": 24.67,
+   "type": "skateboardSlam"
+  },
+  {
+   "t": 26,
+   "type": "ghostWhoosh",
+   "len": 1.2
+  },
+  {
+   "t": 26.95,
+   "type": "punch"
+  },
+  {
+   "t": 27.05,
+   "type": "punchMiss"
+  },
+  {
+   "t": 28,
+   "type": "hit"
+  },
+  {
+   "t": 29.4,
+   "type": "batCrack"
+  },
+  {
+   "t": 30.44,
+   "type": "ballSmack"
+  },
+  {
+   "t": 32.12,
+   "type": "pingpongHit"
+  },
+  {
+   "t": 33.39,
+   "type": "pingpongBounce"
+  },
+  {
+   "t": 34.37,
+   "type": "paddleHit"
+  },
+  {
+   "t": 35.72,
+   "type": "ballBounce"
+  },
+  {
+   "t": 36.98,
+   "type": "catchSoft"
+  },
+  {
+   "t": 37.63,
+   "type": "zap"
+  }
+ ]
+}
