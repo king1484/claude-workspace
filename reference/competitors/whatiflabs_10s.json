@@ -1,0 +1,874 @@
+{
+ "name": "whatiflabs_10s",
+ "duration": 360.834,
+ "width": 1280,
+ "height": 720,
+ "has_audio": true,
+ "cuts": 44,
+ "cut_times": [
+  0.2,
+  3.6,
+  7.0,
+  9.2,
+  10.6,
+  34.2,
+  34.8,
+  41.4,
+  58.0,
+  66.4,
+  75.0,
+  82.0,
+  83.8,
+  86.4,
+  89.2,
+  101.2,
+  111.8,
+  116.0,
+  120.8,
+  127.4,
+  142.0,
+  143.0,
+  151.8,
+  154.6,
+  157.6,
+  160.6,
+  169.0,
+  172.4,
+  194.0,
+  214.2,
+  219.0,
+  229.4,
+  238.4,
+  246.4,
+  256.0,
+  273.0,
+  276.2,
+  277.4,
+  297.2,
+  300.6,
+  306.8,
+  314.0,
+  335.8,
+  354.2
+ ],
+ "avg_shot_s": 8.02,
+ "median_shot_s": 6.6,
+ "longest_shot_s": 23.6,
+ "cuts_per_10s": [
+  4,
+  1,
+  0,
+  2,
+  1,
+  1,
+  1,
+  1,
+  4,
+  0,
+  1,
+  2,
+  2,
+  0,
+  2,
+  3,
+  2,
+  1,
+  0,
+  1,
+  0,
+  2,
+  1,
+  1,
+  1,
+  1,
+  0,
+  3,
+  0,
+  1,
+  2,
+  1,
+  0,
+  1,
+  0,
+  1,
+  0
+ ],
+ "motion_per_10s": [
+  0.0319,
+  0.0431,
+  0.0207,
+  0.0286,
+  0.0348,
+  0.0233,
+  0.0244,
+  0.0316,
+  0.0425,
+  0.0175,
+  0.0197,
+  0.0292,
+  0.0112,
+  0.0212,
+  0.0352,
+  0.0251,
+  0.0223,
+  0.0124,
+  0.0166,
+  0.0072,
+  0.0221,
+  0.0243,
+  0.0282,
+  0.0173,
+  0.0271,
+  0.0357,
+  0.018,
+  0.0198,
+  0.0049,
+  0.0229,
+  0.0272,
+  0.0171,
+  0.039,
+  0.0112,
+  0.0031,
+  0.0132,
+  0.0068
+ ],
+ "saturation_per_10s": [
+  0.527,
+  0.429,
+  0.47,
+  0.194,
+  0.289,
+  0.416,
+  0.402,
+  0.343,
+  0.367,
+  0.423,
+  0.366,
+  0.431,
+  0.431,
+  0.539,
+  0.544,
+  0.419,
+  0.456,
+  0.729,
+  0.729,
+  0.497,
+  0.388,
+  0.426,
+  0.431,
+  0.461,
+  0.489,
+  0.438,
+  0.396,
+  0.514,
+  0.547,
+  0.59,
+  0.544,
+  0.476,
+  0.456,
+  0.557,
+  0.497,
+  0.499,
+  0.6
+ ],
+ "luminance_per_10s": [
+  0.277,
+  0.285,
+  0.286,
+  0.475,
+  0.399,
+  0.29,
+  0.276,
+  0.176,
+  0.282,
+  0.295,
+  0.271,
+  0.309,
+  0.323,
+  0.176,
+  0.185,
+  0.188,
+  0.282,
+  0.173,
+  0.129,
+  0.229,
+  0.306,
+  0.268,
+  0.303,
+  0.302,
+  0.266,
+  0.252,
+  0.24,
+  0.253,
+  0.273,
+  0.235,
+  0.224,
+  0.245,
+  0.258,
+  0.072,
+  0.041,
+  0.066,
+  0.028
+ ],
+ "mean_colour_per_10s": [
+  "#513f77",
+  "#554170",
+  "#4b437e",
+  "#7f777e",
+  "#76606c",
+  "#6b3e5d",
+  "#5e3e55",
+  "#2c2c3b",
+  "#594252",
+  "#6e3f5d",
+  "#523e60",
+  "#744262",
+  "#654b62",
+  "#2d2c36",
+  "#2b2f3b",
+  "#283236",
+  "#623e61",
+  "#182e56",
+  "#0e2433",
+  "#45354f",
+  "#6c445b",
+  "#5f3a5a",
+  "#554775",
+  "#59466b",
+  "#4e3e66",
+  "#56375e",
+  "#463858",
+  "#3e3d6c",
+  "#3e4189",
+  "#323975",
+  "#3f345c",
+  "#593649",
+  "#4a3c69",
+  "#190f1c",
+  "#0a0a13",
+  "#0f101c",
+  "#08060f"
+ ],
+ "loudness": {
+  "integrated_lufs": -14.1,
+  "true_peak_dbfs": -0.3,
+  "short_term_per_10s": [
+   -44.8,
+   -13.9,
+   -14.2,
+   -14.1,
+   -14.1,
+   -14.2,
+   -14.4,
+   -14.5,
+   -14.8,
+   -14.9,
+   -14.3,
+   -14.5,
+   -14.4,
+   -14.5,
+   -14.6,
+   -14.3,
+   -14.7,
+   -13.9,
+   -13.9,
+   -14.0,
+   -13.9,
+   -14.7,
+   -13.9,
+   -14.1,
+   -15.0,
+   -14.1,
+   -14.7,
+   -14.6,
+   -14.3,
+   -13.9,
+   -14.5,
+   -14.3,
+   -14.6,
+   -14.7,
+   -15.3,
+   -13.8,
+   -14.8
+  ],
+  "silences_s": [
+   [
+    360.29,
+    0.55
+   ]
+  ]
+ },
+ "speech_lines": [
+  [
+   0.0,
+   "WEBVTT"
+  ],
+  [
+   0.0,
+   "Kind: captions"
+  ],
+  [
+   0.0,
+   "Language: en"
+  ],
+  [
+   0.48,
+   "A bike flies past. You don't even look."
+  ],
+  [
+   3.76,
+   "You saw it 10 seconds ago."
+  ],
+  [
+   7.44,
+   "What if you could see 10 seconds into"
+  ],
+  [
+   9.36,
+   "the future?"
+  ],
+  [
+   11.36,
+   "Starting today, you see exactly 10"
+  ],
+  [
+   13.68,
+   "seconds ahead. Not a feeling, not a"
+  ],
+  [
+   16.24,
+   "hunch. A ghost version of the world"
+  ],
+  [
+   18.64,
+   "playing 10 seconds early. You can't"
+  ],
+  [
+   21.36,
+   "pause it. You can't turn it off. And it"
+  ],
+  [
+   23.68,
+   "never ever skips. That's the whole"
+  ],
+  [
+   26.4,
+   "power. Let's see how far 10 seconds can"
+  ],
+  [
+   29.12,
+   "take you. Day one, your alarm hasn't"
+  ],
+  [
+   32.48,
+   "rung yet, but you already know it will."
+  ],
+  [
+   35.2,
+   "You reach for your coffee and see the"
+  ],
+  [
+   37.2,
+   "mug slide off the counter, so you catch"
+  ],
+  [
+   39.84,
+   "it before it falls. No more stubbed"
+  ],
+  [
+   42.72,
+   "toes, no more spilled milk, no more"
+  ],
+  [
+   45.52,
+   "missed buses. Out on the street, a"
+  ],
+  [
+   48.32,
+   "skateboard shoots from nowhere. You're"
+  ],
+  [
+   50.48,
+   "already three steps to the side. You're"
+  ],
+  [
+   53.28,
+   "officially the luckiest person alive and"
+  ],
+  [
+   56.0,
+   "you haven't even tried yet."
+  ],
+  [
+   58.72,
+   "Now, let's get competitive. Table"
+  ],
+  [
+   61.28,
+   "tennis. Your opponent smashes the ball"
+  ],
+  [
+   63.84,
+   "and you've already seen where it lands."
+  ],
+  [
+   66.56,
+   "Boxing, a punch takes less than half a"
+  ],
+  [
+   68.88,
+   "second. You watched it 10 seconds ago."
+  ],
+  [
+   71.84,
+   "Every fighter in the world moves like"
+  ],
+  [
+   73.92,
+   "they are underwater. A fast ball flies"
+  ],
+  [
+   76.8,
+   "at your face at 90 m an hour. You tilt"
+  ],
+  [
+   79.6,
+   "your head slightly, bored. Nobody can"
+  ],
+  [
+   83.04,
+   "beat you at anything that happens in the"
+  ],
+  [
+   85.28,
+   "next 10 seconds. And that's almost"
+  ],
+  [
+   87.68,
+   "everything."
+  ],
+  [
+   89.44,
+   "But 10 seconds isn't only for games."
+  ],
+  [
+   92.08,
+   "Sometimes it's for running. A thief"
+  ],
+  [
+   94.64,
+   "grabs a bag and bolts through the crowd."
+  ],
+  [
+   97.28,
+   "You don't chase him. You step in front"
+  ],
+  [
+   99.28,
+   "of where he's about to be. Cars on the"
+  ],
+  [
+   102.16,
+   "road. You see every one of them before"
+  ],
+  [
+   104.32,
+   "the driver does. You cross six lanes of"
+  ],
+  [
+   107.36,
+   "traffic at a walk. Horns screaming. Not"
+  ],
+  [
+   110.32,
+   "one of them touches you. Then a bus, a"
+  ],
+  [
+   113.04,
+   "bike, a pigeon, a man with a ladder."
+  ],
+  [
+   115.92,
+   "Every obstacle shows up as a ghost, a"
+  ],
+  [
+   118.48,
+   "whole breath before it arrives. It looks"
+  ],
+  [
+   121.28,
+   "like talent. It looks like magic. To"
+  ],
+  [
+   124.0,
+   "everyone watching, you're just"
+  ],
+  [
+   125.52,
+   "impossibly smooth. You are not fast. You"
+  ],
+  [
+   129.04,
+   "are early. And being early is better"
+  ],
+  [
+   131.52,
+   "than being fast."
+  ],
+  [
+   133.76,
+   "So you turn it into money. Roulette. The"
+  ],
+  [
+   136.72,
+   "ball spins and you see where it lands"
+  ],
+  [
+   138.8,
+   "before the dealer does. The casino bans"
+  ],
+  [
+   141.52,
+   "you in an hour, so you try the stock"
+  ],
+  [
+   144.08,
+   "market. Prices flicker and you see every"
+  ],
+  [
+   146.96,
+   "tick before it happens. For a trading"
+  ],
+  [
+   149.68,
+   "computer, 10 seconds is an eternity. For"
+  ],
+  [
+   152.56,
+   "you, it's a printing press. $1,000, a"
+  ],
+  [
+   156.24,
+   "million, a billion, and you never leave"
+  ],
+  [
+   158.88,
+   "your apartment."
+  ],
+  [
+   160.96,
+   "Money buys a lot, but it can't buy this."
+  ],
+  [
+   164.0,
+   "It's a normal Tuesday. A city of 10"
+  ],
+  [
+   166.64,
+   "million people going to work. And in the"
+  ],
+  [
+   169.36,
+   "ghost world, the ground begins to break."
+  ],
+  [
+   172.56,
+   "10 seconds before the first tremor, you"
+  ],
+  [
+   174.72,
+   "see the cracks, the falling glass, the"
+  ],
+  [
+   177.12,
+   "building swaying. Here's a real fact."
+  ],
+  [
+   180.48,
+   "Earthquake warning systems give people"
+  ],
+  [
+   182.48,
+   "about 10 seconds. And 10 seconds is"
+  ],
+  [
+   185.12,
+   "enough to save thousands of lives."
+  ],
+  [
+   187.84,
+   "Trains slow down. Surgeons pull their"
+  ],
+  [
+   190.32,
+   "hands away. Elevators stop at the"
+  ],
+  [
+   192.72,
+   "nearest floor. But you don't have a"
+  ],
+  [
+   195.12,
+   "siren. You have a voice in 10 seconds"
+  ],
+  [
+   197.92,
+   "and a street full of strangers who don't"
+  ],
+  [
+   200.0,
+   "believe you. So you scream, you point,"
+  ],
+  [
+   202.8,
+   "you run. And one by one, they run with"
+  ],
+  [
+   205.2,
+   "you. The city shakes, dust fills the"
+  ],
+  [
+   208.4,
+   "sky, and when it clears, most of them"
+  ],
+  [
+   210.48,
+   "are standing. 10 seconds, that's all it"
+  ],
+  [
+   213.28,
+   "took."
+  ],
+  [
+   214.8,
+   "Then one evening, the ghost world shows"
+  ],
+  [
+   217.36,
+   "you something awful. A child's ball"
+  ],
+  [
+   220.0,
+   "rolls into the road. A truck 10 seconds"
+  ],
+  [
+   222.8,
+   "away can't stop. You run. You have 10"
+  ],
+  [
+   226.16,
+   "seconds and you know every one of them."
+  ],
+  [
+   228.48,
+   "You grab her. The truck roars past"
+  ],
+  [
+   230.72,
+   "inches behind you. She never even knows"
+  ],
+  [
+   233.68,
+   "how close it was. But the ghost world"
+  ],
+  [
+   236.48,
+   "doesn't choose what it shows you. It"
+  ],
+  [
+   238.72,
+   "shows you everything, even what you"
+  ],
+  [
+   240.8,
+   "can't reach in time."
+  ],
+  [
+   243.12,
+   "Here's the problem nobody warns you"
+  ],
+  [
+   245.44,
+   "about. You're never surprised again."
+  ],
+  [
+   248.56,
+   "Your friend tells a joke. You've already"
+  ],
+  [
+   250.64,
+   "heard it. You laugh 10 seconds early. A"
+  ],
+  [
+   253.92,
+   "surprise party. You see everyone hiding."
+  ],
+  [
+   256.48,
+   "You pretend to be shocked. Every"
+  ],
+  [
+   258.8,
+   "conversation plays twice. Every song,"
+  ],
+  [
+   261.6,
+   "every goodbye."
+  ],
+  [
+   263.44,
+   "Slowly, the world stops feeling real. It"
+  ],
+  [
+   266.08,
+   "feels like a rerun. 10 seconds becomes a"
+  ],
+  [
+   269.2,
+   "hall of mirrors. And you're the only one"
+  ],
+  [
+   271.6,
+   "inside. Then you notice something"
+  ],
+  [
+   274.08,
+   "strange. What you see depends on what"
+  ],
+  [
+   276.4,
+   "you do."
+  ],
+  [
+   278.08,
+   "So, you run a test. Simple. You decide"
+  ],
+  [
+   280.96,
+   "to raise your left hand, but only if the"
+  ],
+  [
+   283.2,
+   "ghost raises its right. The ghost raises"
+  ],
+  [
+   286.16,
+   "its left hand. You raise your right. The"
+  ],
+  [
+   288.88,
+   "ghost changes. Which means the ghost"
+  ],
+  [
+   291.68,
+   "isn't the future. It's a guess. A guess"
+  ],
+  [
+   294.56,
+   "about what you'll do after seeing the"
+  ],
+  [
+   296.24,
+   "guess. A snake eating its own tail 10"
+  ],
+  [
+   299.44,
+   "seconds long. And there's one thing it"
+  ],
+  [
+   302.0,
+   "can never show you the moment you"
+  ],
+  [
+   304.24,
+   "finally decide to ignore it. So, you"
+  ],
+  [
+   307.04,
+   "close your eyes and for the first time"
+  ],
+  [
+   309.28,
+   "in months, you don't know what happens"
+  ],
+  [
+   311.2,
+   "next. It's terrifying and it's the best"
+  ],
+  [
+   314.48,
+   "feeling you've had all year. Because the"
+  ],
+  [
+   317.28,
+   "future was never the gift. The surprise"
+  ],
+  [
+   319.76,
+   "was."
+  ],
+  [
+   321.44,
+   "Weeks pass. You've saved lives. You've"
+  ],
+  [
+   324.16,
+   "made millions. And you've learned to"
+  ],
+  [
+   325.84,
+   "love surprises again. Then one morning,"
+  ],
+  [
+   328.96,
+   "the ghost world goes quiet. The street"
+  ],
+  [
+   331.6,
+   "is empty. The sky is black. Just you"
+  ],
+  [
+   334.24,
+   "standing still. Not 10 seconds of"
+  ],
+  [
+   336.96,
+   "future, 10 seconds of nothing. The ghost"
+  ],
+  [
+   340.24,
+   "doesn't blink. It doesn't move. It just"
+  ],
+  [
+   342.32,
+   "waits. Which means 10 seconds from now,"
+  ],
+  [
+   345.6,
+   "something ends. What would you do with"
+  ],
+  [
+   348.32,
+   "10 seconds? Tell me in the comments."
+  ],
+  [
+   355.04,
+   "If you like this idea, hit like and"
+  ],
+  [
+   357.6,
+   "subscribe, and I will see you in the"
+  ],
+  [
+   359.68,
+   "next one."
+  ]
+ ],
+ "speech_words": 934,
+ "contact_sheets": [
+  "/tmp/claude-0/-home-user-claude-workspace/5eb3d877-8192-5cbc-af24-e646c193aca3/scratchpad/analysis/whatiflabs_10s_sheet_1.jpg",
+  "/tmp/claude-0/-home-user-claude-workspace/5eb3d877-8192-5cbc-af24-e646c193aca3/scratchpad/analysis/whatiflabs_10s_sheet_2.jpg",
+  "/tmp/claude-0/-home-user-claude-workspace/5eb3d877-8192-5cbc-af24-e646c193aca3/scratchpad/analysis/whatiflabs_10s_sheet_3.jpg"
+ ],
+ "sheet_step_s": 4
+}
