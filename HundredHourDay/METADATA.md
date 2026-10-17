@@ -1,6 +1,6 @@
 # Upload metadata — "What If One Day Lasted 100 Hours?" (video #2)
 
-Upload file: `HundredHourDay/out/final_full.mp4` (1920x1080, 30 fps, 5:09, −16 LUFS).
+Upload file: `HundredHourDay/out/WhatIf100Hours_UPLOAD_1080p.mp4` (1920x1080, 30 fps, 5:09, −16 LUFS, H.264 CRF 18 + AAC 320k). The mastering file `out/final_full.mp4` is the same picture at a much larger size.
 Thumbnails: `HundredHourDay/out/thumbnail_alt.png` (recommended) and `HundredHourDay/out/thumbnail.png` (test variant), 1280x720.
 Regenerate the thumbnails with `python3 make_thumbnail.py` (instructions in its header).
 
@@ -61,9 +61,11 @@ Which would be harder for you: the 50-hour day or the 50-hour night? 🌞🌙
 - Category: Education (Entertainment is also fine).
 - Altered or synthetic content: **Yes**. The characters are computer animated and the narration is a synthetic voice; answer the disclosure honestly in YouTube Studio.
 - Chapters: keep "Allow automatic chapters" off; the timestamps in the description define them.
-- End screen: one "Subscribe" element plus the video #1 "What If You Could See 10 Seconds Into the Future?" (https://www.youtube.com/watch?v=2LQMDJMO8ds) over the last ~12 seconds (the subscribe beat starts at about 4:57).
+- End screen: one "Subscribe" element plus the video #1 "What If You Could See 10 Seconds Into the Future?" (https://www.youtube.com/watch?v=2LQMDJMO8ds) from about 4:58 to the end (5:09; the "like and subscribe" line starts at 5:05). YouTube end screens can run 5–20 seconds.
 - Language: English. Upload English captions if you want them; the narration text is in `script.json`.
 - Suggested time: Saturday around 6:30 PM IST (a suggestion based on video #1's early audience geography, India/Philippines/Australia/US; check Studio's "When your viewers are on YouTube").
+  Upload it as Private a few hours early so HD processing finishes, set up Test & Compare, then schedule it public for 6:30 PM IST.
+- The video #1 Short: post it on a different day (for example Sunday 6:30 PM IST) so the two uploads don't compete for the same first-day push.
 
 ## What to check after upload (compared with video #1)
 
