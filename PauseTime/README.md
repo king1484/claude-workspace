@@ -10,7 +10,7 @@ long videos (`HundredHourDay/`): `lib.js`, `rigs.js` and `mascot.js` are copies,
 | `words.py` | faster-whisper word timings → `out/words.json` (captions + event times) |
 | `gen_timing.py` | → `timing.js` (`window.VO`, `window.WORDS`) for the page |
 | `scenes.js` | helpers, the street, HUD, snap FX (`window.PT`) |
-| `shots.js` | the 10 shots, word-by-word captions, grain/vignette, `drawFrame` |
+| `shots.js` | the 10 shots, grain/vignette, `drawFrame`; word-by-word captions only with `?caps=1` (off for the release) |
 | `audio.py` | piano score (Salamander), synthesized SFX, CC0 ambiences, ducking, limiter → `out/mix.wav` (needs `PIANO_DIR`, `SFX_DIR`) |
 | `render.mjs` | frame renderer (viewport 1080×1920) |
 | `METADATA.md` | upload kit |

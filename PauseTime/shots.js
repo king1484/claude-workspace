@@ -425,6 +425,7 @@ const CH = (() => {                                   // group words into short 
   out.forEach((c, i) => { c.s = c.words[0].s; const nx = out[i + 1]; c.e = nx && nx.s - c.words[c.words.length - 1].e < 0.45 ? nx.s : c.words[c.words.length - 1].e + 0.25; });
   return out;
 })();
+const CAPS = new URLSearchParams(location.search).get('caps') === '1';
 const EMPH = /^(pause|stops|freeze|frozen|black|concrete|light|snap|nobody|problem|air|halfway|eyes|still)/i;
 function captions(g, t, y) {
   const c = CH.find(c => t >= c.s && t < c.e); if (!c) return;
@@ -462,7 +463,7 @@ G.drawFrame = function (g, t) {
   const s = SH.find(s => t >= s.t0 && t < s.t1) || SH[SH.length - 1];
   g.save(); s.fn(g, t); g.restore();
   post(g, t);
-  captions(g, t, s.capY(t));
+  if (CAPS) captions(g, t, s.capY(t));        // burned-in captions are off by default; ?caps=1 turns them on
 };
 G.PT_SHOTS = SH;
 })(window);

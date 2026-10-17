@@ -1,6 +1,6 @@
 # What If You Could Pause Time? — What If Labs Short
 
-File: `PauseTime/out/PauseTime_Short.mp4` (1080 × 1920, 30 fps, ~46 s, narration + music + SFX, word-by-word captions burned in).
+File: `PauseTime/out/PauseTime_Short.mp4` (1080 × 1920, 30 fps, ~46 s, narration + music + SFX, no burned-in captions; optional closed captions in `captions.srt`).
 Nothing has been uploaded; you upload it yourself.
 
 ## Title
@@ -45,6 +45,7 @@ what if, what if you could pause time, pause time, stop time, freeze time, what 
 | Audience | Not made for kids |
 | Altered or synthetic content | **Yes**: the narration is a synthetic (text-to-speech) voice. Same answer as the channel's earlier videos |
 | Comments | On |
+| Subtitles | Optional: upload `captions.srt` (Subtitles → Add language → English → Upload file → With timing). Viewers can switch them on; nothing is drawn on the video |
 | Related video | Your best-performing long video on the channel |
 | Cover frame | `short_cover.png` (the snap, ~0:02.6), or the frozen raindrops (~0:07) |
 
