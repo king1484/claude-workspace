@@ -1,38 +1,32 @@
-# SCROLL — upload kit
+# SCROLL: upload kit (Unsaid Lessons, video 1)
 
-Everything to paste into YouTube Studio, plus thumbnail prompts for ChatGPT. Reference frames are in `marketing/refs/`.
+Everything to paste into YouTube Studio. Video: `out/SCROLL_final_1080p_upload.mp4` (3:52, 1080p). Thumbnail prompts are further down; reference frames are in `marketing/refs/`.
 
 ## Title
 
-**Use:** `The Feed Has No Bottom | SCROLL` (31 characters)
+**Use:** `Why You Can't Stop Scrolling at Night` (37 characters)
 
-Alternates for a later title test:
-- `It's 3:07 AM. He Only Meant to Check One Thing.` (47)
-- `SCROLL | A Short Film About the Feed That Never Ends` (52)
-
-Why this one: it opens with the film's question as a claim people want to argue with or check, and keeps the film's name for the channel's brand.
+Why this one: it's the exact question people type into search, everyone has lived it, and the film answers it (the slot-machine lever, the bottomless feed). Short enough to show in full on phones. No "| SCROLL" suffix: a new channel's brand word adds no clicks, and the film title already appears in the video.
 
 ## A/B test: three title + thumbnail pairs
 
-Each title adds something the thumbnail doesn't say, so the two never repeat each other.
-
 | # | Thumbnail | Title | The hook |
 |---|---|---|---|
-| 1 | **A, "NO BOTTOM"** (the shaft) | `He Only Meant to Check One Thing | SCROLL` (41) | The picture shows the trap; the title says how everyone falls into it |
-| 2 | **B, "3:07"** (the clock in the dark) | `The Feed Has No Bottom | SCROLL` (31) | The picture shows the time; the title says why he's still awake |
-| 3 | **C, "IT ENDS?"** (the floor on the phone) | `Every Night, One More Swipe | SCROLL` (36) | The title is the habit; the picture promises a way out |
+| 1 | **A, "NO BOTTOM"** (the shaft) | `Why You Can't Stop Scrolling at Night` (37) | Search question; the picture shows the answer |
+| 2 | **B, "3:07"** (the clock in the dark) | `He Only Meant to Check One Thing...` (35) | Pure curiosity; the clock says how that went |
+| 3 | **C, "IT ENDS?"** (the floor on the phone) | `The Feed Has No Bottom` (22) | A bold claim; the picture argues back |
 
-In YouTube Studio: Details → Test & compare → choose the title and thumbnail option if your channel has it, and add the three pairs. If only thumbnail testing is offered, run the three thumbnails with title 2, then try the best other title for a week after the test ends. Let the test run its full length (up to two weeks); it picks the winner by watch time, not clicks, so don't stop it early.
+In YouTube Studio: Details → Test & compare → title and thumbnail, add the three pairs. If only thumbnail testing is offered, use title 1 with all three thumbnails. Let it run to the end; it picks by watch time, so don't stop it early.
 
 ## Description
 
-Paste as is (the first two lines show in search and under the video):
+Paste as is. The first two lines show in search and under the video, so they repeat the search question and give a reason to watch to the end.
 
 ```
-It's 3:07 AM. He only meant to check one thing.
-A silent story about the feed that never ends, and the one thing that finally does.
+You only meant to check one thing. Now it's 3:07 AM.
+Why can't we stop scrolling at night, and what finally makes it stop? Watch till the end.
 
-No words, no narration. Just one night, one phone, and a choice: decide where tonight's feed ends, before it decides for you.
+A short story about doomscrolling, the feed that never ends, and the one small rule that gives it a bottom.
 
 Try it tonight: pick your last-swipe time, write it on a sticky note, and charge your phone across the room.
 
@@ -40,33 +34,35 @@ What time is your last swipe tonight? Tell me in the comments.
 
 Headphones recommended.
 
+Subscribe to Unsaid Lessons for more stories about the lessons life never says out loud.
+
 —
 
-A note on the idea: studies have linked late-night screen use with worse sleep (mostly correlational research, e.g. a 2024 meta-analysis of 55 studies: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11077410/). The bottomless shaft and the slot-machine lever in the film are visual metaphors, not measurements.
+A note on the idea: studies have linked late-night screen use with worse sleep (mostly correlational research, e.g. a 2024 meta-analysis of 55 studies: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11077410/). The bottomless shaft and the slot-machine lever are visual metaphors, not measurements.
 
 Music and sound
 Piano: Salamander Grand Piano by Alexander Holm, CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
 Sound recordings from Freesound (CC0): IENBA, Nickisawsome74, AnemoneBlondie, Soup_UnderScore, newagesoup, Joao_Janz, Nox_Sound, twinpix, Valenspire, FOSSarts. Everything else synthesized.
 Fonts: EB Garamond, Inter, Caveat (SIL Open Font License).
 
-#shortfilm #animation #doomscrolling #screentime #phoneaddiction
+#doomscrolling #screentime #shortfilm #phoneaddiction #lifelessons
 ```
 
 The piano credit line is required by its licence (CC BY 3.0). The Freesound credits are optional (CC0) but cost nothing.
 
 ## Hashtags
 
-The first three in the description appear above the title: `#shortfilm #animation #doomscrolling`. Keep the total small: these five are enough (if a video has more than 60, YouTube ignores all of them). Do not put hashtags in the title.
+The first three appear above the title: `#doomscrolling #screentime #shortfilm`. Five in total is enough; never put hashtags in the title.
 
 ## Tags
 
-Paste into the Tags box (comma separated; about 490 of the 500 allowed characters, counting the quotes YouTube adds around multi-word tags):
+Paste into the Tags box (about 449 of the 500 characters):
 
 ```
-scroll short film, silent short film, short film no dialogue, doomscrolling, doom scrolling at night, cant stop scrolling, infinite scroll, phone addiction, social media addiction, screen time, 3am scrolling, revenge bedtime procrastination, digital wellbeing, phone before bed, sleep and phone, 2d animation, animated story, motivational short film, emotional animation, short film about phones, the feed has no bottom
+unsaid lessons, why cant i stop scrolling, how to stop doomscrolling, stop scrolling at night, doomscrolling, doom scrolling at night, infinite scroll, phone addiction, social media addiction, screen time, 3am scrolling, revenge bedtime procrastination, digital wellbeing, phone before bed, short film, no dialogue short film, emotional short film, life lessons, short story with a lesson, relatable story, the feed has no bottom
 ```
 
-Tags matter little for ranking now; they mainly help with misspellings. The title, thumbnail and first 30 seconds do the work.
+Tags mainly help with misspellings; the title, thumbnail and first 30 seconds do the real work.
 
 ## Settings
 
@@ -80,10 +76,10 @@ Tags matter little for ranking now; they mainly help with misspellings. The titl
 | Captions | Optional: three on-screen lines ("Where does the feed end?", "The feed has no bottom.", "Build one.") are already burned in |
 | Licence | Standard YouTube licence; allow embedding |
 | Comments | On; sort by Top |
-| Pinned comment | `What time is your last swipe tonight? Mine's 11:30.` |
+| Pinned comment | `What time is your last swipe tonight? 👇 (mine's 11:30)` |
 | End screen | From 3:44 (the SCROLL title card): one Subscribe element and one "Best for viewer" video, placed in the lower corners so they don't cover the title |
 | Thumbnail test | Upload all three thumbnails below with **Test & compare** |
-| Playlist | Create "Silent Stories" and add it, so the channel has a series from day one |
+| Playlist | Create "Unsaid Lessons" and add it, so the channel has a series from day one |
 
 ## Thumbnails (ChatGPT image prompts)
 
@@ -139,26 +135,24 @@ Notes:
 - Keep the thumbnail to one idea and at most two words. Don't use the split before/after layout from the reference channels.
 - A thumbnail generated from these prompts is still your own artwork; review it for stray text or logos before uploading.
 
-## When to upload today (Saturday 17 October 2026)
+## When to upload (Saturday 17 October 2026)
 
-**Publish at 13:00–14:00 UTC**, which is:
+The afternoon slot (13:00–14:00 UTC) has passed. **Schedule it for 23:30 UTC tonight**:
 
 | Place | Local time |
 |---|---|
-| US East (EDT) | 9:00–10:00 AM |
-| US West (PDT) | 6:00–7:00 AM |
-| UK (BST) | 2:00–3:00 PM |
-| Central Europe (CEST) | 3:00–4:00 PM |
-| India (IST) | 6:30–7:30 PM |
-| Australia East (AEDT) | 12:00–1:00 AM Sunday |
+| India (IST) | 5:00 AM Sunday |
+| US East (EDT) | 7:30 PM Saturday |
+| US West (PDT) | 4:30 PM Saturday |
+| UK (BST) | 12:30 AM Sunday |
 
-Why: the audience for silent story videos in English is largest in the US, and Saturday viewing climbs from late morning into the evening there. Publishing a few hours before that peak gives YouTube time to test the video before most viewers arrive, and the same slot is early evening in Europe and India. A second good slot is **23:00–00:00 UTC** (7–8 PM US East), which also fits the film's late-night theme.
+Why: the biggest English audience for story videos is in the US, and Saturday evening is a peak viewing time there. A film about scrolling at night also lands best when people are about to go to bed. Upload it as Private now so HD processing finishes, then schedule. Honest caveat: for a new channel, click-through rate and the first 30 seconds matter far more than the hour.
 
-Honest caveat: for a brand-new channel, upload time matters far less than click-through rate and how many people watch past the first 30 seconds. Treat these times as sensible defaults, not a guarantee.
+## First 24 hours (what actually helps it spread)
 
-Checklist:
-1. Upload as **Private** 1–2 hours before the slot so HD processing finishes.
-2. Add the title, description, tags, thumbnails (Test & compare), end screen and playlist.
-3. Schedule it (or switch to Public) for the slot.
-4. Post the pinned comment right after it goes live.
-5. Optional: 2–3 hours later, post a Short (the lever and the eight tiny worlds, 0:45–1:00, vertical crop) that links to the full film.
+1. Post the pinned comment right after it goes live, and reply to every comment in the first few hours (replies count as engagement and keep the thread alive).
+2. 2–3 hours after it goes live, post a Short: the slot-machine lever and the tiny worlds (0:45–1:00), vertical crop, with the title "Your feed is a slot machine" and the full video linked as the Short's related video.
+3. Share it where people already talk about this, following each community's self-promotion rules: Reddit r/nosurf and r/digitalminimalism (post it as "I made a short film about this", not as an ad), and your Instagram or WhatsApp status.
+4. Don't change the title or thumbnail manually while the A/B test is running.
+5. After 48 hours, check Analytics → Audience retention: if many viewers leave before 0:30, tell me the drop-off time and I'll tighten the opening.
+
