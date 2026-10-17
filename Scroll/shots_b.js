@@ -100,7 +100,7 @@ const SHAD_STAND = { x: 640, y: 596, s: 1.7 };
 shot(80, 87, 'S13', (g, lt, t, E) => {
   const sp = CH.track(lt, [[0, SITPHONE], [0.8, STAND, 0.9], [2.0, TAP, 0.5], [3.4, POINT, 0.5], [5.0, REACH, 0.7], [6.3, STAND, 0.5]]);
   const sk = lt < 1.7 ? 0 : 1, sx = SHAD_STAND.x, sy = lt < 0.8 ? lerp(SIT_HIP.y - 230, SHAD_STAND.y, smooth(lt / 0.8)) : SHAD_STAND.y;
-  const flick = pulse(lt % 0.8, 0, 0.25) * 6, pose = Object.assign({}, SITPHONE, { hfy: SITPHONE.hfy + flick, bags: 0.9, looky: 0.5 }), PH = { x: 836, y: 694 };
+  const pose = Object.assign({}, SITPHONE, { bags: 0.9, looky: 0.5 }), PH = { x: 836, y: 694 };
   const cam = sway(camAt(lt, [[0, { x: 790, y: 650, z: 1.15 }], [7, { x: 800, y: 650, z: 1.25 }]]), t, 0.5);
   stage(g, E, t, {
     cam, ambient: [6, 8, 14, 0.74], wallFx: shadowSpec(sx, sy, sp, SHAD_STAND.s, 1, 0.6, 0.55),
@@ -135,7 +135,7 @@ shot(87, 95, 'S14', (g, lt, t, E) => {
 
 // ================================================================== SHOT 15 (1:35-1:42) grey dawn, the alarm, he is still scrolling
 shot(95, 102, 'S15', (g, lt, t, E) => {
-  const pose = Object.assign({}, P.sitBedSlump, { bags: 1.0, hfy: P.sitBedSlump.hfy + pulse(lt % 1.1, 0, 0.3) * 4 }), PH = { x: 838, y: 716 };
+  const pose = Object.assign({}, P.sitBedSlump, { bags: 1.0 }), PH = { x: 838, y: 716 };
   const cam = sway(camAt(lt, [[0, { x: 1030, y: 660, z: 0.88 }], [7, { x: 960, y: 670, z: 1.0 }]]), t, 0.4);
   const ring = clamp((lt - 1.2) / 0.2) * (1 - clamp((lt - 6.2) / 0.6));
   stage(g, E, t, {

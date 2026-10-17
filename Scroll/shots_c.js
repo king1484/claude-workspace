@@ -197,7 +197,6 @@ function titleCard(g, lt) {
   g.filter = 'none'; g.shadowBlur = 0; g.globalAlpha = 1 - out;
   const lw = 420 * easeInOut(clamp((lt - 1.3) / 1.1)); g.fillStyle = 'rgba(214,58,58,0.9)'; g.fillRect(960 - lw / 2, 598, lw, 2);
   g.restore();
-  TXT.label(g, 'A SILENT ANIMATED SHORT', lt, 1.8, 4.8, { y: 650, size: 22 });
 }
 shot(215, 224, 'S29', (g, lt, t, E) => { g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080); TXT.title(g, 'The feed has no bottom.', lt, 0.4, 3.4, { size: 90, glow: true, stagger: 0.18 }); TXT.title(g, 'Build one.', lt, 4.6, 7.9, { size: 108, glow: true, stagger: 0.32, color: [240, 214, 200] }); drawGrain(g, 1920, 1080, t, 0.08); });
 shot(224, 230, 'S30', (g, lt, t, E) => {

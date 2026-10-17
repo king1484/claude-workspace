@@ -80,17 +80,19 @@ const hero = (hip, pose, t, extra) => Object.assign({ id: 'me', x: hip.x, y: hip
 
 // the hook bed: he lies on his back under the phone, face lit; his shadow sleeps curled up on the wall above him
 function hookBed(t, lt, extra) {
-  const fl = pulse((t - 3.0 + 9) % 0.9, 0.0, 0.25) * 6;         // thumb flick every 0.9 s
-  const pose = Object.assign({}, LIE, { hfy: LIE.hfy + fl, lookx: 0.9, looky: 0, bags: 0.8 });
+  const dr = Math.sin(t * 0.7) * 1.5;                 // the hand barely drifts; the thumb (drawn on the phone) does the scrolling
+  const pose = Object.assign({}, LIE, { hfy: LIE.hfy + dr, lookx: 0.9, looky: -0.2, bags: 0.8 });
   return { hero: hero(LIE_HIP, pose, t, extra), phone: { x: 301, y: 616 } };
 }
 
 // ================================================================== SHOT 1  (0:00-0:03) black, one ping, a blue slit becomes a glow
 shot(0, 3, 'S1', (g, lt, t, E) => {
   g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080);
-  const a = smooth((lt - 0.5) / 0.9), b = smooth((lt - 1.3) / 1.5), w = lerp(2, 760, a), h = lerp(3, 360, b);
-  glow(g, 960, 540, 260 + b * 520, BLUE, 0.12 * a + 0.3 * b, 'screen');
-  g.fillStyle = `rgba(150,205,255,${0.9 * a * (1 - b * 0.7)})`; rr(g, 960 - w / 2, 540 - h / 2, w, h, h / 2); g.fill();
+  const on = smooth((lt - 0.45) / 0.5), push = easeIn(clamp((lt - 2.2) / 0.8));
+  g.save(); g.translate(960, 560); g.scale(1 + 1.6 * push, 1 + 1.6 * push); g.translate(-960, -560);
+  SCR.phone(g, 960, 560, 330, -0.04, t, { hand: true, glow: on, dim: 1 - on * 0.92, clock: story(t).clock, seed: 6, banner: { t: 0.55, title: 'Feed', text: '27 new posts for you' } });
+  g.restore();
+  if (push > 0) { g.fillStyle = `rgba(0,0,0,${push})`; g.fillRect(0, 0, 1920, 1080); }
   SET.vignette(g, E, 0.6); drawGrain(g, 1920, 1080, t, 0.12);
 });
 
@@ -102,7 +104,7 @@ shot(3, 8, 'S2', (g, lt, t, E) => {
     wallFx: shadowSpec(410, 548, P.curl, 1.0, 1, 0.5, 0.5),
     chars: [hb.hero], charLights: [{ x: hb.phone.x, y: hb.phone.y, r: 340, rgb: BLUE, a: 0.55 }],
     lights: [{ x: hb.phone.x, y: hb.phone.y, r: 520, rgb: BLUE, a: 0.3, open: 0.97 }],
-    post: (g2) => phoneSide(g2, hb.phone.x, hb.phone.y, 0.08, 0.8 + 0.2 * Math.sin(t * 7.0)),
+    post: (g2, J) => phoneSide(g2, J.me.handF.x - 14, J.me.handF.y + 4, -0.5, 0.95),
     over: (g2) => TXT.title(g2, 'Where does the feed end?', lt, 1.8, 4.1, { y: 880, size: 66, glow: true, stagger: 0.13 })
   });
 });
@@ -115,11 +117,11 @@ shot(8, 14, 'S3', (g, lt, t, E) => {
     wallFx: shadowSpec(410, 548, P.curl, 1.0, 1, 0.45, 0.5),
     chars: [hb.hero], charLights: [{ x: hb.phone.x, y: hb.phone.y, r: 340, rgb: BLUE, a: 0.75 }],
     lights: [{ x: hb.phone.x, y: hb.phone.y, r: 560, rgb: BLUE, a: 0.26, open: 0.95 }, { x: 820, y: 960, r: 520, rgb: BLUE, a: 0.26 * smooth(lt / 1.2), open: 0.9 * smooth(lt / 1.2) }],
-    post: (g2) => {
-      phoneSide(g2, hb.phone.x, hb.phone.y, 0.08, 0.9);
+    post: (g2, J) => {
+      phoneSide(g2, J.me.handF.x - 14, J.me.handF.y + 4, -0.5, 0.95);
       for (let i = 0; i < 9; i++) {                        // icons leave the phone and drop into the shaft
         const u = (lt - 0.9 - i * 0.62) / 1.25; if (u < 0 || u > 1) continue;
-        const x0 = hb.phone.x, y0 = hb.phone.y - 20, x1 = 820 + (i % 3 - 1) * 70, y1 = 975, cx = (x0 + x1) / 2, cy = Math.min(y0, y1) - 150;
+        const x0 = J.me.handF.x, y0 = J.me.handF.y - 30, x1 = 820 + (i % 3 - 1) * 70, y1 = 975, cx = (x0 + x1) / 2, cy = Math.min(y0, y1) - 150;
         const px = (1 - u) * (1 - u) * x0 + 2 * (1 - u) * u * cx + u * u * x1, py = (1 - u) * (1 - u) * y0 + 2 * (1 - u) * u * cy + u * u * y1, sz = 26 * (1 - u * 0.55);
         glow(g2, px, py, 60, BLUE, 0.5, 'screen'); g2.fillStyle = 'rgba(150,205,255,0.95)'; rr(g2, px - sz / 2, py - sz / 2, sz, sz, sz * 0.3); g2.fill();
       }
@@ -135,7 +137,14 @@ shot(14, 20, 'S4', (g, lt, t, E) => {
     cam, ambient: [6, 8, 14, 0.86 - 0.3 * S.lamp],
     chars: [hero(hip, pose, t)], charLights: [{ x: 1650, y: 620, r: 1000, rgb: WARM, a: 0.3 * S.lamp }],
     lights: [{ x: 1650, y: 620, r: 760, rgb: WARM, a: 0.2 * S.lamp, open: 0.9 * S.lamp }, { x: 1185, y: 700, r: 260, rgb: [190, 210, 255], a: 0.18, open: 0.8 }],
-    over: (g2) => TXT.label(g2, '11:42 PM', lt, 4.2, 5.6, { y: 950, size: 30 })
+    over: (g2) => {
+      const rw = clamp(lt / 0.3) * (1 - smooth((lt - 4.6) / 0.4));               // rewind: a ◀◀ mark, a faint tape wobble, the clock spinning back
+      if (rw > 0) { g2.save(); g2.globalAlpha = 0.85 * rw; g2.fillStyle = '#e6ebf7'; for (const dx of [0, 34]) { g2.beginPath(); g2.moveTo(150 + dx, 110); g2.lineTo(184 + dx, 88); g2.lineTo(184 + dx, 132); g2.closePath(); g2.fill(); }
+        g2.font = `600 26px ${TXT.UI}`; g2.letterSpacing = '6px'; g2.textBaseline = 'middle'; g2.fillText('REWIND', 240, 111);
+        const r = rng(Math.floor(t * 24)); for (let i = 0; i < 3; i++) { g2.globalAlpha = 0.06 * rw; g2.fillRect(0, r() * 1080, 1920, 4 + r() * 10); } g2.restore(); }
+      TXT.label(g2, 'EARLIER THAT NIGHT', lt, 0.4, 3.6, { y: 950, size: 30 });
+      TXT.label(g2, '11:42 PM', lt, 4.4, 5.7, { y: 950, size: 30 });
+    }
   });
 });
 
@@ -185,9 +194,9 @@ shot(39, 45, 'S8', (g, lt, t, E) => {
     phoneInsert(g, E, t, lt, { zoom: 1 + 0.02 * lt, ang: -0.05 + 0.01 * Math.sin(lt * 0.8), y: 548 + Math.sin(lt * 1.1) * 4, phone: { swipes: [{ t: 39.6 }, { t: 40.9 }, { t: 42.2 }], likes: [40.2], seed: 0 } });
     return;
   }
-  const l2 = lt - 3.4, flick = pulse(t, 43.5 - 0.05, 0.3) * 8;
+  const l2 = lt - 3.4;
   const happy = smooth(l2 / 0.4) * (1 - smooth((l2 - 1.9) / 0.4));
-  const pose = Object.assign({}, SITPHONE, { hfy: SITPHONE.hfy + flick * 0.5, happy, looky: 0.55 });
+  const pose = Object.assign({}, SITPHONE, { happy, looky: 0.55 });
   const cam = sway(camAt(l2, [[0, { x: 812, y: 690, z: 3.0 }], [2.6, { x: 816, y: 688, z: 3.25 }]]), t, 0.6), PH = { x: 836, y: 694 };
   stage(g, E, t, {
     cam, ambient: [6, 8, 14, 0.8], vig: 0.6,

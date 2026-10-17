@@ -116,6 +116,14 @@ const SCR = (() => {
       g.beginPath(); g.moveTo(0, sc * 0.9); g.bezierCurveTo(sc * 1.6, -sc * 0.2, sc * 0.7, -sc * 1.2, 0, -sc * 0.4); g.bezierCurveTo(-sc * 0.7, -sc * 1.2, -sc * 1.6, -sc * 0.2, 0, sc * 0.9); g.fill(); g.restore();
       for (let k = 0; k < 8; k++) { const an = k / 8 * TAU, d = SW * (0.18 + 0.2 * easeOut(u)); g.fillStyle = `rgba(255,170,190,${(1 - u) * 0.9})`; g.beginPath(); g.arc(hx + Math.cos(an) * d, hy + Math.sin(an) * d, SW * 0.012 * (1 - u) + 0.5, 0, TAU); g.fill(); }
     }
+    if (o.banner) {                                     // a notification drops in from the top: frosted card, app glyph, one line
+      const k = clamp((t - o.banner.t) / 0.45), e = k < 1 ? spring(k * 0.9, 220, 16) : 1, by = lerp(-SH * 0.12, top + SH * 0.012, e);
+      g.save(); g.globalAlpha = clamp(k * 3); g.fillStyle = 'rgba(38,44,60,0.94)'; rr(g, SW * 0.04, by, SW * 0.92, SH * 0.085, SW * 0.05); g.fill();
+      g.fillStyle = '#4aa8ff'; rr(g, SW * 0.08, by + SH * 0.018, SW * 0.1, SW * 0.1, SW * 0.025); g.fill();
+      g.fillStyle = '#fff'; g.beginPath(); g.arc(SW * 0.13, by + SH * 0.018 + SW * 0.05, SW * 0.02, 0, TAU); g.fill();
+      g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillStyle = '#eef2fb'; g.font = `600 ${SW * 0.052}px ${TXT.UI}`; g.fillText(o.banner.title, SW * 0.22, by + SH * 0.03);
+      g.fillStyle = '#aab3c8'; g.font = `500 ${SW * 0.046}px ${TXT.UI}`; g.fillText(o.banner.text, SW * 0.22, by + SH * 0.058); g.restore();
+    }
     if (o.dim) { g.fillStyle = `rgba(0,0,0,${o.dim})`; g.fillRect(0, 0, SW, SH); }
     // touch ripple under the thumb
     const th = thumb(t, sw);
@@ -137,7 +145,7 @@ const SCR = (() => {
     g.save(); g.translate(x, y); g.rotate(ang || 0);
     g.fillStyle = '#060709'; rr(g, -w * sq / 2 + w * 0.12, -h / 2 + 1, w * sq, h, w * 0.12); g.fill();          // the back edge
     g.transform(sq, -0.08, 0, 1, 0, 0);
-    if (a > 0.02) phone(g, 0, 0, w, 0, t, { swipes: o.swipes || [], start: o.start, floorAt: o.floorAt, thumb: false, glow: 0, dim: 1 - a, clock: '', seed: o.seed, likes: o.likes });
+    if (a > 0.02) phone(g, 0, 0, w, 0, t, { swipes: o.swipes || [], start: o.start, floorAt: o.floorAt, thumb: o.grip !== false, hand: o.grip !== false, glow: 0, dim: 1 - a, clock: '', seed: o.seed, likes: o.likes });
     else { g.fillStyle = '#0a0b0f'; rr(g, -w / 2, -h / 2, w, h, w * 0.15); g.fill(); g.fillStyle = 'rgba(160,180,220,0.12)'; rr(g, -w / 2 + 2, -h / 2 + 2, w - 4, h * 0.4, w * 0.12); g.fill(); }
     g.restore();
   }
