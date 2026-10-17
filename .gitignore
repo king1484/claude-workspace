@@ -27,3 +27,6 @@ FutureSight/shorts/work/*
 .models/
 Scroll/review/
 Scroll/out/
+!PauseTime/out/vo.wav
+!PauseTime/out/vo_*.wav
+PauseTime/review/

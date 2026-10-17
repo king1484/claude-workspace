@@ -1,0 +1,21 @@
+{
+  "title": "What If You Could Pause Time?",
+  "voice": "am_michael",
+  "speed": 1.06,
+  "lead": 0.15,
+  "lines": [
+    { "id": "l1",  "text": "What if you could pause time?", "gap": 0.25 },
+    { "id": "l2",  "text": "One snap... and the whole world just stops.", "gap": 0.3 },
+    { "id": "l3",  "text": "Birds freeze in mid-air. Raindrops hang like tiny glass beads.", "gap": 0.25 },
+    { "id": "l4",  "text": "You could walk into any bakery, eat everything, and nobody would ever know.", "gap": 0.35 },
+    { "id": "l5",  "text": "Sounds amazing, right? But there's one problem nobody thinks about.", "gap": 0.3 },
+    { "id": "l6",  "text": "You only see things because light bounces off them and flies into your eyes.", "gap": 0.2 },
+    { "id": "l7",  "text": "Pause time, and that light stops too. Frozen, halfway to you.", "gap": 0.3 },
+    { "id": "l8",  "text": "So the second you snap... everything goes pitch black.", "gap": 0.45 },
+    { "id": "l9",  "text": "And the air? Every single air molecule is frozen in place.", "gap": 0.2 },
+    { "id": "l10", "text": "Taking one step would feel like walking into solid concrete.", "gap": 0.35 },
+    { "id": "l11", "text": "No light. No sound. You can't even move your fingers...", "gap": 0.2 },
+    { "id": "l12", "text": "to snap time back on.", "gap": 0.7 },
+    { "id": "l13", "text": "So... would you still press pause?", "gap": 0.6 }
+  ]
+}
