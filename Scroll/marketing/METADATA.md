@@ -4,13 +4,13 @@ Everything to paste into YouTube Studio, plus thumbnail prompts for ChatGPT. Ref
 
 ## Title
 
-**Use:** `The Feed Has No Bottom | SCROLL (Animated Short Film)` (53 characters, under the 70 that show in full)
+**Use:** `The Feed Has No Bottom | SCROLL` (31 characters)
 
 Alternates for a later title test:
 - `It's 3:07 AM. He Only Meant to Check One Thing.` (47)
 - `SCROLL | A Short Film About the Feed That Never Ends` (52)
 
-Why this one: it opens with the film's question as a claim people want to argue with or check, keeps the film's name for the channel's brand, and "Animated Short Film" tells browse viewers what they're getting.
+Why this one: it opens with the film's question as a claim people want to argue with or check, and keeps the film's name for the channel's brand.
 
 ## A/B test: three title + thumbnail pairs
 
@@ -18,9 +18,9 @@ Each title adds something the thumbnail doesn't say, so the two never repeat eac
 
 | # | Thumbnail | Title | The hook |
 |---|---|---|---|
-| 1 | **A, "NO BOTTOM"** (the shaft) | `He Only Meant to Check One Thing | SCROLL (Animated Short Film)` (63) | The picture shows the trap; the title says how everyone falls into it |
-| 2 | **B, "3:07"** (the clock in the dark) | `The Feed Has No Bottom | SCROLL (Animated Short Film)` (53) | The picture shows the time; the title says why he's still awake |
-| 3 | **C, "IT ENDS?"** (the floor on the phone) | `Every Night, One More Swipe | SCROLL (Animated Short Film)` (58) | The title is the habit; the picture promises a way out |
+| 1 | **A, "NO BOTTOM"** (the shaft) | `He Only Meant to Check One Thing | SCROLL` (41) | The picture shows the trap; the title says how everyone falls into it |
+| 2 | **B, "3:07"** (the clock in the dark) | `The Feed Has No Bottom | SCROLL` (31) | The picture shows the time; the title says why he's still awake |
+| 3 | **C, "IT ENDS?"** (the floor on the phone) | `Every Night, One More Swipe | SCROLL` (36) | The title is the habit; the picture promises a way out |
 
 In YouTube Studio: Details → Test & compare → choose the title and thumbnail option if your channel has it, and add the three pairs. If only thumbnail testing is offered, run the three thumbnails with title 2, then try the best other title for a week after the test ends. Let the test run its full length (up to two weeks); it picks the winner by watch time, not clicks, so don't stop it early.
 
@@ -30,7 +30,7 @@ Paste as is (the first two lines show in search and under the video):
 
 ```
 It's 3:07 AM. He only meant to check one thing.
-A silent animated short about the feed that never ends, and the one thing that finally does.
+A silent story about the feed that never ends, and the one thing that finally does.
 
 No words, no narration. Just one night, one phone, and a choice: decide where tonight's feed ends, before it decides for you.
 
@@ -49,7 +49,7 @@ Piano: Salamander Grand Piano by Alexander Holm, CC BY 3.0 (https://creativecomm
 Sound recordings from Freesound (CC0): IENBA, Nickisawsome74, AnemoneBlondie, Soup_UnderScore, newagesoup, Joao_Janz, Nox_Sound, twinpix, Valenspire, FOSSarts. Everything else synthesized.
 Fonts: EB Garamond, Inter, Caveat (SIL Open Font License).
 
-#shortfilm #animation #doomscrolling #screentime #animatedshort
+#shortfilm #animation #doomscrolling #screentime #phoneaddiction
 ```
 
 The piano credit line is required by its licence (CC BY 3.0). The Freesound credits are optional (CC0) but cost nothing.
@@ -63,7 +63,7 @@ The first three in the description appear above the title: `#shortfilm #animatio
 Paste into the Tags box (comma separated; about 490 of the 500 allowed characters, counting the quotes YouTube adds around multi-word tags):
 
 ```
-scroll animated short film, animated short film, silent animated short, short film no dialogue, doomscrolling, doom scrolling at night, cant stop scrolling, infinite scroll, phone addiction, social media addiction, screen time, 3am scrolling, revenge bedtime procrastination, digital wellbeing, phone before bed, sleep and phone, 2d animation, animated story, motivational short film, emotional animation, short film about phones, the feed has no bottom
+scroll short film, silent short film, short film no dialogue, doomscrolling, doom scrolling at night, cant stop scrolling, infinite scroll, phone addiction, social media addiction, screen time, 3am scrolling, revenge bedtime procrastination, digital wellbeing, phone before bed, sleep and phone, 2d animation, animated story, motivational short film, emotional animation, short film about phones, the feed has no bottom
 ```
 
 Tags matter little for ranking now; they mainly help with misspellings. The title, thumbnail and first 30 seconds do the work.
@@ -83,7 +83,7 @@ Tags matter little for ranking now; they mainly help with misspellings. The titl
 | Pinned comment | `What time is your last swipe tonight? Mine's 11:30.` |
 | End screen | From 3:44 (the SCROLL title card): one Subscribe element and one "Best for viewer" video, placed in the lower corners so they don't cover the title |
 | Thumbnail test | Upload all three thumbnails below with **Test & compare** |
-| Playlist | Create "Silent Animated Shorts" and add it, so the channel has a series from day one |
+| Playlist | Create "Silent Stories" and add it, so the channel has a series from day one |
 
 ## Thumbnails (ChatGPT image prompts)
 
@@ -152,7 +152,7 @@ Notes:
 | India (IST) | 6:30–7:30 PM |
 | Australia East (AEDT) | 12:00–1:00 AM Sunday |
 
-Why: the audience for silent animated shorts in English is largest in the US, and Saturday viewing climbs from late morning into the evening there. Publishing a few hours before that peak gives YouTube time to test the video before most viewers arrive, and the same slot is early evening in Europe and India. A second good slot is **23:00–00:00 UTC** (7–8 PM US East), which also fits the film's late-night theme.
+Why: the audience for silent story videos in English is largest in the US, and Saturday viewing climbs from late morning into the evening there. Publishing a few hours before that peak gives YouTube time to test the video before most viewers arrive, and the same slot is early evening in Europe and India. A second good slot is **23:00–00:00 UTC** (7–8 PM US East), which also fits the film's late-night theme.
 
 Honest caveat: for a brand-new channel, upload time matters far less than click-through rate and how many people watch past the first 30 seconds. Treat these times as sensible defaults, not a guarantee.
 
