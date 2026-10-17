@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { fbm } from './util.js';
 
 // tileable fbm noise texture (built once) — much cheaper than per-pixel noise in software WebGL
+export const PARTICLE_LAYER = 1;
 let NOISE_TEX = null;
 function noiseTexture() {
   if (NOISE_TEX) return NOISE_TEX;
@@ -71,10 +72,13 @@ export class Particles {
     this.tmp = { pos: new Float32Array(max * 3), size: new Float32Array(max), col: new Float32Array(max * 4), rot: new Float32Array(max), seed: new Float32Array(max), vel: new Float32Array(max * 3) };
     const mat = new THREE.ShaderMaterial({
       vertexShader: VS, fragmentShader: FS, transparent: true, depthWrite: false, depthTest,
-      blending: blending === 'add' ? THREE.AdditiveBlending : THREE.NormalBlending,
+      // additive glow must not add coverage (alpha), so the half-res particle layer composites correctly
+      blending: blending === 'add' ? THREE.CustomBlending : THREE.NormalBlending,
+      blendSrc: THREE.SrcAlphaFactor, blendDst: THREE.OneFactor, blendSrcAlpha: THREE.ZeroFactor, blendDstAlpha: THREE.OneFactor,
       uniforms: { uNoise: { value: noise }, uEdge: { value: edge }, uTex: { value: noiseTexture() } }, defines: streak ? { STREAK: 1 } : {},
     });
     this.mesh = new THREE.Mesh(g, mat); this.mesh.frustumCulled = false; this.geo = g;
+    this.mesh.layers.set(PARTICLE_LAYER);           // drawn by the half-res particle pass (post.js)
   }
   begin() { this.n = 0; }
   add(x, y, z, size, r, g, b, a, rot = 0, seed = 0, vx = 0, vy = 0, vz = 0) {
