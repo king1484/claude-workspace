@@ -42,7 +42,7 @@ what if, what if you could see the future, see 10 seconds into the future, ten s
 - Visibility: Public (scheduled)
 
 ## Suggested upload time (IST) - a suggestion, not a measurement
-Saturday about 6:30 PM IST (Sunday 6:30 PM IST as a second choice). Reasoning from the full video's audience geography (India 13.9%, Philippines 11.9%, Australia 9.9%, US 9.9%): 6:30 PM IST is about 9:00 PM in the Philippines, 11 PM to midnight on the Australian east coast and about 9:00 AM US Eastern, so it hits an evening window for the two largest audiences and the US morning. This is not derived from per-hour analytics; check YouTube Studio > Analytics > Audience > "When your viewers are on YouTube" and adjust.
+**Sunday 18 Oct 2026, about 6:30 PM IST**, the day after video #2 ("What If One Day Lasted 100 Hours?") goes public on Saturday 6:30 PM IST, so the two uploads don't compete for the same first-day push. Reasoning from the full video's audience geography (India 13.9%, Philippines 11.9%, Australia 9.9%, US 9.9%): 6:30 PM IST is about 9:00 PM in the Philippines, 11 PM to midnight on the Australian east coast and about 9:00 AM US Eastern. This is not derived from per-hour analytics; check YouTube Studio > Analytics > Audience > "When your viewers are on YouTube" and adjust.
 
 ## Honesty check
 Copy only claims what the Short shows: a ghost-world preview of the next 10 seconds, a truck and a rescued girl, a bag thief in a crowd who is stopped by the hero, the ghost world going quiet, and a 10-second countdown that reaches zero. It does not claim a death, a real event, or science.
