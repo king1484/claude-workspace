@@ -1,6 +1,6 @@
 # Upload metadata — "What If One Day Lasted 100 Hours?" (video #2)
 
-Upload file: `HundredHourDay/out/WhatIf100Hours_UPLOAD_1080p.mp4` (1920x1080, 30 fps, 5:09, −16 LUFS, H.264 CRF 18 + AAC 320k). The mastering file `out/final_full.mp4` is the same picture at a much larger size.
+Upload file: `HundredHourDay/out/WhatIf100Hours_UPLOAD_1080p.mp4` (1920x1080, 30 fps, 5:09, −16 LUFS, H.264 ~9.4 Mbps + AAC 256k, 358 MB; above YouTube's recommended 8 Mbps for 1080p30). The mastering file `out/final_full.mp4` is the same picture at a much larger size.
 Thumbnails: `HundredHourDay/out/thumbnail_alt.png` (recommended) and `HundredHourDay/out/thumbnail.png` (test variant), 1280x720.
 Regenerate the thumbnails with `python3 make_thumbnail.py` (instructions in its header).
 
