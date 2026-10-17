@@ -46,7 +46,7 @@ what if, what if you could pause time, pause time, stop time, freeze time, what 
 | Altered or synthetic content | **Yes**: the narration is a synthetic (text-to-speech) voice. Same answer as the channel's earlier videos |
 | Comments | On |
 | Related video | Your best-performing long video on the channel |
-| Cover frame | The snap with the pause icon (~0:02) or the frozen raindrops (~0:07) |
+| Cover frame | `short_cover.png` (the snap, ~0:02.6), or the frozen raindrops (~0:07) |
 
 ## When
 Any evening slot your audience is active. For a US-heavy audience: 7–9 PM US Eastern (4:30–6:30 AM IST).
