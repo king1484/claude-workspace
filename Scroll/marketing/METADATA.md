@@ -10,7 +10,7 @@ Why this one: it's the exact question people type into search, everyone has live
 
 ## Thumbnail
 
-**Use thumbnail A, "NO BOTTOM"** (prompt below), with the title above. No A/B test for the first upload.
+**Final thumbnail: `thumbnail_A_1280x720.jpg`** (text: "The Feed Has No Bottom."), with the title above. No A/B test for the first upload.
 
 Why this pair: the title asks the question and the picture shows the answer (a feed with no bottom), so they work together without repeating each other. A is also the easiest of the three to read at phone size.
 
