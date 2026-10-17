@@ -33,12 +33,11 @@ function blueprint(g, t, tint) {
   for (let x = 0; x <= W; x += 225) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
   for (let y = 0; y <= H; y += 225) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
   if (tint) { g.fillStyle = tint; g.fillRect(0, 0, W, H); }
-  g.fillStyle = 'rgba(140,210,255,0.75)'; g.font = font(700, 26); g.textBaseline = 'middle';
-  g.fillText('WHAT IF LABS', 60, 214); g.fillStyle = 'rgba(140,210,255,0.45)'; g.fillText('EXPERIMENT 07 · PAUSED TIME', 60, 250);
   g.strokeStyle = 'rgba(140,210,255,0.5)'; g.lineWidth = 3;
   [[40, 170, 1, 1], [W - 40, 170, -1, 1], [40, H - 140, 1, -1], [W - 40, H - 140, -1, -1]].forEach(([x, y, sx, sy]) => { g.beginPath(); g.moveTo(x, y + 50 * sy); g.lineTo(x, y); g.lineTo(x + 50 * sx, y); g.stroke(); });
 }
 function label(g, txt, x, y, a, col, size, align) {
+  return;                                          // text labels are off: keep the screen text-free
   if (a <= 0) return;
   g.save(); g.globalAlpha = a; g.font = font(800, size || 34); g.textAlign = align || 'center'; g.textBaseline = 'middle';
   const w = g.measureText(txt).width + 36, x0 = align === 'left' ? x - 18 : align === 'right' ? x - w + 18 : x - w / 2;
@@ -232,7 +231,7 @@ function bakery(g, t, u, eatK, hero) {
   // pendant lamps
   [220, 540, 860].forEach((x) => { g.strokeStyle = '#4a3a55'; g.lineWidth = 4; g.beginPath(); g.moveTo(x, -300); g.lineTo(x, 250); g.stroke(); g.fillStyle = '#2f6f68'; g.beginPath(); g.moveTo(x - 70, 330); g.quadraticCurveTo(x, 210, x + 70, 330); g.fill(); g.fillStyle = '#fff2c4'; g.beginPath(); g.ellipse(x, 330, 50, 12, 0, 0, TAU); g.fill(); glow(g, x, 360, 280, 'rgba(255,230,170,1)', 0.35); });
   // sign
-  g.fillStyle = '#2f6f68'; rr(g, 330, 300, 420, 92, 24); g.fill(); g.fillStyle = '#fff6e8'; g.font = font(900, 54); g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('BAKERY', 540, 348); g.textAlign = 'left';
+  g.fillStyle = '#2f6f68'; rr(g, 440, 290, 200, 116, 30); g.fill(); pastry(g, { kind: 'donut', c: '#ff7fb0' }, 540, 352, 1.15);
   // baker (frozen mid-reach) behind the counter
   host(g, { x: 260, y: 1290, s: 1.55, facing: 1, pose: { name: 'point', dir: 0.35 }, expr: { eyes: 'happy' }, t: 0.6, pal: PAL.white, shadow: false });
   // counter + glass case

@@ -183,16 +183,16 @@ function hud(g, t, paused, a) {
   const sec = paused ? Math.floor(5 + T.snap1) : Math.floor(5 + t);
   const s2 = ('0' + (sec % 60)).slice(-2);
   g.save(); g.globalAlpha = a;
-  g.fillStyle = 'rgba(14,12,30,0.62)'; rr(g, 60, 170, 330, 76, 38); g.fill();
+  g.fillStyle = 'rgba(14,12,30,0.62)'; rr(g, 60, 170, 230, 76, 38); g.fill();
   if (paused) {
     const bl = 0.55 + 0.45 * Math.cos(t * 6);
     g.fillStyle = 'rgba(120,200,255,' + bl + ')'; rr(g, 92, 192, 11, 32, 3); g.fill(); rr(g, 110, 192, 11, 32, 3); g.fill();
-    g.fillStyle = '#9fdcff'; g.font = font(800, 30); g.textBaseline = 'middle'; g.fillText('PAUSED', 140, 209);
+
   } else {
     g.fillStyle = '#ff4d5e'; g.beginPath(); g.arc(106, 208, 10, 0, TAU); g.fill();
-    g.fillStyle = '#fff'; g.font = font(800, 30); g.textBaseline = 'middle'; g.fillText('LIVE', 128, 209);
+
   }
-  g.fillStyle = '#ffffff'; g.font = font(600, 30); g.fillText('12:41:' + s2, 262, 209);
+  g.fillStyle = '#ffffff'; g.font = font(600, 30); g.textBaseline = 'middle'; g.fillText('12:41:' + s2, 140, 209);
   g.restore();
 }
 
