@@ -151,6 +151,6 @@ Why: the biggest English audience for story videos is in the US, and Saturday ev
 1. Post the pinned comment right after it goes live, and reply to every comment in the first few hours (replies count as engagement and keep the thread alive).
 2. 2–3 hours after it goes live, post a Short: the slot-machine lever and the tiny worlds (0:45–1:00), vertical crop, with the title "Your feed is a slot machine" and the full video linked as the Short's related video.
 3. Share it where people already talk about this, following each community's self-promotion rules: Reddit r/nosurf and r/digitalminimalism (post it as "I made a short film about this", not as an ad), and your Instagram or WhatsApp status.
-4. Leave the title and thumbnail alone for the first 48 hours; changing them early resets YouTube's testing of the video.
+4. Leave the title and thumbnail alone for the first 48 hours, so you judge them on real data.
 5. After 48 hours, check Analytics → Audience retention: if many viewers leave before 0:30, tell me the drop-off time and I'll tighten the opening.
 
