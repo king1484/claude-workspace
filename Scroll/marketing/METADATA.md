@@ -12,6 +12,18 @@ Alternates for a later title test:
 
 Why this one: it opens with the film's question as a claim people want to argue with or check, keeps the film's name for the channel's brand, and "Animated Short Film" tells browse viewers what they're getting.
 
+## A/B test: three title + thumbnail pairs
+
+Each title adds something the thumbnail doesn't say, so the two never repeat each other.
+
+| # | Thumbnail | Title | The hook |
+|---|---|---|---|
+| 1 | **A, "NO BOTTOM"** (the shaft) | `He Only Meant to Check One Thing | SCROLL (Animated Short Film)` (63) | The picture shows the trap; the title says how everyone falls into it |
+| 2 | **B, "3:07"** (the clock in the dark) | `The Feed Has No Bottom | SCROLL (Animated Short Film)` (53) | The picture shows the time; the title says why he's still awake |
+| 3 | **C, "IT ENDS?"** (the floor on the phone) | `Every Night, One More Swipe | SCROLL (Animated Short Film)` (58) | The title is the habit; the picture promises a way out |
+
+In YouTube Studio: Details → Test & compare → choose the title and thumbnail option if your channel has it, and add the three pairs. If only thumbnail testing is offered, run the three thumbnails with title 2, then try the best other title for a week after the test ends. Let the test run its full length (up to two weeks); it picks the winner by watch time, not clicks, so don't stop it early.
+
 ## Description
 
 Paste as is (the first two lines show in search and under the video):
