@@ -154,3 +154,34 @@ Why: the biggest English audience for story videos is in the US, and Saturday ev
 4. Leave the title and thumbnail alone for the first 48 hours, so you judge them on real data.
 5. After 48 hours, check Analytics → Audience retention: if many viewers leave before 0:30, tell me the drop-off time and I'll tighten the opening.
 
+## Short (YouTube Shorts)
+
+File: `out/SCROLL_short_1080x1920.mp4` (51 s, 1080 × 1920, made with `make_short.py` from the film master). Layout: the film in a square in the middle, the title "Why you can't stop scrolling at night" at the top, one short caption per beat, and "The feed has no bottom. / Build one." at the end. No voiceover, only the film's own sound.
+
+**Title:**
+```
+Just one more video... #doomscrolling #shorts
+```
+
+**Description:**
+```
+He only meant to watch one video.
+The full story is linked above (tap the related video).
+
+What time is your last swipe tonight?
+
+Piano: Salamander Grand Piano by Alexander Holm, CC BY 3.0. Sounds: Freesound (CC0).
+
+#doomscrolling #screentime #shorts
+```
+
+**Settings:**
+| Field | Value |
+|---|---|
+| Related video | The full film, `Why You Can't Stop Scrolling at Night` (this puts a tappable link under the Short) |
+| Audience | Not made for kids |
+| Category | Film & Animation |
+| Pinned comment | `The full story is on the channel: "Why You Can't Stop Scrolling at Night". What time is your last swipe? 👇` |
+| Cover/thumbnail | Pick the frame with the slot machine or the phone with the heart (Shorts let you choose a frame in the mobile app) |
+
+**When:** 2–3 hours after the full film goes live (about 7:00–8:00 AM IST Sunday), so the related-video link already works.
