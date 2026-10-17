@@ -58,7 +58,7 @@ Tips:
 
 ## Banner
 
-`channel_banner_2560x1440.jpg` (made with `make_banner.py` from the profile picture `channel_dp.webp`).
+`channel_banner_2560x1440.jpg` (made with `make_banner.py` from the profile picture `channel_dp.webp`; the exact command is at the top of the script).
 
 - Tagline: *The lessons life never says out loud.*
 - The character and text sit inside YouTube's 1546 × 423 safe area, so they show on phones, desktop and TV. The desk at the bottom only shows on TV.
