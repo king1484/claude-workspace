@@ -78,8 +78,6 @@ No lectures and no narration. Just a story, a feeling, and something to think ab
 Stories about habits, screen time, procrastination, discipline, loneliness and growing up.
 
 If a story stays with you, send it to someone who needs it tonight.
-
-New here? Start with SCROLL.
 ```
 
 Add under Links: your Instagram or email for business, if you have one (Profile → Links / Contact info).
