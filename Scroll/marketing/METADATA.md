@@ -8,15 +8,13 @@ Everything to paste into YouTube Studio. Video: `out/SCROLL_final_1080p_upload.m
 
 Why this one: it's the exact question people type into search, everyone has lived it, and the film answers it (the slot-machine lever, the bottomless feed). Short enough to show in full on phones. No "| SCROLL" suffix: a new channel's brand word adds no clicks, and the film title already appears in the video.
 
-## A/B test: three title + thumbnail pairs
+## Thumbnail
 
-| # | Thumbnail | Title | The hook |
-|---|---|---|---|
-| 1 | **A, "NO BOTTOM"** (the shaft) | `Why You Can't Stop Scrolling at Night` (37) | Search question; the picture shows the answer |
-| 2 | **B, "3:07"** (the clock in the dark) | `He Only Meant to Check One Thing...` (35) | Pure curiosity; the clock says how that went |
-| 3 | **C, "IT ENDS?"** (the floor on the phone) | `The Feed Has No Bottom` (22) | A bold claim; the picture argues back |
+**Use thumbnail A, "NO BOTTOM"** (prompt below), with the title above. No A/B test for the first upload.
 
-In YouTube Studio: Details → Test & compare → title and thumbnail, add the three pairs. If only thumbnail testing is offered, use title 1 with all three thumbnails. Let it run to the end; it picks by watch time, so don't stop it early.
+Why this pair: the title asks the question and the picture shows the answer (a feed with no bottom), so they work together without repeating each other. A is also the easiest of the three to read at phone size.
+
+Later, once the video has a few days of data: if click-through rate (Analytics → Reach → Impressions click-through rate) stays under about 4%, try thumbnail B "3:07" or C "IT ENDS?" with `He Only Meant to Check One Thing...` or `The Feed Has No Bottom`.
 
 ## Description
 
@@ -78,7 +76,7 @@ Tags mainly help with misspellings; the title, thumbnail and first 30 seconds do
 | Comments | On; sort by Top |
 | Pinned comment | `What time is your last swipe tonight? 👇 (mine's 11:30)` |
 | End screen | From 3:44 (the SCROLL title card): one Subscribe element and one "Best for viewer" video, placed in the lower corners so they don't cover the title |
-| Thumbnail test | Upload all three thumbnails below with **Test & compare** |
+| Thumbnail | Upload thumbnail A ("NO BOTTOM") only |
 | Playlist | Create "Unsaid Lessons" and add it, so the channel has a series from day one |
 
 ## Thumbnails (ChatGPT image prompts)
@@ -153,6 +151,6 @@ Why: the biggest English audience for story videos is in the US, and Saturday ev
 1. Post the pinned comment right after it goes live, and reply to every comment in the first few hours (replies count as engagement and keep the thread alive).
 2. 2–3 hours after it goes live, post a Short: the slot-machine lever and the tiny worlds (0:45–1:00), vertical crop, with the title "Your feed is a slot machine" and the full video linked as the Short's related video.
 3. Share it where people already talk about this, following each community's self-promotion rules: Reddit r/nosurf and r/digitalminimalism (post it as "I made a short film about this", not as an ad), and your Instagram or WhatsApp status.
-4. Don't change the title or thumbnail manually while the A/B test is running.
+4. Leave the title and thumbnail alone for the first 48 hours; changing them early resets YouTube's testing of the video.
 5. After 48 hours, check Analytics → Audience retention: if many viewers leave before 0:30, tell me the drop-off time and I'll tighten the opening.
 
