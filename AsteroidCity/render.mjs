@@ -62,6 +62,27 @@ try {
     if (r.status !== 0) throw new Error('contact sheet failed: ' + r.stderr);
     fs.rmSync(tmp, { recursive: true, force: true });
     console.log('wrote', outp);
+  } else if (A.queue) {
+    // work-queue mode: claim 1-second segments (lock dirs) until none are left; each goes to <queue>/seg_NNNN.mp4
+    const qdir = path.resolve(ROOT, A.queue), seg = +(A.seg ?? fps), F = Math.round(dur * fps);
+    fs.mkdirSync(qdir, { recursive: true });
+    const order = (A.order ?? '').split(',').filter(Boolean).map(Number);   // heavy segments first
+    const all = Array.from({ length: Math.ceil(F / seg) }, (_, i) => i);
+    const ids = [...order.filter((i) => i < all.length), ...all.filter((i) => !order.includes(i))];
+    for (const id of ids) {
+      const name = path.join(qdir, `seg_${String(id).padStart(4, '0')}`);
+      if (fs.existsSync(name + '.mp4')) continue;
+      try { fs.mkdirSync(name + '.lock'); } catch { continue; }          // another worker has it
+      const f0 = id * seg, f1 = Math.min(F, f0 + seg), t0 = Date.now();
+      const ff = spawn(requireFfmpeg(), ['-y', '-v', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
+        '-vf', 'scale=in_color_matrix=bt601:in_range=pc:out_color_matrix=bt709:out_range=tv,format=yuv420p', '-c:v', 'libx264', '-crf', '15', '-preset', 'medium',
+        '-pix_fmt', 'yuv420p', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-r', String(fps), name + '.part.mp4'], { stdio: ['pipe', 'inherit', 'inherit'] });
+      const done = new Promise((res) => ff.on('close', res)); ff.stdin.on('error', () => {});
+      for (let f = f0; f < f1; f++) await writeVideoFrame(ff, b64(await frameAt(f / fps)));
+      ff.stdin.end(); if (await done !== 0) throw new Error('ffmpeg failed on segment ' + id);
+      fs.renameSync(name + '.part.mp4', name + '.mp4');
+      console.log(`seg ${id} frames ${f0}-${f1 - 1} ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+    }
   } else {
     const outFile = path.resolve(ROOT, A.out ?? 'out/silent.mp4');
     fs.mkdirSync(path.dirname(outFile), { recursive: true });
