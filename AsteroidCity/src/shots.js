@@ -340,7 +340,7 @@ export function buildShots({ W, H, LAYOUT }) {
     cam.fov = 60;
     cam.position.set(Math.sin(ang) * (9000 - lt * 300), 27000 - lt * 900, Math.cos(ang) * (9000 - lt * 300));
     _t.set(0, -400, 0); aimAt(cam, _t, 0, 0); camDone();
-    smoke.update(cam, t, craterSmoke, { col: [0.1, 0.07, 0.06], under: [0.9, 0.25, 0.05], alpha: 0.35, fire: 0.15 });
+    smoke.update(cam, t, craterSmoke, { col: [0.1, 0.07, 0.06], under: [0.9, 0.25, 0.05], alpha: 0.35, fire: 0 });
     glowAt(new THREE.Vector3(0, 0, 0), [0.6, 0.15, 0.03], 3);
     look.bloom = 0.8; look.bloomT = 0.8; look.exposure = 1.1; look.sat = 1.1;
   });

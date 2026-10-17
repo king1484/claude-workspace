@@ -195,6 +195,7 @@ export function makeGround(U, { size = 120000, crater = false } = {}) {
       uniform float uCrater, uScorch, uScorchR, uLights; varying vec3 vW; varying float vBowl;
       float hsh(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
       void main(){
+        if (uCrater < 0.5 && vW.z > 2600.0 + 500.0*sin(vW.x/2300.0) + 260.0*sin(vW.x/830.0+1.3) + 40.0) discard;   // under the bay: no z-fight with the water
         vec3 n = normalize(cross(dFdx(vW), dFdy(vW))); if (n.y < 0.0) n = -n;
         float d = length(vW.xz);
         float nz = fbm3(vec3(vW.xz * 0.0015, 2.0));
