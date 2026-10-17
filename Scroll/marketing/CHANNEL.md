@@ -55,3 +55,11 @@ Tips:
 - To make him feel human, the eyes matter most: the smile arches read as happy even at tiny sizes. If ChatGPT draws big blank ovals that look empty or creepy, reply: "Make his eyes the small closed-eye smile arches from the first reference."
 - If it adds a mouth, nose, or text, reply: "Remove the mouth/nose/text; the face is a plain black circle with only the white eyes."
 - Use the same red (about #BC242A), navy and amber in the banner later, so the channel looks like one brand.
+
+## Banner
+
+`channel_banner_2560x1440.jpg` (made with `make_banner.py` from the profile picture `channel_dp.webp`).
+
+- Tagline: *The lessons life never says out loud.*
+- The character and text sit inside YouTube's 1546 × 423 safe area, so they show on phones, desktop and TV. The desk at the bottom only shows on TV.
+- Upload: YouTube Studio → Customisation → Branding → Banner image → Change, then check the device preview.
