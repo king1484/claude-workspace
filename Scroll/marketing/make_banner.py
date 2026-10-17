@@ -4,8 +4,8 @@ W,H=2560,1440
 SAFE=(507,508,2053,931)
 import os
 FONTS=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','assets','fonts')+'/'
-# usage: python3 make_banner.py channel_dp.webp channel_banner_2560x1440.jpg GUIDES(0/1) SCALE NAME_PX EDGE_FADE HEAD_X,HEAD_Y,HOOD_TOP X DESK_Y
-# current banner: python3 make_banner.py channel_dp.webp channel_banner_2560x1440.jpg 0 0.44 132 220 690,480,40 450 1030
+# usage: [KEEP=x0,y0,x1,y1] python3 make_banner.py DP OUT GUIDES(0/1) SCALE NAME_PX EDGE_FADE HEAD_X,HEAD_Y,HOOD_TOP X DESK_Y
+# current banner: KEEP=792,612,892,722 python3 make_banner.py channel_dp.webp channel_banner_2560x1440.jpg 0 0.5 132 120 650,490,125 445 1060
 src=Image.open(sys.argv[1]).convert('RGB'); out=sys.argv[2]; guides=len(sys.argv)>3 and sys.argv[3]=='1'
 a=np.asarray(src).astype(np.float32)
 R,G,B=a[...,0],a[...,1],a[...,2]
@@ -13,6 +13,11 @@ V=a.max(-1); gr=G/np.maximum(R,1)
 # background = bright-ish amber/brown; character = red / black / white / dark grey
 bgness=np.clip((gr-0.40)/0.10,0,1)*np.clip((V-55)/30,0,1)*np.clip((R-B-40)/30,0,1)
 alpha=1-bgness
+# KEEP=x0,y0,x1,y1 (source px): force opaque where the prop shares the glow's colour (e.g. a pencil)
+import os
+if os.environ.get('KEEP'):
+    x0,y0,x1,y1=[int(v) for v in os.environ['KEEP'].split(',')]
+    alpha[y0:y1,x0:x1]=1
 al=Image.fromarray((alpha*255).astype(np.uint8)).filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(1.2))
 char=src.convert('RGBA'); char.putalpha(al)
 PAD=0

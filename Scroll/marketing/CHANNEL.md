@@ -63,3 +63,33 @@ Tips:
 - Tagline: *The lessons life never says out loud.*
 - The character and text sit inside YouTube's 1546 × 423 safe area, so they show on phones, desktop and TV. The desk at the bottom only shows on TV.
 - Upload: YouTube Studio → Customisation → Branding → Banner image → Change, then check the device preview.
+
+## Channel description
+
+YouTube Studio → Customisation → Profile → Description. The first line shows in search results, so it carries the name and the promise.
+
+```
+Unsaid Lessons: short stories about the lessons life never says out loud.
+
+Each story follows one small character through an ordinary moment: one more swipe at 3 AM, one more "I'll start tomorrow", one habit that quietly takes over. And then the small choice that changes it.
+
+No lectures and no narration. Just a story, a feeling, and something to think about after it ends.
+
+Stories about habits, screen time, procrastination, discipline, loneliness and growing up.
+
+If a story stays with you, send it to someone who needs it tonight.
+
+New here? Start with SCROLL.
+```
+
+Add under Links: your Instagram or email for business, if you have one (Profile → Links / Contact info).
+
+## Channel keywords (tags)
+
+YouTube Studio → Settings → Channel → Basic info → Keywords. Paste as is (multi-word keywords are in quotes; about 450 of the 500 characters):
+
+```
+"unsaid lessons" "short stories" "life lessons" "stories with a lesson" "moral stories" "short film" "emotional short film" "no dialogue short film" "relatable stories" "meaningful stories" "self improvement" "motivational stories" habits "bad habits" "screen time" doomscrolling "phone addiction" procrastination discipline "digital wellbeing" "life advice" "deep stories" "stories that make you think"
+```
+
+Channel keywords help YouTube understand the channel at the start; after a few videos, what people watch matters far more.
