@@ -82,12 +82,12 @@ If a story stays with you, send it to someone who needs it tonight.
 
 Add under Links: your Instagram or email for business, if you have one (Profile → Links / Contact info).
 
-## Channel keywords (tags)
+## Channel keywords
 
-YouTube Studio → Settings → Channel → Basic info → Keywords. Paste as is (multi-word keywords are in quotes; about 450 of the 500 characters):
+YouTube Studio → Settings → Channel → Basic info → Keywords. These describe the whole channel, not one video, so there's nothing about phones or scrolling here. Paste as is (multi-word keywords stay in quotes; 399 of the 500 characters):
 
 ```
-"unsaid lessons" "short stories" "life lessons" "stories with a lesson" "moral stories" "short film" "emotional short film" "no dialogue short film" "relatable stories" "meaningful stories" "self improvement" "motivational stories" habits "bad habits" "screen time" doomscrolling "phone addiction" procrastination discipline "digital wellbeing" "life advice" "deep stories" "stories that make you think"
+"unsaid lessons" "life lessons" "short stories" "stories with a lesson" "moral stories" "short film" "emotional stories" "relatable stories" "meaningful stories" "deep stories" "stories that make you think" "self improvement" "personal growth" "motivational stories" "bad habits" "modern life" procrastination discipline loneliness "digital wellbeing" "no dialogue" "life advice" "wholesome stories"
 ```
 
-Channel keywords help YouTube understand the channel at the start; after a few videos, what people watch matters far more.
+Channel keywords help YouTube place a new channel; after a few videos, what people watch matters far more. Update them when you add a new kind of story.
