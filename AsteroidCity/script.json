@@ -1,0 +1,21 @@
+{
+  "title": "What If a 1 km Asteroid Hit Your City?",
+  "voice": "am_fenrir",
+  "speed": 1.1,
+  "lead_in": 0.25,
+  "tail": 1.2,
+  "lines": [
+    {"id": "v1",  "gap": 0.0,  "text": "A one-kilometer asteroid is about to hit your city."},
+    {"id": "v2",  "gap": 0.35, "text": "It's falling at twenty kilometers every second."},
+    {"id": "v3",  "gap": 0.3,  "text": "The air in front of it gets so hot, it glows brighter than the sun."},
+    {"id": "v4",  "gap": 2.6,  "text": "In an instant, it releases the energy of millions of Hiroshima bombs."},
+    {"id": "v5",  "gap": 0.4,  "text": "A fireball over twenty kilometers wide swallows downtown."},
+    {"id": "v6",  "gap": 0.35, "text": "The shockwave flattens buildings far beyond the city."},
+    {"id": "v7",  "gap": 0.5,  "text": "Where downtown stood, there's now a crater fifteen kilometers wide."},
+    {"id": "v8",  "gap": 0.4,  "text": "Rock blasted high into the sky comes raining back down, on fire."},
+    {"id": "v9",  "gap": 0.4,  "text": "And the dust could dim the sun for the whole planet."},
+    {"id": "v10", "gap": 0.8,  "text": "The good news? NASA has found most asteroids this big, and none are headed our way."},
+    {"id": "v11", "gap": 0.4,  "text": "In 2022, we even crashed a spacecraft into an asteroid, and changed its orbit."},
+    {"id": "v12", "gap": 0.6,  "text": "But if one ever slipped through..."}
+  ]
+}
