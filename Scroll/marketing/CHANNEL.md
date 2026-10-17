@@ -2,50 +2,56 @@
 
 ## Profile picture (ChatGPT prompts)
 
-How to use: open ChatGPT, attach the reference images listed, paste one prompt. Ask for a square image, then upload it to YouTube at 800 × 800. YouTube crops it to a circle and shows it at about 98 px (often 24–48 px next to videos and comments), so:
-- keep everything important inside the middle 70% of the square;
-- one shape, two or three colours, no text or letters;
-- check it at thumbnail size before uploading: if the eyes and hood aren't clear at 48 px, regenerate.
+The profile picture is always the mascot, shown warm and friendly, so the channel feels like a person rather than a logo.
 
-Attach for every option: `refs/ref3_character.jpg`, `refs/ref6_red_hoodie.jpg`
+How to use: open ChatGPT, attach the reference images, paste one prompt. Ask for a square image and upload it to YouTube at 800 × 800. YouTube crops it to a circle and often shows it at 24–48 px, so:
+- the head and hood fill the middle of the square, with nothing important near the edges;
+- no text or letters;
+- check it at 48 px before uploading: if you can't see the hood and the eyes clearly, regenerate.
 
-### Option 1: The hood (recommended)
+Attach for every option: `refs/ref7_closeup_red_smile.jpg` (main reference), `refs/ref8_closeup_grey_smile.jpg`, `refs/ref3_character.jpg`
 
-```
-Create a square 1:1 profile picture for a YouTube channel. Flat 2D vector cartoon in the exact style of the attached frames: soft matte shapes, no outlines, very subtle grain. The character is faceless: a perfectly round matte-black head with two tall white oval eyes and no mouth or nose, wearing a deep red hoodie with the hood up. Keep him exactly as in the references.
+Character description (already inside each prompt):
 
-Composition: a centred, front-facing head-and-shoulders portrait. The hood frames the black face like a soft red arch, and the two white oval eyes are large and calm, looking straight at the viewer. The head and hood fill the middle 70% of the square, with nothing important near the edges because the image will be cropped to a circle.
+> The mascot from the attached frames: a perfectly round matte-black head with no mouth or nose, and white eyes that are either two small tall ovals (calm) or two small curved arches like a closed-eye smile (happy). He wears a soft deep-red hoodie with the hood up and two short drawstrings, and has simple rounded mitten-like hands. Flat 2D vector style: soft matte shapes, no outlines, very subtle grain.
 
-Background: a plain, smooth deep navy blue with a soft warm amber glow behind the head, like a desk lamp just out of frame, lighting the rim of the hood.
-
-Very simple, bold shapes and high contrast so it reads at very small sizes. No text, no letters, no logos, no watermark, no border.
-```
-
-### Option 2: The hush (says "unsaid")
+### Option 1: The smile and wave (recommended)
 
 ```
-Create a square 1:1 profile picture for a YouTube channel. Flat 2D vector cartoon in the exact style of the attached frames: soft matte shapes, no outlines, very subtle grain. The character is faceless: a perfectly round matte-black head with two tall white oval eyes and no mouth or nose, wearing a deep red hoodie with the hood up, with simple rounded mitten-like hands. Keep him exactly as in the references.
+Create a square 1:1 profile picture for a YouTube channel, featuring the mascot from the attached frames. Keep him exactly as in the references: a perfectly round matte-black head with no mouth or nose, white closed-eye smile arches for eyes (two small curved arches, as in the first reference), a soft deep-red hoodie with the hood up and two short drawstrings, and simple rounded mitten-like hands. Flat 2D vector style: soft matte shapes, no outlines, very subtle grain.
 
-Composition: a centred, front-facing head-and-shoulders portrait. He raises one rounded hand and holds a single finger up in front of the lower half of his face in a gentle "shh" gesture, where a mouth would be. His eyes are calm and slightly knowing. Everything fits inside the middle 70% of the square because it will be cropped to a circle.
+Composition: a friendly head-and-shoulders portrait, slightly from the front, his head tilted a little to one side. He is smiling with his eyes and gives a small, shy wave with one rounded hand raised beside his face. He looks warm, kind and approachable, like a friend saying hello. The head and hood are large and centred, filling most of the middle of the square; nothing important near the edges, because it will be cropped to a circle.
 
-Background: plain deep navy blue with a soft warm amber glow behind the head that lights the rim of the hood and the raised hand.
+Background: plain soft warm amber, slightly brighter behind his head like the glow of a desk lamp, gently lighting the rim of the red hood.
 
-Very simple, bold shapes and high contrast so it reads at very small sizes. No text, no letters, no logos, no watermark, no border.
+Bold, simple shapes and strong contrast so it is clear at very small sizes. No text, no letters, no logos, no watermark, no border.
 ```
 
-### Option 3: The icon (most minimal)
+### Option 2: The lesson (pencil and lamp)
 
 ```
-Create a square 1:1 profile picture for a YouTube channel: a minimal flat vector icon, no outlines, no gradients except one soft glow.
+Create a square 1:1 profile picture for a YouTube channel, featuring the mascot from the attached frames. Keep him exactly as in the references: a perfectly round matte-black head with no mouth or nose, white closed-eye smile arches for eyes (two small curved arches, as in the first reference), a soft deep-red hoodie with the hood up and two short drawstrings, and simple rounded mitten-like hands. Flat 2D vector style: soft matte shapes, no outlines, very subtle grain.
 
-In the centre: a perfectly round matte-black circle (a faceless head) with two tall white oval eyes, placed slightly above the middle of the circle. Around the top and sides of the circle, a thick deep red hood shape, like a simple arch. Nothing else: no body, no hands, no mouth.
+Composition: a cosy head-and-shoulders portrait. He looks at the viewer with a content, happy smile in his eyes, holding a yellow pencil in one rounded hand near his chin, as if he has just finished writing something he's proud of. A small warm desk lamp glows just out of frame on one side, lighting one side of his hood. The head and hood are large and centred; nothing important near the edges, because it will be cropped to a circle.
 
-Background: plain warm amber, glowing slightly brighter behind the head, fading to a darker amber at the edges.
+Background: plain deep navy blue, with the warm amber lamplight spilling across it behind him.
 
-Keep the shape inside the middle 70% of the square because it will be cropped to a circle. Bold, iconic and readable at 32 pixels. No text, no letters, no logos, no watermark, no border.
+Bold, simple shapes and strong warm-versus-cool contrast so it is clear at very small sizes. No text, no letters, no logos, no watermark, no border.
+```
+
+### Option 3: The little secret ("unsaid")
+
+```
+Create a square 1:1 profile picture for a YouTube channel, featuring the mascot from the attached frames. Keep him exactly as in the references: a perfectly round matte-black head with no mouth or nose, white eyes, a soft deep-red hoodie with the hood up and two short drawstrings, and simple rounded mitten-like hands. Flat 2D vector style: soft matte shapes, no outlines, very subtle grain.
+
+Composition: a playful, friendly head-and-shoulders portrait. He leans in slightly towards the viewer and holds one rounded finger up in front of the lower half of his face in a gentle "shh, I'll tell you a secret" gesture. One eye is a small white closed smile arch and the other a small tall white oval, like a warm wink. He looks kind and a little mischievous, not mysterious or scary. The head and hood are large and centred; nothing important near the edges, because it will be cropped to a circle.
+
+Background: plain soft warm amber, slightly brighter behind his head, gently lighting the rim of the red hood.
+
+Bold, simple shapes and strong contrast so it is clear at very small sizes. No text, no letters, no logos, no watermark, no border.
 ```
 
 Tips:
-- Option 1 matches the films best; option 3 is the most recognisable at tiny sizes. If you can't decide, pick the one you can still recognise at 48 px.
-- Use the same red (about #BC242A) and navy in the banner later, so the channel looks like one brand.
-- If ChatGPT adds a mouth, a nose or text, reply: "Remove the mouth/nose/text; keep the face a plain black circle with only two white oval eyes."
+- To make him feel human, the eyes matter most: the smile arches read as happy even at tiny sizes. If ChatGPT draws big blank ovals that look empty or creepy, reply: "Make his eyes the small closed-eye smile arches from the first reference."
+- If it adds a mouth, nose, or text, reply: "Remove the mouth/nose/text; the face is a plain black circle with only the white eyes."
+- Use the same red (about #BC242A), navy and amber in the banner later, so the channel looks like one brand.
