@@ -1,7 +1,24 @@
 // Instanced camera-facing particles (smoke puffs, glow, sparks, streaks). Filled from scratch every frame (stateless),
 // so any frame can be rendered on its own.
 import * as THREE from 'three';
-import { GLSL_NOISE } from './util.js';
+import { fbm } from './util.js';
+
+// tileable fbm noise texture (built once) — much cheaper than per-pixel noise in software WebGL
+let NOISE_TEX = null;
+function noiseTexture() {
+  if (NOISE_TEX) return NOISE_TEX;
+  const S = 256, d = new Uint8Array(S * S * 4);
+  for (let y = 0; y < S; y++) for (let x = 0; x < S; x++) {
+    const a = (x / S) * Math.PI * 2, b = (y / S) * Math.PI * 2;   // map to a torus so it tiles
+    const v = fbm(Math.cos(a) * 1.6 + 5, Math.sin(a) * 1.6 + Math.cos(b) * 1.6, Math.sin(b) * 1.6 + 3, 4);
+    const c = Math.max(0, Math.min(255, Math.round((v * 0.5 + 0.5) * 255)));
+    d.set([c, c, c, 255], (y * S + x) * 4);
+  }
+  NOISE_TEX = new THREE.DataTexture(d, S, S, THREE.RGBAFormat);
+  NOISE_TEX.wrapS = NOISE_TEX.wrapT = THREE.RepeatWrapping; NOISE_TEX.magFilter = NOISE_TEX.minFilter = THREE.LinearFilter;
+  NOISE_TEX.needsUpdate = true;
+  return NOISE_TEX;
+}
 
 const VS = /* glsl */`
 attribute vec3 iPos; attribute float iSize; attribute vec4 iCol; attribute float iRot; attribute float iSeed; attribute vec3 iVel;
@@ -24,9 +41,8 @@ void main(){
 }`;
 
 const FS = /* glsl */`
-uniform float uNoise; uniform float uEdge;
+uniform float uNoise; uniform float uEdge; uniform sampler2D uTex;
 varying vec2 vUv; varying vec4 vCol; flat varying float vSeed;
-${GLSL_NOISE}
 void main(){
   vec2 p = vUv * 2.0 - 1.0;
 #ifdef STREAK
@@ -35,7 +51,8 @@ void main(){
   a = pow(a, 1.5);
 #else
   float d = length(p);
-  float n = fbm3(vec3(p * 1.7 + vSeed * 13.0, vSeed * 7.0));
+  vec2 o = vec2(fract(vSeed * 0.6180339), fract(vSeed * 0.4142135));
+  float n = texture2D(uTex, p * 0.42 + o).r * 2.0 - 1.0;
   float a = smoothstep(1.0, uEdge, d + n * uNoise);
 #endif
   float al = a * vCol.a;
@@ -55,7 +72,7 @@ export class Particles {
     const mat = new THREE.ShaderMaterial({
       vertexShader: VS, fragmentShader: FS, transparent: true, depthWrite: false, depthTest,
       blending: blending === 'add' ? THREE.AdditiveBlending : THREE.NormalBlending,
-      uniforms: { uNoise: { value: noise }, uEdge: { value: edge } }, defines: streak ? { STREAK: 1 } : {},
+      uniforms: { uNoise: { value: noise }, uEdge: { value: edge }, uTex: { value: noiseTexture() } }, defines: streak ? { STREAK: 1 } : {},
     });
     this.mesh = new THREE.Mesh(g, mat); this.mesh.frustumCulled = false; this.geo = g;
   }

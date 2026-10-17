@@ -29,12 +29,12 @@ export function makeEarth(R = 6371) {
   const grp = new THREE.Group();
   const geo = new THREE.SphereGeometry(R, 160, 100);
   const mat = new THREE.ShaderMaterial({
-    uniforms: { uSunK: { value: 1 }, uSun: { value: new THREE.Vector3(1, 0, 0) }, uSite: { value: SITE.clone() }, uDust: { value: 0 }, uDustCol: { value: new THREE.Color(0.32, 0.22, 0.16) },
+    uniforms: { uCloud: { value: 1 }, uSunK: { value: 1 }, uSun: { value: new THREE.Vector3(1, 0, 0) }, uSite: { value: SITE.clone() }, uDust: { value: 0 }, uDustCol: { value: new THREE.Color(0.32, 0.22, 0.16) },
       uTime: { value: 0 }, uLights: { value: 1 }, uScorch: { value: 0 } },
     vertexShader: `varying vec3 vN; varying vec3 vP; varying vec3 vW; void main(){ vP = normalize(position); vN = normalize(mat3(modelMatrix)*normal); vec4 w = modelMatrix*vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
     fragmentShader: /* glsl */`
       ${GLSL_NOISE}
-      uniform vec3 uSun, uSite, uDustCol; uniform float uSunK, uDust, uTime, uLights, uScorch; varying vec3 vN; varying vec3 vP; varying vec3 vW;
+      uniform vec3 uSun, uSite, uDustCol; uniform float uCloud, uSunK, uDust, uTime, uLights, uScorch; varying vec3 vN; varying vec3 vP; varying vec3 vW;
       void main(){
         vec3 n = normalize(vN); vec3 p = vP;
         float c = fbm(p * 2.2 + 1.3) + 0.45 * fbm(p * 6.0 + 7.0) * 0.5;
@@ -44,7 +44,7 @@ export function makeEarth(R = 6371) {
         vec3 grn = mix(vec3(0.06,0.11,0.04), vec3(0.22,0.18,0.10), smoothstep(0.1, 0.5, fbm(p * 5.0 + 3.0) + 0.3 - lat * 0.3));
         vec3 col = mix(ocean, grn, land);
         col = mix(col, vec3(0.8,0.85,0.9), smoothstep(0.78, 0.88, lat + 0.05 * fbm(p * 8.0)));
-        float cl = smoothstep(0.12, 0.5, fbm(p * 3.2 + vec3(uTime * 0.01, 0.0, 0.0)) + 0.15 * fbm(p * 12.0));
+        float cl = smoothstep(0.12, 0.5, fbm(p * 3.2 + vec3(uTime * 0.01, 0.0, 0.0)) + 0.15 * fbm(p * 12.0)) * uCloud;
         float dl = dot(n, uSun);
         float day = smoothstep(-0.12, 0.25, dl);
         vec3 lit = col * max(dl, 0.0) * 1.6 * uSunK;

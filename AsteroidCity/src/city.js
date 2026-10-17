@@ -82,7 +82,7 @@ function buildingMaterial(U) {
         }
         // damage: soot + broken windows, then burning embers
         col = mix(col, col * 0.12, dmg); emis *= (1.0 - dmg);
-        float fire = heat * smoothstep(0.2, 0.7, fbm3(vW * 0.03 + vec3(0.0, -uTime * 0.8, 0.0)) + 0.35);
+        float fire = heat > 0.001 ? heat * smoothstep(0.2, 0.7, fbm3(vW * 0.03 + vec3(0.0, -uTime * 0.8, 0.0)) + 0.35) : 0.0;
         emis += vec3(3.0, 0.9, 0.2) * fire;
         vec3 c = fogit(col + emis, vW);
         gl_FragColor = vec4(c, 1.0);
@@ -217,7 +217,7 @@ export function makeGround(U, { size = 120000, crater = false } = {}) {
         if (uScorchR > 0.0) {
           float s = (1.0 - smoothstep(uScorchR * 0.6, uScorchR, d + nz * 1500.0)) * uScorch;
           col = mix(col, col * 0.15, s); emis *= (1.0 - s);
-          float burn = s * smoothstep(0.25, 0.65, fbm3(vec3(vW.xz * 0.004, uTime * 0.2)));
+          float burn = s > 0.001 ? s * smoothstep(0.25, 0.65, fbm3(vec3(vW.xz * 0.004, uTime * 0.2))) : 0.0;
           emis += vec3(2.2, 0.5, 0.08) * burn * 0.6;
         }
         if (uCrater > 0.5) {
@@ -226,7 +226,9 @@ export function makeGround(U, { size = 120000, crater = false } = {}) {
           vec3 lava = mix(vec3(1.6,0.25,0.03), vec3(4.0,1.7,0.4), smoothstep(0.1, 0.6, cr));
           float cracks = smoothstep(0.02, 0.0, abs(cr - 0.05)) + smoothstep(0.35, 0.8, cr);
           col = mix(col, vec3(0.02,0.015,0.012), smoothstep(0.0, 0.2, vBowl));
-          emis += lava * melt * clamp(cracks, 0.0, 1.0) * 1.2 + vec3(0.8,0.12,0.02) * melt * 0.25;
+          emis += lava * melt * clamp(cracks, 0.0, 1.0) * 1.3 + vec3(1.1,0.22,0.03) * melt * (0.55 + 0.45 * vBowl);
+          float rimGlow = exp(-pow((1.0 - vBowl) * 9.0, 2.0)) * step(0.001, vBowl);
+          emis += vec3(1.8, 0.5, 0.08) * rimGlow * 0.6;
           emis *= 1.0;
         }
         gl_FragColor = vec4(fogit(col + emis, vW), 1.0);

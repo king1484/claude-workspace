@@ -227,11 +227,11 @@ sfx = np.zeros(N, np.float32)
 brown = noise("brown"); pinkn = noise("pink"); white = noise("white")
 
 # fireball roar: hook, entry, plunge, loop
-roar_amp = env([(0, 0.35), (T1 - 0.1, 0.4), (T1, 0.05), (T2 - 0.1, 0.05), (T2, 0.45), (T3, 0.9), (TI - 0.05, 1.25), (TI, 0), (T14, 0), (T14 + 1.0, 0.12), (DUR, 0.35)])
-roar_fc = env([(0, 650), (T2, 700), (T3, 1600), (TI, 3200), (TI + 0.01, 400), (DUR, 650)])
-roar = stft_filter(brown * 0.6 + pinkn * 0.25, lambda tt, f: 1 / np.sqrt(1 + (f / np.interp(tt, t[::480], roar_fc[::480])) ** 4))
+roar_amp = env([(0, 0.8), (T1 - 0.1, 0.9), (T1, 0.05), (T2 - 0.1, 0.05), (T2, 0.45), (T3, 0.9), (TI - 0.05, 1.25), (TI, 0), (T14, 0), (T14 + 1.0, 0.25), (DUR, 0.8)])
+roar_fc = env([(0, 1300), (T2, 1300), (T3, 2200), (TI, 4000), (TI + 0.01, 400), (DUR, 1300)])
+roar = stft_filter(brown * 0.5 + pinkn * 0.6, lambda tt, f: 1 / np.sqrt(1 + (f / np.interp(tt, t[::480], roar_fc[::480])) ** 4))
 am = (1 + 0.35 * np.sin(2 * np.pi * 3.1 * t) * np.sin(2 * np.pi * 0.7 * t)).astype(np.float32)
-sfx += roar * roar_amp * am * 0.5
+sfx += roar * roar_amp * am * 0.26
 # crackle for the burning head
 cr = (rng.random(N) < 0.0009).astype(np.float32) * rng.standard_normal(N).astype(np.float32)
 cr = stft_filter(cr, lambda tt, f: (f > 1500) / np.sqrt(1 + (f / 7000) ** 2))
@@ -255,15 +255,17 @@ ring_n = int(3.0 * SR); kk = np.arange(ring_n) / SR
 ear = (np.sin(2 * np.pi * 3150 * kk) * 0.6 + np.sin(2 * np.pi * 3170 * kk) * 0.4) * np.exp(-kk / 1.1) * np.minimum(1, kk / 0.02)
 place(sfx, ear.astype(np.float32), TI + 0.02, 0.06)
 bn = int(7 * SR); kb = np.arange(bn) / SR
-sub = np.sin(2 * np.pi * np.cumsum(24 + 40 * np.exp(-kb * 1.5)) / SR) * np.exp(-kb / 2.4) * np.minimum(1, kb / 0.01)
-body = stft_filter(brown[:bn] * 1.0, lp_gain(260, 2)) * np.exp(-kb / 2.0) * np.minimum(1, kb / 0.02)
+sub = np.sin(2 * np.pi * np.cumsum(24 + 40 * np.exp(-kb * 1.5)) / SR) * np.exp(-kb / 1.3) * np.minimum(1, kb / 0.01)
+body = stft_filter(brown[:bn] * 1.0, lp_gain(260, 2)) * np.exp(-kb / 1.1) * np.minimum(1, kb / 0.02)
 crack = stft_filter(white[:bn], bp_gain(900, 0.7)) * np.exp(-kb / 0.12)
-boom = (np.tanh((sub * 1.2 + body * 1.1 + crack * 0.6) * 1.3)).astype(np.float32)
+blast = stft_filter(pinkn[:bn], bp_gain(700, 0.45)) * np.exp(-kb / 0.9) * np.minimum(1, kb / 0.008)
+boom = (np.tanh((sub * 1.2 + body * 1.1 + crack * 0.8 + blast * 1.4) * 1.6)).astype(np.float32)
 place(sfx, boom, TBOOM, 0.95)
 # rolling thunder / rumble bed after the boom (dome, mushroom)
 rum_amp = env([(0, 0), (TBOOM + 0.5, 0), (TBOOM + 2, 0.7), (T6, 0.55), (T7, 0.4), (T9, 0.3), (T12, 0.0), (DUR, 0)])
 rum = stft_filter(brown, lp_gain(170, 2)) * (0.8 + 0.4 * np.sin(2 * np.pi * 0.23 * t) * np.sin(2 * np.pi * 0.37 * t + 1))
-sfx += rum.astype(np.float32) * rum_amp * 0.75
+sfx += rum.astype(np.float32) * rum_amp * 0.35
+sfx += stft_filter(pinkn, bp_gain(320, 0.7)).astype(np.float32) * rum_amp * 0.12
 # engulf: fire roar crescendo + glass
 fire_amp = env([(0, 0), (T6 - 0.1, 0), (T6 + 0.3, 0.35), (T7 - 0.2, 1.0), (T7, 0.3), (T8, 0.2), (T9, 0.25), (T11, 0.2), (T11 + 0.5, 0), (DUR, 0)])
 fire = stft_filter(pinkn, bp_gain(700, 0.6)) * (0.8 + 0.4 * np.abs(np.sin(2 * np.pi * 1.7 * t)))
@@ -280,7 +282,7 @@ whoosh(T7 + 0.4, 1.4, 200, 2500, 0.45)
 for k_ in range(7):
     place(sfx, tom(45 + 20 * rng.random(), 1.4), T7 + 0.3 + k_ * 0.2 + rng.random() * 0.1, 0.22)
 # hit: wind wall crescendo, slam, debris
-wind_amp = env([(0, 0), (T8 - 0.2, 0), (THIT - 0.05, 1.3), (THIT + 0.3, 0.6), (T9, 0.3), (T9 + 0.4, 0), (DUR, 0)])
+wind_amp = env([(0, 0), (T8 - 0.2, 0), (THIT - 0.05, 0.9), (THIT + 0.3, 0.6), (T9, 0.3), (T9 + 0.4, 0), (DUR, 0)])
 wind = stft_filter(pinkn, lambda tt, f: bp_gain(500 + 1500 * np.clip((tt - T8) / max(THIT - T8, 0.1), 0, 1), 0.8)(tt, f))
 sfx += wind.astype(np.float32) * wind_amp * 0.6
 slam = np.tanh(kick(80, 30, 2.0, 0.8) * 2.0 + stft_filter(white[:int(2 * SR)], lp_gain(1200, 2)) * np.exp(-np.arange(int(2 * SR)) / SR / 0.4))
@@ -319,7 +321,7 @@ vo = np.pad(vo, (0, max(0, N - len(vo))))[:N]
 # ducking envelope from the narration
 e = np.abs(vo); k = int(0.05 * SR); e = np.convolve(e, np.ones(k) / k, mode="same")
 vo_act = np.clip(e / 0.02, 0, 1)
-duck_m = 1 - 0.55 * vo_act; duck_s = 1 - 0.35 * vo_act
+duck_m = 1 - 0.5 * vo_act; duck_s = 1 - 0.6 * vo_act
 vo_c = np.tanh(vo * 1.6) / 1.2                     # gentle compression on the voice
 
 def stereo(x, width=0.0):
@@ -328,7 +330,10 @@ def stereo(x, width=0.0):
     d = int(0.012 * SR); y = np.concatenate([np.zeros(d, np.float32), x[:-d]])
     return np.stack([x + y * width, x - y * width], 1) / (1 + width * 0.5)
 
-mix = stereo(vo_c * 1.0) + stereo(mus * duck_m * 0.95, 0.35) + stereo(sfx * duck_s * 0.95, 0.25)
+mix = stereo(vo_c * 1.0) + stereo(mus * duck_m * 1.2, 0.35) + stereo(sfx * duck_s * 0.95, 0.25)
+if os.environ.get("STEMS"):
+    for nm, x in [("vo", vo_c), ("mus", mus * duck_m * 0.95), ("sfx", sfx * duck_s * 0.95)]:
+        sf.write(os.path.join(HERE, "out", f"stem_{nm}.wav"), x.astype(np.float32), SR)
 # loop seam: short fade at both ends (the loop restarts on a roar)
 fade = int(0.02 * SR); mix[:fade] *= np.linspace(0, 1, fade)[:, None]; mix[-fade:] *= np.linspace(1, 0, fade)[:, None]
 pk = np.max(np.abs(mix)); mix = mix / pk * 0.89

@@ -31,7 +31,7 @@ export function buildShots({ W, H, LAYOUT }) {
   const smoke = new SmokeFX(city);
   const SU = sky.material.uniforms;
   const all = { rock, entry, fireball, dome, shell, ring, ejecta, smoke, crater };
-  const setV = (o) => { for (const k in all) all[k].visible = !!o[k]; ground.visible = !o.crater; };
+  const setV = (o) => { for (const k in all) all[k].visible = !!o[k]; ground.visible = !o.crater; water.visible = !o.crater; };
 
   function dusk() {
     U.uSunDir.value.set(-0.8, 0.03, -0.35).normalize();
@@ -119,8 +119,9 @@ export function buildShots({ W, H, LAYOUT }) {
   const SP_DIR = new THREE.Vector3(0.12, -0.36, -0.92).normalize();
   shot('space', T1, T2, space, (lt, t, look) => {
     earth.visible = true; srock.visible = true; stars.visible = true; dustS.mesh.visible = true; sunSprite.mesh.visible = true;
-    earth.position.set(0, 0, 0); earth.rotation.set(0.3, 1.2 + t * 0.01, 0);
-    EU.uSunK.value = 0.75; EU.uSun.value.copy(SP_SUN); EU.uDust.value = 0; EU.uLights.value = 1; EU.uScorch.value = 0; EU.uTime.value = t;
+    earth.position.set(0, 0, 0); earth.rotation.set(0.95, 2.1 + t * 0.01, 0);
+    if (location.search.includes('noatm')) earth.userData.atm.visible = false;
+    EU.uSunK.value = 0.75; EU.uCloud.value = 0.35; EU.uSun.value.copy(SP_SUN); EU.uDust.value = 0; EU.uLights.value = 1; EU.uScorch.value = 0; EU.uTime.value = t;
     const A = _h.set(0, 7450, 4900).addScaledVector(SP_DIR, lt * 20);
     srock.position.copy(A); srock.scale.setScalar(0.5); srock.rotation.set(t * 0.5, t * 0.8, 0.2);
     const RU = srock.material.uniforms;
@@ -230,6 +231,7 @@ export function buildShots({ W, H, LAYOUT }) {
   // ===== S5b MUSHROOM: aerial, the cloud towers over the city =====
   shot('mushroom', T5, T6, city, (lt, t, look) => {
     dusk(); setV({ fireball: true, shell: true, dome: true });
+    U.uFogCol.value.setRGB(0.13, 0.08, 0.08);
     const a = age(t);
     U.uTime.value = t;
     const ang = -0.9 + lt * 0.05;
@@ -333,11 +335,12 @@ export function buildShots({ W, H, LAYOUT }) {
   shot('crater', T9, T10, city, (lt, t, look) => {
     dusk(); setV({ crater: true, smoke: true });
     U.uTime.value = t; ruined();
+    U.uFogDen.value = 0.000014;
     const ang = 0.4 + lt * 0.06;
     cam.fov = 60;
-    cam.position.set(Math.sin(ang) * (15000 - lt * 600), 11000 - lt * 450, Math.cos(ang) * (15000 - lt * 600));
-    _t.set(0, -400, 0); aimAt(cam, _t, 0.05, 0); camDone();
-    smoke.update(cam, t, craterSmoke, { col: [0.1, 0.07, 0.06], under: [0.9, 0.25, 0.05], alpha: 0.5, fire: 0.5 });
+    cam.position.set(Math.sin(ang) * (9000 - lt * 300), 27000 - lt * 900, Math.cos(ang) * (9000 - lt * 300));
+    _t.set(0, -400, 0); aimAt(cam, _t, 0, 0); camDone();
+    smoke.update(cam, t, craterSmoke, { col: [0.1, 0.07, 0.06], under: [0.9, 0.25, 0.05], alpha: 0.35, fire: 0.15 });
     glowAt(new THREE.Vector3(0, 0, 0), [0.6, 0.15, 0.03], 3);
     look.bloom = 0.8; look.bloomT = 0.8; look.exposure = 1.1; look.sat = 1.1;
   });
@@ -360,7 +363,7 @@ export function buildShots({ W, H, LAYOUT }) {
   // ===== S10 GLOBE: the dust spreads around the planet =====
   shot('globe', T11, T12, space, (lt, t, look) => {
     earth.visible = true; srock.visible = false; stars.visible = true; dustS.mesh.visible = false; sunSprite.mesh.visible = false;
-    const k = lt / (T12 - T11); EU.uSunK.value = 1;
+    const k = lt / (T12 - T11); EU.uSunK.value = 1; EU.uCloud.value = 1;
     EU.uSun.value.copy(sunS).add(_v.copy(SITE).multiplyScalar(0.55)).normalize();
     EU.uDust.value = 0.02 + 0.4 * easeInOut(k); EU.uLights.value = 1 - 0.8 * k; EU.uScorch.value = 0.8; EU.uTime.value = t;
     cam.near = 50; cam.far = 4e6; cam.fov = 40;
