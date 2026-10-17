@@ -8,16 +8,22 @@ shot(45, 52, 'S9', (g, lt, t, E) => {
 
 // ================================================================== SHOT 10 (0:52-1:00) eight tiny worlds, one per second; the clock jumps between them
 const TINTS = [[47, 183, 176], [242, 185, 75], [123, 75, 214], [127, 196, 240], [63, 191, 114], [214, 58, 154], [247, 217, 228], [60, 90, 200]];
+const S10_SW = [0, 1, 2, 3, 4, 5, 6].map(i => ({ t: 52.55 + i, d: 0.2 + 0.04 * (i % 2) }));
+const S10_LIKES = [52.05, 53.05, 54.05, 55.05, 56.05, 57.05, 58.05, 59.05];
 shot(52, 60, 'S10', (g, lt, t, E) => {
-  const slots = [[2.0, 2.45], [4.0, 4.45], [6.0, 6.45]];
+  const slots = [[2.0, 2.4], [4.0, 4.4], [6.0, 6.4]];
   for (let i = 0; i < slots.length; i++) if (lt >= slots[i][0] && lt < slots[i][1]) {
-    stage(g, E, t, { cam: { x: 1185, y: 690, z: 3.2 }, ambient: [6, 8, 14, 0.72], lights: [{ x: 1185, y: 700, r: 300, rgb: [190, 210, 255], a: 0.2, open: 0.9 }], vig: 0.6 });
+    stage(g, E, t, { cam: { x: 1185, y: 698, z: 3.6 + 0.3 * (lt - slots[i][0]) }, ambient: [6, 8, 14, 0.72], lights: [{ x: 1185, y: 700, r: 300, rgb: [190, 210, 255], a: 0.2, open: 0.9 }], vig: 0.6 });
     return;
   }
-  const idx = Math.min(7, Math.floor(lt)), k = lt - idx, sc = 8.1 * (0.93 + 0.07 * spring(k, 300, 20)), tint = TINTS[idx];
+  // the feed: one thumb flick a second, each post a new tiny world; the glow in the room takes the colour of the post
+  const p = SCR.pos(t, S10_SW, 0), idx = Math.round(p), tint = TINTS[((idx % 8) + 8) % 8], prev = TINTS[(((idx - 1) % 8) + 8) % 8], f = clamp(p - Math.floor(p));
   g.fillStyle = '#04060b'; g.fillRect(0, 0, 1920, 1080);
-  glow(g, 960, 540, 1000, tint, 0.28, 'screen');
-  FEED.phone(g, 960, 540, 0.0, sc, { card: idx, k: 0, t: lt * 1.0 + idx * 3.1, dot: idx === 5 ? 1 : 0 });
+  glow(g, 960, 560, 1100, mixc(prev, tint, f), 0.22, 'screen');
+  const w = 430 + 40 * smooth(lt / 8), ang = -0.05 + 0.03 * Math.sin(lt * 0.5);
+  g.save(); g.translate(960, 560); g.scale(1 + 0.04 * smooth(lt / 8), 1 + 0.04 * smooth(lt / 8)); g.translate(-960, -560);
+  SCR.phone(g, 960, 548, w, ang, t, { swipes: S10_SW, likes: S10_LIKES, hand: true, clock: story(t).clock, seed: 0, glow: 0.6 });
+  g.restore();
   SET.vignette(g, E, 0.5); drawGrain(g, 1920, 1080, t, 0.09);
 });
 
@@ -59,12 +65,10 @@ shot(60, 70, 'S11', (g, lt, t, E) => {
 // ================================================================== SHOT 12 (1:10-1:20) the itch: a blue dot, and a thumb with a mind of its own
 shot(70, 80, 'S12', (g, lt, t, E) => {
   g.fillStyle = '#04060c'; g.fillRect(0, 0, 1920, 1080); glow(g, 900, 560, 1100, BLUE, 0.22, 'screen');
-  const px = 800, py = 540, pw = 440, ph = 880, dot = { x: px - pw / 2 + 0.89 * pw, y: py - ph / 2 + 0.88 * ph };
-  // phone
-  g.fillStyle = '#07080c'; rr(g, px - pw / 2 - 20, py - ph / 2 - 20, pw + 40, ph + 40, 58); g.fill();
-  g.save(); g.translate(px - pw / 2, py - ph / 2); g.scale(pw / 52, ph / 104);
-  const slide = lt > 8.2 ? clamp((lt - 8.2) / 0.4) : 0;
-  FEED.screen(g, 52, 104, lt, { card: lt > 8.2 ? 3 : 1, k: slide, dot: smooth((lt - 1.4) / 0.4) * (lt > 7.0 ? 0 : 1) }); g.restore();
+  const px = 800, py = 540, pw = 430, ph = pw * 2.05, SWd = pw * 0.92, SHd = ph - pw * 0.08;
+  const dot = { x: px - pw / 2 + pw * 0.04 + 0.86 * SWd, y: py - ph / 2 + pw * 0.04 + 0.9 * SHd };
+  SCR.phone(g, px, py, pw, 0, t, { swipes: [{ t: 78.2, d: 0.3 }], start: 0, seed: 5, thumb: false, hand: false, clock: story(t).clock, glow: 0.8,
+    dot: smooth((lt - 1.4) / 0.4) * (lt > 7.0 ? 0 : 1), likes: [] });
   // his left hand holds the phone
   g.fillStyle = '#0b0b0f'; g.strokeStyle = 'rgba(110,180,255,0.30)'; g.lineWidth = 4; capsule(g, { x: px - 310, y: py + 470 }, { x: px - 210, y: py + 140 }, 90, 66); g.fill(); g.stroke();
   for (let i = 0; i < 3; i++) { g.beginPath(); g.ellipse(px - 214 + i * 8, py - 30 + i * 118, 40, 54, 0.18, 0, TAU); g.fill(); g.stroke(); }
@@ -76,8 +80,11 @@ shot(70, 80, 'S12', (g, lt, t, E) => {
   if (lt >= 5.4 && lt < 6.6) k = 0.55 + 0.04 * Math.sin(lt * 40);        // straining toward the dot
   if (lt >= 6.6) k = lerp(0.55, 1.0, clamp(snap)) + 0.0;
   let tip = { x: lerp(rest.x, dot.x + 10, k), y: lerp(rest.y, dot.y + 30, k) };
-  if (lt >= 8.0) { const u = easeInOut(clamp((lt - 8.0) / 1.4)); tip = { x: lerp(dot.x + 10, rest.x + 40, u), y: lerp(dot.y + 30, rest.y + 20 + Math.sin(lt * 3) * 12, u) }; }
-  g.fillStyle = '#0b0b0f'; g.strokeStyle = 'rgba(110,180,255,0.38)'; g.lineWidth = 4; capsule(g, B, tip, 78, 46); g.fill(); g.stroke();
+  if (lt >= 8.0) {                                                      // ...and then it swipes anyway: drags the feed up, lifts, drifts back to rest
+    const u1 = smooth((lt - 8.2) / 0.3), top = { x: dot.x - 60, y: dot.y - 330 }, u2 = easeInOut(clamp((lt - 8.5) / 1.1));
+    tip = { x: lerp(lerp(dot.x + 10, top.x, u1), rest.x + 40, u2), y: lerp(lerp(dot.y + 30, top.y, u1), rest.y + 20 + Math.sin(lt * 3) * 12, u2) };
+  }
+  SCR.finger(g, B, tip, 520, (lt >= 6.85 && lt < 7.2) || (lt >= 8.15 && lt < 8.5) ? 1 : 0.15);
   // his other hand comes in, grabs the thumb and holds it back
   const hx = lerp(2200, 1290, easeOut(grab)), hy = lerp(760, 1060, easeOut(grab)), out = lt > 6.6 ? easeIn(clamp((lt - 6.9) / 1.0)) : 0, hx2 = hx + out * 900, hy2 = hy - out * 120;
   if (lt > 4.7 && out < 1) { g.fillStyle = '#101015'; g.strokeStyle = 'rgba(110,180,255,0.30)'; g.lineWidth = 4; g.beginPath(); g.ellipse(hx2, hy2, 120, 100, 0.3, 0, TAU); g.fill(); g.stroke(); for (let i = 0; i < 4; i++) { g.beginPath(); g.ellipse(hx2 - 90 - i * 6, hy2 - 60 + i * 38, 58, 28, 0.2, 0, TAU); g.fill(); g.stroke(); } }
@@ -143,12 +150,30 @@ shot(95, 102, 'S15', (g, lt, t, E) => {
 });
 
 // ================================================================== SHOT 16 (1:42-1:49) the page: still one line, a cold mug. Then the screen-time card.
+// the phone's screen-time report: counts up, bars grow in one by one
+function screenTimeUI(g, w, h, lt) {
+  const U = TXT.UI, k = (d) => clamp((lt - d) / 0.5);
+  g.fillStyle = '#0b0e15'; g.fillRect(0, 0, w, h);
+  g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+  g.fillStyle = '#8b93a8'; g.font = `500 ${w * 0.05}px ${U}`; g.fillText('SCREEN TIME  ·  LAST NIGHT', w * 0.08, h * 0.15);
+  const mins = Math.round(372 * easeOut(clamp(lt / 1.4))), hh = Math.floor(mins / 60), mm = mins % 60;
+  g.fillStyle = '#eef2fb'; g.font = `700 ${w * 0.2}px ${U}`; g.fillText(hh + 'h ' + (mm < 10 ? '0' : '') + mm + 'm', w * 0.08, h * 0.27);
+  g.fillStyle = '#ff6b6b'; g.font = `600 ${w * 0.048}px ${U}`; g.globalAlpha = k(1.3); g.fillText('▲ 2h 40m more than usual', w * 0.08, h * 0.32); g.globalAlpha = 1;
+  const H = [0.08, 0.12, 0.2, 0.55, 0.9, 1.0, 0.95, 0.85, 0.7, 0.4, 0.15, 0.05], bx = w * 0.08, bw = w * 0.84, base = h * 0.62, top = h * 0.4;
+  g.strokeStyle = 'rgba(140,150,175,0.25)'; g.lineWidth = Math.max(1, w * 0.004); for (let i = 0; i <= 2; i++) { g.beginPath(); g.moveTo(bx, lerp(base, top, i / 2)); g.lineTo(bx + bw, lerp(base, top, i / 2)); g.stroke(); }
+  H.forEach((v, i) => { const e = easeOut(clamp((lt - 0.3 - i * 0.08) / 0.5)), x = bx + i * bw / 12 + bw / 48, bh = (base - top) * v * e; g.fillStyle = i >= 4 && i <= 9 ? '#4aa8ff' : '#5a6378'; rr(g, x, base - bh, bw / 12 - bw / 24, bh, w * 0.01); g.fill(); });
+  g.fillStyle = '#8b93a8'; g.font = `500 ${w * 0.04}px ${U}`; [['9 PM', 0], ['12 AM', 3.5], ['3 AM', 7], ['6 AM', 10.5]].forEach(([l, i]) => g.fillText(l, bx + i * bw / 12, base + h * 0.035));
+  [['Pickups', '143'], ['Notifications', '211'], ['Longest session', '3h 51m']].forEach(([l, v], i) => {
+    const y = h * 0.74 + i * h * 0.07; g.globalAlpha = k(1.6 + i * 0.25);
+    g.fillStyle = '#c8cfdf'; g.font = `500 ${w * 0.055}px ${U}`; g.textAlign = 'left'; g.fillText(l, w * 0.08, y);
+    g.fillStyle = '#eef2fb'; g.font = `700 ${w * 0.055}px ${U}`; g.textAlign = 'right'; g.fillText(v, w * 0.92, y);
+    g.fillStyle = 'rgba(140,150,175,0.18)'; g.fillRect(w * 0.08, y + h * 0.025, w * 0.84, 1);
+  }); g.globalAlpha = 1; g.textAlign = 'left';
+}
 shot(102, 109, 'S16', (g, lt, t, E) => {
-  if (lt < 3.4) { pageScene(g, E, t, 0, { mug: true, lamp: 0.1, zoom: 1.0 + 0.03 * lt }); return; }
-  g.fillStyle = '#07090e'; g.fillRect(0, 0, 1920, 1080); glow(g, 960, 560, 1000, BLUE, 0.16, 'screen');
-  FEED.phone(g, 960, 540, 0, 8.0, { card: 2, overlay: 'screentime', t: lt });
-  g.fillStyle = '#0b0b0f'; capsule(g, { x: 300, y: 1200 }, { x: 560, y: 780 }, 110, 80); g.fill();
-  SET.vignette(g, E, 0.55); drawGrain(g, 1920, 1080, t, 0.1);
+  if (lt < 3.4) { PAGE.draw(g, E, t, 0, { mug: true, lamp: 0.1, ring: true, zoom: 1.0 + 0.03 * lt, pencilRest: { x: 420, y: 40, ang: -Math.PI / 2 + 0.06, roll: -420 / 57 } }); return; }
+  const l2 = lt - 3.4;
+  phoneInsert(g, E, t, l2, { zoom: 1 + 0.025 * l2, ang: -0.03, phone: { content: (g2, w, h) => screenTimeUI(g2, w, h, l2), seed: 0 } });
 });
 
 // ================================================================== SHOT 17 (1:49-1:55) the floor: a grey spotlight, he looks at his hands, the phone dies
@@ -166,21 +191,21 @@ shot(109, 115, 'S17', (g, lt, t, E) => {
   if (on > 0) { glow(g, px, py - 6, 200, BLUE, 0.35 * on, 'screen'); g.fillStyle = `rgba(150,205,255,${0.8 * on})`; rr(g, px - 62, py - 10, 124, 5, 2); g.fill(); }
   const bu = fadeInOut(lt, 3.3, 5.6, 0.3, 0.3); if (bu > 0) { g.save(); g.globalAlpha = bu; g.translate(px, py - 150); g.fillStyle = 'rgba(10,12,18,0.92)'; rr(g, -90, -42, 180, 84, 16); g.fill();
     g.strokeStyle = '#cfd6e8'; g.lineWidth = 4; rr(g, -66, -14, 100, 28, 6); g.stroke(); g.fillStyle = '#cfd6e8'; g.fillRect(36, -6, 6, 12); g.fillStyle = '#cfd6e8'; g.fillRect(-62, -10, 6, 20);
-    g.font = 'bold 20px "DejaVu Sans"'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('1%', 50, 0); g.restore(); }
+    g.fillStyle = '#ff6b6b'; g.fillRect(-62, -10, 6, 20); g.fillStyle = '#cfd6e8'; g.font = `600 22px ${TXT.UI}`; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('1%', 50, 1); g.restore(); }
   SET.vignette(g, E, 0.6); drawGrain(g, 1920, 1080, t, 0.1);
 });
 
 // ================================================================== SHOT 18 (1:55-2:03) the black glass: his reflection. Music out. Real silence. Then rain.
 shot(115, 123, 'S18', (g, lt, t, E) => {
-  g.fillStyle = '#06070a'; g.fillRect(0, 0, 1920, 1080);
+  g.fillStyle = '#0c0d12'; g.fillRect(0, 0, 1920, 1080); glow(g, 960, 540, 900, [120, 130, 160], 0.07, 'screen');
   const z = 1 + 0.012 * lt, cx = 960, cy = 540; g.save(); g.translate(cx, cy); g.scale(z, z); g.translate(-cx, -cy);
-  const gl = g.createLinearGradient(680, 40, 1240, 1040); gl.addColorStop(0, '#15171d'); gl.addColorStop(0.5, '#0b0c10'); gl.addColorStop(1, '#14161b');
+  const gl = g.createLinearGradient(680, 40, 1240, 1040); gl.addColorStop(0, '#23262e'); gl.addColorStop(0.5, '#121318'); gl.addColorStop(1, '#1f2128');
   g.fillStyle = gl; rr(g, 680, 40, 560, 1000, 70); g.fill(); g.strokeStyle = '#1f222a'; g.lineWidth = 6; g.stroke();
   // reflection of his face: hood ring + black head + two eyes; blinks once
   const blink = 1 - 0.92 * pulse(lt, 4.6, 0.22), a = 0.5 + 0.1 * Math.sin(lt * 1.1);
   g.save(); g.beginPath(); rr(g, 686, 46, 548, 988, 66); g.clip();
-  const hg = g.createRadialGradient(960, 560, 10, 960, 560, 260); hg.addColorStop(0, `rgba(34,36,46,${0.5 * a})`); hg.addColorStop(1, 'rgba(34,36,46,0)'); g.fillStyle = hg; g.fillRect(686, 46, 548, 988);
-  g.fillStyle = `rgba(235,238,248,${0.34 * a})`; for (const ex of [912, 1022]) { g.beginPath(); g.ellipse(ex, 556, 15, 24 * blink, 0, 0, TAU); g.fill(); }
+  const hg = g.createRadialGradient(960, 560, 10, 960, 560, 260); hg.addColorStop(0, `rgba(58,62,78,${0.75 * a})`); hg.addColorStop(1, 'rgba(34,36,46,0)'); g.fillStyle = hg; g.fillRect(686, 46, 548, 988);
+  g.fillStyle = `rgba(235,238,248,${0.55 * a})`; for (const ex of [912, 1022]) { g.beginPath(); g.ellipse(ex, 556, 15, 24 * blink, 0, 0, TAU); g.fill(); }
   const rain = clamp((lt - 5.2) / 1.5); if (rain > 0) { g.strokeStyle = `rgba(190,205,230,${0.22 * rain})`; g.lineWidth = 2; const r = rng(9); for (let i = 0; i < 60; i++) { const x = 700 + r() * 520, y = ((t * (300 + r() * 220) + r() * 1000) % 1100) - 30; g.beginPath(); g.moveTo(x, y); g.lineTo(x - 6, y + 34); g.stroke(); } }
   const sheen = g.createLinearGradient(680, 40, 960, 600); sheen.addColorStop(0, 'rgba(255,255,255,0.07)'); sheen.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = sheen; g.fillRect(680, 40, 560, 1000);
   g.restore(); g.restore();

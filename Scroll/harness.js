@@ -17,5 +17,7 @@
     return type === 'png' ? acc.toDataURL('image/png') : acc.toDataURL('image/jpeg', 0.95);
   };
   window.canvasPNG = () => cv.toDataURL('image/png');
-  window.__ready = true;
+  // wait for the bundled fonts before the first frame (canvas text needs them loaded)
+  const want = ['italic 400 40px "EB Garamond"', '400 40px "EB Garamond"', '600 40px "Caveat"', '500 40px "Inter"', '700 40px "Inter"'];
+  Promise.all(want.map(f => document.fonts.load(f))).catch(() => {}).then(() => { window.__ready = true; });
 })();

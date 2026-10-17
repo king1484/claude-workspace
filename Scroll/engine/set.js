@@ -8,16 +8,16 @@ const SET = (() => {
 
   function wall(g, S) {
     const gr = g.createLinearGradient(0, 0, 0, FLOOR); gr.addColorStop(0, css(mixc(WALL2, WALL, 0.15))); gr.addColorStop(1, css(WALL));
-    g.fillStyle = gr; g.fillRect(-200, -400, ROOM_W + 400, FLOOR + 400);
+    g.fillStyle = gr; g.fillRect(-1600, -900, ROOM_W + 3200, FLOOR + 900);
     g.fillStyle = 'rgba(0,0,0,0.12)';                                   // baseboard
-    g.fillRect(-200, FLOOR - 26, ROOM_W + 400, 26);
-    g.fillStyle = 'rgba(255,255,255,0.05)'; g.fillRect(-200, FLOOR - 28, ROOM_W + 400, 3);
+    g.fillRect(-1600, FLOOR - 26, ROOM_W + 3200, 26);
+    g.fillStyle = 'rgba(255,255,255,0.05)'; g.fillRect(-1600, FLOOR - 28, ROOM_W + 3200, 3);
   }
   function floor(g, S) {
     const gr = g.createLinearGradient(0, FLOOR, 0, FLOOR + 520); gr.addColorStop(0, css(mixc(FLOORC, [24, 25, 30], 0.2))); gr.addColorStop(1, css([22, 23, 28]));
-    g.fillStyle = gr; g.fillRect(-200, FLOOR, ROOM_W + 400, 900);
+    g.fillStyle = gr; g.fillRect(-1600, FLOOR, ROOM_W + 3200, 1400);
     g.strokeStyle = 'rgba(0,0,0,0.22)'; g.lineWidth = 2;
-    for (let i = 0; i < 9; i++) { const y = FLOOR + 30 + i * i * 7 + i * 12; g.beginPath(); g.moveTo(-200, y); g.lineTo(ROOM_W + 200, y); g.stroke(); }
+    for (let i = 0; i < 9; i++) { const y = FLOOR + 30 + i * i * 7 + i * 12; g.beginPath(); g.moveTo(-1600, y); g.lineTo(ROOM_W + 1600, y); g.stroke(); }
     const r = rng(11);
     for (let i = 0; i < 70; i++) { const x = r() * (ROOM_W + 400) - 200, y0 = FLOOR + 30 + Math.floor(r() * 8) * 55; g.beginPath(); g.moveTo(x, y0); g.lineTo(x + (r() - 0.5) * 12, y0 + 55 + r() * 20); g.stroke(); }
     // rug under the desk
@@ -48,7 +48,7 @@ const SET = (() => {
     if (S.holeLine > 0) {                                        // the bottom, with a line on it: the end of tonight's feed
       g.save(); g.beginPath(); g.ellipse(cx, cy, rx, ry, 0, 0, TAU); g.clip();
       g.strokeStyle = `rgba(110,180,255,${0.9 * S.holeLine})`; g.lineWidth = 3; g.shadowColor = 'rgba(110,180,255,0.9)'; g.shadowBlur = 14; g.beginPath(); g.ellipse(cx, cy, rx * 0.8, ry * 0.7, 0, 0, TAU); g.stroke();
-      g.shadowBlur = 0; g.fillStyle = `rgba(190,220,255,${0.8 * S.holeLine})`; g.font = 'bold 22px "DejaVu Sans Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('11:30', cx, cy); g.restore();
+      g.shadowBlur = 0; g.fillStyle = `rgba(190,220,255,${0.8 * S.holeLine})`; g.font = `600 24px ${TXT.UI}`; g.letterSpacing = '3px'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('11:30', cx, cy); g.restore();
     }
   }
   function windowFrame(g, S, t) {
@@ -95,9 +95,11 @@ const SET = (() => {
     g.fillStyle = '#25272e'; rr(g, 1100, 736, 170, 124, 8); g.fill(); g.fillStyle = '#1b1d22'; g.fillRect(1112, 776, 146, 3);
     g.fillStyle = '#383b45'; g.beginPath(); g.arc(1185, 806, 7, 0, TAU); g.fill();
     // clock
-    g.fillStyle = '#16181d'; rr(g, 1118, 668, 134, 68, 12); g.fill();
-    g.save(); g.shadowColor = 'rgba(210,224,255,0.65)'; g.shadowBlur = 14; g.fillStyle = '#d3dcf0'; g.font = 'bold 44px "DejaVu Sans Mono"'; g.textAlign = 'center'; g.textBaseline = 'middle';
-    const s = S.clock || '11:42'; g.fillText(s, 1185, 704); g.restore();
+    const cg = g.createLinearGradient(0, 664, 0, 740); cg.addColorStop(0, '#24262d'); cg.addColorStop(1, '#121318'); g.fillStyle = cg; rr(g, 1114, 664, 142, 74, 14); g.fill();
+    g.fillStyle = '#07080b'; rr(g, 1124, 674, 122, 54, 8); g.fill();                     // smoked face
+    g.fillStyle = 'rgba(255,255,255,0.06)'; rr(g, 1126, 676, 118, 12, 6); g.fill();
+    TXT.sevenSeg(g, S.clock || '11:42', 1185, 701, 34, '#d6e2ff', 1);
+    g.fillStyle = '#0d0e12'; g.fillRect(1130, 738, 14, 4); g.fillRect(1226, 738, 14, 4);
     if (S.mug) { g.fillStyle = '#32353e'; rr(g, 1102, 650, 0, 0, 0); }
   }
   function desk(g, S, t) {
@@ -127,8 +129,9 @@ const SET = (() => {
     if (S.note > 0.01) {
       const k = easeOut(S.note), nx = 2110, ny = 540;
       g.save(); g.translate(nx + 40, ny + 36); g.rotate(-0.06); g.scale(0.7 + 0.3 * k, 0.7 + 0.3 * k); g.globalAlpha = clamp(S.note * 2);
-      g.fillStyle = '#e9e1b8'; g.fillRect(-64, -38, 128, 76); g.fillStyle = 'rgba(0,0,0,0.18)'; g.fillRect(-64, 32, 128, 6);
-      g.fillStyle = '#2c2a28'; g.font = 'italic 17px "DejaVu Sans"'; g.textAlign = 'center'; g.fillText('Last swipe:', 0, -6); g.font = 'italic bold 26px "DejaVu Sans"'; g.fillText('11:30', 0, 22); g.restore();
+      g.fillStyle = 'rgba(0,0,0,0.25)'; g.fillRect(-60, -34, 128, 78); const ng = g.createLinearGradient(0, -38, 0, 40); ng.addColorStop(0, '#efe6b4'); ng.addColorStop(1, '#ddd29d'); g.fillStyle = ng; g.beginPath(); g.moveTo(-64, -38); g.lineTo(64, -38); g.lineTo(64, 30); g.quadraticCurveTo(40, 44, -64, 40); g.closePath(); g.fill(); g.fillStyle = 'rgba(0,0,0,0.05)'; g.fillRect(-64, -38, 128, 12);
+      TXT.hand(g, 'last swipe', 0, -12, 22, '#2b2722', -0.03); TXT.hand(g, '11:30', 2, 16, 34, '#a8332e', 0.02);
+      g.strokeStyle = 'rgba(168,51,46,0.8)'; g.lineWidth = 2; g.beginPath(); g.moveTo(-34, 32); g.quadraticCurveTo(0, 28, 38, 33); g.stroke(); g.restore();
     }
   }
   // ----------------------------------------------------------------- compositing helpers

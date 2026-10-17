@@ -1,0 +1,15 @@
+<!doctype html><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}
+@font-face{font-family:"EB Garamond";src:url(assets/fonts/EBGaramond.ttf);font-style:normal;font-weight:400 800}
+@font-face{font-family:"EB Garamond";src:url(assets/fonts/EBGaramond-Italic.ttf);font-style:italic;font-weight:400 800}
+@font-face{font-family:"Caveat";src:url(assets/fonts/Caveat.ttf);font-weight:400 700}
+@font-face{font-family:"Inter";src:url(assets/fonts/Inter.ttf);font-weight:100 900}</style>
+<canvas id="c"></canvas>
+<script src="engine/lib.js"></script><script src="engine/draw.js"></script><script src="engine/feed.js"></script><script src="engine/text.js"></script><script src="engine/scroll.js"></script>
+<script>
+const SW = [{ t: 0.5 }, { t: 1.6, n: 1 }, { t: 2.7, bounce: true }];
+function drawFrame(g, t, E) {
+  g.fillStyle = '#05070c'; g.fillRect(0, 0, 1920, 1080);
+  SCR.phone(g, 960, 540, 470, -0.04, t, { swipes: SW, hand: true, clock: '12:20', floorAt: 2 });
+  TXT.title(g, 'Where does the feed end?', t, 0.2, 2.6, { y: 120, size: 64 });
+}
+</script><script src="harness.js"></script>

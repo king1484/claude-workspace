@@ -45,7 +45,7 @@ shot(148, 156, 'S22', (g, lt, t, E) => {
   const hx = lerp(2090, 1850, smooth(clamp(lt / 2.6))), ph = (2090 - hx) / 84 * Math.PI;
   const pose = lt < 2.6 ? Object.assign(CH.walkPose(ph, false), { bags: 1 }) : CH.track(lt - 2.6, [[0, Object.assign(CH.walkPose(ph, false), { bags: 1 })], [0.5, CURT, 0.6], [3.2, Object.assign({}, CURT, { open: 0.55, happy: 0 }), 1.2]]);
   const sw = clamp((lt - 3.2) / 3.2), sxp = lerp(700, 1760, smooth(sw)), sph = (sxp - 700) / 84 * Math.PI;
-  const shPose = lt < 1.4 ? LAY : lt < 3.2 ? CH.blend(LAY, mk(P.stretch), smooth((lt - 1.4) / 1.8)) : lt < 6.4 ? CH.blend(mk(P.stretch), CH.walkPose(sph, false), smooth((lt - 3.2) / 0.6)) : CH.blend(CH.walkPose(sph, false), STAND, smooth((lt - 6.4) / 0.5));
+  const shPose = lt < 1.4 ? LAY : lt < 3.2 ? CH.blend(LAY, mk(P.stretch), smooth((lt - 1.4) / 1.8)) : lt < 6.4 ? CH.blend(mk(P.stretch), CH.walkPose(sph, false, 56), smooth((lt - 3.2) / 0.6)) : CH.blend(CH.walkPose(sph, false, 56), STAND, smooth((lt - 6.4) / 0.5));
   const shY = lt < 1.4 ? 690 : lerp(690, 596, smooth((lt - 1.4) / 1.6)), shx = lt < 3.2 ? 700 : (lt < 6.4 ? sxp : 1760);
   const cam = sway(camAt(lt, [[0, { x: 1250, y: 680, z: 0.82 }], [4, { x: 1500, y: 660, z: 0.9 }], [8, { x: 1720, y: 650, z: 1.05 }]]), t, 0.4);
   stage(g, E, t, {
@@ -70,8 +70,8 @@ shot(156, 159, 'S23a', (g, lt, t, E) => {
   stage(g, E, t, { cam: sway({ x: 1700, y: 690, z: 1.35 }, t, 0.4), ambient: dawnAmb(t), lights: [winWarm(t), { x: 1664, y: 620, r: 500, rgb: WARM, a: 0.1, open: 0.4 }], charLights: [{ x: 1600, y: 430, r: 1300, rgb: [255, 196, 120], a: 0.34 }], chars: [hero({ x: d.x, y: d.y }, d.pose, t, { flip: d.flip })] });
 });
 shot(159, 164, 'S23b', (g, lt, t, E) => {
-  const P_ = lerp(0.12, 0.6, smooth(lt / 5)), tip = { x: 960 - 460 + 920 * clamp(P_ * 1.5) * 0.6 + 80, y: 560 + 80 + Math.sin(lt * 3) * 6 };
-  pageScene(g, E, t, P_, { lamp: 0.6, zoom: 1.08, pencil: { x: tip.x + 190, y: tip.y - 18, ang: -0.28, roll: 0 } });
+  const P_ = lerp(0.1, 0.62, smooth(lt / 5));
+  PAGE.draw(g, E, t, P_, { lamp: 0.75, zoom: 1.1 + 0.02 * lt, dx: -40, ring: true, hand: true, jitter: true, sleeve: GREY });
 });
 shot(164, 170, 'S23c', (g, lt, t, E) => {
   const pose = Object.assign({}, SITDESK, { hfx: SITDESK.hfx + Math.sin(lt * 8) * 6, hfy: SITDESK.hfy + Math.cos(lt * 6) * 3, bags: 0.2, happy: lt > 3.2 && lt < 5 ? 0.0 : 0 });
@@ -80,7 +80,7 @@ shot(164, 170, 'S23c', (g, lt, t, E) => {
 
 // ================================================================== SHOT 24 (2:50-2:56) "Tomorrow night": the same bed, warm lamp, a red hoodie, and the shaft now has a floor with a line on it
 shot(170, 176, 'S24', (g, lt, t, E) => {
-  if (lt < 2.6) { g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080); card(g, 'Tomorrow night', fadeInOut(lt, 0.3, 2.2, 0.5, 0.4), { font: 'italic 54px "Liberation Serif"' }); card(g, '11:25 PM', fadeInOut(lt, 1.5, 2.5, 0.3, 0.1), { y: 640, font: '32px "DejaVu Sans"', spacing: '6px', color: 'rgba(200,206,222,1)' }); return; }
+  if (lt < 2.6) { g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080); TXT.title(g, 'Tomorrow night', lt, 0.3, 1.75, { size: 84, glow: true, y: 520 }); TXT.label(g, '11:25 PM', lt, 1.0, 2.0, { y: 630, size: 28 }); drawGrain(g, 1920, 1080, t, 0.08); return; }
   const l2 = lt - 2.6, pose = CH.track(l2, [[0, SITIDLE], [1.5, SITPHONE, 0.7]]), S = story(t), PH = { x: 836, y: 694 }, pa = smooth((l2 - 1.8) / 0.5);
   stage(g, E, t, {
     cam: sway(camAt(l2, [[0, { x: 1000, y: 720, z: 1.0 }], [3.4, { x: 940, y: 740, z: 1.22 }]]), t, 0.4), ambient: [8, 9, 15, 0.52], S: { holeLine: 1 },
@@ -92,17 +92,17 @@ shot(170, 176, 'S24', (g, lt, t, E) => {
 
 // ================================================================== SHOT 25 (2:56-3:08) three swipes, each smaller; at 11:30 a soft bell and the coin lands on the floor; he smiles, sets the phone down
 shot(176, 181.8, 'S25a', (g, lt, t, E) => {
-  const sm = [0.9, 0.65, 0.4], flick = pulse(lt, 0.8, 0.3) * 8 + pulse(lt, 2.2, 0.3) * 6 + pulse(lt, 3.6, 0.3) * 4;
-  const pose = Object.assign({}, SITPHONE, { hfy: SITPHONE.hfy + flick * 0.5, happy: lt > 0.9 && lt < 1.5 ? 1 : 0, looky: 0.5, bags: 0 }), PH = { x: 836, y: 694 };
+  if (lt < 5.0) {                                     // INSERT: two swipes, then the third lands on a floor; one more try only bounces
+    phoneInsert(g, E, t, lt, { warm: true, zoom: 1 + 0.02 * lt, ang: -0.04, y: 548 + Math.sin(lt * 1.1) * 4,
+      phone: { swipes: [{ t: 176.8 }, { t: 178.2 }, { t: 179.6, d: 0.3 }, { t: 180.6, bounce: true, d: 0.22 }], floorAt: 3, likes: [176.9, 178.3], seed: 3 } });
+    return;
+  }
+  const l2 = lt - 5.0, pose = Object.assign({}, SITPHONE, { happy: smooth(l2 / 0.3), looky: 0.5, bags: 0 }), PH = { x: 836, y: 694 };
   stage(g, E, t, {
-    cam: sway(camAt(lt, [[0, { x: 812, y: 690, z: 2.8 }], [5.8, { x: 816, y: 688, z: 3.0 }]]), t, 0.6), ambient: [8, 9, 15, 0.6], vig: 0.6,
-    chars: [hero(SIT_HIP, pose, t)], charLights: [{ x: 1650, y: 640, r: 1100, rgb: WARM, a: 0.3 }, { x: PH.x, y: PH.y, r: 300, rgb: BLUE, a: 0.5 }],
-    lights: [{ x: PH.x, y: PH.y, r: 520, rgb: BLUE, a: 0.2, open: 0.9 }, { x: 1664, y: 620, r: 900, rgb: WARM, a: 0.15, open: 0.6 }],
-    post: (g2, J) => {
-      phoneSide(g2, J.me.handF.x + 6, J.me.handF.y - 12, -0.12, 0.6);
-      [0.9, 2.3, 3.7].forEach((ts, i) => { const u = (lt - ts) / 0.8; if (u > 0 && u < 1) for (let k = 0; k < 5; k++) { const a = k / 5 * TAU, d = 14 + 60 * easeOut(u) * sm[i]; g2.fillStyle = `rgba(190,225,255,${(1 - u) * 0.8})`; g2.beginPath(); g2.arc(J.me.handF.x + 20 + Math.cos(a) * d, J.me.handF.y - 60 + Math.sin(a) * d, 3.5, 0, TAU); g2.fill(); } });
-    },
-    over: (g2) => card(g2, story(t).clock, 0.85, { x: 220, y: 980, font: '34px "DejaVu Sans Mono"', color: 'rgba(205,212,230,1)' })
+    cam: sway({ x: 812, y: 690, z: 2.9 }, t, 0.6), ambient: [8, 9, 15, 0.74], vig: 0.6,
+    chars: [hero(SIT_HIP, pose, t)], charLights: [{ x: 1650, y: 640, r: 1100, rgb: WARM, a: 0.12 }, { x: PH.x, y: PH.y, r: 300, rgb: [255, 214, 150], a: 0.18 }],
+    lights: [{ x: PH.x, y: PH.y, r: 520, rgb: [255, 214, 150], a: 0.16, open: 0.9 }, { x: 1664, y: 620, r: 900, rgb: WARM, a: 0.15, open: 0.6 }],
+    post: (g2, J) => phoneSide(g2, J.me.handF.x, J.me.handF.y, -0.12, 0.6, { start: 2, swipes: [{ t: 0 }], floorAt: 3 })
   });
 });
 shot(181.8, 183, 'S25b', (g, lt, t, E) => {                   // 11:30: the bell, the coin lands on the floor
@@ -132,8 +132,8 @@ shot(188, 191.5, 'S26a', (g, lt, t, E) => {
   stage(g, E, t, Object.assign({ cam: sway({ x: 1700, y: 680, z: 1.3 }, t, 0.4), wallFx: shadowSpec(1830, 560, pose, 1.35, 1, 0.55, 0.5), chars: [hero({ x: 1640, y: 778 }, pose, t)] }, deskLights(t)));
 });
 shot(191.5, 195.5, 'S26b', (g, lt, t, E) => {
-  const P_ = lerp(0.55, 1.0, smooth(lt / 3.4)), tip = { x: 1010 + 200 * clamp((P_ - 0.55) * 2), y: 650 };
-  pageScene(g, E, t, P_, { lamp: 1, zoom: 1.06, pencil: P_ < 0.98 ? { x: tip.x + 190, y: tip.y - 20, ang: -0.28 } : null });
+  const P_ = lerp(0.6, 1.0, smooth(lt / 3.3)), off = easeIn(clamp((lt - 3.3) / 0.7));
+  PAGE.draw(g, E, t, P_, { lamp: 1, zoom: 1.08 - 0.03 * smooth(lt / 4), ring: true, hand: true, jitter: true, sleeve: RED, handRest: { x: 190 + 700 * off, y: 120 + 420 * off } });
 });
 shot(195.5, 198, 'S26c', (g, lt, t, E) => {
   const pose = CH.track(lt, [[0, SITDESK], [0.6, mk(Object.assign({}, SITDESK, { torso: -0.04, hrot: 0, hy: -54, hfx: 70, hfy: -34, happy: 1 })), 0.8]]);
@@ -180,15 +180,28 @@ function streetScene(g, E, lt, t) {
   phoneRig(4, 1330, 930, 1.05, 1, mk(P.standPhone));
   // him: the red hoodie, warm light following him
   glow(g, hx + 40, 780, 380, [255, 190, 110], 0.5, 'screen');
-  CH.draw(g, { id: 'me', x: hx, y: 930 - 112 * 1.15, s: 1.15, flip: 1, pose: Object.assign(CH.walkPose(hph, false), { open: 1, looky: 0 }), t, res: 1, hood: RED, lights: [{ x: hx + 80, y: 700, r: 520, rgb: [255, 190, 110], a: 0.4 }] });
+  CH.draw(g, { id: 'me', x: hx, y: 930 - 112 * 1.15, s: 1.15, flip: 1, pose: Object.assign(CH.walkPose(hph, false, 84 / 1.15), { open: 1, looky: 0 }), t, res: 1, hood: RED, lights: [{ x: hx + 80, y: 700, r: 520, rgb: [255, 190, 110], a: 0.4 }] });
   SET.vignette(g, E, 0.42); drawGrain(g, 1920, 1080, t, 0.08);
 }
 shot(205, 215, 'S28', (g, lt, t, E) => streetScene(g, E, lt, t));
 
 // ================================================================== SHOT 29-30 the lesson, the title
-shot(215, 224, 'S29', (g, lt, t, E) => { g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080); card(g, 'The feed has no bottom.', fadeInOut(lt, 0.4, 3.8, 0.7, 0.6), { font: 'italic 62px "Liberation Serif"' }); card(g, 'Build one.', fadeInOut(lt, 4.6, 8.6, 0.7, 0.8), { font: 'italic 62px "Liberation Serif"' }); drawGrain(g, 1920, 1080, t, 0.08); });
+// the title: letters arrive one by one with wide tracking that slowly closes; a thin line draws under them and the subtitle wipes in
+function titleCard(g, lt) {
+  const L = 'SCROLL'.split(''), out = clamp((lt - 4.8) / 0.9), track = lerp(56, 34, easeOut(clamp(lt / 5))), size = 118;
+  g.save(); g.font = `500 ${size}px ${TXT.SERIF}`; g.textBaseline = 'alphabetic'; g.textAlign = 'left';
+  const ws = L.map(c => g.measureText(c).width), total = ws.reduce((a, b) => a + b, 0) + track * (L.length - 1); let x = 960 - total / 2;
+  L.forEach((c, i) => { const k = clamp((lt - 0.4 - i * 0.12) / 0.8), e = 1 - Math.pow(1 - k, 3);
+    g.globalAlpha = e * (1 - out); g.filter = k < 1 ? `blur(${((1 - e) * 8).toFixed(1)}px)` : 'none'; g.fillStyle = '#eceef5'; g.shadowColor = 'rgba(150,190,255,0.35)'; g.shadowBlur = 30;
+    g.fillText(c, x, 560 - (1 - e) * 18); x += ws[i] + track; });
+  g.filter = 'none'; g.shadowBlur = 0; g.globalAlpha = 1 - out;
+  const lw = 420 * easeInOut(clamp((lt - 1.3) / 1.1)); g.fillStyle = 'rgba(214,58,58,0.9)'; g.fillRect(960 - lw / 2, 598, lw, 2);
+  g.restore();
+  TXT.label(g, 'A SILENT ANIMATED SHORT', lt, 1.8, 4.8, { y: 650, size: 22 });
+}
+shot(215, 224, 'S29', (g, lt, t, E) => { g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080); TXT.title(g, 'The feed has no bottom.', lt, 0.4, 3.4, { size: 90, glow: true, stagger: 0.18 }); TXT.title(g, 'Build one.', lt, 4.6, 7.9, { size: 108, glow: true, stagger: 0.32, color: [240, 214, 200] }); drawGrain(g, 1920, 1080, t, 0.08); });
 shot(224, 230, 'S30', (g, lt, t, E) => {
   g.fillStyle = '#000'; g.fillRect(0, 0, 1920, 1080);
-  const a = fadeInOut(lt, 0.5, 5.4, 1.0, 0.8); card(g, 'SCROLL', a, { font: '90px "Liberation Serif"', spacing: '30px', y: 520 }); card(g, 'An Animated Short Film', clamp((lt - 1.4) / 0.9) * clamp((5.4 - lt) / 0.8), { font: '28px "Liberation Serif"', spacing: '6px', y: 610, color: 'rgba(190,196,212,1)' });
+  titleCard(g, lt);
   drawGrain(g, 1920, 1080, t, 0.08);
 });

@@ -31,11 +31,19 @@ const CH = (() => {
     slump:    mk({ torso: 0.42, hx: 18, hy: -46, hrot: 0.3, hfx: 24, hfy: -6, hbx: 8, hby: -10, open: 0.55, tilt: -0.5 }),
     reachUp:  mk({ torso: 0.05, hfx: 70, hfy: -100, hbx: 20, hby: -40 }),
   };
-  function walkPose(ph, phone) {
-    const a = Math.sin(ph), b = Math.sin(ph + Math.PI), lift = (v) => Math.max(0, Math.cos(v)) * 22;
-    const p = mk({ torso: 0.07, hrot: 0.04, ffx: 8 + a * 38, ffy: 112 - lift(ph), fbx: 8 + b * 38, fby: 112 - lift(ph + Math.PI),
-      hfx: 10 + b * 28, hfy: -30 - Math.abs(b) * 4, hbx: 4 + a * 28, hby: -32, dy: -Math.abs(Math.cos(ph)) * 5 });
-    if (phone) { p.hfx = 50; p.hfy = -72; p.hbx = 4 + a * 26; p.hby = -32; p.looky = 0.4; }
+  // Walk with planted feet: while a foot is on the ground it moves backwards exactly as fast as the hip moves forwards,
+  // so it does not skate. ph advances PI per step; the caller moves the hip `stride` (character units) per step.
+  function footAt(p, S) {
+    p = ((p % TAU) + TAU) % TAU;
+    if (p < Math.PI) return { x: S / 2 - S * (p / Math.PI), lift: 0 };
+    const u = (p - Math.PI) / Math.PI; return { x: -S / 2 + S * (u * u * (3 - 2 * u)), lift: Math.sin(u * Math.PI) * 26 * (1 - 0.3 * u) };
+  }
+  function walkPose(ph, phone, stride) {
+    const S = stride || 84, A = footAt(ph, S), B = footAt(ph + Math.PI, S), c2 = Math.cos(2 * ph);
+    const p = mk({ torso: 0.085 + 0.015 * c2, hrot: 0.03 - 0.025 * c2, hy: -54 + 1.5 * c2, dy: 2 + 3 * c2,
+      ffx: 8 + A.x, ffy: 112 - A.lift, fbx: 2 + B.x, fby: 112 - B.lift,
+      hfx: 12 - A.x * 0.6, hfy: -28 - Math.abs(A.x) * 0.12, hbx: 4 - B.x * 0.6, hby: -30 - Math.abs(B.x) * 0.12 });
+    if (phone) { p.hfx = 50; p.hfy = -72 + c2 * 1.5; p.looky = 0.4; }
     return p;
   }
   const blend = (a, b, k) => { const r = {}; for (const key of KEYS) r[key] = a[key] + (b[key] - a[key]) * k; return r; };
@@ -47,7 +55,7 @@ const CH = (() => {
       const [kt, kp, kd] = keys[i], to = typeof kp === 'string' ? named(kp) : kp, d = kd == null ? 0.6 : kd;
       if (t <= kt) return cur;
       const k = clamp((t - kt) / Math.max(d, 1e-3));
-      const e = k * k * (3 - 2 * k) * 1;
+      const sm = k * k * (3 - 2 * k), q = sm - 1, e = 1 + 1.55 * q * q * q + 0.55 * q * q;   // smooth start, ~2% settle
       if (k < 1) return blend(cur, to, e);
       cur = to;
     }
@@ -102,8 +110,10 @@ const CH = (() => {
       capsule(g, K.hip, K.lF.mid, 25, 19); g.fill(); capsule(g, K.lF.mid, K.lF.end, 19, 15); g.fill();
       g.fillStyle = col(pal.shoe); g.beginPath(); g.ellipse(K.lF.end.x + 13, K.lF.end.y + 6, 26, 12, 0, 0, TAU); g.fill();
       g.fillStyle = col(pal.hoodBack); capsule(g, K.sh, { x: K.head.x - 8, y: K.head.y + 18 }, 30, 30); g.fill();   // neck cowl + hood
-      g.fillStyle = col(pal.hood); g.beginPath(); g.arc(K.head.x - 7, K.head.y + 5, HOOD_R, 0, TAU); g.fill();
-      g.fillStyle = col(pal.hoodDark); g.beginPath(); g.arc(K.head.x + 3, K.head.y + 1, 45, 0, TAU); g.fill();
+      g.fillStyle = col(pal.hood); g.beginPath(); g.ellipse(K.head.x - 10, K.head.y + 3, HOOD_R + 2, HOOD_R, 0, 0, TAU); g.fill();
+      g.beginPath(); g.moveTo(K.head.x - 52, K.head.y - 6); g.quadraticCurveTo(K.head.x - 58, K.head.y - 40, K.head.x - 34, K.head.y - 48); g.lineTo(K.head.x - 16, K.head.y - 40); g.closePath(); g.fill();   // the hood's soft peak
+      if (!flat) { g.strokeStyle = css(pal.hoodDark, 0.55); g.lineWidth = 3; g.beginPath(); g.arc(K.head.x - 12, K.head.y + 2, HOOD_R - 10, Math.PI * 0.62, Math.PI * 1.32); g.stroke(); }   // seam
+      g.fillStyle = col(pal.hoodDark); g.beginPath(); g.ellipse(K.head.x + 7, K.head.y + 2, 43, 45, 0, 0, TAU); g.fill();       // face opening, mostly in front
       g.fillStyle = col(pal.hood);                                   // front arm
       capsule(g, K.sh, K.aF.mid, 18, 15); g.fill(); capsule(g, K.aF.mid, K.aF.end, 15, 12.5); g.fill();
       if (!flat) { g.strokeStyle = css(pal.hoodDark, 0.7); g.lineWidth = 3; g.beginPath(); g.arc(K.aF.end.x - (K.aF.end.x - K.aF.mid.x) * 0.12, K.aF.end.y - (K.aF.end.y - K.aF.mid.y) * 0.12, 11, 0, TAU); g.stroke(); }
@@ -148,6 +158,7 @@ const CH = (() => {
     const res = Math.max(1, Math.min(3, o.res || 1)), S = Math.round(OC * res);
     const c = layer(S, S), x = c.getContext('2d'), s = o.s == null ? 1 : o.s, flip = o.flip < 0 ? -1 : 1, V = Object.assign({}, o.pose);
     V._blink = o.shadow ? 1 : blink(o.t || 0, o.seed);
+    if (o.breathe !== false) { const bt = Math.sin((o.t || 0) * 1.6 + (o.seed || 0)); V.torso += 0.008 * bt; V.hy += 1.2 * bt; }
     const pal = palette(o.hood);
     x.setTransform(1, 0, 0, 1, 0, 0); x.clearRect(0, 0, S, S); x.globalCompositeOperation = 'source-over'; x.globalAlpha = 1;
     x.setTransform(res * s * flip, 0, 0, res * s, S / 2, S / 2);

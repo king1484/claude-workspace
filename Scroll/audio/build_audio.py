@@ -289,6 +289,7 @@ def build_sfx():
         S(tinkle(1.2, int(ts)), ts + 1.9, -34)
     pent = [587.33, 784, 880, 1174.7, 880, 784, 587.33, 440]
     for i in range(8): S(ping(pent[i], 0.9, 0.12), 52.0 + i, -31)
+    for i in range(7): S(swipe(), 52.55 + i, -33, pan=0.08)                     # one thumb flick per post in the montage
     for t in (54.0, 56.0, 58.0): S(click(0.03, 1400, 0.006), t, -34)
     S(ping(1568, 0.5, 0.05), 60.5, -30)                                             # the coin leaves his hand
     S(whistle_fall(8.6, 1900, 300), 61.4, -29)
@@ -334,6 +335,7 @@ def build_sfx():
     # ---- the replay: a floor now
     S(sw if sw is not None else click(0.03), 172.0, -33); S(cl(2), 174.4, -38)
     for t in (176.8, 178.2, 179.6): S(swipe(), t, -34)
+    S(swipe(), 180.6, -40)                                                     # one more try: the feed only bounces
     for t, f in ((176.9, 880), (178.3, 784), (179.7, 587.33)): S(ping(f, 0.5, 0.08), t, -35)
     S(bell(1174.7, 5.0), 182.0, -33); S((peak_norm(coin) if coin is not None else click(0.05)) * 0.7, 182.15, -35)
     S(cl(1), 183.2, -37); [S(thud(100, 0.05), t, -35) for t in step_times(760, 920, 0.7, 2.0, 183.0, 84.0)]

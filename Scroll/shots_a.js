@@ -1,5 +1,5 @@
 // shots_a.js — shared helpers, story state, and shots 1-8 (hook, setup, first swipe). Times are global seconds (see docs/SCRIPT.md).
-const GREY = [112, 116, 128], RED = [214, 58, 58], BLUE = [74, 168, 255], WARM = [255, 196, 120];
+const GREY = [112, 116, 128], RED = [188, 36, 42], BLUE = [74, 168, 255], WARM = [255, 196, 120];
 const SHOTS = [];
 const shot = (t0, t1, id, fn) => SHOTS.push({ t0, t1, id, fn });
 const view = (g, cam) => { g.translate(960, 540); g.scale(cam.z, cam.z); g.translate(-cam.x, -cam.y); };
@@ -21,7 +21,7 @@ const keyed = (t, keys) => {                       // smooth piecewise interpola
 
 // ------------------------------------------------------------------ story state (pure function of global time)
 const CLK = [[0, 1627], [14, 1627], [19, 1422], [20, 1422], [52, 1424], [55, 1460], [57.5, 1494], [60, 1513], [70, 1522], [75, 1540], [80, 1555], [85, 1570], [87, 1600], [95, 1830], [200, 1850]];
-const PAYCLK = [[170, 1405], [176, 1406], [178, 1407], [179.8, 1408], [181.2, 1409], [182, 1410], [200, 1410]];
+const PAYCLK = [[170, 1405], [176, 1406], [177.6, 1407], [178.9, 1408], [179.5, 1409], [180.0, 1410], [200, 1410]];
 function clockStr(M) { M = Math.floor(M); const h24 = Math.floor(M / 60) % 24, h = h24 % 12 || 12, m = M % 60; return h + ':' + (m < 10 ? '0' : '') + m; }
 function story(t) {
   const night2 = t >= 170 && t < 205;
@@ -43,18 +43,11 @@ function hoodSpec(t) {
 }
 
 // ------------------------------------------------------------------ props and overlays
-function phoneSide(g, x, y, ang, a) {              // the phone seen edge-on: dark slab, glowing face
-  g.save(); g.translate(x, y); g.rotate(ang);
-  g.fillStyle = '#07080c'; rr(g, -8, -50, 16, 100, 6); g.fill();
-  g.fillStyle = `rgba(150,205,255,${0.95 * a})`; rr(g, -8, -46, 5, 92, 3); g.fill();
-  g.restore();
-}
-function card(g, text, a, o) {                     // small centred serif card (in screen space)
-  if (a <= 0) return; o = o || {};
-  g.save(); g.globalAlpha = clamp(a); g.fillStyle = o.color || 'rgba(226,230,240,1)'; g.textAlign = 'center'; g.textBaseline = 'middle';
-  g.font = (o.font || 'italic 46px "Liberation Serif"'); if (o.spacing) g.letterSpacing = o.spacing;
-  const lines = Array.isArray(text) ? text : [text]; lines.forEach((l, i) => g.fillText(l, o.x == null ? 960 : o.x, (o.y == null ? 540 : o.y) + (i - (lines.length - 1) / 2) * (o.lh || 64)));
-  g.restore();
+// every swipe his thumb makes on a held phone, in global time, so the feed on the small phone scrolls continuously across the film
+const HELD_SW = [].concat(SCR.every(3.0, 14, 0.9), [{ t: 43.5 }], SCR.every(80.2, 87, 0.8), SCR.every(91.0, 95, 0.9), SCR.every(95.4, 102, 1.1), [{ t: 176.8 }, { t: 178.2 }, { t: 179.6 }]);
+function phoneSide(g, x, y, ang, a, o) {           // the phone in his hand: three-quarter view, the feed visibly moving on it
+  SCR.held(g, x + 6, y - 16, ang, window.NOW || 0, Object.assign({ a, w: 34, swipes: HELD_SW, seed: 2 }, o || {}));
+  if (a > 0.05) glow(g, x - 10, y - 16, 90, BLUE, 0.18 * a, 'screen');
 }
 const fadeInOut = (lt, a, b, fi, fo) => clamp((lt - a) / fi) * clamp((b - lt) / fo);
 
@@ -87,7 +80,7 @@ const hero = (hip, pose, t, extra) => Object.assign({ id: 'me', x: hip.x, y: hip
 
 // the hook bed: he lies on his back under the phone, face lit; his shadow sleeps curled up on the wall above him
 function hookBed(t, lt, extra) {
-  const fl = pulse(lt % 0.9, 0.0, 0.25) * 6;         // thumb flick every 0.9 s
+  const fl = pulse((t - 3.0 + 9) % 0.9, 0.0, 0.25) * 6;         // thumb flick every 0.9 s
   const pose = Object.assign({}, LIE, { hfy: LIE.hfy + fl, lookx: 0.9, looky: 0, bags: 0.8 });
   return { hero: hero(LIE_HIP, pose, t, extra), phone: { x: 301, y: 616 } };
 }
@@ -110,7 +103,7 @@ shot(3, 8, 'S2', (g, lt, t, E) => {
     chars: [hb.hero], charLights: [{ x: hb.phone.x, y: hb.phone.y, r: 340, rgb: BLUE, a: 0.55 }],
     lights: [{ x: hb.phone.x, y: hb.phone.y, r: 520, rgb: BLUE, a: 0.3, open: 0.97 }],
     post: (g2) => phoneSide(g2, hb.phone.x, hb.phone.y, 0.08, 0.8 + 0.2 * Math.sin(t * 7.0)),
-    over: (g2) => card(g2, 'Where does the feed end?', fadeInOut(lt, 2.0, 4.9, 0.5, 0.45), { y: 900, font: 'italic 50px "Liberation Serif"' })
+    over: (g2) => TXT.title(g2, 'Where does the feed end?', lt, 1.8, 4.1, { y: 880, size: 66, glow: true, stagger: 0.13 })
   });
 });
 
@@ -142,7 +135,7 @@ shot(14, 20, 'S4', (g, lt, t, E) => {
     cam, ambient: [6, 8, 14, 0.86 - 0.3 * S.lamp],
     chars: [hero(hip, pose, t)], charLights: [{ x: 1650, y: 620, r: 1000, rgb: WARM, a: 0.3 * S.lamp }],
     lights: [{ x: 1650, y: 620, r: 760, rgb: WARM, a: 0.2 * S.lamp, open: 0.9 * S.lamp }, { x: 1185, y: 700, r: 260, rgb: [190, 210, 255], a: 0.18, open: 0.8 }],
-    over: (g2) => card(g2, '11:42 PM', fadeInOut(lt, 4.5, 6, 0.4, 0.3), { y: 960, font: '34px "DejaVu Sans"', spacing: '6px', color: 'rgba(200,206,222,1)' })
+    over: (g2) => TXT.label(g2, '11:42 PM', lt, 4.2, 5.6, { y: 950, size: 30 })
   });
 });
 
@@ -156,37 +149,10 @@ shot(20, 27, 'S5', (g, lt, t, E) => {
   });
 });
 
-// ------------------------------------------------------------------ the sketchbook page (inserts for shots 6, 16, 23, 26)
-// P 0 = the one faint horizon line from yesterday; P 1 = a full sunrise with a small red-hooded figure on a path.
-function pageScene(g, E, t, P_, o) {
-  o = o || {};
-  const bg = g.createRadialGradient(1000, 460, 80, 1000, 540, 1300); bg.addColorStop(0, '#3b352f'); bg.addColorStop(1, '#100e0c'); g.fillStyle = bg; g.fillRect(0, 0, 1920, 1080);
-  glow(g, 1500, 120, 1000, WARM, 0.22 * (o.lamp == null ? 1 : o.lamp), 'screen');
-  g.save(); g.translate(960 + (o.dx || 0), 560 + (o.dy || 0)); g.rotate(-0.045); g.scale(o.zoom || 1, o.zoom || 1);
-  g.fillStyle = 'rgba(0,0,0,0.4)'; rr(g, -610, -380, 1240, 800, 14); g.fill();
-  g.fillStyle = '#e8e4d8'; rr(g, -620, -400, 1240, 800, 10); g.fill();
-  g.strokeStyle = 'rgba(120,118,110,0.18)'; g.lineWidth = 1.5; const r = rng(31); for (let i = 0; i < 40; i++) { const y = -380 + i * 20; g.beginPath(); g.moveTo(-600, y + r() * 2); g.lineTo(600, y + r() * 2); g.stroke(); }
-  g.fillStyle = 'rgba(0,0,0,0.08)'; g.fillRect(-4, -400, 8, 800);
-  const wob = (x) => Math.sin(x * 0.02) * 4 + Math.sin(x * 0.051 + 1) * 2;
-  const pencil = (w, a) => { g.strokeStyle = `rgba(52,54,62,${a})`; g.lineWidth = w; g.lineCap = 'round'; g.lineJoin = 'round'; };
-  const f1 = clamp(P_ * 4), f2 = clamp((P_ - 0.25) * 4), f3 = clamp((P_ - 0.5) * 6), f4 = clamp((P_ - 0.62) * 4), f5 = clamp((P_ - 0.88) * 8.3);
-  pencil(5, P_ <= 0 ? 0.5 : 0.8); g.beginPath(); g.moveTo(-460, 80 + wob(-460)); for (let x = -460; x <= -40; x += 10) g.lineTo(x, 80 + wob(x)); g.stroke();   // yesterday's line
-  if (f1 > 0) { pencil(5, 0.8); g.beginPath(); g.moveTo(-40, 80 + wob(-40)); for (let x = -40; x <= -40 + 500 * f1; x += 10) g.lineTo(x, 80 + wob(x)); g.stroke(); }
-  if (f2 > 0) { g.save(); g.beginPath(); g.rect(-620, -400, 1240, 480); g.clip(); g.fillStyle = `rgba(232,160,70,${0.55 * f2})`; g.beginPath(); g.arc(170, 82, 118, Math.PI, Math.PI + Math.PI * f2); g.lineTo(170, 82); g.fill(); pencil(5, 0.8); g.beginPath(); g.arc(170, 82, 118, Math.PI, Math.PI + Math.PI * f2); g.stroke(); g.restore(); }
-  if (f3 > 0) { pencil(4, 0.7); for (let i = 0; i < 7; i++) { const a = Math.PI + 0.25 + i * (Math.PI - 0.5) / 6, k = clamp(f3 * 7 - i); g.beginPath(); g.moveTo(170 + Math.cos(a) * 142, 82 + Math.sin(a) * 142); g.lineTo(170 + Math.cos(a) * (142 + 52 * k), 82 + Math.sin(a) * (142 + 52 * k)); g.stroke(); } }
-  if (f4 > 0) { pencil(5, 0.75); g.beginPath(); g.moveTo(-60, 330); for (let k = 0; k <= f4; k += 0.04) g.lineTo(-60 + k * 330, 330 - k * 230 + Math.sin(k * 8) * 18); g.stroke(); pencil(4, 0.5); g.beginPath(); g.moveTo(-460, 300); g.quadraticCurveTo(-300, 230 - 30 * f4, -150, 300); g.stroke(); }
-  if (f5 > 0) { g.save(); g.translate(270, 100); g.scale(f5, f5); g.fillStyle = 'rgb(214,58,58)'; g.beginPath(); g.arc(0, -18, 22, 0, TAU); g.fill(); g.fillRect(-14, -8, 28, 40); g.fillStyle = '#2a2a30'; g.beginPath(); g.arc(2, -18, 14, 0, TAU); g.fill(); g.fillStyle = '#eee'; g.fillRect(-1, -22, 3, 9); g.fillRect(8, -22, 3, 9); g.restore(); }
-  g.restore();
-  if (o.pencil) { g.save(); g.translate(o.pencil.x, o.pencil.y); g.rotate(o.pencil.ang || -0.06); g.fillStyle = '#4a4d58'; rr(g, -150, -9, 300, 18, 4); g.fill(); g.fillStyle = '#d9c9a0'; g.beginPath(); g.moveTo(150, -9); g.lineTo(190, 0); g.lineTo(150, 9); g.closePath(); g.fill();
-    g.strokeStyle = 'rgba(255,255,255,0.18)'; g.lineWidth = 2; for (let i = 0; i < 3; i++) { const yy = -5 + ((o.pencil.roll || 0) + i * 5) % 15; g.beginPath(); g.moveTo(-150, yy); g.lineTo(140, yy); g.stroke(); } g.restore(); }
-  if (o.mug) { g.fillStyle = '#2c2f38'; rr(g, 1500, 780, 150, 170, 22); g.fill(); g.strokeStyle = '#2c2f38'; g.lineWidth = 22; g.beginPath(); g.arc(1660, 862, 42, -1.3, 1.3); g.stroke(); g.fillStyle = '#4a3a2c'; g.beginPath(); g.ellipse(1575, 790, 66, 14, 0, 0, TAU); g.fill(); }
-  SET.vignette(g, E, 0.55); drawGrain(g, 1920, 1080, t, 0.1);
-}
-
 // ================================================================== SHOT 6  (0:27-0:33) the page: one faint line; a pencil rolls to a stop
 shot(27, 33, 'S6', (g, lt, t, E) => {
-  const k = easeOut(clamp(lt / 2.4)), x = lerp(1900, 1180, k);
-  pageScene(g, E, t, 0, { zoom: lerp(1, 1.07, lt / 6), pencil: { x, y: 930, ang: -0.04, roll: x * 0.2 } });
+  const k = 1 - Math.pow(1 - clamp(lt / 2.6), 2.4), x = lerp(980, 420, k) + Math.sin(clamp(lt / 2.6) * Math.PI) * 0;   // rolls in, slows on the paper, stops
+  PAGE.draw(g, E, t, 0, { zoom: lerp(1, 1.07, lt / 6), lamp: 1, ring: true, pencilRest: { x, y: 40, ang: -Math.PI / 2 + 0.06, roll: -x / 57 } });
 });
 
 // ================================================================== SHOT 7  (0:33-0:39) "just one thing": the phone comes up, the room greys, the lamp dims
@@ -201,21 +167,32 @@ shot(33, 39, 'S7', (g, lt, t, E) => {
   });
 });
 
-// ================================================================== SHOT 8  (0:39-0:45) CU: first swipe, first tiny reward, he smiles
+// ================================================================== SHOT 8  (0:39-0:45) INSERT: his thumb, the first real swipe, a heart; then his face, smiling
+// the big phone, seen over his knees: a dark room behind it, the lamp's last warmth as soft bokeh
+function phoneInsert(g, E, t, lt, o) {
+  g.fillStyle = '#05070c'; g.fillRect(0, 0, 1920, 1080);
+  const bk = rng(12); for (let i = 0; i < 7; i++) { const x = bk() * 1920, y = bk() * 700, r = 40 + bk() * 90; glow(g, x, y, r * 2, o.warm ? WARM : [90, 110, 160], 0.05 + 0.05 * bk(), 'screen'); }
+  const fl = g.createLinearGradient(0, 640, 0, 1080); fl.addColorStop(0, 'rgba(30,32,40,0)'); fl.addColorStop(1, 'rgba(30,32,40,0.6)'); g.fillStyle = fl; g.fillRect(0, 640, 1920, 440);   // his knees / the duvet, out of focus
+  g.fillStyle = 'rgba(16,17,22,0.9)'; g.beginPath(); g.ellipse(560, 1150, 520, 260, 0.1, 0, TAU); g.fill(); g.beginPath(); g.ellipse(1420, 1170, 520, 250, -0.1, 0, TAU); g.fill();
+  const z = o.zoom || 1; g.save(); g.translate(960, 560); g.scale(z, z); g.translate(-960, -560);
+  const res = SCR.phone(g, o.x || 960, o.y || 548, o.w || 430, o.ang == null ? -0.05 : o.ang, t, Object.assign({ hand: true, clock: story(t).clock }, o.phone));
+  g.restore();
+  SET.vignette(g, E, 0.55); drawGrain(g, 1920, 1080, t, 0.09);
+  return res;
+}
 shot(39, 45, 'S8', (g, lt, t, E) => {
-  const flick = pulse(lt, 0.6, 0.3) * 8 + pulse(lt, 1.9, 0.3) * 8 + pulse(lt, 3.2, 0.3) * 8 + pulse(lt, 4.5, 0.3) * 8;
-  const happy = smooth((lt - 1.2) / 0.2) * (1 - smooth((lt - 3.4) / 0.3));
+  if (lt < 3.4) {
+    phoneInsert(g, E, t, lt, { zoom: 1 + 0.02 * lt, ang: -0.05 + 0.01 * Math.sin(lt * 0.8), y: 548 + Math.sin(lt * 1.1) * 4, phone: { swipes: [{ t: 39.6 }, { t: 40.9 }, { t: 42.2 }], likes: [40.2], seed: 0 } });
+    return;
+  }
+  const l2 = lt - 3.4, flick = pulse(t, 43.5 - 0.05, 0.3) * 8;
+  const happy = smooth(l2 / 0.4) * (1 - smooth((l2 - 1.9) / 0.4));
   const pose = Object.assign({}, SITPHONE, { hfy: SITPHONE.hfy + flick * 0.5, happy, looky: 0.55 });
-  const cam = sway(camAt(lt, [[0, { x: 812, y: 690, z: 3.0 }], [6, { x: 816, y: 688, z: 3.3 }]]), t, 0.6), PH = { x: 836, y: 694 };
+  const cam = sway(camAt(l2, [[0, { x: 812, y: 690, z: 3.0 }], [2.6, { x: 816, y: 688, z: 3.25 }]]), t, 0.6), PH = { x: 836, y: 694 };
   stage(g, E, t, {
-    cam, ambient: [6, 8, 14, 0.8], vig: 0.62,
-    chars: [hero(SIT_HIP, pose, t)], charLights: [{ x: PH.x, y: PH.y, r: 330, rgb: BLUE, a: 0.55 }],
+    cam, ambient: [6, 8, 14, 0.8], vig: 0.6,
+    chars: [hero(SIT_HIP, pose, t)], charLights: [{ x: PH.x, y: PH.y, r: 330, rgb: BLUE, a: 0.6 }],
     lights: [{ x: PH.x, y: PH.y, r: 540, rgb: BLUE, a: 0.3, open: 0.97 }],
-    post: (g2, J) => {
-      phoneSide(g2, J.me.handF.x + 6, J.me.handF.y - 12, -0.12, 0.8 + 0.2 * Math.sin(t * 6));
-      const u = (lt - 1.2) / 0.9; if (u > 0 && u < 1) for (let i = 0; i < 7; i++) {   // a small pop of sparkles at the first reward
-        const a = i / 7 * TAU, d = 20 + 90 * easeOut(u), sx = J.me.handF.x + 20 + Math.cos(a) * d, sy = J.me.handF.y - 60 + Math.sin(a) * d;
-        g2.fillStyle = `rgba(190,225,255,${1 - u})`; g2.beginPath(); g2.arc(sx, sy, 5 * (1 - u) + 1, 0, TAU); g2.fill(); }
-    }
+    post: (g2, J) => phoneSide(g2, J.me.handF.x, J.me.handF.y, -0.12, 0.9)
   });
 });

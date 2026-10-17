@@ -47,7 +47,7 @@ const FEED = (() => {
       g.fillStyle = '#f4f4ef'; g.beginPath(); g.ellipse(w / 2, h * 0.52, 96, 30, 0, 0, TAU); g.fill();
       const r = rng(8); for (let i = 0; i < 14; i++) { g.fillStyle = ['#87d957', '#e24a3a', '#f5d54a', '#4aa84a'][i % 4]; g.beginPath(); g.arc(w / 2 - 70 + r() * 140, h * 0.5 - r() * 22, 12 + r() * 8, 0, TAU); g.fill(); }
       const fy = Math.sin(t * 5) * 6; g.strokeStyle = '#d9d9de'; g.lineWidth = 8; g.lineCap = 'round'; g.beginPath(); g.moveTo(w / 2 + 60, h * 0.4 + fy); g.lineTo(w / 2 + 130, h * 0.18 + fy); g.stroke();
-      g.fillStyle = '#16181f'; rr(g, w / 2 - 80, h * 0.78, 160, 44, 12); g.fill(); g.fillStyle = '#dff7e8'; g.font = `bold ${Math.round(h * 0.06)}px "DejaVu Sans Mono"`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText((74 - Math.floor((t * 3) % 6)) + '.' + Math.floor((t * 17) % 10), w / 2, h * 0.78 + 22);
+      g.fillStyle = '#16181f'; rr(g, w / 2 - 80, h * 0.78, 160, 44, 12); g.fill(); g.fillStyle = '#dff7e8'; g.font = `bold ${Math.round(h * 0.06)}px ${TXT.UI}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText((74 - Math.floor((t * 3) % 6)) + '.' + Math.floor((t * 17) % 10), w / 2, h * 0.78 + 22);
     },
     function dance(g, w, h, t) {               // a tiny dancer and floating notes
       const bg = g.createLinearGradient(0, 0, w, h); bg.addColorStop(0, '#d63a9a'); bg.addColorStop(1, '#6a3ad6'); g.fillStyle = bg; g.fillRect(0, 0, w, h);
@@ -55,7 +55,7 @@ const FEED = (() => {
       g.beginPath(); g.arc(cx + b * 4, cy - 96, 24, 0, TAU); g.fill(); g.beginPath(); g.moveTo(cx, cy - 70); g.lineTo(cx + b * 6, cy + 10); g.stroke();
       g.beginPath(); g.moveTo(cx, cy - 56); g.lineTo(cx - 54, cy - 90 + b * 30); g.moveTo(cx, cy - 56); g.lineTo(cx + 54, cy - 90 - b * 30); g.stroke();
       g.beginPath(); g.moveTo(cx + b * 6, cy + 10); g.lineTo(cx - 36 + b * 10, cy + 84); g.moveTo(cx + b * 6, cy + 10); g.lineTo(cx + 36 - b * 10, cy + 84); g.stroke();
-      for (let i = 0; i < 4; i++) { const k = (t * 0.7 + i * 0.25) % 1; g.fillStyle = `rgba(255,255,255,${1 - k})`; g.font = `${Math.round(h * 0.07)}px "DejaVu Sans"`; g.fillText('♪', w * (0.2 + i * 0.2), h * 0.4 - k * h * 0.3); }
+      for (let i = 0; i < 4; i++) { const k = (t * 0.7 + i * 0.25) % 1; g.fillStyle = `rgba(255,255,255,${1 - k})`; g.font = `${Math.round(h * 0.07)}px ${TXT.UI}`; g.fillText('♪', w * (0.2 + i * 0.2), h * 0.4 - k * h * 0.3); }
     },
     function wedding(g, w, h, t) {             // two figures under an arch, confetti
       g.fillStyle = '#f7d9e4'; g.fillRect(0, 0, w, h); g.fillStyle = '#e9b9cc'; g.fillRect(0, h * 0.72, w, h * 0.28);
