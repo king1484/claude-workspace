@@ -3,7 +3,7 @@ const LAYOUT = {
  "c1": {
   "title": "Hook",
   "start": 0.0,
-  "dur": 19.124,
+  "dur": 22.759,
   "vo": [
    {
     "id": "h1",
@@ -28,16 +28,16 @@ const LAYOUT = {
    },
    {
     "id": "h4",
-    "text": "Your goal is simple: make it to the next sunrise.",
+    "text": "Your goal is simple: make it to the next sunrise. But the strangest part? Wait until you see the oceans.",
     "start": 15.33,
-    "dur": 2.794,
-    "end": 18.124
+    "dur": 6.429,
+    "end": 21.759
    }
   ]
  },
  "c2": {
   "title": "The Rule",
-  "start": 19.124,
+  "start": 22.759,
   "dur": 25.682,
   "vo": [
    {
@@ -72,7 +72,7 @@ const LAYOUT = {
  },
  "c3": {
   "title": "Body Clock",
-  "start": 44.806,
+  "start": 48.441,
   "dur": 35.12,
   "vo": [
    {
@@ -121,7 +121,7 @@ const LAYOUT = {
  },
  "c4": {
   "title": "Long Day",
-  "start": 79.926,
+  "start": 83.561,
   "dur": 49.185,
   "vo": [
    {
@@ -163,7 +163,7 @@ const LAYOUT = {
  },
  "c5": {
   "title": "Long Night",
-  "start": 129.111,
+  "start": 132.746,
   "dur": 55.685,
   "vo": [
    {
@@ -219,8 +219,8 @@ const LAYOUT = {
  },
  "c6": {
   "title": "Weather",
-  "start": 184.796,
-  "dur": 40.136,
+  "start": 188.431,
+  "dur": 42.629,
   "vo": [
    {
     "id": "w1",
@@ -245,17 +245,17 @@ const LAYOUT = {
    },
    {
     "id": "w4",
-    "text": "Nobody knows exactly how it would play out. But the weather could be very different from what we're used to.",
+    "text": "Nobody knows exactly how it would play out. But the weather could be very different from what we're used to. Hold on. Sunrise is close.",
     "start": 33.329,
-    "dur": 5.711,
-    "end": 39.04
+    "dur": 8.204,
+    "end": 41.533
    }
   ]
  },
  "c7": {
   "title": "Oceans",
-  "start": 224.932,
-  "dur": 50.35,
+  "start": 231.06,
+  "dur": 51.805,
   "vo": [
    {
     "id": "o1",
@@ -266,51 +266,51 @@ const LAYOUT = {
    },
    {
     "id": "o2",
-    "text": "But the biggest change plays out over years, not hours.",
+    "text": "Now, remember the oceans? The biggest change plays out over years, not hours.",
     "start": 4.038,
-    "dur": 3.403,
-    "end": 7.441
+    "dur": 4.857,
+    "end": 8.896
    },
    {
     "id": "o3",
     "text": "Earth isn't a perfect ball. Its spin makes it bulge at the equator. The radius there is about twenty-one kilometers longer than at the poles.",
-    "start": 8.041,
+    "start": 9.495,
     "dur": 9.026,
-    "end": 17.067
+    "end": 18.521
    },
    {
     "id": "o4",
     "text": "And the oceans sit in that bulge, held there by the spin.",
-    "start": 17.667,
+    "start": 19.122,
     "dur": 3.076,
-    "end": 20.743
+    "end": 22.197
    },
    {
     "id": "o5",
     "text": "Slow the spin, and the water wants to flow back toward the poles. But solid rock is stiff, and takes thousands of years to reshape.",
-    "start": 21.343,
+    "start": 22.797,
     "dur": 8.202,
-    "end": 29.545
+    "end": 31.0
    },
    {
     "id": "o6",
     "text": "So for a long while, the oceans could slide poleward, uncovering seafloor at the equator, and flooding low land near the poles. How far depends on how fast the slowdown happens. Eventually the rock relaxes, and the coastlines shift again.",
-    "start": 30.245,
+    "start": 31.7,
     "dur": 15.623,
-    "end": 45.868
+    "end": 47.323
    },
    {
     "id": "o7",
     "text": "A different map, all because the day got longer.",
-    "start": 46.568,
+    "start": 48.023,
     "dur": 2.783,
-    "end": 49.35
+    "end": 50.805
    }
   ]
  },
  "c8": {
   "title": "Wrap",
-  "start": 275.282,
+  "start": 282.865,
   "dur": 26.593,
   "vo": [
    {
@@ -343,6 +343,6 @@ const LAYOUT = {
    }
   ]
  },
- "total": 301.875
+ "total": 309.458
 };
 if (typeof module !== 'undefined') module.exports = LAYOUT;

@@ -17,8 +17,9 @@ const TT = {
   lapse1: 1.9, wind: tAt(w1, 'the wind picks'), notAcc: tAt(w1, 'And that'),
   warm: w2.start + 0.2, day: tAt(w2, 'By day'), night: tAt(w2, 'At night'), longer: tAt(w2, 'With days'), harder: tAt(w2, 'and could blow'),
   slower: w3.start + 0.1, hurr: tAt(w3, 'Hurricanes need'), four: tAt(w3, 'and it would be'), differ: tAt(w3, 'Storms would'), struggle: tAt(w3, 'or struggle'),
-  nobody: w4.start + 0.1, expect: tAt(w4, 'But the weather'), flash: w4.end - 1.4
+  nobody: w4.start + 0.1, expect: tAt(w4, 'But the weather'), hold: tAt(w4, 'Hold on'), close: tAt(w4, 'Sunrise is close')
 };
+TT.flash = TT.hold - 0.55;   // last thunder lands just before "Hold on"; then a first warm glow on "Sunrise is close"
 const CUT = { B1: w2.start - 0.1, B2: TT.night - 0.1, B3: TT.longer - 0.1, B4: TT.harder - 0.55, C: w3.start - 0.15, D: w4.start - 0.1 };
 const H_START = 62.5, H_70 = 70, H_71 = 71, H_END = 86;
 const E = (t, a, b) => clamp((t - a) / (b - a));
@@ -245,7 +246,7 @@ function rain(g, t, a, wind) {
   g.restore();
 }
 function shotD(g, lt, H) {
-  const storm = S(lt, CUT.D, END - 0.5);
+  const storm = S(lt, CUT.D, END - 0.5) * (1 - 0.55 * S(lt, TT.hold, END));   // eases once he holds on for sunrise
   const o = { scene: 'coast', cloud: 0.3 + 0.7 * storm, t: lt };
   const cam = { x: 980, y: 575, z: camPush(lt, CUT.D, END, 1.55, 1.75), r: 0 };
   TOD.drawWorld(g, cam, H, o);
@@ -264,8 +265,17 @@ function shotD(g, lt, H) {
   const lf = Math.max(0, 1 - Math.abs(lt - TT.flash) / 0.12) + 0.5 * Math.max(0, 1 - Math.abs(lt - (TT.flash + 0.28)) / 0.1);
   if (lf > 0.01) { g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = 'rgba(190,210,255,' + 0.45 * lf + ')'; g.fillRect(0, 0, 1920, 1080); g.restore(); }
   finish(g, H, o, lt, {});
+  // first hint of dawn low on the horizon ("Sunrise is close")
+  const dawn = S(lt, TT.close - 0.2, END);
+  if (dawn > 0.01) {
+    g.save(); g.globalCompositeOperation = 'lighter';
+    const dg = g.createLinearGradient(0, 180, 0, 640); dg.addColorStop(0, 'rgba(255,140,80,0)'); dg.addColorStop(0.7, 'rgba(255,140,80,' + 0.32 * dawn + ')'); dg.addColorStop(1, 'rgba(255,185,110,' + 0.5 * dawn + ')');
+    g.fillStyle = dg; g.fillRect(0, 180, 1920, 460);
+    const fade = g.createLinearGradient(0, 640, 0, 760); fade.addColorStop(0, 'rgba(255,185,110,' + 0.5 * dawn + ')'); fade.addColorStop(1, 'rgba(255,185,110,0)');
+    g.fillStyle = fade; g.fillRect(0, 640, 1920, 120); g.restore();
+  }
   // illustration frame: dashed border + '?' => a possibility, not a forecast (only after "Nobody knows exactly")
-  const fa = S(lt, TT.nobody, TT.nobody + 0.6);
+  const fa = S(lt, TT.nobody, TT.nobody + 0.6) * (1 - S(lt, TT.hold - 0.1, TT.hold + 0.5));   // the 'possibility' frame ends at "Hold on"
   if (fa > 0.01) {
     g.save(); g.globalAlpha = fa * 0.8; g.strokeStyle = '#ffffff'; g.lineWidth = 6; g.setLineDash([26, 18]); rr(g, 44, 44, 1832, 992, 30); g.stroke(); g.setLineDash([]);
     const pop = spring(lt - (TT.nobody + 0.3), 150, 14);

@@ -118,6 +118,7 @@ build('c6', 'tense', 'wind', ({ TT, CUT, END, d, add }) => {
   add(TT.nobody + 0.3, 'pop', 0.3);
   add(TT.flash, 'thunderFar', 0.5);
   add(TT.flash + 0.28, 'thunderFar', 0.3);
+  add(TT.close - 0.1, 'swell', 0.18, { len: END - TT.close });
   return {
     arc: [[0, CUT.B1, 0.26], [CUT.B1, CUT.B2, 0.22], [CUT.B2, CUT.B3, 0.2], [CUT.B3, CUT.B4, 0.26], [CUT.B4, CUT.C, 0.38], [CUT.C, CUT.D, 0.34], [CUT.D, END, 0.55]],
     risers: [[TT.flash - 3.0, TT.flash - 0.05]],

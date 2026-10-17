@@ -26,6 +26,8 @@ T.zoom0 = T.h3s - 0.45; T.zoom1 = T.h3s + 0.75;    // push through the window
 T.gh0 = T.h3s + 0.8; T.gh1 = T.h3e - 0.1;          // ghost sun loop
 T.cut = T.h3e + 0.35;                              // hard cut to the street (before h4 starts)
 T.idea = T.h4s + 0.75; T.bub = T.h4s + 1.05; T.rise0 = T.h4s + 1.3; T.rise1 = T.h4e - 0.15; T.go = T.h4s + 2.0;
+{ const v = V[3], i = v.text.indexOf('Wait until');                  // the ocean tease: second bubble pops on "Wait until you see the oceans"
+  T.sea = i < 0 ? T.h4e - 1.6 : v.start + v.dur * (i / v.text.length); T.rise1 = Math.min(T.rise1, T.sea - 0.1); }
 T.hudEnd = T.dur - 0.85;
 
 const sat = (x) => x < 0 ? 0 : x > 1 ? 1 : x;
@@ -415,6 +417,39 @@ function goalBubble(g, cx, cy, r, grow, prog, lt) {
 }
 function rgbMix(a, b, k) { return mixHex(a, b, k); }
 
+// teaser bubble: a small sea that tilts and sloshes (the oceans pay off in chapter 7), with a '?' badge
+function oceanBubble(g, cx, cy, r, grow, lt) {
+  if (grow <= 0.01) return;
+  g.save(); g.translate(cx, cy); g.scale(grow, grow);
+  g.fillStyle = 'rgba(14,16,44,0.55)'; g.beginPath(); g.arc(4, 7, r + 10, 0, TWO); g.fill();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(0, 0, r + 8, 0, TWO); g.fill();
+  g.save(); g.beginPath(); g.arc(0, 0, r, 0, TWO); g.clip();
+  let gr = g.createLinearGradient(0, -r, 0, r); gr.addColorStop(0, '#bfe4ff'); gr.addColorStop(1, '#eaf6ff');
+  g.fillStyle = gr; g.fillRect(-r, -r, 2 * r, 2 * r);
+  const tilt = 0.32 * Math.sin((lt - T.sea) * 2.1);                  // the water leans one way, then the other
+  g.rotate(tilt);
+  for (let k = 0; k < 2; k++) {
+    const y0 = r * 0.02 + k * 22, amp = 9 - k * 3;
+    g.fillStyle = k ? '#1f64b8' : '#3f8fe0';
+    g.beginPath(); g.moveTo(-r * 1.5, r * 1.5);
+    for (let x = -r * 1.5; x <= r * 1.5; x += 8) g.lineTo(x, y0 + amp * Math.sin(x * 0.045 + lt * 3.2 + k * 1.7));
+    g.lineTo(r * 1.5, r * 1.5); g.closePath(); g.fill();
+  }
+  g.strokeStyle = 'rgba(255,255,255,0.75)'; g.lineWidth = 4; g.lineCap = 'round'; g.beginPath();
+  for (let x = -r * 1.5; x <= r * 1.5; x += 8) { const y = r * 0.02 + 9 * Math.sin(x * 0.045 + lt * 3.2); x === -r * 1.5 ? g.moveTo(x, y) : g.lineTo(x, y); }
+  g.stroke();
+  g.restore();
+  // '?' badge (same look as the c6 storm badge)
+  const bq = spring(lt - T.sea - 0.35, 260, 16);
+  if (bq > 0.01) {
+    g.save(); g.translate(r * 0.72, -r * 0.72); g.scale(bq, bq);
+    g.fillStyle = '#ffd23f'; g.strokeStyle = '#0c1232'; g.lineWidth = 5; g.beginPath(); g.arc(0, 0, 34, 0, TWO); g.fill(); g.stroke();
+    g.font = 'bold 50px "Bahnschrift SemiBold","Segoe UI Black",sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#0c1232'; g.fillText('?', 0, 3);
+    g.restore();
+  }
+  g.restore();
+}
+
 // ---------------------------------------------------------------- street (h4)
 function drawStreet(g, lt, H) {
   const goT = Math.max(0, lt - T.go), v = 120;
@@ -455,6 +490,16 @@ function drawStreet(g, lt, H) {
       g.beginPath(); g.arc(mixN(hx + 40, bx - br * 0.6, q * 1.6), mixN(hy - 50, by + br * 0.8, q * 1.6), r2 * pk, 0, TWO); g.fill(); g.stroke();
     }
     goalBubble(g, bx, by, br, g2, smooth(sat((lt - T.rise0) / (T.rise1 - T.rise0))), lt);
+  }
+  const sp = lt > T.sea ? spring(lt - T.sea, 200, 15) : 0;
+  if (sp > 0.01) {
+    const ox = 1610, oy = 600, orr = 118;
+    for (let i = 0; i < 2; i++) {                                    // two small puffs linking it to the goal bubble
+      const pk = spring(lt - T.sea - i * 0.06, 260, 18);
+      g.fillStyle = '#fff'; g.strokeStyle = 'rgba(14,16,44,0.5)'; g.lineWidth = 3;
+      g.beginPath(); g.arc(mixN(1420, ox - orr * 0.75, 0.3 + i * 0.4), mixN(470, oy - orr * 0.55, 0.3 + i * 0.4), [9, 14][i] * pk, 0, TWO); g.fill(); g.stroke();
+    }
+    oceanBubble(g, ox, oy, orr, sp, lt);
   }
 }
 

@@ -15,7 +15,7 @@ const tAt = (v, s) => { const i = v.text.indexOf(s); return v.start + v.dur * (M
 const END = LAY.dur;
 const TT = {
   hundred: tAt(o1, 'Hour one'), sunrise: tAt(o1, 'Sunrise'), made: tAt(o1, 'You made'),
-  years: tAt(o2, 'years, not hours'), flipEnd: o2.end,
+  years: tAt(o2, 'years, not hours'), flipEnd: o2.end, biggest: tAt(o2, 'The biggest'),
   notBall: o3.start, bulge: tAt(o3, 'Its spin'), radius: tAt(o3, 'The radius'), km: tAt(o3, 'twenty-one'),
   sit: o4.start + 0.2, spin: tAt(o4, 'held there'),
   slow: o5.start, flow: tAt(o5, 'the water wants'), stiff: tAt(o5, 'But solid rock'), thousands: tAt(o5, 'thousands'),
@@ -115,6 +115,23 @@ function calendarPage(g, x, y, w, h, flip, n) {
   pageDraw(y, h, n + 1);
   if (flip < 0.99) { g.save(); g.translate(0, y); g.scale(1, 1 - flip * 1.0); g.translate(0, -y); pageDraw(y, h, n); g.restore(); }
 }
+// callback to the hook's teaser bubble ("Now, remember the oceans?"): the same little tilting sea
+function seaCallback(g, cx, cy, r, grow, lt) {
+  if (grow <= 0.01) return;
+  g.save(); g.translate(cx, cy); g.scale(grow, grow);
+  g.fillStyle = 'rgba(0,0,0,0.35)'; g.beginPath(); g.arc(4, 7, r + 10, 0, TAU); g.fill();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(0, 0, r + 8, 0, TAU); g.fill();
+  g.save(); g.beginPath(); g.arc(0, 0, r, 0, TAU); g.clip();
+  g.fillStyle = '#d6eeff'; g.fillRect(-r, -r, 2 * r, 2 * r);
+  g.rotate(0.32 * Math.sin((lt - CUT.B) * 2.1));
+  for (let k = 0; k < 2; k++) {
+    const y0 = r * 0.02 + k * 20, amp = 8 - k * 3;
+    g.fillStyle = k ? '#1f64b8' : '#3f8fe0'; g.beginPath(); g.moveTo(-r * 1.5, r * 1.5);
+    for (let x = -r * 1.5; x <= r * 1.5; x += 8) g.lineTo(x, y0 + amp * Math.sin(x * 0.05 + lt * 3.2 + k * 1.7));
+    g.lineTo(r * 1.5, r * 1.5); g.closePath(); g.fill();
+  }
+  g.restore(); g.restore();
+}
 function shotB(g, lt) {
   g.fillStyle = '#060a26'; g.fillRect(0, 0, 1920, 1080); starsBg(g, lt, 0.8);
   const u = lt - CUT.B, spin = u * 520 * (0.6 + 0.8 * E(u, 0, 3));
@@ -125,6 +142,8 @@ function shotB(g, lt) {
   const ra = S(lt, TT.years - 0.4, TT.years + 0.2);
   g.save(); g.globalAlpha = ra; g.translate(1330, 790); rr(g, -190, -50, 380, 100, 20); g.fillStyle = '#ffd23a'; g.fill(); g.lineWidth = 7; g.strokeStyle = '#0c1232'; g.stroke(); numText(g, 'YEARS', 0, 4, 66, '#0c1232', '#ffd23a'); g.restore();
   TOD.grade(g, 30, { scene: 'city' });
+  const cb = spring(lt - CUT.B - 0.1, 200, 15) * (1 - S(lt, TT.biggest + 0.2, TT.biggest + 0.6));
+  seaCallback(g, 960, 190, 105, cb, lt);
 }
 
 // ------------------------------------------------------------------ SHOT C1  (o3 a)  the planet is not a perfect ball: oblate globe with the equator highlighted

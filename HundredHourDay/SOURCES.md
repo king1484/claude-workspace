@@ -2,6 +2,8 @@
 
 > **Wording revised 2026-10-16 (cloud continuation):** five lines were re-recorded with the same voice/settings and fit into their existing windows (timing of every other line unchanged): h2 ("sunset is thirty-four hours away" - the sun does not stay high for 34 h), b4 ("the sun's barely moved" - it moves slowly, not zero), n4 ("could mean pulling power from elsewhere, using backups, or letting some places go dark" - import is one option among storage/backup/demand), w2 ("and could blow harder" - mechanism is standard physics, magnitude is not established), w4 ("the weather could be very different from what we're used to" - no "wilder than anything" claim). Rows below describe the claims; where a row quotes older wording the revised line above governs.
 
+> **Reach pass 2026-10-17:** three lines were re-recorded and the timeline shifted to fit (`relayout_vo_lines.py`; total now 309.458 s). h4 adds a tease, "But the strangest part? Wait until you see the oceans." (paid off in c7). w4 adds "Hold on. Sunrise is close." (no new claim). o2 now opens "Now, remember the oceans?" (callback, no new claim). The e5 next-video line was removed earlier; its row below is historical.
+
 Claims in the narration and how they are supported or hedged. Checked 2026-10-16.
 
 | Claim (line) | Status | Basis |
