@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "upstox": {
+      "type": "http",
+      "url": "https://mcp.upstox.com/mcp"
+    }
+  }
+}
